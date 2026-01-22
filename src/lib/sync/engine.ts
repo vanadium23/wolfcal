@@ -80,6 +80,8 @@ export class SyncEngine {
         timeZone: googleEvent.end.timeZone,
       },
       recurrence: googleEvent.recurrence,
+      recurringEventId: googleEvent.recurringEventId,
+      originalStartTime: googleEvent.originalStartTime,
       attendees: googleEvent.attendees?.map((a) => ({
         email: a.email || '',
         displayName: a.displayName,
@@ -146,12 +148,12 @@ export class SyncEngine {
       eventsDeleted: 0,
     };
 
+    // Get existing sync metadata (declare outside try/catch for error handler access)
+    let metadata = await getSyncMetadata(calendarId);
+
     try {
       // Calculate 3-month window
       const window = this.calculateSyncWindow();
-
-      // Get existing sync metadata
-      let metadata = await getSyncMetadata(calendarId);
 
       // Determine if we should do incremental or full sync
       const useIncrementalSync = metadata?.syncToken !== undefined;

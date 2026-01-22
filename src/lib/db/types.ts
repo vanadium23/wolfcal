@@ -42,6 +42,12 @@ export interface CalendarEvent {
     timeZone?: string;
   };
   recurrence?: string[]; // RRULE for recurring events
+  recurringEventId?: string; // ID of parent recurring event (for modified instances)
+  originalStartTime?: {
+    dateTime?: string;
+    date?: string;
+    timeZone?: string;
+  };
   attendees?: Array<{
     email: string;
     displayName?: string;

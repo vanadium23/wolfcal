@@ -34,13 +34,14 @@ export class TokenRefreshError extends Error {
  * Error thrown when API request fails
  */
 export class CalendarApiError extends Error {
-  constructor(
-    message: string,
-    public code: number,
-    public status?: string
-  ) {
+  code: number;
+  status?: string;
+
+  constructor(message: string, code: number, status?: string) {
     super(message);
     this.name = 'CalendarApiError';
+    this.code = code;
+    this.status = status;
   }
 }
 

@@ -45,9 +45,8 @@ Google Calendar API quotas: https://developers.google.com/calendar/api/guides/qu
 - [ ] Retry attempts logged to console
 - [ ] Final failure throws error after max retries exhausted
 ## Done summary
-TBD
-
+Implemented exponential backoff retry logic for Google Calendar API client with configurable retry parameters, jitter, and automatic retries on transient errors (429, 5xx) while skipping client errors (400, 401, 403, 404).
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 9b7d102654c9e101e69e6e59575591dec6ba0641
+- Tests: Visual inspection - no test suite configured yet
 - PRs:

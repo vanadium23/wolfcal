@@ -1,51 +1,111 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import type { EventInput } from '@fullcalendar/core'
+import type { DatesSetArg } from '@fullcalendar/core'
+import { getAllEvents, getVisibleCalendars } from '../lib/db'
+import { expandRecurringEvents, isRecurringEvent } from '../lib/events'
+import type { CalendarEvent } from '../lib/db/types'
 import './Calendar.css'
 
 type ViewType = 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay'
 
-// Placeholder events for testing
-const placeholderEvents: EventInput[] = [
-  {
-    id: '1',
-    title: 'Team Meeting',
-    start: new Date(Date.now() + 2 * 60 * 60 * 1000), // 2 hours from now
-    end: new Date(Date.now() + 3 * 60 * 60 * 1000),
-    backgroundColor: '#3b82f6',
-  },
-  {
-    id: '2',
-    title: 'All-Day Conference',
-    start: new Date().toISOString().split('T')[0], // today
-    allDay: true,
-    backgroundColor: '#10b981',
-  },
-  {
-    id: '3',
-    title: 'Lunch Break',
-    start: new Date(Date.now() + 24 * 60 * 60 * 1000 + 12 * 60 * 60 * 1000), // tomorrow at noon
-    end: new Date(Date.now() + 24 * 60 * 60 * 1000 + 13 * 60 * 60 * 1000),
-    backgroundColor: '#f59e0b',
-  },
-  {
-    id: '4',
-    title: 'Project Deadline',
-    start: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // next week
-    allDay: true,
-    backgroundColor: '#ef4444',
-  },
-]
+/**
+ * Convert CalendarEvent to FullCalendar EventInput format
+ */
+function convertToEventInput(event: CalendarEvent, calendarColor?: string): EventInput {
+  const isAllDay = !!event.start.date && !event.start.dateTime
+
+  return {
+    id: event.id,
+    title: event.summary,
+    start: event.start.dateTime || event.start.date || '',
+    end: event.end.dateTime || event.end.date || '',
+    allDay: isAllDay,
+    backgroundColor: calendarColor || '#3b82f6',
+    extendedProps: {
+      description: event.description,
+      location: event.location,
+      attendees: event.attendees,
+      attachments: event.attachments,
+      accountId: event.accountId,
+      calendarId: event.calendarId,
+      isRecurring: isRecurringEvent(event),
+    },
+  }
+}
 
 export default function Calendar() {
   const [currentView, setCurrentView] = useState<ViewType>('dayGridMonth')
+  const [events, setEvents] = useState<EventInput[]>([])
+  const [dateRange, setDateRange] = useState<{ start: Date; end: Date } | null>(null)
+  const calendarRef = useRef<FullCalendar>(null)
 
   const handleViewChange = (view: ViewType) => {
     setCurrentView(view)
   }
+
+  /**
+   * Load events from IndexedDB and expand recurring events
+   */
+  const loadEvents = useCallback(async (range: { start: Date; end: Date }) => {
+    try {
+      // Get all events from IndexedDB
+      const allEvents = await getAllEvents()
+
+      // Get visible calendars to map colors
+      const visibleCalendars = await getVisibleCalendars()
+      const calendarColorMap = new Map(
+        visibleCalendars.map((cal) => [cal.id, cal.backgroundColor || '#3b82f6'])
+      )
+
+      // Filter events to only include those from visible calendars
+      const visibleCalendarIds = new Set(visibleCalendars.map((cal) => cal.id))
+      const eventsToDisplay = allEvents.filter((event) =>
+        visibleCalendarIds.has(event.calendarId)
+      )
+
+      // Expand recurring events within the visible date range
+      const expandedEvents = expandRecurringEvents(eventsToDisplay, range)
+
+      // Convert to FullCalendar format
+      const fullCalendarEvents = expandedEvents.map((event) =>
+        convertToEventInput(event, calendarColorMap.get(event.calendarId))
+      )
+
+      setEvents(fullCalendarEvents)
+    } catch (error) {
+      console.error('Failed to load events:', error)
+      setEvents([])
+    }
+  }, [])
+
+  /**
+   * Handle date range changes (when user navigates calendar)
+   */
+  const handleDatesSet = useCallback(
+    (arg: DatesSetArg) => {
+      const newRange = {
+        start: arg.start,
+        end: arg.end,
+      }
+
+      setDateRange(newRange)
+      loadEvents(newRange)
+    },
+    [loadEvents]
+  )
+
+  /**
+   * Initial load
+   */
+  useEffect(() => {
+    if (dateRange) {
+      loadEvents(dateRange)
+    }
+  }, [dateRange, loadEvents])
 
   return (
     <div style={{ padding: '20px' }}>
@@ -95,6 +155,7 @@ export default function Calendar() {
       </div>
 
       <FullCalendar
+        ref={calendarRef}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView={currentView}
         key={currentView} // Force re-render when view changes
@@ -103,7 +164,8 @@ export default function Calendar() {
           center: 'title',
           right: '',
         }}
-        events={placeholderEvents}
+        events={events}
+        datesSet={handleDatesSet}
         editable={true}
         selectable={true}
         dayMaxEventRows={3} // Show all-day events in separate section at top
