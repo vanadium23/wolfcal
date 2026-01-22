@@ -1,11 +1,17 @@
+import { useState } from 'react'
 import './App.css'
 import Calendar from './components/Calendar'
 import AddAccountButton from './components/AddAccountButton'
+import Settings from './pages/Settings'
 import type { OAuthTokenResponse } from './lib/auth/types'
 import { encryptToken } from './lib/auth/encryption'
 import { addAccount } from './lib/db'
 
+type View = 'calendar' | 'settings'
+
 function App() {
+  const [currentView, setCurrentView] = useState<View>('calendar')
+
   const handleAccountAdded = async (tokens: OAuthTokenResponse) => {
     try {
       console.log('Account added successfully, encrypting and storing...')
@@ -47,12 +53,38 @@ function App() {
 
   return (
     <div>
-      <h1>WolfCal</h1>
-      <p>Local-First Google Calendar Wrapper</p>
-      <div style={{ marginBottom: '20px' }}>
-        <AddAccountButton onAccountAdded={handleAccountAdded} onError={handleError} />
-      </div>
-      <Calendar />
+      <header className="app-header">
+        <div className="header-content">
+          <h1>WolfCal</h1>
+          <nav className="app-nav">
+            <button
+              className={`nav-link ${currentView === 'calendar' ? 'active' : ''}`}
+              onClick={() => setCurrentView('calendar')}
+            >
+              Calendar
+            </button>
+            <button
+              className={`nav-link ${currentView === 'settings' ? 'active' : ''}`}
+              onClick={() => setCurrentView('settings')}
+            >
+              Settings
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      <main className="app-main">
+        {currentView === 'calendar' && (
+          <>
+            <div style={{ marginBottom: '20px' }}>
+              <AddAccountButton onAccountAdded={handleAccountAdded} onError={handleError} />
+            </div>
+            <Calendar />
+          </>
+        )}
+
+        {currentView === 'settings' && <Settings />}
+      </main>
     </div>
   )
 }

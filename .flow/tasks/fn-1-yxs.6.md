@@ -38,9 +38,8 @@ Web Crypto API docs: https://developer.mozilla.org/en-US/docs/Web/API/SubtleCryp
 - [ ] Tokens stored as encrypted strings in IndexedDB
 - [ ] Decryption works: encrypted token can be decrypted back to original
 ## Done summary
-TBD
-
+Implemented token encryption using Web Crypto API with AES-GCM 256-bit encryption. Created encryption module with generateKey(), encryptToken(), and decryptToken() functions. Updated App.tsx to encrypt OAuth tokens before storing in IndexedDB.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 34ca4f6bfaaccb82c1291bed844e0fae0011a9e4
+- Tests: npm run build
 - PRs:
