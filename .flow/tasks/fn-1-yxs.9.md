@@ -45,9 +45,8 @@ Google Calendar sync: https://developers.google.com/calendar/api/guides/sync
 - [ ] Sync metadata includes lastSyncTime timestamp
 - [ ] TypeScript types for sync state and metadata
 ## Done summary
-TBD
-
+Implemented sync engine with 3-month window for bidirectional Google Calendar synchronization. Supports incremental sync with syncToken, full resync fallback, pagination, and automatic event pruning outside the sync window.
 ## Evidence
-- Commits:
+- Commits: 664f62a403181698ab6672e0eb99a434e9c7a04e
 - Tests:
 - PRs:

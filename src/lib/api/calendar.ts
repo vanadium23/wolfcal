@@ -8,6 +8,7 @@
 
 import { getAccount, updateAccount } from '../db';
 import { decryptToken, encryptToken } from '../auth/encryption';
+import { retryWithBackoff } from './retry';
 import type {
   GoogleCalendarListResponse,
   GoogleEventsListResponse,
@@ -141,6 +142,7 @@ export class CalendarClient {
 
   /**
    * Makes an authenticated API request with automatic token refresh on 401
+   * Note: This method does NOT include retry logic - retries are handled at the caller level
    */
   private async makeAuthenticatedRequest<T>(
     accountId: string,
@@ -204,8 +206,10 @@ export class CalendarClient {
    * @returns Array of calendars
    */
   async listCalendars(accountId: string): Promise<GoogleCalendarListResponse> {
-    const url = `${GOOGLE_CALENDAR_API_BASE}/users/me/calendarList`;
-    return this.makeAuthenticatedRequest<GoogleCalendarListResponse>(accountId, url);
+    return retryWithBackoff(async () => {
+      const url = `${GOOGLE_CALENDAR_API_BASE}/users/me/calendarList`;
+      return this.makeAuthenticatedRequest<GoogleCalendarListResponse>(accountId, url);
+    });
   }
 
   /**
@@ -226,25 +230,27 @@ export class CalendarClient {
     syncToken?: string,
     pageToken?: string
   ): Promise<GoogleEventsListResponse> {
-    const params = new URLSearchParams({
-      timeMin,
-      timeMax,
-      singleEvents: 'true', // Expand recurring events into instances
-      orderBy: 'startTime',
+    return retryWithBackoff(async () => {
+      const params = new URLSearchParams({
+        timeMin,
+        timeMax,
+        singleEvents: 'true', // Expand recurring events into instances
+        orderBy: 'startTime',
+      });
+
+      if (syncToken) {
+        params.set('syncToken', syncToken);
+      }
+      if (pageToken) {
+        params.set('pageToken', pageToken);
+      }
+
+      const url = `${GOOGLE_CALENDAR_API_BASE}/calendars/${encodeURIComponent(
+        calendarId
+      )}/events?${params.toString()}`;
+
+      return this.makeAuthenticatedRequest<GoogleEventsListResponse>(accountId, url);
     });
-
-    if (syncToken) {
-      params.set('syncToken', syncToken);
-    }
-    if (pageToken) {
-      params.set('pageToken', pageToken);
-    }
-
-    const url = `${GOOGLE_CALENDAR_API_BASE}/calendars/${encodeURIComponent(
-      calendarId
-    )}/events?${params.toString()}`;
-
-    return this.makeAuthenticatedRequest<GoogleEventsListResponse>(accountId, url);
   }
 
   /**
@@ -259,14 +265,16 @@ export class CalendarClient {
     calendarId: string,
     event: Partial<GoogleEvent>
   ): Promise<GoogleEvent> {
-    const url = `${GOOGLE_CALENDAR_API_BASE}/calendars/${encodeURIComponent(calendarId)}/events`;
+    return retryWithBackoff(async () => {
+      const url = `${GOOGLE_CALENDAR_API_BASE}/calendars/${encodeURIComponent(calendarId)}/events`;
 
-    return this.makeAuthenticatedRequest<GoogleEvent>(accountId, url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(event),
+      return this.makeAuthenticatedRequest<GoogleEvent>(accountId, url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(event),
+      });
     });
   }
 
@@ -284,16 +292,18 @@ export class CalendarClient {
     eventId: string,
     event: Partial<GoogleEvent>
   ): Promise<GoogleEvent> {
-    const url = `${GOOGLE_CALENDAR_API_BASE}/calendars/${encodeURIComponent(
-      calendarId
-    )}/events/${encodeURIComponent(eventId)}`;
+    return retryWithBackoff(async () => {
+      const url = `${GOOGLE_CALENDAR_API_BASE}/calendars/${encodeURIComponent(
+        calendarId
+      )}/events/${encodeURIComponent(eventId)}`;
 
-    return this.makeAuthenticatedRequest<GoogleEvent>(accountId, url, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(event),
+      return this.makeAuthenticatedRequest<GoogleEvent>(accountId, url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(event),
+      });
     });
   }
 
@@ -308,12 +318,14 @@ export class CalendarClient {
     calendarId: string,
     eventId: string
   ): Promise<void> {
-    const url = `${GOOGLE_CALENDAR_API_BASE}/calendars/${encodeURIComponent(
-      calendarId
-    )}/events/${encodeURIComponent(eventId)}`;
+    return retryWithBackoff(async () => {
+      const url = `${GOOGLE_CALENDAR_API_BASE}/calendars/${encodeURIComponent(
+        calendarId
+      )}/events/${encodeURIComponent(eventId)}`;
 
-    await this.makeAuthenticatedRequest<void>(accountId, url, {
-      method: 'DELETE',
+      await this.makeAuthenticatedRequest<void>(accountId, url, {
+        method: 'DELETE',
+      });
     });
   }
 }

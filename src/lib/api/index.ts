@@ -3,6 +3,8 @@
  */
 
 export { CalendarClient, TokenRefreshError, CalendarApiError } from './calendar';
+export { retryWithBackoff } from './retry';
+export type { RetryConfig } from './retry';
 export type {
   GoogleCalendar,
   GoogleCalendarListResponse,
