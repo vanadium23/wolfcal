@@ -9,3 +9,8 @@ export {
   type ExpandedEventInstance,
   type DateRange,
 } from './recurrence';
+
+export {
+  handleEventDrop,
+  handleEventResize,
+} from './handlers';

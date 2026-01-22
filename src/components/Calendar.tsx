@@ -3,10 +3,10 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import type { EventInput } from '@fullcalendar/core'
-import type { DatesSetArg } from '@fullcalendar/core'
-import { getAllEvents, getVisibleCalendars } from '../lib/db'
-import { expandRecurringEvents, isRecurringEvent } from '../lib/events'
+import type { EventInput, DatesSetArg, EventDropArg } from '@fullcalendar/core'
+import type { EventResizeDoneArg } from '@fullcalendar/interaction'
+import { getAllEvents, getVisibleCalendars, getPendingChangesByCalendar } from '../lib/db'
+import { expandRecurringEvents, isRecurringEvent, handleEventDrop, handleEventResize } from '../lib/events'
 import type { CalendarEvent } from '../lib/db/types'
 import './Calendar.css'
 
@@ -15,16 +15,22 @@ type ViewType = 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay'
 /**
  * Convert CalendarEvent to FullCalendar EventInput format
  */
-function convertToEventInput(event: CalendarEvent, calendarColor?: string): EventInput {
+function convertToEventInput(event: CalendarEvent, calendarColor?: string, hasPendingChanges?: boolean): EventInput {
   const isAllDay = !!event.start.date && !event.start.dateTime
+
+  // Add visual indicator for pending offline changes
+  const title = hasPendingChanges ? `⏱ ${event.summary}` : event.summary;
+  const backgroundColor = hasPendingChanges
+    ? '#9ca3af' // Gray color for pending events
+    : (calendarColor || '#3b82f6');
 
   return {
     id: event.id,
-    title: event.summary,
+    title,
     start: event.start.dateTime || event.start.date || '',
     end: event.end.dateTime || event.end.date || '',
     allDay: isAllDay,
-    backgroundColor: calendarColor || '#3b82f6',
+    backgroundColor,
     extendedProps: {
       description: event.description,
       location: event.location,
@@ -33,6 +39,7 @@ function convertToEventInput(event: CalendarEvent, calendarColor?: string): Even
       accountId: event.accountId,
       calendarId: event.calendarId,
       isRecurring: isRecurringEvent(event),
+      hasPendingChanges,
     },
   }
 }
@@ -70,9 +77,24 @@ export default function Calendar() {
       // Expand recurring events within the visible date range
       const expandedEvents = expandRecurringEvents(eventsToDisplay, range)
 
+      // Check for pending changes to show indicators
+      const pendingEventIds = new Set<string>()
+      for (const calendarId of visibleCalendarIds) {
+        const pendingChanges = await getPendingChangesByCalendar(calendarId)
+        pendingChanges.forEach((change) => {
+          if (change.eventId) {
+            pendingEventIds.add(change.eventId)
+          }
+        })
+      }
+
       // Convert to FullCalendar format
       const fullCalendarEvents = expandedEvents.map((event) =>
-        convertToEventInput(event, calendarColorMap.get(event.calendarId))
+        convertToEventInput(
+          event,
+          calendarColorMap.get(event.calendarId),
+          pendingEventIds.has(event.id)
+        )
       )
 
       setEvents(fullCalendarEvents)
@@ -96,6 +118,36 @@ export default function Calendar() {
       loadEvents(newRange)
     },
     [loadEvents]
+  )
+
+  /**
+   * Handle event drag-and-drop
+   */
+  const onEventDrop = useCallback(
+    async (dropInfo: EventDropArg) => {
+      await handleEventDrop(dropInfo, () => {
+        // Reload events after successful drop to update pending indicators
+        if (dateRange) {
+          loadEvents(dateRange)
+        }
+      })
+    },
+    [dateRange, loadEvents]
+  )
+
+  /**
+   * Handle event resize
+   */
+  const onEventResize = useCallback(
+    async (resizeInfo: EventResizeDoneArg) => {
+      await handleEventResize(resizeInfo, () => {
+        // Reload events after successful resize to update pending indicators
+        if (dateRange) {
+          loadEvents(dateRange)
+        }
+      })
+    },
+    [dateRange, loadEvents]
   )
 
   /**
@@ -168,6 +220,8 @@ export default function Calendar() {
         datesSet={handleDatesSet}
         editable={true}
         selectable={true}
+        eventDrop={onEventDrop}
+        eventResize={onEventResize}
         dayMaxEventRows={3} // Show all-day events in separate section at top
         height="auto"
         slotMinTime="06:00:00"

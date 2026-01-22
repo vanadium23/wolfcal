@@ -49,9 +49,8 @@ Per spec at `.flow/specs/fn-1-yxs.md:46-49`:
 - [ ] Offline: queued to pending_changes + IndexedDB with pending flag
 - [ ] Form closes on successful save
 ## Done summary
-TBD
-
+Implemented event CRUD forms with validation, including EventForm component with all required fields (title, date/time pickers, all-day toggle, description, location, attendees, calendar selector), EventModal wrapper, and offline/online save handling.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 55ffdd8377f8bfbb5130a7c848471dba6aa7e539
+- Tests: npm run build
 - PRs:
