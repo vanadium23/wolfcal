@@ -43,9 +43,8 @@ Google OAuth docs: https://developers.google.com/identity/protocols/oauth2/web-s
 - [ ] AddAccountButton.tsx component triggers OAuth flow on click
 - [ ] Error handling for popup blocked, consent denied, token exchange failure
 ## Done summary
-TBD
-
+Implemented OAuth 2.0 popup flow for Google Calendar API with popup-to-parent postMessage communication, callback handler for authorization code exchange, and AddAccountButton component with credential input form.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 4e729993d5e1e2b1232bac381a1b5822ddaae5a4
+- Tests: npm run build
 - PRs:
