@@ -14,8 +14,9 @@ EventPopover component (shown on event click):
 - If status is needsAction: show Accept/Decline buttons
 - Buttons trigger API call to update attendee response
 
+<!-- Updated by plan-sync: fn-1-yxs.8 CalendarClient methods use accountId as first parameter -->
 Update CalendarClient:
-- Add `respondToInvitation(calendarId, eventId, response)` method
+- Add `respondToInvitation(accountId, calendarId, eventId, response)` method
 - Uses PATCH /calendars/{id}/events/{eventId} with attendees update
 
 ## Key Context
@@ -31,7 +32,7 @@ Google Calendar API attendees: https://developers.google.com/calendar/api/v3/ref
 - [ ] Accept/Decline buttons shown if status is needsAction
 - [ ] Accept button calls API to update response to 'accepted'
 - [ ] Decline button calls API to update response to 'declined'
-- [ ] CalendarClient.respondToInvitation() method added
+- [ ] CalendarClient.respondToInvitation(accountId, calendarId, eventId, response) method added
 - [ ] API updates attendee response using PATCH request
 - [ ] Event display updates after response (color change or icon)
 - [ ] Offline: response queued to pending_changes

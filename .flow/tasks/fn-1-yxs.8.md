@@ -48,9 +48,8 @@ Google Calendar API v3 reference: https://developers.google.com/calendar/api/v3/
 - [ ] Original request retried after token refresh
 - [ ] TypeScript types defined for API responses (Calendar, Event, etc.)
 ## Done summary
-TBD
-
+Implemented comprehensive Settings page with OAuth credential management, connected account management, and sync configuration. Added navigation between Calendar and Settings views in the main app.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: a55f904d57e8325fb165ba6445282c09567ed117
+- Tests: npm run build
 - PRs:
