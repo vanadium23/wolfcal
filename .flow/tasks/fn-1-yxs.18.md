@@ -22,7 +22,10 @@ Sync scheduler:
 - Use setInterval to trigger sync every N minutes (configurable 15/20/30)
 - Only run when online
 - Skip if sync already in progress (mutex lock)
-- Read interval from settings (localStorage)
+<!-- Updated by plan-sync: fn-1-yxs.7 used localStorage key 'wolfcal:syncSettings' with {autoSync: boolean, syncInterval: number} -->
+- Read settings from localStorage key `wolfcal:syncSettings`
+- Parse JSON: `{ autoSync: boolean, syncInterval: number }` where syncInterval is in minutes
+- Only schedule if autoSync is true
 
 ## Key Context
 
@@ -40,7 +43,8 @@ Per spec at `.flow/specs/fn-1-yxs.md:28,40,73`:
 - [ ] Button shows loading spinner during sync
 - [ ] Button disabled when offline
 - [ ] src/lib/sync/scheduler.ts implements auto-sync with setInterval
-- [ ] Sync interval configurable (15/20/30 minutes from settings)
+- [ ] Sync interval read from localStorage `wolfcal:syncSettings.syncInterval` (15/20/30 minutes)
+- [ ] Auto-sync respects `wolfcal:syncSettings.autoSync` toggle (skip scheduling if false)
 - [ ] Auto-sync only runs when online
 - [ ] Mutex lock prevents concurrent syncs
 - [ ] Scheduler starts on app load, stops on unmount

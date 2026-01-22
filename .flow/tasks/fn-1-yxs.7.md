@@ -38,9 +38,8 @@ Per spec at `.flow/specs/fn-1-yxs.md:73`:
 - [ ] Settings accessible via navigation (link in header/sidebar)
 - [ ] Settings page styled consistently with app theme
 ## Done summary
-TBD
-
+Implemented comprehensive Settings page with OAuth credential management, connected account management, and sync configuration. Added navigation between Calendar and Settings views in the main app.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: a55f904d57e8325fb165ba6445282c09567ed117
+- Tests: npm run build
 - PRs:

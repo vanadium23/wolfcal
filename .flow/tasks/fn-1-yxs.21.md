@@ -22,7 +22,8 @@ Update sync engine to log errors:
 - Store error to error_log table
 - Continue sync for other calendars (don't fail entire sync)
 
-ErrorLog component in Settings:
+<!-- Updated by plan-sync: fn-1-yxs.7 created Settings.tsx with 3 sections: OAuth Credentials, Connected Accounts, Sync Settings -->
+ErrorLog component in Settings (add as 4th section to existing page):
 - Display errors in reverse chronological order (newest first)
 - Show timestamp, type, account, message
 - Expandable details (click to view full error JSON)
