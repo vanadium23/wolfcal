@@ -1,0 +1,95 @@
+/**
+ * TypeScript types for IndexedDB entities
+ */
+
+export interface Account {
+  id: string; // UUID or account email
+  email: string;
+  encryptedAccessToken: string; // Encrypted with Web Crypto API
+  encryptedRefreshToken: string;
+  tokenExpiry: number; // Unix timestamp
+  createdAt: number;
+  updatedAt: number;
+}
+
+export interface Calendar {
+  id: string; // Google Calendar ID
+  accountId: string; // Foreign key to Account
+  summary: string;
+  description?: string;
+  color?: string;
+  backgroundColor?: string;
+  visible: boolean; // Toggle visibility in UI
+  primary: boolean;
+  createdAt: number;
+  updatedAt: number;
+}
+
+export interface CalendarEvent {
+  id: string; // Google Event ID
+  accountId: string; // Foreign key to Account
+  calendarId: string; // Foreign key to Calendar
+  summary: string;
+  description?: string;
+  start: {
+    dateTime?: string; // ISO 8601
+    date?: string; // YYYY-MM-DD for all-day
+    timeZone?: string;
+  };
+  end: {
+    dateTime?: string;
+    date?: string;
+    timeZone?: string;
+  };
+  recurrence?: string[]; // RRULE for recurring events
+  attendees?: Array<{
+    email: string;
+    displayName?: string;
+    responseStatus: 'needsAction' | 'declined' | 'tentative' | 'accepted';
+    organizer?: boolean;
+  }>;
+  location?: string;
+  status?: 'confirmed' | 'tentative' | 'cancelled';
+  attachments?: Array<{
+    title: string;
+    fileUrl: string;
+  }>;
+  createdAt: number;
+  updatedAt: number;
+}
+
+export interface SyncMetadata {
+  calendarId: string; // Primary key
+  accountId: string;
+  syncToken?: string; // Google sync token
+  nextPageToken?: string; // Pagination token
+  lastSyncAt: number; // Unix timestamp
+  lastSyncStatus: 'success' | 'error' | 'in_progress';
+  errorMessage?: string;
+}
+
+export interface PendingChange {
+  id: string; // UUID
+  operation: 'create' | 'update' | 'delete';
+  entityType: 'event';
+  accountId: string;
+  calendarId: string;
+  eventId?: string; // For update/delete operations
+  eventData?: Partial<CalendarEvent>; // For create/update operations
+  createdAt: number;
+  retryCount: number;
+  lastError?: string;
+}
+
+export interface Tombstone {
+  id: string; // Event ID that was deleted
+  accountId: string;
+  calendarId: string;
+  deletedAt: number; // Unix timestamp
+}
+
+/**
+ * Database schema version
+ */
+export const DB_VERSION = 1;
+export const DB_NAME = 'wolfcal';

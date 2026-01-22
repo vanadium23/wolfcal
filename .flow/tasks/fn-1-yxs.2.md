@@ -36,9 +36,8 @@ FullCalendar docs: https://fullcalendar.io/docs/react
 - [ ] Placeholder events render correctly in all views
 - [ ] Component integrated into App.tsx
 ## Done summary
-TBD
-
+Installed FullCalendar v6 packages and created Calendar component with month/week/day views, view switching buttons, and placeholder events including all-day event support.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: c7cd17534ad427eaa3ea129c6376873e6f6839d8
+- Tests: npm run build
 - PRs:

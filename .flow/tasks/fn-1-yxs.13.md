@@ -30,7 +30,8 @@ Per spec at `.flow/specs/fn-1-yxs.md:51`:
 
 FullCalendar interaction: https://fullcalendar.io/docs/editable
 ## Acceptance
-- [ ] FullCalendar editable prop set to true
+<!-- Updated by plan-sync: fn-1-yxs.2 already configured editable={true} in Calendar.tsx -->
+- [ ] FullCalendar editable prop verified (already set to true in fn-1-yxs.2)
 - [ ] eventDrop handler registered in Calendar.tsx
 - [ ] eventResize handler registered for duration changes
 - [ ] Drag-drop updates event start/end times
