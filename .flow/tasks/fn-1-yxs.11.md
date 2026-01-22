@@ -45,9 +45,8 @@ rrule.js library: https://github.com/jakubroztocil/rrule
 - [ ] Expanded instances displayed correctly in calendar views
 - [ ] Recurring event editing updates rule, not instances
 ## Done summary
-TBD
-
+Implemented recurring event handling with on-demand instance generation. Recurring events are now stored with their recurrence rules only, and instances are generated dynamically within the visible date range.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 8053a807f74951b35746a8f8ca3396ce4f89761b
+- Tests: npm run build
 - PRs:
