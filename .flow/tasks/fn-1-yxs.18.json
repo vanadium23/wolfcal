@@ -1,0 +1,17 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-01-22T05:07:58.257253Z",
+  "depends_on": [
+    "fn-1-yxs.9",
+    "fn-1-yxs.17"
+  ],
+  "epic": "fn-1-yxs",
+  "id": "fn-1-yxs.18",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-1-yxs.18.md",
+  "status": "todo",
+  "title": "Add sync status indicators and manual refresh",
+  "updated_at": "2026-01-22T05:13:22.181581Z"
+}

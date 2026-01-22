@@ -1,0 +1,17 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-01-22T05:07:57.707027Z",
+  "depends_on": [
+    "fn-1-yxs.2",
+    "fn-1-yxs.8"
+  ],
+  "epic": "fn-1-yxs",
+  "id": "fn-1-yxs.12",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-1-yxs.12.md",
+  "status": "todo",
+  "title": "Build event CRUD forms with validation",
+  "updated_at": "2026-01-22T05:13:21.464762Z"
+}

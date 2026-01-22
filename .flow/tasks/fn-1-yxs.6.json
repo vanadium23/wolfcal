@@ -1,0 +1,16 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-01-22T05:07:57.203119Z",
+  "depends_on": [
+    "fn-1-yxs.5"
+  ],
+  "epic": "fn-1-yxs",
+  "id": "fn-1-yxs.6",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-1-yxs.6.md",
+  "status": "todo",
+  "title": "Add token encryption with Web Crypto API",
+  "updated_at": "2026-01-22T05:13:20.818431Z"
+}

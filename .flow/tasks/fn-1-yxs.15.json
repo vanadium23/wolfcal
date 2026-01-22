@@ -1,0 +1,16 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-01-22T05:07:57.970436Z",
+  "depends_on": [
+    "fn-1-yxs.14"
+  ],
+  "epic": "fn-1-yxs",
+  "id": "fn-1-yxs.15",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-1-yxs.15.md",
+  "status": "todo",
+  "title": "Create account/calendar filter toggles",
+  "updated_at": "2026-01-22T05:13:21.840870Z"
+}

@@ -1,0 +1,17 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-01-22T05:07:58.510183Z",
+  "depends_on": [
+    "fn-1-yxs.7",
+    "fn-1-yxs.9"
+  ],
+  "epic": "fn-1-yxs",
+  "id": "fn-1-yxs.21",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-1-yxs.21.md",
+  "status": "todo",
+  "title": "Create settings page and error log",
+  "updated_at": "2026-01-22T05:13:22.591103Z"
+}
