@@ -1,0 +1,62 @@
+/* FullCalendar v6 base styles */
+.fc {
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.fc .fc-toolbar {
+  margin-bottom: 1.5em;
+}
+
+.fc .fc-button {
+  padding: 0.4em 0.65em;
+  font-size: 1em;
+}
+
+.fc .fc-daygrid-day-number,
+.fc .fc-col-header-cell-cushion {
+  padding: 0.5em;
+}
+
+.fc .fc-event {
+  margin: 2px 0;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.fc-timegrid-event {
+  border-radius: 3px;
+  padding: 2px;
+}
+
+.fc .fc-daygrid-day-top {
+  display: flex;
+  justify-content: center;
+  padding: 0.5em;
+}
+
+.fc .fc-scrollgrid {
+  border: 1px solid #ddd;
+}
+
+.fc .fc-scrollgrid td,
+.fc .fc-scrollgrid th {
+  border-color: #ddd;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+  border-color: #ddd;
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border-color: #ddd;
+}
+
+/* All-day section styling */
+.fc .fc-daygrid-body {
+  width: 100%;
+}
+
+.fc .fc-scrollgrid-section-body > td {
+  border-bottom: 1px solid #ddd;
+}
