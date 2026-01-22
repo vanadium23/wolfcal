@@ -24,8 +24,10 @@ ConflictModal component:
 - Buttons: "Use Local", "Use Remote", "Defer" (skip for now)
 - On selection: apply chosen version + clear conflict flag
 
+<!-- Updated by plan-sync: fn-1-yxs.3 established CalendarEvent type without conflict fields -->
 Store conflicts in IndexedDB:
-- Add conflict flag to events table
+- Extend CalendarEvent type with optional conflict fields (or create separate conflicts table)
+- May require schema migration (DB_VERSION bump) to add conflict flag to events store
 - Store both versions (local + remote) temporarily
 
 ## Key Context
@@ -36,7 +38,7 @@ Per spec at `.flow/specs/fn-1-yxs.md:37,144`:
 ## Acceptance
 - [ ] src/lib/sync/conflicts.ts exports detectConflict() function
 - [ ] Conflict detected when both local and remote modified since last sync
-- [ ] Conflict flag added to events table schema
+- [ ] Conflict flag added to CalendarEvent type in types.ts (optional field)
 - [ ] Conflicted events stored with both local and remote versions
 - [ ] src/components/ConflictModal.tsx displays side-by-side comparison
 - [ ] Modal shows local event on left, remote on right

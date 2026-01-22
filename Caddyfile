@@ -1,0 +1,14 @@
+:8080 {
+	# Enable gzip compression
+	encode gzip
+
+	# Root directory for static files
+	root * /usr/share/caddy
+
+	# Try serving files, fall back to index.html for SPA routing
+	# This handles /callback and all other routes
+	try_files {path} /index.html
+
+	# Serve static files
+	file_server
+}

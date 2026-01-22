@@ -33,7 +33,8 @@ Web Crypto API docs: https://developer.mozilla.org/en-US/docs/Web/API/SubtleCryp
 - [ ] encryptToken(plaintext) function encrypts using AES-GCM with random IV
 - [ ] decryptToken(ciphertext) function decrypts and returns plaintext
 - [ ] IV prepended to ciphertext for storage (combined format)
-- [ ] oauth.ts updated to encrypt access_token and refresh_token before db.accounts.add()
+<!-- Updated by plan-sync: fn-1-yxs.3 exports standalone functions, not db.accounts pattern -->
+- [ ] oauth.ts updated to encrypt access_token and refresh_token before calling addAccount()
 - [ ] Tokens stored as encrypted strings in IndexedDB
 - [ ] Decryption works: encrypted token can be decrypted back to original
 ## Done summary

@@ -44,9 +44,8 @@ idb library: https://github.com/jakearchibald/idb
 - [ ] CRUD methods for tombstones
 - [ ] All methods return typed promises
 ## Done summary
-TBD
-
+Created IndexedDB abstraction layer with idb library, defining 6 object stores (accounts, calendars, events, sync_metadata, pending_changes, tombstones) with full CRUD operations and TypeScript types.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 89732dcace678c8083ddea7c096e656a89820856
+- Tests: npm run build
 - PRs:

@@ -1,0 +1,9 @@
+node_modules
+.git
+.flow
+dist
+.gitignore
+README.md
+*.md
+.vscode
+.idea

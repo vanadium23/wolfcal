@@ -8,12 +8,17 @@ Implement offline change queue to store pending creates/updates/deletes. Process
 
 ## Approach
 
-Queue structure in pending_changes table:
+<!-- Updated by plan-sync: fn-1-yxs.3 defined PendingChange type with specific field names -->
+Queue structure in pending_changes table (already defined in fn-1-yxs.3):
+- id: UUID primary key
 - operation: 'create' | 'update' | 'delete'
-- eventId: local or remote event ID
-- eventData: full event object (for create/update)
-- timestamp: when queued
-- retries: retry count
+- entityType: 'event'
+- accountId, calendarId: foreign keys
+- eventId: for update/delete operations (optional)
+- eventData: Partial<CalendarEvent> for create/update
+- createdAt: when queued (Unix timestamp)
+- retryCount: retry count
+- lastError: optional error message
 
 Queue processor:
 - Runs when app comes online (detected via navigator.onLine + online event)

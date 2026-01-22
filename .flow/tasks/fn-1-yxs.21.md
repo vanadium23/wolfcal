@@ -8,7 +8,8 @@ Expand settings page with error log/history viewer for troubleshooting sync fail
 
 ## Approach
 
-Add error_log table to IndexedDB:
+<!-- Updated by plan-sync: fn-1-yxs.3 established DB_VERSION=1, new table requires migration to v2 -->
+Add error_log table to IndexedDB (requires schema migration to v2):
 - timestamp
 - errorType (sync_failure, api_error, conflict_detection, etc.)
 - accountId
@@ -34,7 +35,7 @@ Per spec at `.flow/specs/fn-1-yxs.md:74,152`:
 - Show technical details + maintain error log/history
 - Error log/history available for troubleshooting sync failures
 ## Acceptance
-- [ ] error_log table added to IndexedDB schema
+- [ ] error_log table added to IndexedDB schema (DB_VERSION bumped to 2, migration in schema.ts)
 - [ ] Table fields: timestamp, errorType, accountId, calendarId, errorMessage, errorDetails
 - [ ] Sync engine logs errors to error_log table on exceptions
 - [ ] API errors logged with request/response details
