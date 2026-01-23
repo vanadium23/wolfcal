@@ -329,4 +329,47 @@ export class CalendarClient {
       });
     });
   }
+
+  /**
+   * Responds to an event invitation by updating the current user's attendee status
+   * @param accountId - Account ID
+   * @param calendarId - Calendar ID
+   * @param eventId - Event ID
+   * @param response - Response status ('accepted', 'declined', 'tentative', 'needsAction')
+   * @returns Updated event
+   */
+  async respondToInvitation(
+    accountId: string,
+    calendarId: string,
+    eventId: string,
+    response: 'accepted' | 'declined' | 'tentative' | 'needsAction'
+  ): Promise<GoogleEvent> {
+    return retryWithBackoff(async () => {
+      // First fetch the event to get current attendees
+      const url = `${GOOGLE_CALENDAR_API_BASE}/calendars/${encodeURIComponent(
+        calendarId
+      )}/events/${encodeURIComponent(eventId)}`;
+
+      const event = await this.makeAuthenticatedRequest<GoogleEvent>(accountId, url);
+
+      // Find and update the current user's response status
+      // The attendee marked with self: true is the current user
+      if (event.attendees) {
+        event.attendees = event.attendees.map((attendee) =>
+          attendee.self ? { ...attendee, responseStatus: response } : attendee
+        );
+      }
+
+      // Update the event with the new attendee response
+      return this.makeAuthenticatedRequest<GoogleEvent>(accountId, url, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          attendees: event.attendees,
+        }),
+      });
+    });
+  }
 }

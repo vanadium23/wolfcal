@@ -1,13 +1,16 @@
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import type { DatesSetArg, EventDropArg } from '@fullcalendar/core'
+import type { DatesSetArg, EventDropArg, EventClickArg } from '@fullcalendar/core'
 import type { EventResizeDoneArg } from '@fullcalendar/interaction'
 import { handleEventDrop, handleEventResize } from '../lib/events'
 import { useEvents } from '../hooks/useEvents'
 import FilterPanel from './FilterPanel'
+import EventPopover from './EventPopover'
+import { getEvent, getAllAccounts } from '../lib/db'
+import type { CalendarEvent } from '../lib/db/types'
 import './Calendar.css'
 
 type ViewType = 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay'
@@ -15,8 +18,24 @@ type ViewType = 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay'
 export default function Calendar() {
   const [currentView, setCurrentView] = useState<ViewType>('dayGridMonth')
   const [showFilters, setShowFilters] = useState(false)
+  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null)
+  const [popoverPosition, setPopoverPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
+  const [currentUserEmail, setCurrentUserEmail] = useState<string>('')
   const calendarRef = useRef<FullCalendar>(null)
   const { events, accountColors, loading, refresh } = useEvents()
+
+  /**
+   * Load current user email from the first account
+   */
+  useEffect(() => {
+    async function loadUserEmail() {
+      const accounts = await getAllAccounts()
+      if (accounts.length > 0) {
+        setCurrentUserEmail(accounts[0].email)
+      }
+    }
+    loadUserEmail()
+  }, [])
 
   const handleViewChange = (view: ViewType) => {
     setCurrentView(view)
@@ -74,6 +93,46 @@ export default function Calendar() {
    * Handle filter changes - refresh events when filters are toggled
    */
   const handleFilterChange = useCallback(() => {
+    const api = calendarRef.current?.getApi()
+    if (api) {
+      const view = api.view
+      refresh({ start: view.activeStart, end: view.activeEnd })
+    }
+  }, [refresh])
+
+  /**
+   * Handle event click - show popover with event details
+   */
+  const handleEventClick = useCallback(async (clickInfo: EventClickArg) => {
+    const eventId = clickInfo.event.id
+
+    // Fetch full event details from IndexedDB
+    const fullEvent = await getEvent(eventId)
+    if (!fullEvent) {
+      console.error('Event not found:', eventId)
+      return
+    }
+
+    // Position popover near the clicked event
+    const rect = clickInfo.el.getBoundingClientRect()
+    const x = rect.left + rect.width / 2
+    const y = rect.bottom + 10
+
+    setSelectedEvent(fullEvent)
+    setPopoverPosition({ x, y })
+  }, [])
+
+  /**
+   * Close popover
+   */
+  const handleClosePopover = useCallback(() => {
+    setSelectedEvent(null)
+  }, [])
+
+  /**
+   * Handle event update from popover
+   */
+  const handleEventUpdate = useCallback(() => {
     const api = calendarRef.current?.getApi()
     if (api) {
       const view = api.view
@@ -215,12 +274,24 @@ export default function Calendar() {
           selectable={true}
           eventDrop={onEventDrop}
           eventResize={onEventResize}
+          eventClick={handleEventClick}
           dayMaxEventRows={3} // Show all-day events in separate section at top
           height="auto"
           slotMinTime="06:00:00"
           slotMaxTime="22:00:00"
         />
       </div>
+
+      {/* Event popover */}
+      {selectedEvent && (
+        <EventPopover
+          event={selectedEvent}
+          currentUserEmail={currentUserEmail}
+          onClose={handleClosePopover}
+          onUpdate={handleEventUpdate}
+          position={popoverPosition}
+        />
+      )}
     </div>
   )
 }

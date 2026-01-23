@@ -1,0 +1,349 @@
+/**
+ * Event popover component for displaying event details and invitation actions
+ */
+
+import { useState } from 'react';
+import type { CalendarEvent, PendingChange } from '../lib/db/types';
+import { CalendarClient } from '../lib/api/calendar';
+import { updateEvent, addPendingChange } from '../lib/db';
+
+interface EventPopoverProps {
+  event: CalendarEvent;
+  currentUserEmail: string;
+  onClose: () => void;
+  onUpdate: () => void;
+  position: { x: number; y: number };
+}
+
+export default function EventPopover({
+  event,
+  currentUserEmail,
+  onClose,
+  onUpdate,
+  position,
+}: EventPopoverProps) {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Find current user's attendee info
+  const currentUserAttendee = event.attendees?.find(
+    (attendee) => attendee.email === currentUserEmail
+  );
+  const responseStatus = currentUserAttendee?.responseStatus || 'needsAction';
+  const needsResponse = responseStatus === 'needsAction';
+
+  /**
+   * Handle invitation response (accept/decline)
+   */
+  const handleResponse = async (response: 'accepted' | 'declined') => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      // Check if online
+      const isOnline = navigator.onLine;
+
+      if (isOnline) {
+        // Online: Update via API
+        const client = new CalendarClient();
+        const updatedEvent = await client.respondToInvitation(
+          event.accountId,
+          event.calendarId,
+          event.id,
+          response
+        );
+
+        // Update local event in IndexedDB
+        // Map Google API attendee format to local format
+        const localAttendees = updatedEvent.attendees?.map((att) => ({
+          email: att.email || '',
+          displayName: att.displayName,
+          responseStatus: att.responseStatus || 'needsAction',
+          organizer: att.organizer,
+        }));
+
+        const localEvent: CalendarEvent = {
+          ...event,
+          attendees: localAttendees,
+          updatedAt: Date.now(),
+        };
+        await updateEvent(localEvent);
+      } else {
+        // Offline: Queue the response as a pending change
+        const updatedAttendees = event.attendees?.map((attendee) =>
+          attendee.email === currentUserEmail
+            ? { ...attendee, responseStatus: response }
+            : attendee
+        );
+
+        // Update local event optimistically
+        const localEvent: CalendarEvent = {
+          ...event,
+          attendees: updatedAttendees,
+          updatedAt: Date.now(),
+        };
+        await updateEvent(localEvent);
+
+        // Queue pending change
+        const pendingChange: PendingChange = {
+          id: `${event.id}-respond-${Date.now()}`,
+          entityType: 'event',
+          accountId: event.accountId,
+          calendarId: event.calendarId,
+          eventId: event.id,
+          operation: 'update',
+          eventData: { attendees: updatedAttendees },
+          createdAt: Date.now(),
+          retryCount: 0,
+        };
+        await addPendingChange(pendingChange);
+      }
+
+      // Notify parent to refresh events
+      onUpdate();
+      onClose();
+    } catch (err) {
+      console.error('Failed to respond to invitation:', err);
+      setError(err instanceof Error ? err.message : 'Failed to update response');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Format date/time for display
+  const formatDateTime = (
+    start: CalendarEvent['start'],
+    end: CalendarEvent['end']
+  ): string => {
+    const isAllDay = !!start.date;
+
+    if (isAllDay) {
+      return `${start.date}${end.date && end.date !== start.date ? ` - ${end.date}` : ''}`;
+    }
+
+    const startDate = new Date(start.dateTime!);
+    const endDate = new Date(end.dateTime!);
+
+    const dateStr = startDate.toLocaleDateString('en-US', {
+      weekday: 'short',
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+
+    const startTimeStr = startDate.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+    });
+
+    const endTimeStr = endDate.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+    });
+
+    return `${dateStr} ${startTimeStr} - ${endTimeStr}`;
+  };
+
+  // Get response status display
+  const getResponseStatusDisplay = (status: string): { text: string; color: string } => {
+    switch (status) {
+      case 'accepted':
+        return { text: 'Accepted', color: '#10b981' };
+      case 'declined':
+        return { text: 'Declined', color: '#ef4444' };
+      case 'tentative':
+        return { text: 'Tentative', color: '#f59e0b' };
+      case 'needsAction':
+        return { text: 'Not Responded', color: '#6b7280' };
+      default:
+        return { text: status, color: '#6b7280' };
+    }
+  };
+
+  const statusDisplay = getResponseStatusDisplay(responseStatus);
+
+  return (
+    <div
+      style={{
+        position: 'fixed',
+        top: position.y,
+        left: position.x,
+        backgroundColor: 'white',
+        border: '1px solid #e5e7eb',
+        borderRadius: '8px',
+        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        padding: '16px',
+        minWidth: '300px',
+        maxWidth: '400px',
+        zIndex: 1000,
+      }}
+    >
+      {/* Close button */}
+      <button
+        onClick={onClose}
+        style={{
+          position: 'absolute',
+          top: '8px',
+          right: '8px',
+          background: 'none',
+          border: 'none',
+          fontSize: '20px',
+          color: '#6b7280',
+          cursor: 'pointer',
+          padding: '4px',
+          lineHeight: 1,
+        }}
+      >
+        ×
+      </button>
+
+      {/* Event Title */}
+      <h3
+        style={{
+          margin: '0 0 12px 0',
+          fontSize: '18px',
+          fontWeight: 'bold',
+          color: '#111827',
+          paddingRight: '24px', // Make room for close button
+        }}
+      >
+        {event.summary || 'Untitled Event'}
+      </h3>
+
+      {/* Date/Time */}
+      <div
+        style={{
+          marginBottom: '12px',
+          fontSize: '14px',
+          color: '#4b5563',
+        }}
+      >
+        {formatDateTime(event.start, event.end)}
+      </div>
+
+      {/* Location */}
+      {event.location && (
+        <div
+          style={{
+            marginBottom: '12px',
+            fontSize: '14px',
+            color: '#4b5563',
+          }}
+        >
+          <strong>Location:</strong> {event.location}
+        </div>
+      )}
+
+      {/* Description */}
+      {event.description && (
+        <div
+          style={{
+            marginBottom: '12px',
+            fontSize: '14px',
+            color: '#4b5563',
+            maxHeight: '100px',
+            overflowY: 'auto',
+          }}
+        >
+          <strong>Description:</strong> {event.description}
+        </div>
+      )}
+
+      {/* Attendees */}
+      {event.attendees && event.attendees.length > 0 && (
+        <div
+          style={{
+            marginBottom: '12px',
+            fontSize: '14px',
+            color: '#4b5563',
+          }}
+        >
+          <strong>Attendees:</strong>
+          <ul style={{ margin: '4px 0 0 0', paddingLeft: '20px' }}>
+            {event.attendees.map((attendee, index) => (
+              <li key={index} style={{ marginBottom: '2px' }}>
+                {attendee.displayName || attendee.email}
+                {attendee.organizer && ' (Organizer)'}
+                {attendee.email === currentUserEmail && ' (You)'}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Current user response status */}
+      {currentUserAttendee && (
+        <div
+          style={{
+            marginBottom: '12px',
+            fontSize: '14px',
+            padding: '8px',
+            backgroundColor: '#f9fafb',
+            borderRadius: '4px',
+          }}
+        >
+          <strong>Your Response:</strong>{' '}
+          <span style={{ color: statusDisplay.color, fontWeight: 'bold' }}>
+            {statusDisplay.text}
+          </span>
+        </div>
+      )}
+
+      {/* Accept/Decline buttons */}
+      {needsResponse && (
+        <div style={{ display: 'flex', gap: '8px', marginTop: '16px' }}>
+          <button
+            onClick={() => handleResponse('accepted')}
+            disabled={loading}
+            style={{
+              flex: 1,
+              padding: '8px 16px',
+              backgroundColor: loading ? '#9ca3af' : '#10b981',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: loading ? 'not-allowed' : 'pointer',
+              fontWeight: 'bold',
+              fontSize: '14px',
+            }}
+          >
+            {loading ? 'Updating...' : 'Accept'}
+          </button>
+          <button
+            onClick={() => handleResponse('declined')}
+            disabled={loading}
+            style={{
+              flex: 1,
+              padding: '8px 16px',
+              backgroundColor: loading ? '#9ca3af' : '#ef4444',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: loading ? 'not-allowed' : 'pointer',
+              fontWeight: 'bold',
+              fontSize: '14px',
+            }}
+          >
+            {loading ? 'Updating...' : 'Decline'}
+          </button>
+        </div>
+      )}
+
+      {/* Error message */}
+      {error && (
+        <div
+          style={{
+            marginTop: '12px',
+            padding: '8px',
+            backgroundColor: '#fef2f2',
+            borderRadius: '4px',
+            color: '#991b1b',
+            fontSize: '13px',
+          }}
+        >
+          {error}
+        </div>
+      )}
+    </div>
+  );
+}

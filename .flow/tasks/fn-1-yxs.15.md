@@ -39,9 +39,8 @@ Per spec at `.flow/specs/fn-1-yxs.md:54-55`:
 - [ ] Filter state persists across browser sessions
 - [ ] Select all / deselect all buttons for convenience
 ## Done summary
-TBD
-
+Created FilterPanel component with account/calendar tree structure and useEventFilters hook to manage filter state persisted in localStorage. Calendar component now integrates the filter panel as a collapsible sidebar with automatic event refresh on filter changes.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 876d6d76cde4c9db67fcaf9844de22fc7dd55516
+- Tests: npm run build
 - PRs:
