@@ -40,9 +40,8 @@ Google Calendar API attendees: https://developers.google.com/calendar/api/v3/ref
 - [ ] Event display updates after response (color change or icon)
 - [ ] Offline: response queued to pending_changes
 ## Done summary
-TBD
-
+Added event invitation accept/decline UI with EventPopover component and CalendarClient.respondToInvitation method with offline support via pending changes queue.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: f51688e24f596d5cddfebf04bd106f53289963d5
+- Tests: npm run build
 - PRs:
