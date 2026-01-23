@@ -42,9 +42,8 @@ Per spec at `.flow/specs/fn-1-yxs.md:53-57`:
 - [ ] Color legend shows account name → color mapping
 - [ ] Calendar.tsx uses useEvents hook to load and display events
 ## Done summary
-TBD
-
+Implemented multi-account event display with color coding. Created useEvents hook that fetches events from all connected accounts, assigns persistent colors from a 12-color palette, and displays a visual legend mapping account emails to colors. All duplicate events are shown without deduplication.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 456187b12d81549e7213bba134c3704eac653728
+- Tests: npm run build
 - PRs:
