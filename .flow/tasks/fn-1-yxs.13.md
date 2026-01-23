@@ -42,9 +42,8 @@ FullCalendar interaction: https://fullcalendar.io/docs/editable
 - [ ] Pending indicator shown on offline-modified events
 - [ ] Works for all-day events and timed events
 ## Done summary
-TBD
-
+Implemented drag-and-drop event rescheduling with offline support. Events can be dragged to new dates/times and resized, with changes queued for sync when offline and showing visual pending indicators.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 5232683ea2af666f9645ba3009b899b93609baf3
+- Tests: npm run build
 - PRs:

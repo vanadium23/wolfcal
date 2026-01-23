@@ -8,6 +8,7 @@ export interface Account {
   encryptedAccessToken: string; // Encrypted with Web Crypto API
   encryptedRefreshToken: string;
   tokenExpiry: number; // Unix timestamp
+  color?: string; // Account color for event display (from color palette)
   createdAt: number;
   updatedAt: number;
 }
