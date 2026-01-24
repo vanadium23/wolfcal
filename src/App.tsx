@@ -3,6 +3,9 @@ import './App.css'
 import Calendar from './components/Calendar'
 import AddAccountButton from './components/AddAccountButton'
 import Settings from './pages/Settings'
+import { SyncStatusBar } from './components/SyncStatusBar'
+import { RefreshButton } from './components/RefreshButton'
+import { useSyncScheduler } from './hooks/useSyncScheduler'
 import type { OAuthTokenResponse } from './lib/auth/types'
 import { encryptToken } from './lib/auth/encryption'
 import { addAccount } from './lib/db'
@@ -11,6 +14,8 @@ type View = 'calendar' | 'settings'
 
 function App() {
   const [currentView, setCurrentView] = useState<View>('calendar')
+  const { isSyncing } = useSyncScheduler()
+  const [manualSyncing, setManualSyncing] = useState(false)
 
   const handleAccountAdded = async (tokens: OAuthTokenResponse) => {
     try {
@@ -70,6 +75,14 @@ function App() {
               Settings
             </button>
           </nav>
+          <div className="header-actions">
+            <SyncStatusBar isSyncing={isSyncing || manualSyncing} />
+            <RefreshButton
+              onSyncStart={() => setManualSyncing(true)}
+              onSyncComplete={() => setManualSyncing(false)}
+              onSyncError={() => setManualSyncing(false)}
+            />
+          </div>
         </div>
       </header>
 

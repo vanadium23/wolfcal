@@ -21,3 +21,6 @@ export {
 // Processor exports
 export { processQueue } from './processor';
 export type { ProcessResult, QueueProcessResult } from './processor';
+
+// Scheduler exports
+export { SyncScheduler } from './scheduler';
