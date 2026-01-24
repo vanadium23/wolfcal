@@ -63,6 +63,11 @@ export interface CalendarEvent {
   }>;
   createdAt: number;
   updatedAt: number;
+  // Conflict resolution fields
+  hasConflict?: boolean; // True if event has unresolved conflict
+  localVersion?: CalendarEvent; // Local version during conflict
+  remoteVersion?: CalendarEvent; // Remote version during conflict
+  lastSyncedAt?: number; // Timestamp of last successful sync
 }
 
 export interface SyncMetadata {

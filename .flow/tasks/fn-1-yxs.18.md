@@ -49,9 +49,8 @@ Per spec at `.flow/specs/fn-1-yxs.md:28,40,73`:
 - [ ] Mutex lock prevents concurrent syncs
 - [ ] Scheduler starts on app load, stops on unmount
 ## Done summary
-TBD
-
+Implemented sync status indicators, manual refresh button, and automatic sync scheduler. The SyncStatusBar displays online/offline status with colored dot, current sync state, last sync time, and pending change count. The RefreshButton triggers manual sync with loading spinner. The SyncScheduler runs automatic syncs every 15-30 minutes based on localStorage settings, respecting online status and using mutex lock to prevent concurrent syncs.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 3ec1021d5e1f0b15caf43515a2f1c5f38bcf9020
+- Tests: npm run build
 - PRs:

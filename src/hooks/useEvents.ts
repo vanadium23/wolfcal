@@ -25,11 +25,18 @@ function convertToEventInput(
 ): EventInput {
   const isAllDay = !!event.start.date && !event.start.dateTime;
 
-  // Add visual indicator for pending offline changes
-  const title = hasPendingChanges ? `⏱ ${event.summary}` : event.summary;
-  const backgroundColor = hasPendingChanges
-    ? '#9ca3af' // Gray color for pending events
-    : accountColor;
+  // Add visual indicators for conflicts and pending changes
+  let title = event.summary;
+  let backgroundColor = accountColor;
+
+  if (event.hasConflict) {
+    // Conflict takes priority over pending changes
+    title = `⚠️ ${event.summary}`;
+    backgroundColor = '#dc3545'; // Red color for conflicts
+  } else if (hasPendingChanges) {
+    title = `⏱ ${event.summary}`;
+    backgroundColor = '#9ca3af'; // Gray color for pending events
+  }
 
   return {
     id: event.id,
@@ -47,6 +54,7 @@ function convertToEventInput(
       calendarId: event.calendarId,
       isRecurring: isRecurringEvent(event),
       hasPendingChanges,
+      hasConflict: event.hasConflict,
     },
   };
 }

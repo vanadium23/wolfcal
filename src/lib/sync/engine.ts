@@ -22,6 +22,7 @@ import {
 } from '../db';
 import type { CalendarEvent, SyncMetadata } from '../db/types';
 import type { SyncResult, SyncWindow, AccountSyncResult } from './types';
+import { detectConflict, eventsAreDifferent, createConflictedEvent } from './conflicts';
 
 /**
  * SyncEngine handles synchronization between Google Calendar and IndexedDB
@@ -193,15 +194,37 @@ export class SyncEngine {
               (events) => events.find((e) => e.id === googleEvent.id)
             );
 
-            const calendarEvent = this.convertGoogleEvent(googleEvent, accountId, calendarId);
+            const remoteEvent = this.convertGoogleEvent(googleEvent, accountId, calendarId);
 
             if (existingEvent) {
-              // Update existing event
-              await updateEvent(calendarEvent);
+              // Check for conflicts
+              const conflictInfo = await detectConflict(
+                existingEvent,
+                remoteEvent,
+                metadata?.lastSyncAt || 0
+              );
+
+              if (conflictInfo.hasConflict && eventsAreDifferent(existingEvent, remoteEvent)) {
+                // Store conflicted event with both versions
+                const conflictedEvent = createConflictedEvent(existingEvent, remoteEvent);
+                await updateEvent(conflictedEvent);
+                console.log(`Conflict detected for event ${googleEvent.id}`);
+              } else {
+                // No conflict or events are identical - update with remote version
+                const updatedEvent = {
+                  ...remoteEvent,
+                  lastSyncedAt: Date.now(),
+                };
+                await updateEvent(updatedEvent);
+              }
               result.eventsUpdated++;
             } else {
               // Add new event
-              await addEvent(calendarEvent);
+              const newEvent = {
+                ...remoteEvent,
+                lastSyncedAt: Date.now(),
+              };
+              await addEvent(newEvent);
               result.eventsAdded++;
             }
           }
@@ -244,15 +267,37 @@ export class SyncEngine {
               (events) => events.find((e) => e.id === googleEvent.id)
             );
 
-            const calendarEvent = this.convertGoogleEvent(googleEvent, accountId, calendarId);
+            const remoteEvent = this.convertGoogleEvent(googleEvent, accountId, calendarId);
 
             if (existingEvent) {
-              // Update existing event
-              await updateEvent(calendarEvent);
+              // Check for conflicts (even in full sync)
+              const conflictInfo = await detectConflict(
+                existingEvent,
+                remoteEvent,
+                metadata?.lastSyncAt || 0
+              );
+
+              if (conflictInfo.hasConflict && eventsAreDifferent(existingEvent, remoteEvent)) {
+                // Store conflicted event with both versions
+                const conflictedEvent = createConflictedEvent(existingEvent, remoteEvent);
+                await updateEvent(conflictedEvent);
+                console.log(`Conflict detected for event ${googleEvent.id}`);
+              } else {
+                // No conflict or events are identical - update with remote version
+                const updatedEvent = {
+                  ...remoteEvent,
+                  lastSyncedAt: Date.now(),
+                };
+                await updateEvent(updatedEvent);
+              }
               result.eventsUpdated++;
             } else {
               // Add new event
-              await addEvent(calendarEvent);
+              const newEvent = {
+                ...remoteEvent,
+                lastSyncedAt: Date.now(),
+              };
+              await addEvent(newEvent);
               result.eventsAdded++;
             }
           }

@@ -132,6 +132,15 @@ export async function deleteEvent(id: string): Promise<void> {
   await db.delete('events', id);
 }
 
+/**
+ * Get all events that have unresolved conflicts
+ */
+export async function getConflictedEvents(): Promise<CalendarEvent[]> {
+  const db = await getDB();
+  const allEvents = await db.getAll('events');
+  return allEvents.filter((event) => event.hasConflict === true);
+}
+
 // ============================================================================
 // Sync Metadata CRUD
 // ============================================================================

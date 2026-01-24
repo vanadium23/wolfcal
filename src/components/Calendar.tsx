@@ -9,7 +9,8 @@ import { handleEventDrop, handleEventResize } from '../lib/events'
 import { useEvents } from '../hooks/useEvents'
 import FilterPanel from './FilterPanel'
 import EventPopover from './EventPopover'
-import { getEvent, getAllAccounts } from '../lib/db'
+import ConflictModal from './ConflictModal'
+import { getEvent, getAllAccounts, getConflictedEvents } from '../lib/db'
 import type { CalendarEvent } from '../lib/db/types'
 import './Calendar.css'
 
@@ -21,6 +22,8 @@ export default function Calendar() {
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null)
   const [popoverPosition, setPopoverPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
   const [currentUserEmail, setCurrentUserEmail] = useState<string>('')
+  const [conflictedEvents, setConflictedEvents] = useState<CalendarEvent[]>([])
+  const [showConflictModal, setShowConflictModal] = useState(false)
   const calendarRef = useRef<FullCalendar>(null)
   const { events, accountColors, loading, refresh } = useEvents()
 
@@ -36,6 +39,20 @@ export default function Calendar() {
     }
     loadUserEmail()
   }, [])
+
+  /**
+   * Check for conflicted events and show modal if any exist
+   */
+  useEffect(() => {
+    async function checkConflicts() {
+      const conflicts = await getConflictedEvents()
+      if (conflicts.length > 0) {
+        setConflictedEvents(conflicts)
+        setShowConflictModal(true)
+      }
+    }
+    checkConflicts()
+  }, [events]) // Re-check when events change (after sync)
 
   const handleViewChange = (view: ViewType) => {
     setCurrentView(view)
@@ -139,6 +156,34 @@ export default function Calendar() {
       refresh({ start: view.activeStart, end: view.activeEnd })
     }
   }, [refresh])
+
+  /**
+   * Handle conflict resolution
+   */
+  const handleConflictResolved = useCallback(async () => {
+    // Refresh conflicts list
+    const conflicts = await getConflictedEvents()
+    setConflictedEvents(conflicts)
+
+    // If no more conflicts, close modal
+    if (conflicts.length === 0) {
+      setShowConflictModal(false)
+    }
+
+    // Refresh calendar events
+    const api = calendarRef.current?.getApi()
+    if (api) {
+      const view = api.view
+      refresh({ start: view.activeStart, end: view.activeEnd })
+    }
+  }, [refresh])
+
+  /**
+   * Handle conflict modal close
+   */
+  const handleConflictModalClose = useCallback(() => {
+    setShowConflictModal(false)
+  }, [])
 
   return (
     <div style={{ display: 'flex', gap: '20px', padding: '20px' }}>
@@ -292,6 +337,14 @@ export default function Calendar() {
           position={popoverPosition}
         />
       )}
+
+      {/* Conflict resolution modal */}
+      <ConflictModal
+        isOpen={showConflictModal}
+        conflictedEvents={conflictedEvents}
+        onClose={handleConflictModalClose}
+        onResolved={handleConflictResolved}
+      />
     </div>
   )
 }
