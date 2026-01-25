@@ -1,5 +1,18 @@
 import { useState, useEffect } from 'react'
-import { getAllAccounts, deleteAccount } from '../lib/db'
+import {
+  getAllAccounts,
+  deleteAccount,
+  getCalendarsByAccount,
+  getEventsByAccount,
+  getSyncMetadataByAccount,
+  getPendingChangesByAccount,
+  getTombstonesByAccount,
+  deleteCalendar,
+  deleteEvent,
+  deleteSyncMetadata,
+  deletePendingChange,
+  deleteTombstone,
+} from '../lib/db'
 import type { Account } from '../lib/db/types'
 
 interface AccountWithMetadata extends Account {
@@ -41,14 +54,21 @@ export default function AccountList() {
     }
 
     try {
-      // Note: In a production implementation, we would manually delete all related data:
-      // - Delete all calendars for this account
-      // - Delete all events for those calendars
-      // - Delete all sync metadata
-      // - Delete all pending changes
-      // - Delete all tombstones
-      // For MVP, we just delete the account record
-      // Future sync operations will filter by existing accountIds
+      // Delete related data to avoid orphaned records
+      const [calendars, events, syncMetadata, pendingChanges, tombstones] = await Promise.all([
+        getCalendarsByAccount(accountId),
+        getEventsByAccount(accountId),
+        getSyncMetadataByAccount(accountId),
+        getPendingChangesByAccount(accountId),
+        getTombstonesByAccount(accountId),
+      ])
+
+      await Promise.all(events.map((event) => deleteEvent(event.id)))
+      await Promise.all(calendars.map((calendar) => deleteCalendar(calendar.id)))
+      await Promise.all(syncMetadata.map((meta) => deleteSyncMetadata(meta.calendarId)))
+      await Promise.all(pendingChanges.map((change) => deletePendingChange(change.id)))
+      await Promise.all(tombstones.map((tombstone) => deleteTombstone(tombstone.id)))
+
       await deleteAccount(accountId)
 
       // Reload account list

@@ -14,6 +14,7 @@ interface EventFormProps {
   event?: CalendarEvent; // If provided, form is in edit mode
   calendars: Calendar[]; // Available calendars for selection
   defaultCalendarId?: string; // Default calendar to select
+  initialRange?: { start: Date; end: Date; allDay: boolean }; // Optional selection range
   onSubmit: (data: EventFormData) => void | Promise<void>;
   onCancel: () => void;
 }
@@ -22,6 +23,7 @@ export default function EventForm({
   event,
   calendars,
   defaultCalendarId,
+  initialRange,
   onSubmit,
   onCancel,
 }: EventFormProps) {
@@ -41,20 +43,23 @@ export default function EventForm({
       };
     } else {
       // Create mode: use defaults
-      const now = new Date();
-      const oneHourLater = new Date(now.getTime() + 60 * 60 * 1000);
+      const now = initialRange?.start || new Date();
+      const end = initialRange?.end || new Date(now.getTime() + 60 * 60 * 1000);
+      const isAllDay = initialRange?.allDay ?? false;
 
       return {
         summary: '',
         start: {
-          dateTime: formatDateTimeForInput(now),
+          dateTime: isAllDay ? undefined : formatDateTimeForInput(now),
+          date: isAllDay ? formatDateForInput(now) : undefined,
           timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         },
         end: {
-          dateTime: formatDateTimeForInput(oneHourLater),
+          dateTime: isAllDay ? undefined : formatDateTimeForInput(end),
+          date: isAllDay ? formatDateForInput(end) : undefined,
           timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         },
-        allDay: false,
+        allDay: isAllDay,
         description: '',
         location: '',
         attendees: [],
@@ -71,12 +76,16 @@ export default function EventForm({
   useEffect(() => {
     if (formData.allDay) {
       // Convert to all-day format
-      const startDate = formData.start.dateTime
-        ? formatDateForInput(new Date(formData.start.dateTime))
-        : formatDateForInput(new Date());
-      const endDate = formData.end.dateTime
-        ? formatDateForInput(new Date(formData.end.dateTime))
-        : formatDateForInput(new Date());
+      const startDate = formData.start.date
+        ? formData.start.date
+        : formData.start.dateTime
+          ? formatDateForInput(new Date(formData.start.dateTime))
+          : formatDateForInput(new Date());
+      const endDate = formData.end.date
+        ? formData.end.date
+        : formData.end.dateTime
+          ? formatDateForInput(new Date(formData.end.dateTime))
+          : formatDateForInput(new Date());
 
       setFormData((prev) => ({
         ...prev,

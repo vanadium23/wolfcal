@@ -7,13 +7,10 @@ import type { EventInput } from '@fullcalendar/core';
 import {
   getAllEvents,
   getVisibleCalendars,
-  getAllAccounts,
-  updateAccount,
   getPendingChangesByCalendar,
 } from '../lib/db';
 import { expandRecurringEvents, isRecurringEvent } from '../lib/events';
 import type { CalendarEvent } from '../lib/db/types';
-import { assignAccountColors } from '../lib/events/colors';
 
 /**
  * Convert CalendarEvent to FullCalendar EventInput format with account color
@@ -61,7 +58,7 @@ function convertToEventInput(
 
 export interface UseEventsReturn {
   events: EventInput[];
-  accountColors: Map<string, { email: string; color: string }>;
+  calendarColors: Map<string, { summary: string; color: string }>;
   loading: boolean;
   error: Error | null;
   refresh: (range: { start: Date; end: Date }) => Promise<void>;
@@ -72,9 +69,9 @@ export interface UseEventsReturn {
  */
 export function useEvents(): UseEventsReturn {
   const [events, setEvents] = useState<EventInput[]>([]);
-  const [accountColors, setAccountColors] = useState<Map<string, { email: string; color: string }>>(
-    new Map()
-  );
+  const [calendarColors, setCalendarColors] = useState<
+    Map<string, { summary: string; color: string }>
+  >(new Map());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const [dateRange, setDateRange] = useState<{ start: Date; end: Date } | null>(null);
@@ -87,47 +84,28 @@ export function useEvents(): UseEventsReturn {
       setLoading(true);
       setError(null);
 
-      // Get all accounts
-      const accounts = await getAllAccounts();
-      if (accounts.length === 0) {
+      // Get visible calendars to filter events
+      const visibleCalendars = await getVisibleCalendars();
+      if (visibleCalendars.length === 0) {
         setEvents([]);
-        setAccountColors(new Map());
+        setCalendarColors(new Map());
         setLoading(false);
         return;
       }
 
-      // Assign colors to accounts if they don't have colors already
-      const accountIds = accounts.map((acc) => acc.id);
-      const colorAssignments = assignAccountColors(accountIds);
-
-      // Update accounts with assigned colors if needed
-      const accountUpdates: Promise<void>[] = [];
-      accounts.forEach((account) => {
-        if (!account.color) {
-          const assignedColor = colorAssignments.get(account.id);
-          if (assignedColor) {
-            account.color = assignedColor;
-            accountUpdates.push(updateAccount(account).then(() => {}));
-          }
-        }
-      });
-      await Promise.all(accountUpdates);
-
-      // Build account color map with emails for legend
-      const accountColorMap = new Map<string, { email: string; color: string }>();
-      accounts.forEach((account) => {
-        accountColorMap.set(account.id, {
-          email: account.email,
-          color: account.color || colorAssignments.get(account.id) || '#3b82f6',
+      // Build calendar color map for legend
+      const calendarColorMap = new Map<string, { summary: string; color: string }>();
+      visibleCalendars.forEach((calendar) => {
+        calendarColorMap.set(calendar.id, {
+          summary: calendar.summary,
+          color: calendar.backgroundColor || calendar.color || '#3b82f6',
         });
       });
-      setAccountColors(accountColorMap);
+      setCalendarColors(calendarColorMap);
 
       // Get all events from IndexedDB
       const allEvents = await getAllEvents();
 
-      // Get visible calendars to filter events
-      const visibleCalendars = await getVisibleCalendars();
       const visibleCalendarIds = new Set(visibleCalendars.map((cal) => cal.id));
 
       // Filter events to only include those from visible calendars
@@ -151,9 +129,9 @@ export function useEvents(): UseEventsReturn {
 
       // Convert to FullCalendar format with account colors
       const fullCalendarEvents = expandedEvents.map((event) => {
-        const accountInfo = accountColorMap.get(event.accountId);
-        const accountColor = accountInfo?.color || '#3b82f6';
-        return convertToEventInput(event, accountColor, pendingEventIds.has(event.id));
+        const calendarInfo = calendarColorMap.get(event.calendarId);
+        const calendarColor = calendarInfo?.color || '#3b82f6';
+        return convertToEventInput(event, calendarColor, pendingEventIds.has(event.id));
       });
 
       setEvents(fullCalendarEvents);
@@ -188,7 +166,7 @@ export function useEvents(): UseEventsReturn {
 
   return {
     events,
-    accountColors,
+    calendarColors,
     loading,
     error,
     refresh,

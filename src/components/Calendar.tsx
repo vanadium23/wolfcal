@@ -3,7 +3,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import type { DatesSetArg, EventDropArg, EventClickArg } from '@fullcalendar/core'
+import type { DatesSetArg, EventDropArg, EventClickArg, DateSelectArg } from '@fullcalendar/core'
 import type { EventResizeDoneArg } from '@fullcalendar/interaction'
 import { handleEventDrop, handleEventResize } from '../lib/events'
 import { useEvents } from '../hooks/useEvents'
@@ -12,6 +12,8 @@ import EventPopover from './EventPopover'
 import ConflictModal from './ConflictModal'
 import { getEvent, getAllAccounts, getConflictedEvents } from '../lib/db'
 import type { CalendarEvent } from '../lib/db/types'
+import EventModal from './EventModal'
+import { softDelete } from '../lib/events/delete'
 import './Calendar.css'
 
 type ViewType = 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay'
@@ -24,8 +26,15 @@ export default function Calendar() {
   const [currentUserEmail, setCurrentUserEmail] = useState<string>('')
   const [conflictedEvents, setConflictedEvents] = useState<CalendarEvent[]>([])
   const [showConflictModal, setShowConflictModal] = useState(false)
+  const [isEventModalOpen, setIsEventModalOpen] = useState(false)
+  const [editingEventId, setEditingEventId] = useState<string | undefined>(undefined)
+  const [selectedRange, setSelectedRange] = useState<{
+    start: Date
+    end: Date
+    allDay: boolean
+  } | null>(null)
   const calendarRef = useRef<FullCalendar>(null)
-  const { events, accountColors, loading, refresh } = useEvents()
+  const { events, calendarColors, loading, refresh } = useEvents()
 
   /**
    * Load current user email from the first account
@@ -140,6 +149,20 @@ export default function Calendar() {
   }, [])
 
   /**
+   * Handle date selection - open event creation modal
+   */
+  const handleSelect = useCallback((selectInfo: DateSelectArg) => {
+    setSelectedRange({
+      start: selectInfo.start,
+      end: selectInfo.end,
+      allDay: selectInfo.allDay,
+    })
+    selectInfo.view.calendar.unselect()
+    setEditingEventId(undefined)
+    setIsEventModalOpen(true)
+  }, [])
+
+  /**
    * Close popover
    */
   const handleClosePopover = useCallback(() => {
@@ -156,6 +179,30 @@ export default function Calendar() {
       refresh({ start: view.activeStart, end: view.activeEnd })
     }
   }, [refresh])
+
+  /**
+   * Open edit modal for selected event
+   */
+  const handleEditEvent = useCallback((eventId: string) => {
+    setEditingEventId(eventId)
+    setSelectedRange(null)
+    setIsEventModalOpen(true)
+  }, [])
+
+  /**
+   * Soft delete event and refresh view
+   */
+  const handleDeleteEvent = useCallback(
+    async (eventId: string) => {
+      await softDelete(eventId)
+      const api = calendarRef.current?.getApi()
+      if (api) {
+        const view = api.view
+        refresh({ start: view.activeStart, end: view.activeEnd })
+      }
+    },
+    [refresh]
+  )
 
   /**
    * Handle conflict resolution
@@ -258,7 +305,7 @@ export default function Calendar() {
         </div>
 
         {/* Account Color Legend */}
-        {accountColors.size > 0 && (
+        {calendarColors.size > 0 && (
           <div
             style={{
               marginBottom: '20px',
@@ -269,12 +316,12 @@ export default function Calendar() {
             }}
           >
             <div style={{ fontWeight: 'bold', marginBottom: '8px', fontSize: '14px' }}>
-              Accounts:
+              Calendars:
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-              {Array.from(accountColors.entries()).map(([accountId, info]) => (
+              {Array.from(calendarColors.entries()).map(([calendarId, info]) => (
                 <div
-                  key={accountId}
+                  key={calendarId}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -290,7 +337,7 @@ export default function Calendar() {
                       border: '1px solid rgba(0,0,0,0.1)',
                     }}
                   />
-                  <span style={{ fontSize: '13px', color: '#374151' }}>{info.email}</span>
+                  <span style={{ fontSize: '13px', color: '#374151' }}>{info.summary}</span>
                 </div>
               ))}
             </div>
@@ -317,6 +364,7 @@ export default function Calendar() {
           datesSet={handleDatesSet}
           editable={true}
           selectable={true}
+          select={handleSelect}
           eventDrop={onEventDrop}
           eventResize={onEventResize}
           eventClick={handleEventClick}
@@ -334,6 +382,8 @@ export default function Calendar() {
           currentUserEmail={currentUserEmail}
           onClose={handleClosePopover}
           onUpdate={handleEventUpdate}
+          onEdit={handleEditEvent}
+          onDelete={handleDeleteEvent}
           position={popoverPosition}
         />
       )}
@@ -344,6 +394,19 @@ export default function Calendar() {
         conflictedEvents={conflictedEvents}
         onClose={handleConflictModalClose}
         onResolved={handleConflictResolved}
+      />
+
+      {/* Event create/edit modal */}
+      <EventModal
+        isOpen={isEventModalOpen}
+        eventId={editingEventId}
+        initialRange={selectedRange ?? undefined}
+        onClose={() => {
+          setIsEventModalOpen(false)
+          setEditingEventId(undefined)
+          setSelectedRange(null)
+        }}
+        onSaved={handleEventUpdate}
       />
     </div>
   )

@@ -12,6 +12,8 @@ interface EventPopoverProps {
   currentUserEmail: string;
   onClose: () => void;
   onUpdate: () => void;
+  onEdit: (eventId: string) => void;
+  onDelete: (eventId: string) => void | Promise<void>;
   position: { x: number; y: number };
 }
 
@@ -20,6 +22,8 @@ export default function EventPopover({
   currentUserEmail,
   onClose,
   onUpdate,
+  onEdit,
+  onDelete,
   position,
 }: EventPopoverProps) {
   const [loading, setLoading] = useState(false);
@@ -31,6 +35,9 @@ export default function EventPopover({
   );
   const responseStatus = currentUserAttendee?.responseStatus || 'needsAction';
   const needsResponse = responseStatus === 'needsAction';
+  const isOwner =
+    event.accountId === currentUserEmail ||
+    event.attendees?.some((attendee) => attendee.email === currentUserEmail && attendee.organizer);
 
   /**
    * Handle invitation response (accept/decline)
@@ -325,6 +332,52 @@ export default function EventPopover({
             }}
           >
             {loading ? 'Updating...' : 'Decline'}
+          </button>
+        </div>
+      )}
+
+      {/* Edit/Delete actions for event owner */}
+      {isOwner && (
+        <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
+          <button
+            onClick={() => {
+              onEdit(event.id);
+              onClose();
+            }}
+            style={{
+              flex: 1,
+              padding: '8px 12px',
+              backgroundColor: '#3b82f6',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontWeight: 'bold',
+              fontSize: '14px',
+            }}
+          >
+            Edit
+          </button>
+          <button
+            onClick={async () => {
+              const confirmed = confirm('Delete this event? This can be undone after sync conflict resolution.')
+              if (!confirmed) return
+              await onDelete(event.id)
+              onClose()
+            }}
+            style={{
+              flex: 1,
+              padding: '8px 12px',
+              backgroundColor: '#ef4444',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontWeight: 'bold',
+              fontSize: '14px',
+            }}
+          >
+            Delete
           </button>
         </div>
       )}

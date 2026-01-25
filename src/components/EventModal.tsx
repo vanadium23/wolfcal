@@ -17,6 +17,7 @@ interface EventModalProps {
   isOpen: boolean;
   eventId?: string; // If provided, opens in edit mode
   defaultCalendarId?: string; // For create mode
+  initialRange?: { start: Date; end: Date; allDay: boolean }; // For create mode selection
   onClose: () => void;
   onSaved?: () => void; // Callback after successful save
 }
@@ -25,6 +26,7 @@ export default function EventModal({
   isOpen,
   eventId,
   defaultCalendarId,
+  initialRange,
   onClose,
   onSaved,
 }: EventModalProps) {
@@ -93,6 +95,21 @@ export default function EventModal({
     }
   };
 
+  const normalizeAllDayDates = (startDate: string, endDate: string) => {
+    const start = new Date(startDate + 'T00:00:00');
+    const end = new Date(endDate + 'T00:00:00');
+    if (end <= start) {
+      end.setDate(start.getDate() + 1);
+    }
+    const format = (date: Date) => {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    };
+    return { startDate: format(start), endDate: format(end) };
+  };
+
   const saveEventOnline = async (formData: EventFormData) => {
     const client = new CalendarClient();
     const calendar = calendars.find((c) => c.id === formData.calendarId);
@@ -100,16 +117,20 @@ export default function EventModal({
       throw new Error('Calendar not found');
     }
 
+    const allDayDates = formData.allDay && formData.start.date && formData.end.date
+      ? normalizeAllDayDates(formData.start.date, formData.end.date)
+      : null;
+
     // Prepare Google Event payload
     const googleEvent: Partial<GoogleEvent> = {
       summary: formData.summary,
       description: formData.description,
       location: formData.location,
       start: formData.allDay
-        ? { date: formData.start.date, timeZone: formData.start.timeZone }
+        ? { date: allDayDates?.startDate || formData.start.date, timeZone: formData.start.timeZone }
         : { dateTime: new Date(formData.start.dateTime!).toISOString(), timeZone: formData.start.timeZone },
       end: formData.allDay
-        ? { date: formData.end.date, timeZone: formData.end.timeZone }
+        ? { date: allDayDates?.endDate || formData.end.date, timeZone: formData.end.timeZone }
         : { dateTime: new Date(formData.end.dateTime!).toISOString(), timeZone: formData.end.timeZone },
       attendees: formData.attendees?.map((a) => ({
         email: a.email,
@@ -119,21 +140,27 @@ export default function EventModal({
 
     let responseEvent: GoogleEvent;
 
-    if (eventId && event) {
-      // Update existing event
-      responseEvent = await client.updateEvent(
-        calendar.accountId,
-        calendar.id,
-        eventId,
-        googleEvent
-      );
-    } else {
-      // Create new event
-      responseEvent = await client.createEvent(
-        calendar.accountId,
-        calendar.id,
-        googleEvent
-      );
+    try {
+      if (eventId && event) {
+        // Update existing event
+        responseEvent = await client.updateEvent(
+          calendar.accountId,
+          calendar.id,
+          eventId,
+          googleEvent
+        );
+      } else {
+        // Create new event
+        responseEvent = await client.createEvent(
+          calendar.accountId,
+          calendar.id,
+          googleEvent
+        );
+      }
+    } catch (error) {
+      console.warn('Online save failed, falling back to offline queue:', error);
+      await saveEventOffline(formData);
+      return;
     }
 
     // Update IndexedDB with response
@@ -170,6 +197,10 @@ export default function EventModal({
       throw new Error('Calendar not found');
     }
 
+    const allDayDates = formData.allDay && formData.start.date && formData.end.date
+      ? normalizeAllDayDates(formData.start.date, formData.end.date)
+      : null;
+
     // Generate temporary ID for new events
     const tempEventId = eventId || `temp-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 
@@ -181,10 +212,10 @@ export default function EventModal({
       summary: formData.summary,
       description: formData.description,
       start: formData.allDay
-        ? { date: formData.start.date, timeZone: formData.start.timeZone }
+        ? { date: allDayDates?.startDate || formData.start.date, timeZone: formData.start.timeZone }
         : { dateTime: new Date(formData.start.dateTime!).toISOString(), timeZone: formData.start.timeZone },
       end: formData.allDay
-        ? { date: formData.end.date, timeZone: formData.end.timeZone }
+        ? { date: allDayDates?.endDate || formData.end.date, timeZone: formData.end.timeZone }
         : { dateTime: new Date(formData.end.dateTime!).toISOString(), timeZone: formData.end.timeZone },
       location: formData.location,
       attendees: formData.attendees?.map((a) => ({
@@ -257,6 +288,7 @@ export default function EventModal({
               event={event}
               calendars={calendars}
               defaultCalendarId={defaultCalendarId}
+              initialRange={initialRange}
               onSubmit={handleSubmit}
               onCancel={onClose}
             />
