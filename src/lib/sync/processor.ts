@@ -14,6 +14,7 @@ import {
   addEvent,
   updateEvent as updateLocalEvent,
   deleteEvent as deleteLocalEvent,
+  deleteTombstone,
 } from '../db';
 import type { PendingChange, CalendarEvent } from '../db/types';
 
@@ -183,6 +184,9 @@ async function processPendingChange(
 
         // Delete from local IndexedDB
         await deleteLocalEvent(change.eventId);
+
+        // Remove tombstone after successful remote delete
+        await deleteTombstone(change.eventId);
 
         result.success = true;
         console.log(`Successfully deleted event: ${change.eventId}`);

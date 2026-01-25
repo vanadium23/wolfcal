@@ -49,9 +49,8 @@ Per spec at `.flow/specs/fn-1-yxs.md:37,144`:
 - [ ] Conflict indicator shown on calendar event (icon or badge)
 - [ ] Multiple conflicts: modal shows one at a time with "N of M" counter
 ## Done summary
-TBD
-
+Implemented conflict resolution UI with side-by-side comparison. Created ConflictModal component that displays local vs remote event versions with highlighted differences, allowing users to manually resolve conflicts by choosing "Use Local", "Use Remote", or "Defer". Integrated conflict detection into sync engine to automatically flag events modified both locally and remotely since last sync.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: d6ed768c433651d50eb0918c35e85e94b2241625
+- Tests: npm run build
 - PRs:

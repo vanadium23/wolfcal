@@ -14,3 +14,7 @@ export {
   handleEventDrop,
   handleEventResize,
 } from './handlers';
+
+export {
+  softDelete,
+} from './delete';

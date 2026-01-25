@@ -19,6 +19,9 @@ import {
   addEvent,
   updateEvent,
   deleteEvent,
+  getTombstone,
+  getAllTombstones,
+  deleteTombstone,
 } from '../db';
 import type { CalendarEvent, SyncMetadata } from '../db/types';
 import type { SyncResult, SyncWindow, AccountSyncResult } from './types';
@@ -135,6 +138,26 @@ export class SyncEngine {
   }
 
   /**
+   * Prune tombstones older than 3 months (outside sync window)
+   */
+  private async pruneTombstonesOutsideWindow(window: SyncWindow): Promise<number> {
+    const tombstones = await getAllTombstones();
+    let deletedCount = 0;
+
+    const windowMin = new Date(window.timeMin).getTime();
+
+    for (const tombstone of tombstones) {
+      // If tombstone is older than the sync window minimum, prune it
+      if (tombstone.deletedAt < windowMin) {
+        await deleteTombstone(tombstone.id);
+        deletedCount++;
+      }
+    }
+
+    return deletedCount;
+  }
+
+  /**
    * Sync a single calendar
    * @param accountId - Account ID
    * @param calendarId - Calendar ID
@@ -186,6 +209,38 @@ export class SyncEngine {
             if (googleEvent.status === 'cancelled') {
               await deleteEvent(googleEvent.id);
               result.eventsDeleted++;
+              continue;
+            }
+
+            // Check if event exists in tombstones (locally deleted)
+            const tombstone = await getTombstone(googleEvent.id);
+            if (tombstone) {
+              // Event was deleted locally - check for conflict
+              // If remote event was modified after local delete, it's a conflict
+              const remoteUpdated = googleEvent.updated
+                ? new Date(googleEvent.updated).getTime()
+                : 0;
+
+              if (remoteUpdated > tombstone.deletedAt) {
+                // Conflict: remote modified after local delete
+                console.log(
+                  `Conflict: Event ${googleEvent.id} modified remotely after local delete`
+                );
+                // Store as conflicted event for manual resolution
+                const remoteEvent = this.convertGoogleEvent(googleEvent, accountId, calendarId);
+                const conflictedEvent: CalendarEvent = {
+                  ...remoteEvent,
+                  hasConflict: true,
+                  localVersion: undefined, // Local version is deleted
+                  remoteVersion: remoteEvent,
+                  lastSyncedAt: Date.now(),
+                };
+                await addEvent(conflictedEvent);
+                result.eventsAdded++;
+              } else {
+                // No conflict - skip this event (already deleted locally)
+                console.log(`Skipping event ${googleEvent.id} - locally deleted`);
+              }
               continue;
             }
 
@@ -262,6 +317,38 @@ export class SyncEngine {
               continue;
             }
 
+            // Check if event exists in tombstones (locally deleted)
+            const tombstone = await getTombstone(googleEvent.id);
+            if (tombstone) {
+              // Event was deleted locally - check for conflict
+              // If remote event was modified after local delete, it's a conflict
+              const remoteUpdated = googleEvent.updated
+                ? new Date(googleEvent.updated).getTime()
+                : 0;
+
+              if (remoteUpdated > tombstone.deletedAt) {
+                // Conflict: remote modified after local delete
+                console.log(
+                  `Conflict: Event ${googleEvent.id} modified remotely after local delete`
+                );
+                // Store as conflicted event for manual resolution
+                const remoteEvent = this.convertGoogleEvent(googleEvent, accountId, calendarId);
+                const conflictedEvent: CalendarEvent = {
+                  ...remoteEvent,
+                  hasConflict: true,
+                  localVersion: undefined, // Local version is deleted
+                  remoteVersion: remoteEvent,
+                  lastSyncedAt: Date.now(),
+                };
+                await addEvent(conflictedEvent);
+                result.eventsAdded++;
+              } else {
+                // No conflict - skip this event (already deleted locally)
+                console.log(`Skipping event ${googleEvent.id} - locally deleted`);
+              }
+              continue;
+            }
+
             // Check if event exists in IndexedDB
             const existingEvent = await getEventsByCalendar(calendarId).then(
               (events) => events.find((e) => e.id === googleEvent.id)
@@ -315,6 +402,10 @@ export class SyncEngine {
       // Prune events outside sync window
       const prunedCount = await this.pruneEventsOutsideWindow(calendarId, window);
       result.eventsDeleted += prunedCount;
+
+      // Prune tombstones outside sync window
+      const prunedTombstones = await this.pruneTombstonesOutsideWindow(window);
+      console.log(`Pruned ${prunedTombstones} tombstones outside sync window`);
 
       // Update sync metadata
       const now = Date.now();

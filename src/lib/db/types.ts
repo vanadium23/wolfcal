@@ -68,6 +68,8 @@ export interface CalendarEvent {
   localVersion?: CalendarEvent; // Local version during conflict
   remoteVersion?: CalendarEvent; // Remote version during conflict
   lastSyncedAt?: number; // Timestamp of last successful sync
+  // Soft delete field
+  deleted?: boolean; // True if event has been soft-deleted locally
 }
 
 export interface SyncMetadata {
