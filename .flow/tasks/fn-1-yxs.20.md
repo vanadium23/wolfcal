@@ -44,9 +44,8 @@ Per spec at `.flow/specs/fn-1-yxs.md:38,136`:
 - [ ] Tombstone removed after successful remote delete
 - [ ] Tombstones older than 3 months pruned during sync
 ## Done summary
-TBD
-
+Implemented soft delete with tombstones for event deletion. Events are marked as deleted and tombstones track deletions for conflict detection during sync. Tombstones are pruned after 3 months and removed after successful remote delete.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 52376ad43e0c9bc1b3079ce39d194508adb87650
+- Tests: npx tsc --noEmit
 - PRs:

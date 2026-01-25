@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import CredentialForm from '../components/CredentialForm'
 import AccountList from '../components/AccountList'
+import ErrorLog from '../components/ErrorLog'
 import './Settings.css'
 
 interface SyncSettings {
@@ -94,6 +95,14 @@ export default function Settings() {
             </p>
           </div>
         </div>
+      </section>
+
+      <section className="settings-section">
+        <h2>Error Log</h2>
+        <p className="section-description">
+          View and troubleshoot synchronization errors. Errors are logged automatically when sync operations fail.
+        </p>
+        <ErrorLog />
       </section>
     </div>
   )

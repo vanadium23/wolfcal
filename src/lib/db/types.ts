@@ -102,8 +102,18 @@ export interface Tombstone {
   deletedAt: number; // Unix timestamp
 }
 
+export interface ErrorLog {
+  id: string; // UUID
+  timestamp: number; // Unix timestamp
+  errorType: 'sync_failure' | 'api_error' | 'conflict_detection' | 'token_refresh' | 'network_error' | 'other';
+  accountId: string;
+  calendarId?: string; // Optional - not all errors are calendar-specific
+  errorMessage: string;
+  errorDetails: string; // JSON string with stack trace, request details
+}
+
 /**
  * Database schema version
  */
-export const DB_VERSION = 1;
+export const DB_VERSION = 2;
 export const DB_NAME = 'wolfcal';

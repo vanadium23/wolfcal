@@ -11,6 +11,7 @@ import type {
   SyncMetadata,
   PendingChange,
   Tombstone,
+  ErrorLog,
 } from './types';
 import {
   DB_NAME,
@@ -69,6 +70,15 @@ interface WolfCalDBSchema extends DBSchema {
       'by-account': string;
       'by-calendar': string;
       'by-deleted': number;
+    };
+  };
+  error_log: {
+    key: string;
+    value: ErrorLog;
+    indexes: {
+      'by-account': string;
+      'by-timestamp': number;
+      'by-type': string;
     };
   };
 }
@@ -130,8 +140,15 @@ export async function initDB(): Promise<IDBPDatabase<WolfCalDBSchema>> {
         tombstoneStore.createIndex('by-deleted', 'deletedAt', { unique: false });
       }
 
-      // Future migrations would go here
-      // if (oldVersion < 2) { ... }
+      // Version 2: Add error_log table
+      if (oldVersion < 2) {
+        const errorLogStore = db.createObjectStore('error_log', {
+          keyPath: 'id',
+        });
+        errorLogStore.createIndex('by-account', 'accountId', { unique: false });
+        errorLogStore.createIndex('by-timestamp', 'timestamp', { unique: false });
+        errorLogStore.createIndex('by-type', 'errorType', { unique: false });
+      }
     },
   });
 }

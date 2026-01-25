@@ -22,8 +22,9 @@ import {
   getTombstone,
   getAllTombstones,
   deleteTombstone,
+  addErrorLog,
 } from '../db';
-import type { CalendarEvent, SyncMetadata } from '../db/types';
+import type { CalendarEvent, SyncMetadata, ErrorLog } from '../db/types';
 import type { SyncResult, SyncWindow, AccountSyncResult } from './types';
 import { detectConflict, eventsAreDifferent, createConflictedEvent } from './conflicts';
 
@@ -35,6 +36,34 @@ export class SyncEngine {
 
   constructor() {
     this.client = new CalendarClient();
+  }
+
+  /**
+   * Log an error to the error_log table
+   */
+  private async logError(
+    errorType: ErrorLog['errorType'],
+    accountId: string,
+    errorMessage: string,
+    errorDetails: any,
+    calendarId?: string
+  ): Promise<void> {
+    try {
+      const errorLog: ErrorLog = {
+        id: crypto.randomUUID(),
+        timestamp: Date.now(),
+        errorType,
+        accountId,
+        calendarId,
+        errorMessage,
+        errorDetails: JSON.stringify(errorDetails, null, 2),
+      };
+      await addErrorLog(errorLog);
+      console.log(`Error logged: ${errorType} - ${errorMessage}`);
+    } catch (error) {
+      // Don't throw if logging fails - just log to console
+      console.error('Failed to log error to database:', error);
+    }
   }
 
   /**
@@ -447,6 +476,22 @@ export class SyncEngine {
         await addSyncMetadata(errorMetadata);
       }
 
+      // Log error to error_log table
+      await this.logError(
+        'sync_failure',
+        accountId,
+        errorMessage,
+        {
+          calendarId,
+          error: error instanceof Error ? {
+            message: error.message,
+            stack: error.stack,
+            name: error.name,
+          } : error,
+        },
+        calendarId
+      );
+
       result.error = errorMessage;
       console.error(`Sync failed for calendar ${calendarId}:`, error);
 
@@ -496,7 +541,9 @@ export class SyncEngine {
             error: errorMessage,
           });
           console.error(`Failed to sync calendar ${calendar.id}:`, error);
-          // Continue with next calendar even if one fails
+
+          // Error already logged in syncCalendar, just continue with next calendar
+          // This ensures one failed calendar doesn't stop the entire account sync
         }
       }
 

@@ -10,6 +10,7 @@ import type {
   SyncMetadata,
   PendingChange,
   Tombstone,
+  ErrorLog,
 } from './types';
 
 // ============================================================================
@@ -253,6 +254,67 @@ export async function getTombstonesByCalendar(calendarId: string): Promise<Tombs
 export async function deleteTombstone(id: string): Promise<void> {
   const db = await getDB();
   await db.delete('tombstones', id);
+}
+
+// ============================================================================
+// Error Log CRUD
+// ============================================================================
+
+export async function addErrorLog(errorLog: ErrorLog): Promise<string> {
+  const db = await getDB();
+  return db.add('error_log', errorLog);
+}
+
+export async function getErrorLog(id: string): Promise<ErrorLog | undefined> {
+  const db = await getDB();
+  return db.get('error_log', id);
+}
+
+export async function getAllErrorLogs(): Promise<ErrorLog[]> {
+  const db = await getDB();
+  return db.getAll('error_log');
+}
+
+export async function getErrorLogsByAccount(accountId: string): Promise<ErrorLog[]> {
+  const db = await getDB();
+  return db.getAllFromIndex('error_log', 'by-account', accountId);
+}
+
+export async function getErrorLogsByType(errorType: string): Promise<ErrorLog[]> {
+  const db = await getDB();
+  return db.getAllFromIndex('error_log', 'by-type', errorType);
+}
+
+export async function getErrorLogsOrderedByTimestamp(): Promise<ErrorLog[]> {
+  const db = await getDB();
+  const tx = db.transaction('error_log', 'readonly');
+  const index = tx.store.index('by-timestamp');
+  return index.getAll();
+}
+
+export async function deleteErrorLog(id: string): Promise<void> {
+  const db = await getDB();
+  await db.delete('error_log', id);
+}
+
+export async function clearAllErrorLogs(): Promise<void> {
+  const db = await getDB();
+  const tx = db.transaction('error_log', 'readwrite');
+  await tx.store.clear();
+}
+
+export async function clearErrorLogsByDateRange(startTimestamp: number, endTimestamp: number): Promise<number> {
+  const allLogs = await getAllErrorLogs();
+  let deletedCount = 0;
+
+  for (const log of allLogs) {
+    if (log.timestamp >= startTimestamp && log.timestamp <= endTimestamp) {
+      await deleteErrorLog(log.id);
+      deletedCount++;
+    }
+  }
+
+  return deletedCount;
 }
 
 // Re-export types and schema utilities
