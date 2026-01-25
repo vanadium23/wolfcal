@@ -45,7 +45,7 @@ export class SyncEngine {
     errorType: ErrorLog['errorType'],
     accountId: string,
     errorMessage: string,
-    errorDetails: any,
+    errorDetails: Record<string, unknown>,
     calendarId?: string
   ): Promise<void> {
     try {
@@ -202,6 +202,7 @@ export class SyncEngine {
     };
 
     // Get existing sync metadata (declare outside try/catch for error handler access)
+    // eslint-disable-next-line prefer-const
     let metadata = await getSyncMetadata(calendarId);
 
     try {

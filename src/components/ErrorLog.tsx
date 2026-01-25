@@ -28,6 +28,7 @@ export default function ErrorLog() {
   // Filter logs when filters change
   useEffect(() => {
     filterLogs()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [errorLogs, selectedAccount, dateRange])
 
   const loadData = async () => {
@@ -102,7 +103,7 @@ export default function ErrorLog() {
     try {
       const now = Date.now()
       let startTime = 0
-      let endTime = now
+      const endTime = now
 
       switch (dateRange) {
         case '24h':
