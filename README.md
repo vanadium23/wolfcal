@@ -1,73 +1,97 @@
-# React + TypeScript + Vite
+# WolfCal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**A local-first, privacy-focused Google Calendar wrapper that works offline**
 
-Currently, two official plugins are available:
+WolfCal is a self-hosted calendar application that syncs with multiple Google Calendar accounts while maintaining complete data ownership and extended offline capability. Built as a single-page React application with browser-based storage, it provides all the features you need without sending your data to third-party servers.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **Multi-account Google Calendar sync** - Connect multiple Google accounts and view all calendars in one place
+- **Offline-first architecture** - Work without internet for days or weeks, changes sync automatically when reconnected
+- **Full event management** - Create, edit, delete, and reschedule events with drag-and-drop
+- **Multiple calendar views** - Month, week, and day views powered by FullCalendar
+- **Privacy-focused** - All data stored locally in your browser with encrypted OAuth tokens
+- **No backend required** - Frontend-only app served via Docker with Caddy
+- **Invitation management** - Accept or decline event invitations directly from the calendar
+- **Automatic sync** - Background sync every 15-30 minutes with manual refresh option
+- **Conflict resolution** - Side-by-side comparison UI for handling sync conflicts
+- **Account filtering** - Toggle individual calendars and accounts on/off with color coding
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Quick Start
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Docker and Docker Compose installed
+- Google Cloud account (free tier is sufficient)
+- Modern web browser (Chrome or Firefox recommended)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Deployment
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/wolfcal.git
+cd wolfcal
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Build and start the application:
+```bash
+docker-compose up -d
 ```
+
+3. Access WolfCal at http://localhost:8080
+
+4. Set up Google OAuth credentials (required for first use):
+   - Follow the detailed guide in [docs/OAUTH_CONFIG.md](docs/OAUTH_CONFIG.md)
+   - You'll need to create a Google Cloud project and OAuth 2.0 credentials
+   - Configure the callback URL as `http://localhost:8080/callback`
+
+5. Connect your Google account and start using WolfCal!
+
+## Documentation
+
+- **[Setup Guide](docs/SETUP.md)** - Complete deployment and configuration instructions
+- **[OAuth Configuration](docs/OAUTH_CONFIG.md)** - Step-by-step Google Cloud Console setup with screenshots
+- **[User Guide](docs/USER_GUIDE.md)** - How to use WolfCal features and manage your calendars
+- **[Architecture](docs/ARCHITECTURE.md)** - System design, data flow, and technical details
+- **[Contributing](CONTRIBUTING.md)** - Development setup and contribution guidelines
+
+## Architecture Overview
+
+WolfCal is a **frontend-only** web application:
+- **Frontend**: React + TypeScript + Vite
+- **Calendar UI**: FullCalendar library
+- **Storage**: Browser IndexedDB (no backend database)
+- **Security**: Web Crypto API for OAuth token encryption
+- **Deployment**: Docker Compose + Caddy static file server
+
+All calendar data and OAuth tokens are stored in your browser's IndexedDB. When you connect a Google account, WolfCal syncs events within a 3-month window (1.5 months past and future) and keeps them available offline.
+
+## Browser Compatibility
+
+WolfCal is tested and supported on:
+- Chrome (latest version)
+- Firefox (latest version)
+
+Safari and Edge may work but are not officially supported.
+
+## Data Privacy
+
+- **No data sent to WolfCal servers** - There are no WolfCal servers; it's entirely self-hosted
+- **OAuth tokens encrypted** - Stored in IndexedDB using Web Crypto API encryption
+- **Browser storage only** - All data remains in your browser's IndexedDB
+- **Direct Google API access** - Your browser communicates directly with Google Calendar API
+- **Single-user deployment** - Each Docker instance is for one user (no multi-tenant data mixing)
+
+## License
+
+MIT License - see [LICENSE](LICENSE) for details
+
+## Support
+
+For issues, questions, or feature requests, please visit the [GitHub Issues](https://github.com/yourusername/wolfcal/issues) page.
+
+## Acknowledgments
+
+- [FullCalendar](https://fullcalendar.io/) for the calendar UI component
+- [Google Calendar API](https://developers.google.com/calendar) for calendar synchronization
+- [Caddy](https://caddyserver.com/) for simple and secure static file serving

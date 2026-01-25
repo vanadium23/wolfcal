@@ -48,9 +48,8 @@ Per spec at `.flow/specs/fn-1-yxs.md:74,152`:
 - [ ] Clear log button with confirmation dialog
 - [ ] ErrorLog integrated into Settings page as separate tab/section
 ## Done summary
-TBD
-
+Implemented error log system with IndexedDB storage (DB v2), sync engine error logging, and ErrorLog component integrated into Settings page. Users can now view, filter, and clear sync errors for troubleshooting.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 0d4143df62deb2cc8cbb967fe0c33fa9db7a7494, 346e9bde77976d6bb46d7c8ad2dc64fc0aa03dd4
+- Tests: npm run build
 - PRs:
