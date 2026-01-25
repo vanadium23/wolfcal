@@ -214,6 +214,24 @@ export class CalendarClient {
   }
 
   /**
+   * Fetch the authenticated user's profile information (email)
+   * @param accessToken - OAuth access token
+   */
+  async getUserInfo(accessToken: string): Promise<{ email: string }> {
+    const response = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new CalendarApiError('Failed to fetch user info', response.status);
+    }
+
+    return response.json();
+  }
+
+  /**
    * Lists events for a calendar within a date range
    * @param accountId - Account ID
    * @param calendarId - Calendar ID

@@ -6,8 +6,9 @@ import type { OAuthTokenResponse, OAuthMessage } from './types';
 
 const GOOGLE_AUTH_URL = 'https://accounts.google.com/o/oauth2/v2/auth';
 const GOOGLE_TOKEN_URL = 'https://oauth2.googleapis.com/token';
-const REDIRECT_URI = 'http://localhost:8080/callback';
-const SCOPE = 'https://www.googleapis.com/auth/calendar';
+const REDIRECT_URI = 'http://localhost:5173/callback';
+const SCOPE =
+  'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.email';
 
 /**
  * Generates a random state parameter for CSRF protection
@@ -63,6 +64,8 @@ export function initiateOAuth(
     sessionStorage.setItem('oauth_client_secret', clientSecret);
     sessionStorage.setItem('oauth_state', state);
 
+    console.log(`session state: ${sessionStorage.getItem('oauth_state')}`);
+
     // Listen for messages from the callback page
     const messageHandler = (event: MessageEvent<OAuthMessage>) => {
       // Verify message origin
@@ -78,7 +81,7 @@ export function initiateOAuth(
         sessionStorage.removeItem('oauth_client_id');
         sessionStorage.removeItem('oauth_client_secret');
         sessionStorage.removeItem('oauth_state');
-        popup.close();
+        // popup.close();
 
         resolve(message.tokens);
       } else if (message.type === 'oauth-error') {
@@ -87,7 +90,7 @@ export function initiateOAuth(
         sessionStorage.removeItem('oauth_client_id');
         sessionStorage.removeItem('oauth_client_secret');
         sessionStorage.removeItem('oauth_state');
-        popup.close();
+        // popup.close();
 
         reject(new Error(message.description || message.error));
       }

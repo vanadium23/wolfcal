@@ -73,7 +73,11 @@ export async function getCalendarsByAccount(accountId: string): Promise<Calendar
 
 export async function getVisibleCalendars(): Promise<Calendar[]> {
   const db = await getDB();
-  return db.getAllFromIndex('calendars', 'by-visible', 1);
+  const calendars = await db.getAll('calendars');
+  return calendars.filter((calendar) => {
+    const legacyVisible = (calendar as { visible?: number }).visible;
+    return calendar.visible === true || legacyVisible === 1;
+  });
 }
 
 export async function updateCalendar(calendar: Calendar): Promise<string> {

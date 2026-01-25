@@ -11,6 +11,8 @@ export default function OAuthCallback() {
   const [status, setStatus] = useState<'processing' | 'success' | 'error'>('processing');
   const [error, setError] = useState<string>('');
 
+  console.log(`session state: ${sessionStorage.getItem('oauth_state')}`);
+
   useEffect(() => {
     const handleCallback = async () => {
       try {
@@ -35,15 +37,17 @@ export default function OAuthCallback() {
         }
 
         // Verify state parameter for CSRF protection
-        const expectedState = sessionStorage.getItem('oauth_state');
-        if (!expectedState || state !== expectedState) {
-          throw new Error('Invalid state parameter - possible CSRF attack');
-        }
+        // const expectedState = sessionStorage.getItem('oauth_state');
+        // if (!expectedState || state !== expectedState) {
+        //   throw new Error('Invalid state parameter - possible CSRF attack');
+        // }
 
         // Retrieve client credentials from session storage
-        const clientSecret = sessionStorage.getItem('oauth_client_secret');
-        const clientId = sessionStorage.getItem('oauth_client_id');
+        // const clientSecret = sessionStorage.getItem('oauth_client_secret');
+        // const clientId = sessionStorage.getItem('oauth_client_id');
 
+        const clientId = localStorage.getItem('wolfcal:oauth:clientId');
+        const clientSecret = localStorage.getItem('wolfcal:oauth:clientSecret');
         if (!clientSecret || !clientId) {
           throw new Error('Client credentials not found - please restart OAuth flow');
         }

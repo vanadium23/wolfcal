@@ -34,7 +34,7 @@ interface WolfCalDBSchema extends DBSchema {
     value: Calendar;
     indexes: {
       'by-account': string;
-      'by-visible': number;
+      'by-visible': boolean;
     };
   };
   events: {

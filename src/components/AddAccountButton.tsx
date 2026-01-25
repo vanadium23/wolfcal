@@ -30,8 +30,11 @@ export default function AddAccountButton({ onAccountAdded, onError }: AddAccount
 
     setIsAuthenticating(true);
 
-    try {
-      const tokens = await initiateOAuth(clientId.trim(), clientSecret.trim());
+    try {    
+      const savedClientId = localStorage.getItem('wolfcal:oauth:clientId');
+      const savedClientSecret = localStorage.getItem('wolfcal:oauth:clientSecret');
+
+      const tokens = await initiateOAuth(savedClientId || clientId.trim(), savedClientSecret || clientSecret.trim());
 
       if (onAccountAdded) {
         onAccountAdded(tokens);
