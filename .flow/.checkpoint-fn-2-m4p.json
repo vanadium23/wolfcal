@@ -1,0 +1,167 @@
+{
+  "created_at": "2026-01-28T08:09:17.397848Z",
+  "epic": {
+    "data": {
+      "branch_name": "fn-2-m4p",
+      "created_at": "2026-01-26T19:51:35.739332Z",
+      "depends_on_epics": [
+        "fn-1-yxs"
+      ],
+      "id": "fn-2-m4p",
+      "next_task": 1,
+      "plan_review_status": "unknown",
+      "plan_reviewed_at": null,
+      "spec_path": ".flow/specs/fn-2-m4p.md",
+      "status": "open",
+      "title": "WolfCal UX Improvements - Match OneCal Quality",
+      "updated_at": "2026-01-27T14:39:11.200891Z"
+    },
+    "spec": "# WolfCal UX Improvements - Match OneCal Quality\n\n## Overview\n\nImprove WolfCal's user experience to match OneCal's quality by fixing OAuth flow, calendar selection, and event creation UX. The current implementation has embedded OAuth credentials in AddAccountButton, lacks calendar management in Settings, and shows a complex event form that slows down quick event addition.\n\n**Target**: OneCal-level UX with minimal friction for OAuth setup, calendar management, and event creation.\n\n## Scope\n\n### In Scope\n- Refactor OAuth credentials to Settings (one-time configuration)\n- Add OAuth credential validation in Settings\n- Build calendar list management UI in Settings with enable/disable toggles\n- Sync primary calendar only by default (not all calendars)\n- Simplify event form to show minimal fields with expandable \"More options\"\n- Implement optimistic UI updates (events appear immediately before API confirms)\n- Update documentation for new flows\n\n### Out of Scope\n- Natural language event parsing (\"Lunch tomorrow at 1pm\")\n- Multiple OAuth apps or credential sets\n- Calendar-specific sync interval customization\n- Bulk calendar enable/disable operations\n\n## Approach\n\n### Phase 1: OAuth Centralization (Tasks 1-2)\nMove OAuth credentials from AddAccountButton to Settings page. Add validation to test credentials and show success feedback.\n\n### Phase 2: Calendar Management (Tasks 3-4)\nBuild Settings UI for managing which calendars sync. Default to primary calendar only for new accounts, allow manual enablement of additional calendars with 20-calendar limit.\n\n### Phase 3: Event UX (Tasks 5-6)\nSimplify event form to minimal fields with expandable advanced section. Add optimistic UI so events appear immediately with visual feedback during sync.\n\n### Phase 4: Documentation (Task 7)\nUpdate all affected documentation to reflect new OAuth flow and calendar management patterns.\n\n## Dependencies & Risks\n\n### Epic Dependencies\n- **fn-1-yxs** (WolfCal foundation): All 22 tasks complete - OAuth system, sync engine, IndexedDB, calendar views all implemented\n\n### Key Risks\n1. **Breaking existing OAuth flow**: Existing accounts may need credential migration \u2192 Mitigate by checking localStorage first, falling back gracefully\n2. **Calendar enable/disable complexity**: Need to handle partial syncs \u2192 Use existing SyncEngine.syncCalendar() method per calendar\n3. **Optimistic UI race conditions**: Event could sync before UI updates complete \u2192 Use proper state management with pendingSync flag\n4. **20 calendar limit UX**: Users may not understand why they can't enable more \u2192 Show clear error message with count\n\n## Quick commands\n\n```bash\n# Build and test\nnpm run build\n\n# Run in development\nnpm run dev\n\n# Test OAuth flow (requires configured credentials in Settings)\nopen http://localhost:5173\n```\n\n## Acceptance\n\n### OAuth Flow\n- [ ] OAuth credentials configured once in Settings\n- [ ] Settings validates credentials and shows Valid/Invalid status\n- [ ] Add Account button disabled when credentials missing\n- [ ] Disabled button shows tooltip explaining how to fix\n- [ ] Success toast shown after OAuth configured\n- [ ] AddAccountButton has no embedded credential form\n\n### Calendar Management\n- [ ] Primary calendar only synced by default for new accounts\n- [ ] Settings shows expandable calendar lists per account\n- [ ] Each calendar has enable/disable toggle\n- [ ] Enabling calendar triggers immediate sync\n- [ ] Maximum 20 calendars enforced with clear error\n- [ ] Global refresh button refetches calendar lists\n- [ ] Disabled calendars hide events but retain in IndexedDB\n\n### Event Creation\n- [ ] Event form shows minimal fields by default\n- [ ] Advanced fields hidden behind \"More options\"\n- [ ] Calendar dropdown shows flat list with account badges\n- [ ] Last used calendar remembered and set as default\n- [ ] Events appear immediately with 80% opacity\n- [ ] Failed creation reverts with error message\n\n### Documentation\n- [ ] USER_GUIDE updated for Settings OAuth and calendar management\n- [ ] SETUP updated for new OAuth configuration steps\n- [ ] OAUTH_CONFIG updated to reference Settings\n- [ ] README updated to mention centralized OAuth\n\n## References\n\n- Current implementation files:\n  - src/components/AddAccountButton.tsx:34-37 (already reads localStorage, has fallback form to remove)\n  - src/pages/Settings.tsx:24-70 (handleAccountAdded needs calendar filtering)\n  - src/components/EventForm.tsx (needs simplification)\n  - src/hooks/useEvents.ts (already handles pending events, needs disabled calendar filtering)\n- Epic dependency: fn-1-yxs (WolfCal foundation - complete)\n"
+  },
+  "epic_id": "fn-2-m4p",
+  "schema_version": 2,
+  "tasks": [
+    {
+      "data": {
+        "assignee": null,
+        "claim_note": "",
+        "claimed_at": null,
+        "created_at": "2026-01-27T14:36:18.298978Z",
+        "depends_on": [],
+        "epic": "fn-2-m4p",
+        "id": "fn-2-m4p.1",
+        "priority": null,
+        "spec_path": ".flow/tasks/fn-2-m4p.1.md",
+        "status": "todo",
+        "title": "Refactor AddAccountButton to use Settings OAuth credentials",
+        "updated_at": "2026-01-27T14:36:42.153229Z"
+      },
+      "id": "fn-2-m4p.1",
+      "runtime": null,
+      "spec": "# fn-2-m4p.1 Refactor AddAccountButton to use Settings OAuth credentials\n\n## Description\nRemove embedded OAuth credential form from AddAccountButton component. Make button read credentials from localStorage and show disabled state with tooltip when credentials are missing.\n\n**Size:** S\n**Files:** src/components/AddAccountButton.tsx\n\n## Approach\n\nSimplify AddAccountButton:\n- Remove all credential input UI (lines 16-18, 59-182 in current implementation)\n- Remove showCredentialForm state\n- Check localStorage for 'wolfcal:oauth:clientId' and 'wolfcal:oauth:clientSecret' on component mount\n- If credentials missing: disable button, add title tooltip attribute\n- If credentials present: enable button, call initiateOAuth directly with stored credentials\n\nFollow pattern from existing code at src/components/AddAccountButton.tsx:34-35 which already reads from localStorage.\n\n## Key Context\n\nPer epic spec: \"Add Account button is disabled when OAuth credentials are missing\" with tooltip \"Configure OAuth credentials in Settings to add accounts\".\n\nCurrent implementation already partially reads from localStorage (lines 34-35) but also has fallback to inline form - remove the fallback.\n## Acceptance\n- [ ] Credential input form removed from AddAccountButton.tsx\n- [ ] clientId and clientSecret state removed\n- [ ] showCredentialForm state removed\n- [ ] Button checks localStorage for wolfcal:oauth:clientId and wolfcal:oauth:clientSecret\n- [ ] Button disabled when credentials missing\n- [ ] Disabled button shows tooltip: \"Configure OAuth credentials in Settings to add accounts\"\n- [ ] Enabled button calls initiateOAuth with localStorage credentials\n- [ ] Button styling updates to show disabled state (grayed out, cursor: not-allowed)\n## Done summary\nTBD\n\n## Evidence\n- Commits:\n- Tests:\n- PRs:\n"
+    },
+    {
+      "data": {
+        "assignee": null,
+        "claim_note": "",
+        "claimed_at": null,
+        "created_at": "2026-01-27T14:36:18.389835Z",
+        "depends_on": [],
+        "epic": "fn-2-m4p",
+        "id": "fn-2-m4p.2",
+        "priority": null,
+        "spec_path": ".flow/tasks/fn-2-m4p.2.md",
+        "status": "todo",
+        "title": "Add OAuth credential validation in Settings",
+        "updated_at": "2026-01-27T14:36:58.137828Z"
+      },
+      "id": "fn-2-m4p.2",
+      "runtime": null,
+      "spec": "# fn-2-m4p.2 Add OAuth credential validation in Settings\n\n## Description\nAdd validation functionality to CredentialForm in Settings that tests OAuth credentials against Google API and displays Valid/Invalid status. Show success toast when credentials are saved.\n\n**Size:** S\n**Files:** src/components/CredentialForm.tsx, src/lib/auth/validation.ts (new)\n\n## Approach\n\nCreate validation module:\n- Function to test OAuth credentials by making a test request to Google OAuth token endpoint\n- Use client_id and client_secret to verify they are valid (can exchange dummy code or validate format)\n\nUpdate CredentialForm:\n- Add \"Validate\" button next to Save button\n- After Save, show toast notification: \"OAuth configured successfully. You can now add accounts.\"\n- Display validation status indicator (green checkmark for Valid, red X for Invalid)\n- Store validation result in component state\n\n## Key Context\n\nPer epic spec: \"Settings includes OAuth credential validation that tests credentials and shows status\" and \"After OAuth configured, success toast appears\".\n\nReuse toast notification pattern if one exists in the codebase, otherwise implement simple toast component.\n## Acceptance\n- [ ] src/lib/auth/validation.ts created with validateOAuthCredentials(clientId, clientSecret) function\n- [ ] Validation tests credentials against Google API\n- [ ] CredentialForm shows validation status (Valid/Invalid) after test\n- [ ] \"Validate\" button added to CredentialForm\n- [ ] After Save, success toast appears: \"OAuth configured successfully. You can now add accounts.\"\n- [ ] Toast notification component created or reused\n- [ ] Validation status persists in component state\n- [ ] Invalid credentials prevent Save or show warning\n## Done summary\nTBD\n\n## Evidence\n- Commits:\n- Tests:\n- PRs:\n"
+    },
+    {
+      "data": {
+        "assignee": null,
+        "claim_note": "",
+        "claimed_at": null,
+        "created_at": "2026-01-27T14:36:18.481386Z",
+        "depends_on": [
+          "fn-2-m4p.4"
+        ],
+        "epic": "fn-2-m4p",
+        "id": "fn-2-m4p.3",
+        "priority": null,
+        "spec_path": ".flow/tasks/fn-2-m4p.3.md",
+        "status": "todo",
+        "title": "Add calendar list management UI in Settings",
+        "updated_at": "2026-01-27T14:38:31.657075Z"
+      },
+      "id": "fn-2-m4p.3",
+      "runtime": null,
+      "spec": "# fn-2-m4p.3 Add calendar list management UI in Settings\n\n## Description\nCreate calendar list management section in Settings page that displays all available calendars from connected accounts with enable/disable toggles. Include global refresh button and immediate sync on toggle.\n\n**Size:** M\n**Files:** src/pages/Settings.tsx, src/components/CalendarManagement.tsx (new), src/lib/db/types.ts\n\n## Approach\n\nCreate CalendarManagement component:\n- Expandable sections, one per connected account\n- For each account: fetch calendar list using CalendarClient.listCalendars()\n- Display calendars with enable/disable toggle switches\n- Show loading spinner with \"Fetching calendars from Google...\" during fetch\n- Global \"Refresh Calendars\" button at top to refetch all\n- Enforce 20 calendar limit: disable toggles when limit reached\n\nAdd isSyncEnabled field to Calendar type in IndexedDB.\n\nWhen calendar enabled:\n- Set isSyncEnabled = true in IndexedDB\n- Trigger immediate sync using SyncEngine.syncCalendar()\n- Show loading indicator during sync\n\nWhen calendar disabled:\n- Set isSyncEnabled = false in IndexedDB\n- Events remain in IndexedDB (filtered by useEvents hook in later task)\n\n## Key Context\n\nPer epic spec: \"Settings page shows expandable calendar list grouped by account\" with \"Maximum 20 calendars can be synced simultaneously\".\n\nFollow expandable section pattern from existing Settings.tsx structure.\n## Acceptance\n- [ ] src/components/CalendarManagement.tsx created with account sections\n- [ ] Calendar type in types.ts extended with isSyncEnabled boolean field\n- [ ] CalendarManagement fetches calendars using CalendarClient.listCalendars() per account\n- [ ] Loading spinner shown with message \"Fetching calendars from Google...\"\n- [ ] Each calendar has enable/disable toggle\n- [ ] Toggle updates isSyncEnabled in IndexedDB\n- [ ] Enabling calendar triggers immediate sync with SyncEngine.syncCalendar()\n- [ ] Global \"Refresh Calendars\" button refetches all calendar lists\n- [ ] 20 calendar limit enforced (count enabled calendars, disable toggles at limit)\n- [ ] Error message shown when limit reached: \"Maximum 20 calendars. Disable calendars to add more.\"\n- [ ] Failed calendar list load shows \"Failed to load calendars\" with Retry button\n- [ ] CalendarManagement integrated into Settings.tsx as new section\n## Done summary\nTBD\n\n## Evidence\n- Commits:\n- Tests:\n- PRs:\n"
+    },
+    {
+      "data": {
+        "assignee": null,
+        "claim_note": "",
+        "claimed_at": null,
+        "created_at": "2026-01-27T14:36:18.577952Z",
+        "depends_on": [],
+        "epic": "fn-2-m4p",
+        "id": "fn-2-m4p.4",
+        "priority": null,
+        "spec_path": ".flow/tasks/fn-2-m4p.4.md",
+        "status": "todo",
+        "title": "Update OAuth flow to sync primary calendar only",
+        "updated_at": "2026-01-27T14:37:31.996467Z"
+      },
+      "id": "fn-2-m4p.4",
+      "runtime": null,
+      "spec": "# fn-2-m4p.4 Update OAuth flow to sync primary calendar only\n\n## Description\nModify account addition flow in Settings to sync only the primary calendar by default instead of all calendars. Store all available calendars in IndexedDB with isSyncEnabled flag.\n\n**Size:** S\n**Files:** src/pages/Settings.tsx\n\n## Approach\n\nUpdate handleAccountAdded function in Settings.tsx (around line 24-70):\n- After fetching calendar list with CalendarClient.listCalendars()\n- Identify primary calendar (primary: true field in Google API response)\n- Store ALL calendars in IndexedDB with addCalendar()\n- Set isSyncEnabled = true for primary calendar only\n- Set isSyncEnabled = false for all other calendars\n- Only sync the primary calendar initially (skip full account sync)\n\nThis allows users to manually enable additional calendars via CalendarManagement UI from Task 3.\n\n## Key Context\n\nPer epic spec: \"Smart defaults for new accounts: When adding an account, sync primary calendar only by default\".\n\nGoogle Calendar API returns primary flag in calendar list response.\n## Acceptance\n- [ ] Settings.tsx handleAccountAdded fetches calendar list after account creation\n- [ ] All calendars from account stored in IndexedDB via addCalendar()\n- [ ] Primary calendar identified from Google API response (primary: true)\n- [ ] Primary calendar has isSyncEnabled = true\n- [ ] All other calendars have isSyncEnabled = false\n- [ ] Only primary calendar synced initially (not full account sync)\n- [ ] User can enable additional calendars via CalendarManagement UI\n## Done summary\nTBD\n\n## Evidence\n- Commits:\n- Tests:\n- PRs:\n"
+    },
+    {
+      "data": {
+        "assignee": null,
+        "claim_note": "",
+        "claimed_at": null,
+        "created_at": "2026-01-27T14:36:18.664807Z",
+        "depends_on": [],
+        "epic": "fn-2-m4p",
+        "id": "fn-2-m4p.5",
+        "priority": null,
+        "spec_path": ".flow/tasks/fn-2-m4p.5.md",
+        "status": "todo",
+        "title": "Simplify EventForm with expandable advanced fields",
+        "updated_at": "2026-01-27T14:37:49.627961Z"
+      },
+      "id": "fn-2-m4p.5",
+      "runtime": null,
+      "spec": "# fn-2-m4p.5 Simplify EventForm with expandable advanced fields\n\n## Description\nRefactor EventForm to show minimal fields by default (title, time, calendar) with description, location, and attendees hidden behind expandable \"More options\" section. Update calendar dropdown to flat list with account badges and remember last used calendar.\n\n**Size:** M\n**Files:** src/components/EventForm.tsx, src/components/EventForm.css\n\n## Approach\n\nRestructure EventForm layout:\n- Always visible: title, start/end time, all-day toggle, calendar dropdown\n- Collapsible section: \"More options\" button/link that expands to show description, location, attendees\n- Use details/summary HTML elements or custom collapse state\n\nCalendar dropdown improvements:\n- Flat list format: \"Calendar Name (account@gmail.com)\"\n- Filter to only show calendars where isSyncEnabled = true\n- Sort by recently used (track in localStorage under 'wolfcal:lastUsedCalendar')\n- Default to last used calendar from localStorage\n\nFollow existing EventForm structure at src/components/EventForm.tsx, add collapsible section for advanced fields.\n\n## Key Context\n\nPer epic spec: \"Minimal form by default: Show only title, start/end time, and calendar dropdown\" with \"Calendar dropdown is flat list with account email badges, sorted by recently used\".\n## Acceptance\n- [ ] EventForm shows title, time, all-day toggle, calendar dropdown always visible\n- [ ] Description, location, attendees hidden behind \"More options\" expandable section\n- [ ] \"More options\" section collapses/expands on click\n- [ ] Calendar dropdown shows format: \"Calendar Name (email@gmail.com)\"\n- [ ] Calendar dropdown filtered to only enabled calendars (isSyncEnabled = true)\n- [ ] Calendar dropdown sorted by recently used first\n- [ ] Last selected calendar stored in localStorage under 'wolfcal:lastUsedCalendar'\n- [ ] Calendar dropdown defaults to last used calendar on form open\n- [ ] Existing form validation and submit logic preserved\n- [ ] Styling updated for collapsible section\n## Done summary\nTBD\n\n## Evidence\n- Commits:\n- Tests:\n- PRs:\n"
+    },
+    {
+      "data": {
+        "assignee": null,
+        "claim_note": "",
+        "claimed_at": null,
+        "created_at": "2026-01-27T14:36:18.754285Z",
+        "depends_on": [
+          "fn-2-m4p.5"
+        ],
+        "epic": "fn-2-m4p",
+        "id": "fn-2-m4p.6",
+        "priority": null,
+        "spec_path": ".flow/tasks/fn-2-m4p.6.md",
+        "status": "todo",
+        "title": "Add optimistic UI updates for event creation",
+        "updated_at": "2026-01-27T14:38:31.742721Z"
+      },
+      "id": "fn-2-m4p.6",
+      "runtime": null,
+      "spec": "# fn-2-m4p.6 Add optimistic UI updates for event creation\n\n## Description\nImplement optimistic UI updates for event creation. Add events to calendar view immediately with 80% opacity before API confirmation. Revert event and show error toast on API failure.\n\n**Size:** M\n**Files:** src/components/EventModal.tsx, src/components/Calendar.tsx, src/hooks/useEvents.ts\n\n## Approach\n\nUpdate EventModal handleSubmit flow:\n1. Generate temporary event ID (use timestamp or crypto.randomUUID())\n2. Add event to IndexedDB with pendingSync flag\n3. Update Calendar view immediately (useEvents hook returns pending events)\n4. Apply 80% opacity to pending events in Calendar rendering\n5. Call API in background\n6. On success: clear pendingSync flag, update with real event ID from Google\n7. On error: remove event from IndexedDB, show error toast, revert calendar view\n\nAdd toast notification utility or component for error messages.\n\nUpdate useEvents hook to include events with pendingSync flag.\n\n## Key Context\n\nPer epic spec: \"Add event to calendar immediately with 80% opacity, revert on API error with error message\" and \"Newly created events appear immediately in calendar view\".\n\nFollow existing pending indicator pattern from src/hooks/useEvents.ts which already shows pending changes with clock icon.\n## Acceptance\n- [ ] EventModal generates temporary event ID for optimistic update\n- [ ] Event added to IndexedDB with pendingSync flag before API call\n- [ ] Calendar view shows event immediately with 80% opacity\n- [ ] useEvents hook returns events with pendingSync flag\n- [ ] Calendar.tsx applies 80% opacity style to pending events\n- [ ] API call runs in background after UI update\n- [ ] On API success: pendingSync flag cleared, real event ID updated\n- [ ] On API failure: event removed from IndexedDB and calendar view\n- [ ] Error toast notification shown on failure\n- [ ] Toast component created or reused for error display\n## Done summary\nTBD\n\n## Evidence\n- Commits:\n- Tests:\n- PRs:\n"
+    },
+    {
+      "data": {
+        "assignee": null,
+        "claim_note": "",
+        "claimed_at": null,
+        "created_at": "2026-01-27T14:36:18.840404Z",
+        "depends_on": [
+          "fn-2-m4p.1",
+          "fn-2-m4p.3",
+          "fn-2-m4p.5",
+          "fn-2-m4p.6"
+        ],
+        "epic": "fn-2-m4p",
+        "id": "fn-2-m4p.7",
+        "priority": null,
+        "spec_path": ".flow/tasks/fn-2-m4p.7.md",
+        "status": "todo",
+        "title": "Update docs for new OAuth and calendar management flow",
+        "updated_at": "2026-01-27T14:38:32.092149Z"
+      },
+      "id": "fn-2-m4p.7",
+      "runtime": null,
+      "spec": "# fn-2-m4p.7 Update docs for new OAuth and calendar management flow\n\n## Description\nUpdate documentation to reflect new OAuth flow (Settings-based credentials), calendar management UI, simplified event form, and optimistic UI behavior.\n\n**Size:** M\n**Files:** docs/USER_GUIDE.md, docs/SETUP.md, docs/OAUTH_CONFIG.md, README.md\n\n## Approach\n\nUpdate docs/USER_GUIDE.md:\n- Account Management section: Change OAuth credential location from per-account to Settings\n- Settings section: Document new calendar enable/disable UI\n- Managing Events section: Document simplified form with expandable fields, optimistic UI behavior\n\nUpdate docs/SETUP.md:\n- Step 3: Rewrite to reflect Settings-based OAuth configuration\n- Step 4: Update additional account process (no re-entering credentials)\n\nUpdate docs/OAUTH_CONFIG.md:\n- Step 8: Change from per-account to Settings-based credential usage\n\nUpdate README.md:\n- Features section: Mention centralized OAuth configuration\n\n## Key Context\n\nPer docs-gap-scout findings: USER_GUIDE, SETUP, and OAUTH_CONFIG need updates for OAuth flow changes and calendar management features.\n\nFollow existing documentation style with numbered steps, bold UI element names, and cross-references.\n## Acceptance\n- [ ] docs/USER_GUIDE.md Account Management section updated for Settings-based OAuth\n- [ ] docs/USER_GUIDE.md Settings section documents calendar enable/disable UI\n- [ ] docs/USER_GUIDE.md Managing Events section documents simplified form and expandable fields\n- [ ] docs/USER_GUIDE.md documents optimistic UI behavior (80% opacity, error revert)\n- [ ] docs/SETUP.md Step 3 rewritten for Settings OAuth configuration\n- [ ] docs/SETUP.md Step 4 updated (no credential re-entry for additional accounts)\n- [ ] docs/OAUTH_CONFIG.md Step 8 updated to reference Settings\n- [ ] README.md features section mentions centralized OAuth\n- [ ] All cross-references between docs updated\n- [ ] Screenshot placeholders updated where OAuth flow changed\n## Done summary\nTBD\n\n## Evidence\n- Commits:\n- Tests:\n- PRs:\n"
+    }
+  ]
+}

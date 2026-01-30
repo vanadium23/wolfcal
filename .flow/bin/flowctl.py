@@ -958,6 +958,7 @@ def run_codex_exec(
     cmd = [
         codex,
         "exec",
+        # "--model_provider=openrouter",
         "--model",
         effective_model,
         "-c",

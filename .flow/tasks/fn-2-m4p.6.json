@@ -1,0 +1,16 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-01-27T14:36:18.754285Z",
+  "depends_on": [
+    "fn-2-m4p.5"
+  ],
+  "epic": "fn-2-m4p",
+  "id": "fn-2-m4p.6",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-2-m4p.6.md",
+  "status": "todo",
+  "title": "Add optimistic UI updates for event creation",
+  "updated_at": "2026-01-27T14:38:31.742721Z"
+}
