@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { validateOAuthCredentials, type ValidationResult } from '../lib/auth/validation'
 
 interface OAuthCredentials {
   clientId: string
@@ -12,6 +13,7 @@ export default function CredentialForm() {
   })
   const [isSaved, setIsSaved] = useState(false)
   const [showSecret, setShowSecret] = useState(false)
+  const [validationStatus, setValidationStatus] = useState<ValidationResult | null>(null)
 
   // Load credentials from localStorage on mount
   useEffect(() => {
@@ -27,11 +29,25 @@ export default function CredentialForm() {
     }
   }, [])
 
+  const handleValidate = () => {
+    const result = validateOAuthCredentials(credentials.clientId, credentials.clientSecret)
+    setValidationStatus(result)
+
+    if (result.valid) {
+      alert('Credentials format is valid')
+    } else {
+      alert(`Validation failed:\n${result.errors.join('\n')}`)
+    }
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!credentials.clientId.trim() || !credentials.clientSecret.trim()) {
-      alert('Please enter both Client ID and Client Secret')
+    // Validate credentials before saving
+    const result = validateOAuthCredentials(credentials.clientId, credentials.clientSecret)
+    if (!result.valid) {
+      alert(`Please fix validation errors:\n${result.errors.join('\n')}`)
+      setValidationStatus(result)
       return
     }
 
@@ -40,7 +56,8 @@ export default function CredentialForm() {
     localStorage.setItem('wolfcal:oauth:clientSecret', credentials.clientSecret.trim())
 
     setIsSaved(true)
-    alert('OAuth credentials saved successfully!')
+    setValidationStatus(result)
+    alert('OAuth configured successfully. You can now add accounts.')
   }
 
   const handleClear = () => {
@@ -52,6 +69,7 @@ export default function CredentialForm() {
     localStorage.removeItem('wolfcal:oauth:clientSecret')
     setCredentials({ clientId: '', clientSecret: '' })
     setIsSaved(false)
+    setValidationStatus(null)
   }
 
   return (
@@ -95,6 +113,9 @@ export default function CredentialForm() {
       </div>
 
       <div className="form-actions">
+        <button type="button" className="btn btn-secondary" onClick={handleValidate}>
+          Validate
+        </button>
         <button type="submit" className="btn btn-primary">
           {isSaved ? 'Update Credentials' : 'Save Credentials'}
         </button>
@@ -105,7 +126,24 @@ export default function CredentialForm() {
         )}
       </div>
 
-      {isSaved && (
+      {validationStatus && (
+        <div className={validationStatus.valid ? 'validation-success' : 'validation-error'}>
+          {validationStatus.valid ? (
+            <p>✓ Valid - Credentials format is correct</p>
+          ) : (
+            <div>
+              <p>✗ Invalid - Please fix the following:</p>
+              <ul>
+                {validationStatus.errors.map((error, index) => (
+                  <li key={index}>{error}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
+
+      {isSaved && validationStatus?.valid && (
         <p className="success-message">
           ✓ OAuth credentials are configured. You can now add Google accounts.
         </p>
