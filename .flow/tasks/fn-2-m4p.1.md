@@ -32,9 +32,8 @@ Current implementation already partially reads from localStorage (lines 34-35) b
 - [ ] Enabled button calls initiateOAuth with localStorage credentials
 - [ ] Button styling updates to show disabled state (grayed out, cursor: not-allowed)
 ## Done summary
-TBD
-
+Refactored AddAccountButton to remove embedded OAuth credential form and use credentials from Settings localStorage.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 3d249bef17fd8605c39a604f526677bd1952c738
+- Tests: Code review - verified acceptance criteria
 - PRs:
