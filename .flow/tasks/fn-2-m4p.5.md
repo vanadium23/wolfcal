@@ -15,9 +15,11 @@ Restructure EventForm layout:
 
 Calendar dropdown improvements:
 - Flat list format: "Calendar Name (account@gmail.com)"
-- Filter to only show calendars where isSyncEnabled = true
+- Filter to only show calendars where visible = true (per fn-2-m4p.4 implementation)
 - Sort by recently used (track in localStorage under 'wolfcal:lastUsedCalendar')
 - Default to last used calendar from localStorage
+
+<!-- Updated by plan-sync: fn-2-m4p.4 used `visible` field not `isSyncEnabled` -->
 
 Follow existing EventForm structure at src/components/EventForm.tsx, add collapsible section for advanced fields.
 
@@ -29,7 +31,7 @@ Per epic spec: "Minimal form by default: Show only title, start/end time, and ca
 - [ ] Description, location, attendees hidden behind "More options" expandable section
 - [ ] "More options" section collapses/expands on click
 - [ ] Calendar dropdown shows format: "Calendar Name (email@gmail.com)"
-- [ ] Calendar dropdown filtered to only enabled calendars (isSyncEnabled = true)
+- [ ] Calendar dropdown filtered to only enabled calendars (visible = true)
 - [ ] Calendar dropdown sorted by recently used first
 - [ ] Last selected calendar stored in localStorage under 'wolfcal:lastUsedCalendar'
 - [ ] Calendar dropdown defaults to last used calendar on form open

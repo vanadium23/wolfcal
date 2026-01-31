@@ -32,9 +32,8 @@ Google Calendar API returns primary flag in calendar list response.
 - [ ] Only primary calendar synced initially (not full account sync)
 - [ ] User can enable additional calendars via CalendarManagement UI
 ## Done summary
-TBD
-
+Updated OAuth flow to sync primary calendar only by default. Extended CalendarClient.listCalendars() with pagination support, modified Settings.handleAccountAdded to fetch and store all calendars with visibility flags, and updated SyncEngine to only sync visible calendars.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: f99aa9f
+- Tests: npm run build
 - PRs:

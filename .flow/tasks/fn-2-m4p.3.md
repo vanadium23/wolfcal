@@ -16,16 +16,18 @@ Create CalendarManagement component:
 - Global "Refresh Calendars" button at top to refetch all
 - Enforce 20 calendar limit: disable toggles when limit reached
 
-Add isSyncEnabled field to Calendar type in IndexedDB.
+Add visible field to Calendar type in IndexedDB (already exists per fn-2-m4p.4).
 
 When calendar enabled:
-- Set isSyncEnabled = true in IndexedDB
+- Set visible = true in IndexedDB
 - Trigger immediate sync using SyncEngine.syncCalendar()
 - Show loading indicator during sync
 
 When calendar disabled:
-- Set isSyncEnabled = false in IndexedDB
+- Set visible = false in IndexedDB
 - Events remain in IndexedDB (filtered by useEvents hook in later task)
+
+<!-- Updated by plan-sync: fn-2-m4p.4 used `visible` field not `isSyncEnabled` -->
 
 ## Key Context
 
@@ -36,11 +38,11 @@ Note: OAuth credential validation (fn-2-m4p.2) performs format-only checks; real
 Follow expandable section pattern from existing Settings.tsx structure.
 ## Acceptance
 - [ ] src/components/CalendarManagement.tsx created with account sections
-- [ ] Calendar type in types.ts extended with isSyncEnabled boolean field
+- [ ] Calendar type in types.ts already has visible boolean field (added in fn-2-m4p.4)
 - [ ] CalendarManagement fetches calendars using CalendarClient.listCalendars() per account
 - [ ] Loading spinner shown with message "Fetching calendars from Google..."
 - [ ] Each calendar has enable/disable toggle
-- [ ] Toggle updates isSyncEnabled in IndexedDB
+- [ ] Toggle updates visible field in IndexedDB
 - [ ] Enabling calendar triggers immediate sync with SyncEngine.syncCalendar()
 - [ ] Global "Refresh Calendars" button refetches all calendar lists
 - [ ] 20 calendar limit enforced (count enabled calendars, disable toggles at limit)
