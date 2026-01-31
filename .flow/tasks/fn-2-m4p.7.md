@@ -12,6 +12,7 @@ Update docs/USER_GUIDE.md:
 - Account Management section: Change OAuth credential location from per-account to Settings
 - Settings section: Document new calendar enable/disable UI and format-only credential validation
 - Managing Events section: Document simplified form with expandable fields, optimistic UI behavior
+- Note: Last used calendar stored in localStorage under 'wolfcal:lastUsedCalendarId' for persistence
 
 Update docs/SETUP.md:
 - Step 3: Rewrite to reflect Settings-based OAuth configuration
