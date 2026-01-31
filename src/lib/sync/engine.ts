@@ -517,16 +517,24 @@ export class SyncEngine {
 
     try {
       // Fetch all calendars for the account
-      const calendars = await getCalendarsByAccount(accountId);
+      const allCalendars = await getCalendarsByAccount(accountId);
 
-      if (calendars.length === 0) {
+      if (allCalendars.length === 0) {
         console.log(`No calendars found for account ${accountId}`);
         return accountResult;
       }
 
-      console.log(`Syncing ${calendars.length} calendars for account ${accountId}`);
+      // Filter to only sync visible calendars
+      const calendars = allCalendars.filter((calendar) => calendar.visible);
 
-      // Sync each calendar
+      if (calendars.length === 0) {
+        console.log(`No visible calendars to sync for account ${accountId}`);
+        return accountResult;
+      }
+
+      console.log(`Syncing ${calendars.length} of ${allCalendars.length} visible calendars for account ${accountId}`);
+
+      // Sync each visible calendar
       for (const calendar of calendars) {
         try {
           const result = await this.syncCalendar(accountId, calendar.id);

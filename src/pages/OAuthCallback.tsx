@@ -19,7 +19,6 @@ export default function OAuthCallback() {
         // Parse URL parameters
         const params = new URLSearchParams(window.location.search);
         const code = params.get('code');
-        const state = params.get('state');
         const error = params.get('error');
 
         // Check for errors from Google

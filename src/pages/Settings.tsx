@@ -52,34 +52,51 @@ export default function Settings() {
         updatedAt: Date.now(),
       })
 
-      // Find primary calendar (main calendar == name matches email)
-      const calendarList = await calendarClient.listCalendars(accountId)
+      // Fetch all calendars with pagination
+      const allCalendars = []
+      let pageToken: string | undefined
+      do {
+        const response = await calendarClient.listCalendars(accountId, 250, pageToken)
+        allCalendars.push(...response.items)
+        pageToken = response.nextPageToken
+      } while (pageToken)
+
+      if (allCalendars.length === 0) {
+        throw new Error(`No calendars found for account ${email}`)
+      }
+
+      // Find primary calendar
       const primaryCalendar =
-        calendarList.items.find((calendar) => calendar.primary) ||
-        calendarList.items.find((calendar) => calendar.id === email) ||
-        calendarList.items.find((calendar) => calendar.summary === email)
+        allCalendars.find((calendar) => calendar.primary) ||
+        allCalendars.find((calendar) => calendar.id === email) ||
+        allCalendars.find((calendar) => calendar.summary === email)
 
       if (!primaryCalendar) {
         throw new Error(`Primary calendar not found for account ${email}`)
       }
 
-      await addCalendar({
-        id: primaryCalendar.id,
-        accountId,
-        summary: primaryCalendar.summary || email,
-        description: primaryCalendar.description,
-        color: primaryCalendar.colorId,
-        backgroundColor: primaryCalendar.backgroundColor,
-        visible: true,
-        primary:
-          primaryCalendar.primary === true ||
-          primaryCalendar.id === email ||
-          primaryCalendar.summary === email,
-        createdAt: Date.now(),
-        updatedAt: Date.now(),
-      })
+      // Store all calendars in IndexedDB
+      for (const calendar of allCalendars) {
+        const isPrimary =
+          calendar.primary === true ||
+          calendar.id === email ||
+          calendar.summary === email
 
-      // Initial sync to fetch events into IndexedDB
+        await addCalendar({
+          id: calendar.id,
+          accountId,
+          summary: calendar.summary || email,
+          description: calendar.description,
+          color: calendar.colorId,
+          backgroundColor: calendar.backgroundColor,
+          visible: isPrimary, // Only primary calendar visible by default
+          primary: isPrimary,
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        })
+      }
+
+      // Initial sync to fetch events into IndexedDB (primary calendar only)
       const syncEngine = new SyncEngine()
       await syncEngine.syncCalendar(accountId, primaryCalendar.id)
 

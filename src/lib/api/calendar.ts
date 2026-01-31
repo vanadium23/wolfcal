@@ -204,11 +204,27 @@ export class CalendarClient {
   /**
    * Lists all calendars for an account
    * @param accountId - Account ID
-   * @returns Array of calendars
+   * @param maxResults - Maximum number of results per page (optional, default: all)
+   * @param pageToken - Token for pagination (optional)
+   * @returns Calendar list response with pagination support
    */
-  async listCalendars(accountId: string): Promise<GoogleCalendarListResponse> {
+  async listCalendars(
+    accountId: string,
+    maxResults?: number,
+    pageToken?: string
+  ): Promise<GoogleCalendarListResponse> {
     return retryWithBackoff(async () => {
-      const url = `${GOOGLE_CALENDAR_API_BASE}/users/me/calendarList`;
+      const params = new URLSearchParams();
+      if (maxResults) {
+        params.set('maxResults', String(maxResults));
+      }
+      if (pageToken) {
+        params.set('pageToken', pageToken);
+      }
+
+      const url = `${GOOGLE_CALENDAR_API_BASE}/users/me/calendarList${
+        params.toString() ? '?' + params.toString() : ''
+      }`;
       return this.makeAuthenticatedRequest<GoogleCalendarListResponse>(accountId, url);
     });
   }

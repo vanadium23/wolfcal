@@ -34,7 +34,6 @@ interface WolfCalDBSchema extends DBSchema {
     value: Calendar;
     indexes: {
       'by-account': string;
-      'by-visible': boolean;
     };
   };
   events: {
@@ -104,7 +103,6 @@ export async function initDB(): Promise<IDBPDatabase<WolfCalDBSchema>> {
           keyPath: 'id',
         });
         calendarStore.createIndex('by-account', 'accountId', { unique: false });
-        calendarStore.createIndex('by-visible', 'visible', { unique: false });
 
         // Events store
         const eventStore = db.createObjectStore('events', {
