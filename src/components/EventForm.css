@@ -83,6 +83,59 @@
   color: #721c24;
 }
 
+/* More Options Toggle */
+.more-options-toggle {
+  background: transparent;
+  border: none;
+  color: #4285f4;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+  margin-bottom: 0.5rem;
+}
+
+.more-options-toggle:hover {
+  color: #3367d6;
+  text-decoration: underline;
+}
+
+.more-options-toggle:active {
+  color: #1e52ba;
+}
+
+/* Advanced Fields Section */
+.advanced-fields {
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 1.5rem;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+.advanced-fields .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.advanced-fields .form-group:last-child {
+  margin-bottom: 0;
+}
+
 /* Attendee Management */
 .attendee-input-group {
   display: flex;
@@ -295,6 +348,23 @@
 
   .event-form select.form-input {
     background: #333;
+  }
+
+  .more-options-toggle {
+    color: #5b9ff5;
+  }
+
+  .more-options-toggle:hover {
+    color: #8bb9f7;
+  }
+
+  .more-options-toggle:active {
+    color: #4285f4;
+  }
+
+  .advanced-fields {
+    background: #2a2a2a;
+    border-color: #444;
   }
 
   .modal-content {

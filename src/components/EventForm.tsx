@@ -17,6 +17,7 @@ interface EventFormProps {
   initialRange?: { start: Date; end: Date; allDay: boolean }; // Optional selection range
   onSubmit: (data: EventFormData) => void | Promise<void>;
   onCancel: () => void;
+  accountMap?: Record<string, { email: string }>; // Map of accountId to account info for calendar display
 }
 
 export default function EventForm({
@@ -26,7 +27,26 @@ export default function EventForm({
   initialRange,
   onSubmit,
   onCancel,
+  accountMap = {},
 }: EventFormProps) {
+  // Get the last used calendar from localStorage
+  const getLastUsedCalendarId = (): string | null => {
+    try {
+      return localStorage.getItem('wolfcal:lastUsedCalendarId');
+    } catch {
+      return null;
+    }
+  };
+
+  // Save the last used calendar to localStorage
+  const saveLastUsedCalendarId = (calendarId: string) => {
+    try {
+      localStorage.setItem('wolfcal:lastUsedCalendarId', calendarId);
+    } catch {
+      // Silently fail if localStorage is not available
+    }
+  };
+
   // Initialize form state
   const [formData, setFormData] = useState<EventFormData>(() => {
     if (event) {
@@ -47,6 +67,13 @@ export default function EventForm({
       const end = initialRange?.end || new Date(now.getTime() + 60 * 60 * 1000);
       const isAllDay = initialRange?.allDay ?? false;
 
+      // Determine default calendar: last used > provided > first available
+      const lastUsedId = getLastUsedCalendarId();
+      const defaultId =
+        lastUsedId && calendars.some((c) => c.id === lastUsedId)
+          ? lastUsedId
+          : defaultCalendarId || calendars[0]?.id || '';
+
       return {
         summary: '',
         start: {
@@ -63,7 +90,7 @@ export default function EventForm({
         description: '',
         location: '',
         attendees: [],
-        calendarId: defaultCalendarId || calendars[0]?.id || '',
+        calendarId: defaultId,
       };
     }
   });
@@ -71,6 +98,7 @@ export default function EventForm({
   const [errors, setErrors] = useState<ValidationErrors>({});
   const [newAttendeeEmail, setNewAttendeeEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showAdvancedFields, setShowAdvancedFields] = useState(!!event); // Show advanced fields when editing
 
   // Update start/end format when allDay toggle changes
   useEffect(() => {
@@ -133,6 +161,8 @@ export default function EventForm({
 
     setIsSubmitting(true);
     try {
+      // Save the selected calendar as last used
+      saveLastUsedCalendarId(formData.calendarId);
       await onSubmit(formData);
       // Parent will handle closing the form
     } catch (error) {
@@ -288,86 +318,117 @@ export default function EventForm({
           onChange={(e) => setFormData({ ...formData, calendarId: e.target.value })}
           className="form-input"
         >
-          {calendars.map((calendar) => (
-            <option key={calendar.id} value={calendar.id}>
-              {calendar.summary}
-            </option>
-          ))}
+          {calendars
+            .filter((cal) => cal.visible) // Only show visible calendars
+            .sort((a, b) => {
+              // Sort by recently used, then by name
+              const lastUsedId = localStorage.getItem('wolfcal:lastUsedCalendarId');
+              if (a.id === lastUsedId) return -1;
+              if (b.id === lastUsedId) return 1;
+              return a.summary.localeCompare(b.summary);
+            })
+            .map((calendar) => {
+              const account = accountMap[calendar.accountId];
+              const displayText = account
+                ? `${calendar.summary} (${account.email})`
+                : calendar.summary;
+              return (
+                <option key={calendar.id} value={calendar.id}>
+                  {displayText}
+                </option>
+              );
+            })}
         </select>
       </div>
 
-      {/* Description */}
+      {/* More options toggle */}
       <div className="form-group">
-        <label htmlFor="event-description">Description</label>
-        <textarea
-          id="event-description"
-          value={formData.description}
-          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-          className="form-input"
-          placeholder="Add description"
-          rows={4}
-        />
+        <button
+          type="button"
+          className="more-options-toggle"
+          onClick={() => setShowAdvancedFields(!showAdvancedFields)}
+        >
+          {showAdvancedFields ? '− Less options' : '+ More options'}
+        </button>
       </div>
 
-      {/* Location */}
-      <div className="form-group">
-        <label htmlFor="event-location">Location</label>
-        <input
-          id="event-location"
-          type="text"
-          value={formData.location}
-          onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-          className="form-input"
-          placeholder="Add location"
-        />
-      </div>
+      {/* Advanced fields section (collapsible) */}
+      {showAdvancedFields && (
+        <div className="advanced-fields">
+          {/* Description */}
+          <div className="form-group">
+            <label htmlFor="event-description">Description</label>
+            <textarea
+              id="event-description"
+              value={formData.description}
+              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              className="form-input"
+              placeholder="Add description"
+              rows={4}
+            />
+          </div>
 
-      {/* Attendees */}
-      <div className="form-group">
-        <label htmlFor="event-attendees">Attendees</label>
-        <div className="attendee-input-group">
-          <input
-            id="event-attendees"
-            type="email"
-            value={newAttendeeEmail}
-            onChange={(e) => setNewAttendeeEmail(e.target.value)}
-            onKeyPress={(e) => {
-              if (e.key === 'Enter') {
-                e.preventDefault();
-                handleAddAttendee();
-              }
-            }}
-            className="form-input"
-            placeholder="email@example.com"
-          />
-          <button
-            type="button"
-            onClick={handleAddAttendee}
-            className="btn btn-secondary"
-          >
-            Add
-          </button>
+          {/* Location */}
+          <div className="form-group">
+            <label htmlFor="event-location">Location</label>
+            <input
+              id="event-location"
+              type="text"
+              value={formData.location}
+              onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+              className="form-input"
+              placeholder="Add location"
+            />
+          </div>
+
+          {/* Attendees */}
+          <div className="form-group">
+            <label htmlFor="event-attendees">Attendees</label>
+            <div className="attendee-input-group">
+              <input
+                id="event-attendees"
+                type="email"
+                value={newAttendeeEmail}
+                onChange={(e) => setNewAttendeeEmail(e.target.value)}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleAddAttendee();
+                  }
+                }}
+                className="form-input"
+                placeholder="email@example.com"
+              />
+              <button
+                type="button"
+                onClick={handleAddAttendee}
+                className="btn btn-secondary"
+              >
+                Add
+              </button>
+            </div>
+            {errors.attendees && <span className="error-message">{errors.attendees}</span>}
+
+            {formData.attendees && formData.attendees.length > 0 && (
+              <ul className="attendee-list">
+                {formData.attendees.map((attendee) => (
+                  <li key={attendee.email} className="attendee-item">
+                    <span>{attendee.email}</span>
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveAttendee(attendee.email)}
+                      className="btn-remove"
+                      aria-label={`Remove ${attendee.email}`}
+                    >
+                      ×
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
-        {errors.attendees && <span className="error-message">{errors.attendees}</span>}
-
-        {formData.attendees && formData.attendees.length > 0 && (
-          <ul className="attendee-list">
-            {formData.attendees.map((attendee) => (
-              <li key={attendee.email} className="attendee-item">
-                <span>{attendee.email}</span>
-                <button
-                  type="button"
-                  onClick={() => handleRemoveAttendee(attendee.email)}
-                  className="btn-remove"
-                  aria-label={`Remove ${attendee.email}`}
-                >
-                  ×
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      )}
 
       {/* General error */}
       {errors.general && (

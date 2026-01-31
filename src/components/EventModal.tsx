@@ -6,9 +6,10 @@ import {
   updateEvent,
   addPendingChange,
   getAllCalendars,
+  getAllAccounts,
   getEvent,
 } from '../lib/db';
-import type { CalendarEvent, Calendar, PendingChange } from '../lib/db/types';
+import type { CalendarEvent, Calendar, Account, PendingChange } from '../lib/db/types';
 import type { EventFormData } from '../lib/events/validation';
 import type { GoogleEvent } from '../lib/api/types';
 import './EventForm.css';
@@ -32,6 +33,7 @@ export default function EventModal({
 }: EventModalProps) {
   const [event, setEvent] = useState<CalendarEvent | undefined>(undefined);
   const [calendars, setCalendars] = useState<Calendar[]>([]);
+  const [accounts, setAccounts] = useState<Account[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -44,10 +46,13 @@ export default function EventModal({
       setError(null);
 
       try {
-        // Load calendars
+        // Load calendars and accounts
         const allCalendars = await getAllCalendars();
         const visibleCalendars = allCalendars.filter((c) => c.visible);
         setCalendars(visibleCalendars);
+
+        const allAccounts = await getAllAccounts();
+        setAccounts(allAccounts);
 
         // Load event if in edit mode
         if (eventId) {
@@ -291,6 +296,7 @@ export default function EventModal({
               initialRange={initialRange}
               onSubmit={handleSubmit}
               onCancel={onClose}
+              accountMap={Object.fromEntries(accounts.map((a) => [a.id, { email: a.email }]))}
             />
           )}
         </div>
