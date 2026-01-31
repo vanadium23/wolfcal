@@ -10,18 +10,20 @@ Update documentation to reflect new OAuth flow (Settings-based credentials), cal
 
 Update docs/USER_GUIDE.md:
 - Account Management section: Change OAuth credential location from per-account to Settings
-- Settings section: Document new calendar enable/disable UI
+- Settings section: Document new calendar enable/disable UI and format-only credential validation
 - Managing Events section: Document simplified form with expandable fields, optimistic UI behavior
 
 Update docs/SETUP.md:
 - Step 3: Rewrite to reflect Settings-based OAuth configuration
 - Step 4: Update additional account process (no re-entering credentials)
+- Note: Credential validation in Settings performs format checks only (clientId pattern, secret length); real validation occurs during OAuth flow
 
 Update docs/OAUTH_CONFIG.md:
 - Step 8: Change from per-account to Settings-based credential usage
+- Note: Settings shows format validation status with alert() notifications
 
 Update README.md:
-- Features section: Mention centralized OAuth configuration
+- Features section: Mention centralized OAuth configuration with format validation
 
 ## Key Context
 

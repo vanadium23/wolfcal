@@ -31,6 +31,8 @@ When calendar disabled:
 
 Per epic spec: "Settings page shows expandable calendar list grouped by account" with "Maximum 20 calendars can be synced simultaneously".
 
+Note: OAuth credential validation (fn-2-m4p.2) performs format-only checks; real validation occurs during OAuth flow when credentials are actually used to fetch calendar lists.
+
 Follow expandable section pattern from existing Settings.tsx structure.
 ## Acceptance
 - [ ] src/components/CalendarManagement.tsx created with account sections

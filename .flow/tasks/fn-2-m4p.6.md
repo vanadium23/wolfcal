@@ -25,6 +25,8 @@ Update useEvents hook to include events with pendingSync flag.
 
 Per epic spec: "Add event to calendar immediately with 80% opacity, revert on API error with error message" and "Newly created events appear immediately in calendar view".
 
+Note: fn-2-m4p.2 established that notifications use existing alert() approach (not custom toast system). Follow this pattern for error notifications.
+
 Follow existing pending indicator pattern from src/hooks/useEvents.ts which already shows pending changes with clock icon.
 ## Acceptance
 - [ ] EventModal generates temporary event ID for optimistic update
