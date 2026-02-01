@@ -32,7 +32,7 @@ test.describe('Playwright E2E Validation', () => {
     }
   })
 
-  test('should support network interception for API mocking', async ({ page, context }) => {
+  test('should support network interception for API mocking', async ({ page }) => {
     // Mock Google Calendar API response
     await page.route('https://www.googleapis.com/calendar/v3/**', async route => {
       await route.fulfill({
@@ -83,6 +83,7 @@ test.describe('Playwright E2E Validation', () => {
     await page.screenshot({ path: '/tmp/playwright-debug.png' })
 
     // Verify screenshot was created
+    // @ts-ignore - Playwright tests run in Node context where fs/promises is available
     const fs = await import('fs/promises')
     const stats = await fs.stat('/tmp/playwright-debug.png')
     expect(stats.isFile()).toBe(true)

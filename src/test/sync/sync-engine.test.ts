@@ -74,9 +74,9 @@ describe('SyncEngine - Critical Flows', () => {
     })
 
     // Default DB mocks
-    vi.mocked(db.getSyncMetadata).mockResolvedValue(null)
+    vi.mocked(db.getSyncMetadata).mockResolvedValue(undefined)
     vi.mocked(db.getEventsByCalendar).mockResolvedValue([])
-    vi.mocked(db.getTombstone).mockResolvedValue(null)
+    vi.mocked(db.getTombstone).mockResolvedValue(undefined)
   })
 
   describe('Critical Flow: Incremental Sync with New Events', () => {
@@ -139,7 +139,7 @@ describe('SyncEngine - Critical Flows', () => {
   describe('Critical Flow: Full Sync (First Time)', () => {
     it('should perform full sync when no syncToken exists', async () => {
       // Setup: No existing metadata (first-time sync)
-      vi.mocked(db.getSyncMetadata).mockResolvedValue(null)
+      vi.mocked(db.getSyncMetadata).mockResolvedValue(undefined)
 
       const googleEvent: GoogleEvent = {
         id: 'event-1',
@@ -226,6 +226,7 @@ describe('SyncEngine - Critical Flows', () => {
         summary: 'Old Title',
         start: { dateTime: '2026-02-01T10:00:00Z' },
         end: { dateTime: '2026-02-01T11:00:00Z' },
+        createdAt: lastSyncAt - 2000,
         updatedAt: lastSyncAt - 1000,
         lastSyncedAt: lastSyncAt,
       }
@@ -265,9 +266,9 @@ describe('SyncEngine - Critical Flows', () => {
     it('should sync all visible calendars for an account', async () => {
       // Setup: Three calendars, two visible
       const mockCalendars = [
-        { id: 'cal-1', accountId: mockAccountId, visible: true },
-        { id: 'cal-2', accountId: mockAccountId, visible: true },
-        { id: 'cal-3', accountId: mockAccountId, visible: false },
+        { id: 'cal-1', accountId: mockAccountId, visible: true, summary: 'Cal 1', primary: true, createdAt: Date.now(), updatedAt: Date.now() },
+        { id: 'cal-2', accountId: mockAccountId, visible: true, summary: 'Cal 2', primary: false, createdAt: Date.now(), updatedAt: Date.now() },
+        { id: 'cal-3', accountId: mockAccountId, visible: false, summary: 'Cal 3', primary: false, createdAt: Date.now(), updatedAt: Date.now() },
       ]
       vi.mocked(db.getCalendarsByAccount).mockResolvedValue(mockCalendars)
 
@@ -330,8 +331,8 @@ describe('SyncEngine - Critical Flows', () => {
 
     it('should continue syncing other calendars if one fails', async () => {
       const mockCalendars = [
-        { id: 'cal-1', accountId: mockAccountId, visible: true },
-        { id: 'cal-2', accountId: mockAccountId, visible: true },
+        { id: 'cal-1', accountId: mockAccountId, visible: true, summary: 'Cal 1', primary: true, createdAt: Date.now(), updatedAt: Date.now() },
+        { id: 'cal-2', accountId: mockAccountId, visible: true, summary: 'Cal 2', primary: false, createdAt: Date.now(), updatedAt: Date.now() },
       ]
       vi.mocked(db.getCalendarsByAccount).mockResolvedValue(mockCalendars)
 

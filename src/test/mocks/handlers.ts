@@ -113,8 +113,8 @@ export const handlers = [
   }),
 
   // Mock event creation
-  http.post(`${googleCalendarBase}/calendars/:calendarId/events`, async ({ request, params }) => {
-    const body = await request.json()
+  http.post(`${googleCalendarBase}/calendars/:calendarId/events`, async ({ request, params: _params }) => {
+    const body = await request.json() as Record<string, unknown>
     return HttpResponse.json({
       id: `created-${Date.now()}`,
       ...body,
@@ -127,7 +127,7 @@ export const handlers = [
   // Mock event update (PUT)
   http.put(`${googleCalendarBase}/calendars/:calendarId/events/:eventId`, async ({ request, params }) => {
     const { eventId } = params
-    const body = await request.json()
+    const body = await request.json() as Record<string, unknown>
     return HttpResponse.json({
       id: eventId,
       ...body,
@@ -139,7 +139,7 @@ export const handlers = [
   // Mock event update (PATCH)
   http.patch(`${googleCalendarBase}/calendars/:calendarId/events/:eventId`, async ({ request, params }) => {
     const { eventId } = params
-    const body = await request.json()
+    const body = await request.json() as Record<string, unknown>
     return HttpResponse.json({
       id: eventId,
       ...body,
@@ -148,8 +148,7 @@ export const handlers = [
   }),
 
   // Mock event deletion
-  http.delete(`${googleCalendarBase}/calendars/:calendarId/events/:eventId`, ({ params }) => {
-    const { eventId } = params
+  http.delete(`${googleCalendarBase}/calendars/:calendarId/events/:eventId`, ({ params: _params }) => {
     // Return 204 No Content on successful deletion
     return new HttpResponse(null, { status: 204 })
   }),
@@ -157,7 +156,7 @@ export const handlers = [
   // Mock invitation response (PATCH attendees)
   http.patch(`${googleCalendarBase}/calendars/:calendarId/events/:eventId`, async ({ request, params }) => {
     const { eventId } = params
-    const body = await request.json()
+    const body = await request.json() as Record<string, unknown>
 
     // Return updated event with modified attendee status
     return HttpResponse.json({
@@ -166,7 +165,7 @@ export const handlers = [
       start: { dateTime: '2026-02-01T10:00:00Z' },
       end: { dateTime: '2026-02-01T11:00:00Z' },
       status: 'confirmed',
-      attendees: body.attendees || [
+      attendees: (body.attendees as Array<{ email: string }>) || [
         {
           email: 'user@example.com',
           self: true,

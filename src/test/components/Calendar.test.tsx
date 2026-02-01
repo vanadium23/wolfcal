@@ -1,7 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import calendar from '@fullcalendar/react'
 import Calendar from '../../components/Calendar'
 
 // Mock FullCalendar
@@ -29,6 +28,7 @@ vi.mock('../../hooks/useEvents', () => ({
     calendarColors: mockCalendarColors,
     loading: false,
     refresh: mockRefresh,
+    error: null,
   })),
 }))
 
@@ -51,32 +51,32 @@ vi.mock('../../lib/events/delete', () => ({
 
 // Mock child components
 vi.mock('../../components/FilterPanel', () => ({
-  default: ({ onFilterChange }: { onFilterChange: () => void }) => (
+  default: ({ onFilterChange: _onFilterChange }: { onFilterChange: () => void }) => (
     <div data-testid="filter-panel">Filter Panel</div>
   ),
 }))
 
 vi.mock('../../components/EventPopover', () => ({
-  default: ({ event, onClose }: { event: any; onClose: () => void }) => (
+  default: ({ event: _event, onClose: _onClose }: { event: any; onClose: () => void }) => (
     <div data-testid="event-popover">Event Popover</div>
   ),
 }))
 
 vi.mock('../../components/ConflictModal', () => ({
-  default: ({ isOpen, conflictedEvents, onClose }: any) => (
+  default: ({ isOpen, conflictedEvents: _conflictedEvents, onClose: _onClose }: any) => (
     isOpen ? <div data-testid="conflict-modal">Conflict Modal</div> : null
   ),
 }))
 
 vi.mock('../../components/EventModal', () => ({
-  default: ({ isOpen, eventId, onClose, onSaved }: any) => (
+  default: ({ isOpen, eventId: _eventId, onClose: _onClose, onSaved: _onSaved }: any) => (
     isOpen ? <div data-testid="event-modal">Event Modal</div> : null
   ),
 }))
 
 import { useEvents } from '../../hooks/useEvents'
 import { getEvent, getAllAccounts, getConflictedEvents } from '../../lib/db'
-import { softDelete } from '../../lib/events/delete'
+import { softDelete as _softDelete } from '../../lib/events/delete'
 
 describe('Calendar Component', () => {
   beforeEach(() => {
@@ -90,17 +90,30 @@ describe('Calendar Component', () => {
       calendarColors: mockCalendarColors,
       loading: false,
       refresh: mockRefresh,
+      error: null,
     })
 
     vi.mocked(getAllAccounts).mockResolvedValue([
-      { id: 'account-1', email: 'user@example.com' }
+      {
+        id: 'account-1',
+        email: 'user@example.com',
+        encryptedAccessToken: 'encrypted',
+        encryptedRefreshToken: 'encrypted',
+        tokenExpiry: Date.now() + 3600000,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      }
     ])
 
     vi.mocked(getEvent).mockResolvedValue({
       id: 'event-1',
+      accountId: 'account-1',
+      calendarId: 'cal-1',
       summary: 'Test Event',
       start: { dateTime: '2026-02-01T10:00:00Z' },
       end: { dateTime: '2026-02-01T11:00:00Z' },
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
     })
 
     vi.mocked(getConflictedEvents).mockResolvedValue([])
@@ -119,6 +132,7 @@ describe('Calendar Component', () => {
         calendarColors: mockCalendarColors,
         loading: true,
         refresh: mockRefresh,
+        error: null,
       })
 
       render(<Calendar />)

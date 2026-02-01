@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, waitFor, fireEvent } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import EventForm from '../../components/EventForm'
 import type { CalendarEvent, Calendar } from '../../lib/db/types'
@@ -21,7 +21,7 @@ const localStorageMock = (() => {
   }
 })()
 
-Object.defineProperty(global, 'localStorage', {
+Object.defineProperty(globalThis, 'localStorage', {
   value: localStorageMock,
 })
 
@@ -33,7 +33,9 @@ describe('EventForm Component', () => {
       summary: 'Primary Calendar',
       visible: true,
       backgroundColor: '#03a9f4',
-      foregroundColor: '#ffffff',
+      primary: true,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
     },
     {
       id: 'cal-2',
@@ -41,7 +43,9 @@ describe('EventForm Component', () => {
       summary: 'Secondary Calendar',
       visible: true,
       backgroundColor: '#795548',
-      foregroundColor: '#ffffff',
+      primary: false,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
     },
     {
       id: 'cal-hidden',
@@ -49,7 +53,9 @@ describe('EventForm Component', () => {
       summary: 'Hidden Calendar',
       visible: false,
       backgroundColor: '#ff0000',
-      foregroundColor: '#ffffff',
+      primary: false,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
     },
   ]
 
@@ -467,6 +473,7 @@ describe('EventForm Component', () => {
         end: { dateTime: '2026-02-01T11:00:00Z' },
         description: 'Test description',
         location: 'Test location',
+        createdAt: Date.now(),
         updatedAt: Date.now(),
       }
 
@@ -619,7 +626,8 @@ describe('EventForm Component', () => {
         end: { dateTime: '2026-02-01T11:00:00Z' },
         description: 'Edit my description',
         location: 'Edit my location',
-        attendees: [{ email: 'edit@example.com' }],
+        attendees: [{ email: 'edit@example.com', responseStatus: 'needsAction' }],
+        createdAt: Date.now(),
         updatedAt: Date.now(),
       }
 
@@ -646,6 +654,7 @@ describe('EventForm Component', () => {
         summary: 'Edit Me',
         start: { dateTime: '2026-02-01T10:00:00Z' },
         end: { dateTime: '2026-02-01T11:00:00Z' },
+        createdAt: Date.now(),
         updatedAt: Date.now(),
       }
 
