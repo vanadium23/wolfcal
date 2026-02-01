@@ -70,6 +70,8 @@ export interface CalendarEvent {
   lastSyncedAt?: number; // Timestamp of last successful sync
   // Soft delete field
   deleted?: boolean; // True if event has been soft-deleted locally
+  // Optimistic UI field
+  pendingSync?: boolean; // True if event is pending sync with Google Calendar
 }
 
 export interface SyncMetadata {
@@ -115,5 +117,5 @@ export interface ErrorLog {
 /**
  * Database schema version
  */
-export const DB_VERSION = 2;
+export const DB_VERSION = 3;
 export const DB_NAME = 'wolfcal';

@@ -2,10 +2,10 @@
  * Event popover component for displaying event details and invitation actions
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { CalendarEvent, PendingChange } from '../lib/db/types';
 import { CalendarClient } from '../lib/api/calendar';
-import { updateEvent, addPendingChange } from '../lib/db';
+import { updateEvent, addPendingChange, getPendingChangesByEvent, updatePendingChange } from '../lib/db';
 
 interface EventPopoverProps {
   event: CalendarEvent;
@@ -28,6 +28,19 @@ export default function EventPopover({
 }: EventPopoverProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [pendingError, setPendingError] = useState<PendingChange | null>(null);
+
+  // Check for pending errors when event changes
+  useEffect(() => {
+    async function checkPendingErrors() {
+      const pendingChanges = await getPendingChangesByEvent(event.id);
+      const failedChange = pendingChanges.find(
+        (change) => change.lastError && change.lastError.length > 0
+      );
+      setPendingError(failedChange || null);
+    }
+    checkPendingErrors();
+  }, [event.id]);
 
   // Find current user's attendee info
   const currentUserAttendee = event.attendees?.find(
@@ -112,6 +125,34 @@ export default function EventPopover({
     } catch (err) {
       console.error('Failed to respond to invitation:', err);
       setError(err instanceof Error ? err.message : 'Failed to update response');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  /**
+   * Handle retry for failed pending changes
+   */
+  const handleRetry = async () => {
+    if (!pendingError) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      // Reset retry count and clear error to re-queue for next processor run
+      await updatePendingChange({
+        ...pendingError,
+        retryCount: 0,
+        lastError: undefined,
+      });
+
+      // Notify parent to refresh events
+      onUpdate();
+      onClose();
+    } catch (err) {
+      console.error('Failed to retry pending change:', err);
+      setError(err instanceof Error ? err.message : 'Failed to retry sync');
     } finally {
       setLoading(false);
     }
@@ -378,6 +419,43 @@ export default function EventPopover({
             }}
           >
             Delete
+          </button>
+        </div>
+      )}
+
+      {/* Sync failed message with retry button */}
+      {pendingError && (
+        <div
+          style={{
+            marginTop: '12px',
+            padding: '8px',
+            backgroundColor: '#fef3c7',
+            borderRadius: '4px',
+            border: '1px solid #f59e0b',
+          }}
+        >
+          <div style={{ marginBottom: '8px', fontSize: '13px', color: '#92400e', fontWeight: 'bold' }}>
+            ⚠️ Sync failed
+          </div>
+          <div style={{ marginBottom: '8px', fontSize: '12px', color: '#78350f' }}>
+            {pendingError.lastError}
+          </div>
+          <button
+            onClick={handleRetry}
+            disabled={loading}
+            style={{
+              width: '100%',
+              padding: '6px 12px',
+              backgroundColor: loading ? '#d1d5db' : '#f59e0b',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: loading ? 'not-allowed' : 'pointer',
+              fontWeight: 'bold',
+              fontSize: '13px',
+            }}
+          >
+            {loading ? 'Retrying...' : 'Retry Sync'}
           </button>
         </div>
       )}

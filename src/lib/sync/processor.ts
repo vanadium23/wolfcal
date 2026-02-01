@@ -134,12 +134,22 @@ async function processPendingChange(
           googleEvent
         );
 
-        // Update local IndexedDB with created event (including server-generated ID)
+        // Deduplication: Delete temp event and insert real event
+        const tempEventId = change.eventId;
+        if (tempEventId && tempEventId.startsWith('temp-')) {
+          // Delete the temporary event from IndexedDB
+          await deleteLocalEvent(tempEventId);
+          console.log(`Deleted temporary event: ${tempEventId}`);
+        }
+
+        // Insert the real event from API response
         const localEvent = convertFromGoogleEvent(
           createdEvent,
           change.accountId,
           change.calendarId
         );
+        // Ensure pendingSync is false for synced events
+        localEvent.pendingSync = false;
         await addEvent(localEvent);
 
         result.success = true;

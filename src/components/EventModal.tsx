@@ -78,15 +78,17 @@ export default function EventModal({
 
   const handleSubmit = async (formData: EventFormData) => {
     try {
-      // Check if online
-      const isOnline = navigator.onLine;
-
-      if (isOnline) {
-        // Online: make API call and update IndexedDB
-        await saveEventOnline(formData);
+      // For new events, use optimistic UI (always add immediately with pendingSync)
+      if (!eventId) {
+        await saveEventOptimistic(formData);
       } else {
-        // Offline: queue to pending_changes and update IndexedDB
-        await saveEventOffline(formData);
+        // For updates, check if online
+        const isOnline = navigator.onLine;
+        if (isOnline) {
+          await saveEventOnline(formData);
+        } else {
+          await saveEventOffline(formData);
+        }
       }
 
       // Close modal and notify parent
@@ -113,6 +115,73 @@ export default function EventModal({
       return `${year}-${month}-${day}`;
     };
     return { startDate: format(start), endDate: format(end) };
+  };
+
+  const saveEventOptimistic = async (formData: EventFormData) => {
+    const calendar = calendars.find((c) => c.id === formData.calendarId);
+    if (!calendar) {
+      throw new Error('Calendar not found');
+    }
+
+    const allDayDates = formData.allDay && formData.start.date && formData.end.date
+      ? normalizeAllDayDates(formData.start.date, formData.end.date)
+      : null;
+
+    // Generate temporary UUID for optimistic update
+    const tempEventId = `temp-${crypto.randomUUID()}`;
+
+    // Create event data for IndexedDB with pendingSync flag
+    const calendarEvent: CalendarEvent = {
+      id: tempEventId,
+      accountId: calendar.accountId,
+      calendarId: calendar.id,
+      summary: formData.summary,
+      description: formData.description,
+      start: formData.allDay
+        ? { date: allDayDates?.startDate || formData.start.date, timeZone: formData.start.timeZone }
+        : { dateTime: new Date(formData.start.dateTime!).toISOString(), timeZone: formData.start.timeZone },
+      end: formData.allDay
+        ? { date: allDayDates?.endDate || formData.end.date, timeZone: formData.end.timeZone }
+        : { dateTime: new Date(formData.end.dateTime!).toISOString(), timeZone: formData.end.timeZone },
+      location: formData.location,
+      attendees: formData.attendees?.map((a) => ({
+        email: a.email,
+        displayName: a.displayName,
+        responseStatus: 'needsAction',
+      })),
+      status: 'confirmed',
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+      pendingSync: true, // Mark as pending sync
+    };
+
+    // Save to IndexedDB immediately (optimistic update)
+    await addEvent(calendarEvent);
+
+    // Queue to pending_changes with temp event ID
+    const pendingChange: PendingChange = {
+      id: `change-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      operation: 'create',
+      entityType: 'event',
+      accountId: calendar.accountId,
+      calendarId: calendar.id,
+      eventId: tempEventId, // Store temp ID for deduplication
+      eventData: {
+        summary: formData.summary,
+        description: formData.description,
+        start: calendarEvent.start,
+        end: calendarEvent.end,
+        location: formData.location,
+        attendees: calendarEvent.attendees,
+      },
+      createdAt: Date.now(),
+      retryCount: 0,
+    };
+
+    await addPendingChange(pendingChange);
+
+    // API call will happen in background via queue processor
+    // Queue processor will delete temp event and insert real event on success
   };
 
   const saveEventOnline = async (formData: EventFormData) => {
@@ -210,6 +279,7 @@ export default function EventModal({
     const tempEventId = eventId || `temp-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 
     // Create event data for IndexedDB
+    const isNewEvent = !eventId;
     const calendarEvent: CalendarEvent = {
       id: tempEventId,
       accountId: calendar.accountId,
@@ -231,6 +301,7 @@ export default function EventModal({
       status: 'confirmed',
       createdAt: event?.createdAt || Date.now(),
       updatedAt: Date.now(),
+      ...(isNewEvent ? { pendingSync: true } : {}), // Mark new events as pending sync
     };
 
     // Save to IndexedDB

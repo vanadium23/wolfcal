@@ -223,6 +223,12 @@ export async function deletePendingChange(id: string): Promise<void> {
   await db.delete('pending_changes', id);
 }
 
+export async function getPendingChangesByEvent(eventId: string): Promise<PendingChange[]> {
+  const db = await getDB();
+  const allChanges = await db.getAll('pending_changes');
+  return allChanges.filter((change) => change.eventId === eventId);
+}
+
 // ============================================================================
 // Tombstones CRUD
 // ============================================================================

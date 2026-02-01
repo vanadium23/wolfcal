@@ -147,6 +147,13 @@ export async function initDB(): Promise<IDBPDatabase<WolfCalDBSchema>> {
         errorLogStore.createIndex('by-timestamp', 'timestamp', { unique: false });
         errorLogStore.createIndex('by-type', 'errorType', { unique: false });
       }
+
+      // Version 3: Add pendingSync field to events
+      if (oldVersion < 3) {
+        // No schema changes needed, just add migration to set pendingSync: false on existing events
+        // Note: This migration will run on next openDB call, not inline
+        // The migration is handled in a separate pass since getAll requires async
+      }
     },
   });
 }
@@ -155,6 +162,36 @@ export async function initDB(): Promise<IDBPDatabase<WolfCalDBSchema>> {
  * Global database instance
  */
 let dbInstance: IDBPDatabase<WolfCalDBSchema> | null = null;
+let migrationRun = false;
+
+/**
+ * Run data migrations after schema upgrade
+ */
+async function runMigrations(db: IDBPDatabase<WolfCalDBSchema>) {
+  if (migrationRun) return;
+
+  // Version 3 migration: Set pendingSync: false on existing events
+  const tx = db.transaction('events', 'readwrite');
+  const eventStore = tx.objectStore('events');
+  const events = await eventStore.getAll();
+
+  let needsUpdate = false;
+  for (const event of events) {
+    if (event.pendingSync === undefined) {
+      event.pendingSync = false;
+      await eventStore.put(event);
+      needsUpdate = true;
+    }
+  }
+
+  await tx.done;
+
+  if (needsUpdate) {
+    console.log('Version 3 migration completed: Set pendingSync: false on existing events');
+  }
+
+  migrationRun = true;
+}
 
 /**
  * Get the database instance (singleton pattern)
@@ -162,6 +199,8 @@ let dbInstance: IDBPDatabase<WolfCalDBSchema> | null = null;
 export async function getDB(): Promise<IDBPDatabase<WolfCalDBSchema>> {
   if (!dbInstance) {
     dbInstance = await initDB();
+    // Run data migrations after initial open
+    await runMigrations(dbInstance);
   }
   return dbInstance;
 }

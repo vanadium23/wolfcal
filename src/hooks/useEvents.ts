@@ -42,6 +42,8 @@ function convertToEventInput(
     end: event.end.dateTime || event.end.date || '',
     allDay: isAllDay,
     backgroundColor,
+    // Apply 80% opacity for pending sync events
+    opacity: event.pendingSync ? 0.8 : 1,
     extendedProps: {
       description: event.description,
       location: event.location,
@@ -52,6 +54,7 @@ function convertToEventInput(
       isRecurring: isRecurringEvent(event),
       hasPendingChanges,
       hasConflict: event.hasConflict,
+      pendingSync: event.pendingSync,
     },
   };
 }
