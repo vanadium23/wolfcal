@@ -150,7 +150,7 @@ export default function CalendarManagement() {
 
       // Check 20 calendar limit when enabling
       if (newVisibleState && enabledCount >= 20) {
-        alert('Maximum 20 calendars per account (20/20 enabled). Disable a calendar to add more.')
+        alert('Maximum 20 calendars. Disable calendars to add more.')
         return
       }
 
@@ -307,7 +307,7 @@ export default function CalendarManagement() {
 
               {account.calendars.length > 0 && getEnabledCalendarCount(account.id) >= 20 && (
                 <div className="calendar-limit-warning">
-                  <p>Maximum 20 calendars enabled. Disable a calendar to add more.</p>
+                  <p>Maximum 20 calendars. Disable calendars to add more.</p>
                 </div>
               )}
             </div>
