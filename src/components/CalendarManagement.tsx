@@ -98,6 +98,8 @@ export default function CalendarManagement() {
             }
           } catch (error) {
             console.error(`Failed to load calendars for account ${account.id}:`, error)
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+            setErrors((prev) => ({ ...prev, [account.id]: errorMessage }))
             // Fall back to existing calendars in DB
             const calendars = await getCalendarsByAccount(account.id)
             return {
@@ -187,6 +189,8 @@ export default function CalendarManagement() {
           totalRefreshed += allCalendars.length
         } catch (error) {
           console.error(`Failed to refresh calendars for account ${account.id}:`, error)
+          const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+          setErrors((prev) => ({ ...prev, [account.id]: errorMessage }))
           // Continue with next account
         }
       }
