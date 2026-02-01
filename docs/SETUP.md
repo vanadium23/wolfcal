@@ -1,59 +1,77 @@
 # WolfCal Setup Guide
 
-This guide walks you through deploying WolfCal and connecting your first Google Calendar account.
+This guide walks you through setting up WolfCal and connecting your first Google Calendar account.
 
 ## Prerequisites
 
 Before you begin, ensure you have:
 
-1. **Docker and Docker Compose** installed on your system
-   - Docker version 20.10 or higher
-   - Docker Compose version 2.0 or higher
-   - Verify installation: `docker --version && docker-compose --version`
-
-2. **A Google account** with access to Google Calendar
+1. **A Google account** with access to Google Calendar
    - Free Gmail account is sufficient
    - No Google Workspace subscription required
 
-3. **A modern web browser**
+2. **A modern web browser**
    - Chrome (recommended) or Firefox
    - Safari and Edge may work but are not officially supported
 
-## Step 1: Deploy WolfCal with Docker Compose
+## Quick Start: Production (GitHub Pages)
 
-### 1.1 Clone the Repository
+The easiest way to use WolfCal is via the hosted production deployment:
 
+1. Visit **https://vanadium23.me/wolfcal/**
+2. Skip to [Step 2: Configure Google OAuth Credentials](#step-2-configure-google-oauth-credentials)
+
+The production deployment is automatically updated when code is pushed to the master branch.
+
+## Local Development Setup
+
+Choose one of the following options for local development:
+
+### Option A: npm run dev (Recommended for development)
+
+**Prerequisites:**
+- Node.js 20 or higher
+- npm or yarn
+
+**Steps:**
 ```bash
 git clone https://github.com/yourusername/wolfcal.git
 cd wolfcal
+npm install
+npm run dev
 ```
 
-### 1.2 Build and Start the Application
+Access WolfCal at http://localhost:5173
 
+**OAuth Redirect URI:** `http://localhost:5173/callback`
+
+### Option B: Docker + Caddy (For OAuth testing)
+
+**Prerequisites:**
+- Docker and Docker Compose installed
+- Docker version 20.10 or higher
+- Docker Compose version 2.0 or higher
+
+**Steps:**
 ```bash
+git clone https://github.com/yourusername/wolfcal.git
+cd wolfcal
 docker-compose up -d
 ```
 
-This command will:
+This will:
 - Build the WolfCal frontend application
 - Start a Caddy web server serving the application
 - Expose the application on port 8080
 
-### 1.3 Verify Deployment
-
-Check that the container is running:
-
+**Verify deployment:**
 ```bash
 docker ps | grep wolfcal
 ```
 
-You should see output like:
-```
-CONTAINER ID   IMAGE              COMMAND                  STATUS          PORTS
-abc123def456   wolfcal-caddy      "caddy run --config …"   Up 10 seconds   0.0.0.0:8080->8080/tcp
-```
+Access WolfCal at http://localhost:8080
 
-Open your browser and navigate to http://localhost:8080. You should see the WolfCal interface.
+**OAuth Redirect URI:** `http://localhost:8080/callback`
 
 ## Step 2: Configure Google OAuth Credentials
 
@@ -71,7 +89,9 @@ You will obtain:
 
 ### 3.1 Launch WolfCal
 
-Navigate to http://localhost:8080 in your browser.
+- **Production:** Navigate to https://vanadium23.me/wolfcal/
+- **Local (npm):** Navigate to http://localhost:5173
+- **Local (Docker):** Navigate to http://localhost:8080
 
 ### 3.2 Open Settings
 
@@ -196,7 +216,10 @@ To connect more Google accounts:
 **Symptoms:** After authorizing in Google, you see "Error 400: redirect_uri_mismatch"
 
 **Solutions:**
-1. Verify the callback URL in Google Cloud Console is exactly: `http://localhost:8080/callback`
+1. Verify the callback URL in Google Cloud Console matches your environment:
+   - **Production:** `https://vanadium23.me/wolfcal/callback`
+   - **Local (npm):** `http://localhost:5173/callback`
+   - **Local (Docker):** `http://localhost:8080/callback`
 2. Check for typos (no trailing slash, correct port)
 3. Re-save the OAuth credentials in Google Cloud Console
 4. Try the connection again

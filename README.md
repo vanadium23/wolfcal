@@ -25,34 +25,42 @@ WolfCal is a self-hosted calendar application that syncs with multiple Google Ca
 
 ### Prerequisites
 
-- Docker and Docker Compose installed
+- Node.js 20+ (for local development)
 - Google Cloud account (free tier is sufficient)
 - Modern web browser (Chrome or Firefox recommended)
 
-### Deployment
+### Production Deployment (GitHub Pages)
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/wolfcal.git
-cd wolfcal
-```
+WolfCal is deployed to GitHub Pages with automatic deployments on push to master:
 
-2. Build and start the application:
-```bash
-docker-compose up -d
-```
+1. Visit **https://vanadium23.me/wolfcal/**
 
-3. Access WolfCal at http://localhost:8080
-
-4. Set up Google OAuth credentials in Settings (required for first use):
+2. Set up Google OAuth credentials in Settings (required for first use):
    - Click **Settings** (gear icon)
    - Follow the detailed guide in [docs/OAUTH_CONFIG.md](docs/OAUTH_CONFIG.md)
    - You'll need to create a Google Cloud project and OAuth 2.0 credentials
-   - Configure the callback URL as `http://localhost:8080/callback`
+   - Configure the callback URL as `https://vanadium23.me/wolfcal/callback`
    - Enter Client ID and Client Secret in Settings and click **Save**
    - Click **Add Account** to connect your Google account
 
-5. Start using WolfCal!
+### Local Development
+
+**Option 1: npm run dev (Recommended for development)**
+```bash
+git clone https://github.com/yourusername/wolfcal.git
+cd wolfcal
+npm install
+npm run dev
+```
+Access at http://localhost:5173
+
+**Option 2: Docker + Caddy (For OAuth testing)**
+```bash
+docker-compose up -d
+```
+Access at http://localhost:8080
+
+Note: OAuth redirect URI for local dev is `http://localhost:5173/callback` (npm) or `http://localhost:8080/callback` (Docker).
 
 ## Documentation
 
@@ -69,7 +77,8 @@ WolfCal is a **frontend-only** web application:
 - **Calendar UI**: FullCalendar library
 - **Storage**: Browser IndexedDB (no backend database)
 - **Security**: Web Crypto API for OAuth token encryption
-- **Deployment**: Docker Compose + Caddy static file server
+- **Production**: GitHub Pages (automatic deployment on push to master)
+- **Local Dev**: npm dev server or Docker + Caddy
 
 All calendar data and OAuth tokens are stored in your browser's IndexedDB. When you connect a Google account, WolfCal syncs events within a 3-month window (1.5 months past and future) and keeps them available offline.
 
@@ -83,11 +92,11 @@ Safari and Edge may work but are not officially supported.
 
 ## Data Privacy
 
-- **No data sent to WolfCal servers** - There are no WolfCal servers; it's entirely self-hosted
+- **No data sent to WolfCal servers** - All communication is directly between your browser and Google APIs
 - **OAuth tokens encrypted** - Stored in IndexedDB using Web Crypto API encryption
 - **Browser storage only** - All data remains in your browser's IndexedDB
 - **Direct Google API access** - Your browser communicates directly with Google Calendar API
-- **Single-user deployment** - Each Docker instance is for one user (no multi-tenant data mixing)
+- **Self-hosted option** - Can be deployed locally using Docker + Caddy for complete control
 
 ## License
 

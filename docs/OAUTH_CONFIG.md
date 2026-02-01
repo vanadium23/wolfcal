@@ -128,14 +128,14 @@ Now you're ready to create the actual credentials WolfCal will use.
 1. **Application type:** Select **"Web application"**
 2. **Name:** `WolfCal Web Client` (or any descriptive name)
 3. **Authorized JavaScript origins:**
-   - Click **"Add URI"**
-   - Enter: `http://localhost:8080`
-   - (If deploying to a domain, also add `https://yourdomain.com`)
+   - For **production:** Add `https://vanadium23.me`
+   - For **local development (npm):** Add `http://localhost:5173`
+   - For **local development (Docker):** Add `http://localhost:8080`
 4. **Authorized redirect URIs:**
-   - Click **"Add URI"**
-   - Enter: `http://localhost:8080/callback`
-   - **Important:** This must be exactly `http://localhost:8080/callback` (no trailing slash)
-   - (If deploying to a domain, also add `https://yourdomain.com/callback`)
+   - For **production:** Add `https://vanadium23.me/wolfcal/callback`
+   - For **local development (npm):** Add `http://localhost:5173/callback`
+   - For **local development (Docker):** Add `http://localhost:8080/callback`
+   - **Important:** Ensure exact match - no trailing slashes, correct ports
 5. Click **"Create"**
 
 **Screenshot placeholder:** OAuth client ID configuration form filled out
@@ -176,7 +176,10 @@ Before leaving Google Cloud Console, verify everything is set up correctly:
 
 Now you can use these credentials to connect WolfCal to your Google account:
 
-1. Open WolfCal in your browser: http://localhost:8080
+1. Open WolfCal in your browser:
+   - **Production:** https://vanadium23.me/wolfcal/
+   - **Local (npm):** http://localhost:5173
+   - **Local (Docker):** http://localhost:8080
 2. Click **Settings** (gear icon)
 3. Under "OAuth Credentials", enter:
    - **Client ID:** Paste the Client ID from Step 6
@@ -198,10 +201,12 @@ See [SETUP.md](SETUP.md) for detailed instructions on connecting your account.
 **Cause:** The callback URL in your WolfCal doesn't match the redirect URI in Google Cloud Console.
 
 **Solution:**
-1. Verify the redirect URI in Google Cloud Console is exactly: `http://localhost:8080/callback`
-2. Check for typos (no trailing slash, correct port, http not https)
-3. If you changed the port in docker-compose.yml, update the redirect URI accordingly
-4. Save changes and wait 5 minutes for Google to propagate the update
+1. Verify the redirect URI in Google Cloud Console matches your environment:
+   - **Production:** `https://vanadium23.me/wolfcal/callback`
+   - **Local (npm):** `http://localhost:5173/callback`
+   - **Local (Docker):** `http://localhost:8080/callback`
+2. Check for typos (no trailing slash, correct port, correct protocol)
+3. Save changes and wait 5 minutes for Google to propagate the update
 
 ### Issue: "Access blocked: This app's request is invalid"
 
