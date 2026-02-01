@@ -2,65 +2,47 @@
  * Account Management Helpers for Playwright E2E Tests
  *
  * Utilities for creating, managing, and verifying mock accounts in tests.
- * Uses mock credentials from handlers-e2e.ts for consistency.
+ * Uses direct IndexedDB manipulation instead of app imports.
  */
 
 import type { Page } from '@playwright/test'
 import type { Account } from '../../../lib/db/types'
-import { MOCK_CREDENTIALS, TEST_EMAILS } from '../../mocks/handlers-e2e'
 
 /**
- * Create a mock account in IndexedDB
- *
- * Uses mock credentials from handlers-e2e.ts for consistency
- *
- * @param overrides - Override default account values
- * @returns The created account ID
+ * Create a mock account in IndexedDB using direct IndexedDB API
  */
 export async function createMockAccount(
   page: Page,
   overrides: Partial<Account> = {}
 ): Promise<string> {
   const accountId = await page.evaluate(async (accountData) => {
-    const { addAccount } = await import('@/lib/db')
+    const db = await new Promise<IDBDatabase>((resolve, reject) => {
+      const request = indexedDB.open('wolfcal', 3)
+      request.onsuccess = () => resolve(request.result)
+      request.onerror = () => reject(request.error)
+    })
 
     const account = {
-      id: accountData.id || TEST_EMAILS.primary,
-      email: accountData.email || TEST_EMAILS.primary,
+      id: accountData.id || 'test-e2e@example.com',
+      email: accountData.email || 'test-e2e@example.com',
       encryptedAccessToken: accountData.encryptedAccessToken || 'encrypted_access_token',
       encryptedRefreshToken: accountData.encryptedRefreshToken || 'encrypted_refresh_token',
-      tokenExpiry: accountData.tokenExpiry || Date.now() + 3600000, // 1 hour from now
+      tokenExpiry: accountData.tokenExpiry || Date.now() + 3600000,
       createdAt: accountData.createdAt || Date.now(),
       updatedAt: accountData.updatedAt || Date.now(),
       ...accountData,
-    }
+    } as Account
 
-    return await addAccount(account)
+    return new Promise<string>((resolve, reject) => {
+      const tx = db.transaction('accounts', 'readwrite')
+      const store = tx.objectStore('accounts')
+      const request = store.add(account)
+      request.onsuccess = () => resolve(account.id)
+      request.onerror = () => reject(request.error)
+    })
   }, overrides)
 
   return accountId
-}
-
-/**
- * Create multiple mock accounts
- */
-export async function createMockAccounts(
-  page: Page,
-  count: number,
-  overrides?: Partial<Account>
-): Promise<string[]> {
-  const accountIds: string[] = []
-
-  for (let i = 0; i < count; i++) {
-    const id = await createMockAccount(page, {
-      ...overrides,
-      email: overrides?.email || `test${i}@example.com`,
-      id: overrides?.id || `test-account-${i}`,
-    })
-    accountIds.push(id)
-  }
-
-  return accountIds
 }
 
 /**
@@ -68,20 +50,20 @@ export async function createMockAccounts(
  */
 export async function getAllAccounts(page: Page): Promise<Account[]> {
   return await page.evaluate(async () => {
-    const { getAccounts } = await import('@/lib/db')
-    return await getAccounts()
-  })
-}
+    const db = await new Promise<IDBDatabase>((resolve, reject) => {
+      const request = indexedDB.open('wolfcal', 3)
+      request.onsuccess = () => resolve(request.result)
+      request.onerror = () => reject(request.error)
+    })
 
-/**
- * Get a specific account by ID
- */
-export async function getAccountById(page: Page, accountId: string): Promise<Account | undefined> {
-  return await page.evaluate(async (id) => {
-    const { getAccounts } = await import('@/lib/db')
-    const accounts = await getAccounts()
-    return accounts.find((a) => a.id === id)
-  }, accountId)
+    return new Promise<Account[]>((resolve, reject) => {
+      const tx = db.transaction('accounts', 'readonly')
+      const store = tx.objectStore('accounts')
+      const request = store.getAll()
+      request.onsuccess = () => resolve(request.result)
+      request.onerror = () => reject(request.error)
+    })
+  })
 }
 
 /**
@@ -89,12 +71,19 @@ export async function getAccountById(page: Page, accountId: string): Promise<Acc
  */
 export async function clearAllAccounts(page: Page): Promise<void> {
   await page.evaluate(async () => {
-    const { getAccounts, deleteAccount } = await import('@/lib/db')
-    const accounts = await getAccounts()
+    const db = await new Promise<IDBDatabase>((resolve, reject) => {
+      const request = indexedDB.open('wolfcal', 3)
+      request.onsuccess = () => resolve(request.result)
+      request.onerror = () => reject(request.error)
+    })
 
-    for (const account of accounts) {
-      await deleteAccount(account.id)
-    }
+    await new Promise<void>((resolve, reject) => {
+      const tx = db.transaction('accounts', 'readwrite')
+      const store = tx.objectStore('accounts')
+      const request = store.clear()
+      request.onsuccess = () => resolve()
+      request.onerror = () => reject(request.error)
+    })
   })
 }
 
@@ -102,8 +91,8 @@ export async function clearAllAccounts(page: Page): Promise<void> {
  * Verify account exists in IndexedDB
  */
 export async function accountExists(page: Page, accountId: string): Promise<boolean> {
-  const account = await getAccountById(page, accountId)
-  return account !== undefined
+  const accounts = await getAllAccounts(page)
+  return accounts.some((a) => a.id === accountId)
 }
 
 /**
@@ -115,29 +104,6 @@ export async function verifyAccountCount(page: Page, expectedCount: number): Pro
 }
 
 /**
- * Get account by email
- */
-export async function getAccountByEmail(page: Page, email: string): Promise<Account | undefined> {
-  return await page.evaluate(async (emailAddress) => {
-    const { getAccounts } = await import('@/lib/db')
-    const accounts = await getAccounts()
-    return accounts.find((a) => a.email === emailAddress)
-  }, email)
-}
-
-/**
- * Check if account token is expired
- */
-export async function isTokenExpired(page: Page, accountId: string): Promise<boolean> {
-  const account = await getAccountById(page, accountId)
-  if (!account) return true
-
-  return await page.evaluate(async (expiry) => {
-    return Date.now() >= expiry
-  }, account.tokenExpiry)
-}
-
-/**
  * Create a mock account with valid (non-expired) token
  */
 export async function createValidAccount(
@@ -145,7 +111,7 @@ export async function createValidAccount(
   overrides?: Partial<Account>
 ): Promise<string> {
   return createMockAccount(page, {
-    tokenExpiry: Date.now() + 3600000, // 1 hour from now
+    tokenExpiry: Date.now() + 3600000,
     ...overrides,
   })
 }
@@ -158,7 +124,7 @@ export async function createExpiredAccount(
   overrides?: Partial<Account>
 ): Promise<string> {
   return createMockAccount(page, {
-    tokenExpiry: Date.now() - 1000, // Already expired
+    tokenExpiry: Date.now() - 1000,
     ...overrides,
   })
 }

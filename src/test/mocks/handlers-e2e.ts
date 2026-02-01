@@ -13,7 +13,7 @@
  */
 
 import { http, HttpResponse } from 'msw'
-import type { OAuthTokenResponse } from '@/lib/auth/types'
+import type { OAuthTokenResponse } from '../../lib/auth/types'
 
 // Mock credentials for E2E tests
 export const MOCK_CREDENTIALS = {
@@ -27,6 +27,10 @@ export const TEST_EMAILS = {
   secondary: 'test-e2e-2@example.com',
 }
 
+// Time constants for time-relative events
+const hour = 3600000 // 1 hour in milliseconds
+const day = 24 * hour // 24 hours in milliseconds
+
 // Mock OAuth token endpoint
 export const oauthTokenHandler = http.post('https://oauth2.googleapis.com/token', async ({ request }) => {
   const body = await request.text()
@@ -37,8 +41,10 @@ export const oauthTokenHandler = http.post('https://oauth2.googleapis.com/token'
   if (grantType === 'refresh_token' && refreshToken) {
     return HttpResponse.json({
       access_token: `mock_access_token_${refreshToken}`,
+      refresh_token: 'mock_refresh_token',
       expires_in: 3600,
       token_type: 'Bearer',
+      scope: 'https://www.googleapis.com/auth/calendar',
     } satisfies OAuthTokenResponse)
   }
 
@@ -48,6 +54,7 @@ export const oauthTokenHandler = http.post('https://oauth2.googleapis.com/token'
       refresh_token: 'mock_e2e_refresh_token',
       expires_in: 3600,
       token_type: 'Bearer',
+      scope: 'https://www.googleapis.com/auth/calendar',
     } satisfies OAuthTokenResponse)
   }
 
@@ -86,9 +93,6 @@ export const calendarListHandler = http.get('https://www.googleapis.com/calendar
 
 // Helper to create time-relative events (relative to test execution)
 function createRelativeEvents(baseTime: number) {
-  const hour = 3600000
-  const day = 24 * hour
-
   return [
     // Event starting in 1 hour
     {

@@ -15,8 +15,8 @@ test.describe('Playwright E2E Validation', () => {
     const nav = page.locator('nav')
     await expect(nav).toBeVisible()
 
-    // Check for calendar element
-    const calendar = page.locator('[class*="fc"]')
+    // Check for calendar element (use .first() due to multiple matches)
+    const calendar = page.locator('[class*="fc"]').first()
     await expect(calendar).toBeVisible()
   })
 

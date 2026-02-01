@@ -41,6 +41,7 @@ export async function mockOAuthPopup(
       refresh_token: tokens.refresh_token || 'mock_refresh_token_e2e',
       expires_in: tokens.expires_in || 3600,
       token_type: tokens.token_type || 'Bearer',
+      scope: tokens.scope || 'https://www.googleapis.com/auth/calendar',
     } satisfies OAuthTokenResponse)
   })
 }
@@ -99,6 +100,7 @@ export async function mockOAuthTokenEndpoint(
       refresh_token: tokens.refresh_token || 'mock_refresh_token',
       expires_in: tokens.expires_in || 3600,
       token_type: tokens.token_type || 'Bearer',
+      scope: tokens.scope || 'https://www.googleapis.com/auth/calendar',
     }
 
     await route.fulfill({
@@ -167,8 +169,19 @@ export async function completeOAuthFlow(
  */
 export async function verifyAccountStored(page: Page): Promise<boolean> {
   const accounts = await page.evaluate(async () => {
-    const { getAccounts } = await import('@/lib/db')
-    return await getAccounts()
+    const db = await new Promise<IDBDatabase>((resolve, reject) => {
+      const request = indexedDB.open('wolfcal', 3)
+      request.onsuccess = () => resolve(request.result)
+      request.onerror = () => reject(request.error)
+    })
+
+    return new Promise<any[]>((resolve, reject) => {
+      const tx = db.transaction('accounts', 'readonly')
+      const store = tx.objectStore('accounts')
+      const request = store.getAll()
+      request.onsuccess = () => resolve(request.result)
+      request.onerror = () => reject(request.error)
+    })
   })
   return accounts.length > 0 && accounts.some((a: any) => a.email === TEST_EMAILS.primary)
 }
@@ -178,8 +191,18 @@ export async function verifyAccountStored(page: Page): Promise<boolean> {
  */
 export async function getAccountCount(page: Page): Promise<number> {
   return await page.evaluate(async () => {
-    const { getAccounts } = await import('@/lib/db')
-    const accounts = await getAccounts()
-    return accounts.length
+    const db = await new Promise<IDBDatabase>((resolve, reject) => {
+      const request = indexedDB.open('wolfcal', 3)
+      request.onsuccess = () => resolve(request.result)
+      request.onerror = () => reject(request.error)
+    })
+
+    return new Promise<number>((resolve, reject) => {
+      const tx = db.transaction('accounts', 'readonly')
+      const store = tx.objectStore('accounts')
+      const request = store.getAll()
+      request.onsuccess = () => resolve(request.result.length)
+      request.onerror = () => reject(request.error)
+    })
   })
 }
