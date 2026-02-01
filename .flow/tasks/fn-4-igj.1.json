@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-01T15:12:12.432690Z",
+  "depends_on": [],
+  "epic": "fn-4-igj",
+  "id": "fn-4-igj.1",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-4-igj.1.md",
+  "status": "todo",
+  "title": "Configure Vite base path for GitHub Pages custom domain",
+  "updated_at": "2026-02-01T15:12:12.432697Z"
+}

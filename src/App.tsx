@@ -12,6 +12,7 @@ function App() {
   const [currentView, setCurrentView] = useState<View>('calendar')
   const { isSyncing } = useSyncScheduler()
   const [manualSyncing, setManualSyncing] = useState(false)
+  const [refreshTrigger, setRefreshTrigger] = useState(0)
 
   return (
     <div>
@@ -36,7 +37,10 @@ function App() {
             <SyncStatusBar isSyncing={isSyncing || manualSyncing} />
             <RefreshButton
               onSyncStart={() => setManualSyncing(true)}
-              onSyncComplete={() => setManualSyncing(false)}
+              onSyncComplete={() => {
+                setManualSyncing(false)
+                setRefreshTrigger(prev => prev + 1)
+              }}
               onSyncError={() => setManualSyncing(false)}
             />
           </div>
@@ -46,7 +50,7 @@ function App() {
       <main className="app-main">
         {currentView === 'calendar' && (
           <>
-            <Calendar />
+            <Calendar refreshTrigger={refreshTrigger} />
           </>
         )}
 

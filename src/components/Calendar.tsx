@@ -18,7 +18,11 @@ import './Calendar.css'
 
 type ViewType = 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay'
 
-export default function Calendar() {
+interface CalendarProps {
+  refreshTrigger?: number
+}
+
+export default function Calendar({ refreshTrigger }: CalendarProps) {
   const [currentView, setCurrentView] = useState<ViewType>('dayGridMonth')
   const [showFilters, setShowFilters] = useState(false)
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null)
@@ -62,6 +66,19 @@ export default function Calendar() {
     }
     checkConflicts()
   }, [events]) // Re-check when events change (after sync)
+
+  /**
+   * Refresh events when sync completes (triggered by refreshTrigger prop)
+   */
+  useEffect(() => {
+    if (refreshTrigger && refreshTrigger > 0) {
+      const api = calendarRef.current?.getApi()
+      if (api) {
+        const view = api.view
+        refresh({ start: view.activeStart, end: view.activeEnd })
+      }
+    }
+  }, [refreshTrigger, refresh])
 
   const handleViewChange = (view: ViewType) => {
     setCurrentView(view)
