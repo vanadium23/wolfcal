@@ -68,7 +68,8 @@
 }
 
 .calendar-loading-message,
-.calendar-empty-message {
+.calendar-empty-message,
+.calendar-error-message {
   padding: 1rem;
   text-align: center;
   color: #666;
@@ -79,8 +80,28 @@
 }
 
 .calendar-loading-message p,
-.calendar-empty-message p {
+.calendar-empty-message p,
+.calendar-error-message p {
   margin: 0;
+}
+
+.calendar-error-message {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.calendar-error-message p {
+  margin: 0;
+  flex: 1;
+}
+
+.calendar-error-message .btn {
+  flex-shrink: 0;
 }
 
 .calendar-list {

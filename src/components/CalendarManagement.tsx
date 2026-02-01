@@ -20,11 +20,16 @@ interface LoadingState {
   [accountId: string]: boolean
 }
 
+interface ErrorState {
+  [accountId: string]: string
+}
+
 export default function CalendarManagement() {
   const [accountsWithCalendars, setAccountsWithCalendars] = useState<AccountWithCalendars[]>([])
   const [loading, setLoading] = useState(true)
   const [loadingCalendars, setLoadingCalendars] = useState<LoadingState>({})
   const [syncingCalendar, setSyncingCalendar] = useState<string | null>(null)
+  const [errors, setErrors] = useState<ErrorState>({})
 
   // Load initial data
   useEffect(() => {
@@ -68,6 +73,11 @@ export default function CalendarManagement() {
   const handleRefreshCalendars = async (accountId: string) => {
     try {
       setLoadingCalendars((prev) => ({ ...prev, [accountId]: true }))
+      setErrors((prev) => {
+        const newErrors = { ...prev }
+        delete newErrors[accountId]
+        return newErrors
+      })
 
       const calendarClient = new CalendarClient()
 
@@ -126,7 +136,8 @@ export default function CalendarManagement() {
       alert(`Refreshed ${allCalendars.length} calendars`)
     } catch (error) {
       console.error('Failed to refresh calendars:', error)
-      alert(`Failed to refresh calendars: ${error instanceof Error ? error.message : 'Unknown error'}`)
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      setErrors((prev) => ({ ...prev, [accountId]: errorMessage }))
     } finally {
       setLoadingCalendars((prev) => ({ ...prev, [accountId]: false }))
     }
@@ -226,6 +237,18 @@ export default function CalendarManagement() {
                   {loadingCalendars[account.id] ? 'Refreshing...' : 'Refresh Calendars'}
                 </button>
               </div>
+
+              {errors[account.id] && (
+                <div className="calendar-error-message">
+                  <p>Failed to load calendars: {errors[account.id]}</p>
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    onClick={() => handleRefreshCalendars(account.id)}
+                  >
+                    Retry
+                  </button>
+                </div>
+              )}
 
               {loadingCalendars[account.id] && (
                 <div className="calendar-loading-message">
