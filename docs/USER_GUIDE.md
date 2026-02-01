@@ -17,14 +17,16 @@ Complete guide to using WolfCal's features for managing your Google Calendars of
 
 ### First Launch
 
-After deploying WolfCal and setting up OAuth credentials (see [SETUP.md](SETUP.md)), you'll start with an empty calendar view.
+After deploying WolfCal and setting up OAuth credentials in Settings (see [SETUP.md](SETUP.md)), you'll start with an empty calendar view.
 
 **To connect your first Google account:**
 1. Click the **Settings** icon (gear) in the top-right corner
-2. Click **Add Account**
-3. Enter your OAuth Client ID and Client Secret
+2. Configure OAuth credentials if not already done (see Settings section below)
+3. Click **Add Account**
 4. Click **Connect** and authorize in the popup window
 5. Wait for initial sync to complete (typically 10-30 seconds)
+
+**Note:** OAuth credentials are configured once in Settings and reused for all accounts. You don't need to re-enter credentials for each account.
 
 ### Interface Overview
 
@@ -117,15 +119,23 @@ WolfCal offers three calendar views powered by FullCalendar.
 
 **Quick create (any view):**
 1. Click on a date (Month view) or time slot (Week/Day view)
-2. A create event dialog appears
-3. Fill in required details:
+2. A create event dialog appears with essential fields only:
    - **Title:** Event name (required)
-   - **Calendar:** Choose which calendar to add to
+   - **Calendar:** Choose which calendar to add to (flat list with account badges)
    - **Start date/time:** Pre-filled based on where you clicked
    - **End date/time:** Defaults to 1 hour after start
    - **All-day:** Toggle for all-day events
+3. Click **More options** to expand additional fields:
    - **Description:** Optional event details
+   - **Location:** Event location
+   - **Attendees:** Add people to invite
+   - **Attachments:** Add files
+   - **Recurrence:** Set repeating events
 4. Click **Save**
+
+**Optimistic UI:** Events appear immediately in the calendar with 80% opacity while syncing to Google Calendar. Once synced successfully, the event displays at full opacity. If sync fails, the event remains with reduced opacity and shows an error in the event details.
+
+**Last-used calendar:** WolfCal remembers the last calendar you used (stored in localStorage as `wolfcal:lastUsedCalendarId`) and selects it by default for new events.
 
 **Offline note:** Events created offline will show a "pending sync" indicator and will sync automatically when you reconnect.
 
@@ -140,10 +150,14 @@ WolfCal offers three calendar views powered by FullCalendar.
    - Attendees (if any)
    - Attachments (if any, shown as clickable links)
    - Organizer information
+   - **Sync status:** If the event failed to sync, you'll see an error message with a **Retry Sync** button
 3. Options in the popup:
    - **Edit:** Modify event details
    - **Delete:** Remove event
+   - **Retry Sync:** Appears if sync failed; re-attempts to sync the event to Google Calendar
    - **Close:** Dismiss popup
+
+**Retry failed syncs:** If an event shows a sync error, click **Retry Sync** in the event details popup. WolfCal will re-queue the event for syncing and attempt to upload it to Google Calendar again.
 
 ### Editing Events
 
@@ -218,7 +232,8 @@ WolfCal handles recurring events (daily, weekly, monthly, yearly).
    - Email address for each account
    - Last sync time
    - Number of calendars synced
-   - Actions: Disconnect, Re-sync
+   - Actions: Disconnect, Re-sync, Refresh Calendars
+   - Expandable calendar list with enable/disable toggles
 
 ### Adding Additional Accounts
 
@@ -227,11 +242,11 @@ WolfCal supports multiple Google accounts simultaneously.
 **To add another account:**
 1. Go to **Settings**
 2. Click **Add Account**
-3. Enter OAuth credentials for this account
-   - Each account needs its own OAuth Client ID/Secret
-   - Or you can reuse the same credentials (less secure)
-4. Click **Connect** and authorize
-5. Calendars from the new account appear in the sidebar
+3. Click **Connect** to authorize (OAuth credentials are already configured in Settings)
+4. Complete the OAuth authorization flow in the popup window
+5. Primary calendar is synced by default; other calendars are disabled
+
+**Note:** OAuth credentials are configured once in Settings and reused for all accounts. You don't need to re-enter credentials for each additional account.
 
 **Use cases for multiple accounts:**
 - Personal + work calendars
@@ -250,6 +265,27 @@ WolfCal supports multiple Google accounts simultaneously.
 
 **Note:** This only removes data from your local WolfCal instance. Your Google Calendar data remains unchanged.
 
+### Managing Calendars in Settings
+
+WolfCal provides calendar management in both Settings and the sidebar, with a 20-calendar limit per account.
+
+**In Settings:**
+1. Click **Settings** (gear icon)
+2. Expand an account to see all calendars
+3. Each calendar shows:
+   - Calendar name (summary)
+   - Enable/disable toggle (controls visibility and syncing)
+   - Color indicator (matches calendar color in Google)
+   - Primary calendar indicator (if applicable)
+4. Use **Refresh Calendars** to fetch the latest calendar list from Google
+   - Preserves your enable/disable choices
+   - Adds new calendars as disabled
+   - Updates metadata (name, color) for existing calendars
+
+**Calendar limit:** Maximum 20 enabled calendars per account. If you try to enable more than 20, WolfCal will show an alert: "Maximum 20 calendars per account (20/20 enabled)."
+
+**Syncing disabled calendars:** When you disable a calendar in Settings, events remain in IndexedDB but are hidden from the calendar view. Disabled calendars are not synced with Google Calendar, saving bandwidth and improving performance.
+
 ### Filtering Calendars
 
 Use the sidebar to control which calendars are visible.
@@ -258,14 +294,19 @@ Use the sidebar to control which calendars are visible.
 - Click the checkbox next to any calendar name
 - Unchecked calendars are hidden from the view
 - Events are still synced and stored locally
+- Enforces the same 20-calendar limit as Settings
 
 **Toggle entire accounts:**
 - Click the checkbox next to an account name
 - All calendars under that account are shown/hidden
+- If enabling would exceed 20 calendars, only the first 20 (alphabetically) are enabled
 
 **Select all / Deselect all:**
 - Use the links at the top of the sidebar
 - Quickly show or hide all calendars across all accounts
+- Respects the 20-calendar limit per account
+
+**Settings and sidebar sync:** Calendar visibility changes in Settings immediately reflect in the sidebar, and vice versa. Both interfaces share the same calendar state from IndexedDB.
 
 **Use cases:**
 - Hide work calendars on weekends
@@ -295,6 +336,12 @@ WolfCal is designed to work without an internet connection for extended periods 
 - Uses exponential backoff for retries if sync fails
 - Sync status shows "Syncing..." then "Synced"
 - Conflicts are detected and presented for resolution
+
+**Optimistic UI behavior:**
+- Events appear immediately at 80% opacity when created (before sync confirms)
+- Once synced successfully, events display at full opacity
+- If sync fails, events remain at 80% opacity and show an error in event details
+- Click **Retry Sync** in event details to re-attempt uploading failed events
 
 ### Sync Status Indicators
 
@@ -385,10 +432,25 @@ Access settings by clicking the **Settings** gear icon in the top-right corner.
 
 ### Settings Page Sections
 
+**OAuth Credentials:**
+- **Client ID:** Your Google OAuth Client ID (format: `*.apps.googleusercontent.com`)
+- **Client Secret:** Your Google OAuth Client Secret (24+ characters)
+- **Save button:** Stores credentials in localStorage (`wolfcal:oauth:clientId`, `wolfcal:oauth:clientSecret`)
+- **Status:** Shows "Configured" (green) or "Not configured" (gray)
+- **Validation:** Format-only validation (clientId pattern check, secret length check)
+  - Real validation happens during the first successful account connection
+  - `alert()` notifications for save success and validation errors
+
 **Accounts:**
-- List of connected Google accounts
-- Add Account button
-- Disconnect option for each account
+- List of connected Google accounts with email addresses
+- **Add Account button:** Initiates OAuth flow using credentials from above (disabled if credentials not configured)
+- **Disconnect option:** Remove account and all associated data from IndexedDB
+- **Refresh Calendars:** Fetch latest calendar list from Google (preserves enable/disable choices)
+- **Expandable calendar lists:** Each account shows its calendars with:
+  - Calendar name (summary)
+  - Enable/disable toggle (controls visibility and syncing)
+  - Color indicator (matches Google Calendar color)
+  - Primary calendar indicator
 
 **Sync Preferences:**
 - Auto-sync interval (default: 15-30 minutes)
@@ -404,6 +466,21 @@ Access settings by clicking the **Settings** gear icon in the top-right corner.
 - WolfCal version information
 - Links to documentation
 - License information
+
+### Configuring OAuth Credentials
+
+OAuth credentials are configured once in Settings and reused for all accounts.
+
+**To set up OAuth credentials:**
+1. Go to **Settings** (gear icon)
+2. Under "OAuth Credentials", enter:
+   - **Client ID:** Paste your Google OAuth Client ID
+   - **Client Secret:** Paste your Google OAuth Client Secret
+3. Click **Save**
+4. Status should change to "Configured" (green)
+5. You can now add accounts without re-entering credentials
+
+**Note:** See [SETUP.md](SETUP.md) and [OAUTH_CONFIG.md](OAUTH_CONFIG.md) for detailed instructions on creating OAuth credentials in Google Cloud Console.
 
 ### Troubleshooting via Settings
 

@@ -7,7 +7,11 @@ WolfCal is a self-hosted calendar application that syncs with multiple Google Ca
 ## Features
 
 - **Multi-account Google Calendar sync** - Connect multiple Google accounts and view all calendars in one place
+- **Centralized OAuth configuration** - Configure OAuth credentials once in Settings for all accounts
+- **Calendar management** - Enable/disable calendars per account with a 20-calendar limit
 - **Offline-first architecture** - Work without internet for days or weeks, changes sync automatically when reconnected
+- **Optimistic UI** - Events appear immediately while syncing, with retry functionality for failed syncs
+- **Simplified event form** - Essential fields by default with expandable "More options" for advanced features
 - **Full event management** - Create, edit, delete, and reschedule events with drag-and-drop
 - **Multiple calendar views** - Month, week, and day views powered by FullCalendar
 - **Privacy-focused** - All data stored locally in your browser with encrypted OAuth tokens
@@ -40,12 +44,15 @@ docker-compose up -d
 
 3. Access WolfCal at http://localhost:8080
 
-4. Set up Google OAuth credentials (required for first use):
+4. Set up Google OAuth credentials in Settings (required for first use):
+   - Click **Settings** (gear icon)
    - Follow the detailed guide in [docs/OAUTH_CONFIG.md](docs/OAUTH_CONFIG.md)
    - You'll need to create a Google Cloud project and OAuth 2.0 credentials
    - Configure the callback URL as `http://localhost:8080/callback`
+   - Enter Client ID and Client Secret in Settings and click **Save**
+   - Click **Add Account** to connect your Google account
 
-5. Connect your Google account and start using WolfCal!
+5. Start using WolfCal!
 
 ## Documentation
 

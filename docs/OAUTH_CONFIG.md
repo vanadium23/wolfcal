@@ -178,12 +178,16 @@ Now you can use these credentials to connect WolfCal to your Google account:
 
 1. Open WolfCal in your browser: http://localhost:8080
 2. Click **Settings** (gear icon)
-3. Click **Add Account**
-4. Enter your credentials:
+3. Under "OAuth Credentials", enter:
    - **Client ID:** Paste the Client ID from Step 6
    - **Client Secret:** Paste the Client Secret from Step 6
-5. Click **Connect**
-6. Complete the OAuth authorization flow in the popup window
+4. Click **Save**
+5. You should see a success message: "OAuth credentials saved successfully"
+6. Status changes to "Configured" (green)
+7. Click **Add Account** to connect your Google account
+8. Complete the OAuth authorization flow in the popup window
+
+**Note:** Credentials are configured once in Settings and reused for all accounts. The validation in Settings checks format only (clientId pattern, secret length). Real validation occurs during the OAuth flow when you connect your first account.
 
 See [SETUP.md](SETUP.md) for detailed instructions on connecting your account.
 

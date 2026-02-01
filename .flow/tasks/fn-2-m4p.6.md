@@ -40,9 +40,8 @@ Follow existing pending indicator pattern from src/hooks/useEvents.ts which alre
 - [ ] Error toast notification shown on failure
 - [ ] Toast component created or reused for error display
 ## Done summary
-TBD
-
+Implemented optimistic UI updates for event creation. New events appear immediately in calendar with 80% opacity before API confirmation. Added retry functionality in EventPopover for failed syncs. DB schema updated to version 3 with pendingSync field.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 5920552bda1ef4d879076552266fef5fb3edbbc7
+- Tests: npm run build
 - PRs:

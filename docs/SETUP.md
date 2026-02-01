@@ -67,49 +67,74 @@ You will obtain:
 
 **Important:** Keep these credentials secure. Do not commit them to version control or share them publicly.
 
-## Step 3: Connect Your First Google Account
+## Step 3: Configure OAuth Credentials in Settings
 
 ### 3.1 Launch WolfCal
 
 Navigate to http://localhost:8080 in your browser.
 
-### 3.2 Add Account
+### 3.2 Open Settings
 
 1. Click the **Settings** button (gear icon) in the top-right corner
-2. Click **Add Account** button
-3. You will be prompted to enter your OAuth credentials:
-   - **Client ID**: Paste the Client ID from Step 2
-   - **Client Secret**: Paste the Client Secret from Step 2
-4. Click **Connect**
+2. Locate the "OAuth Credentials" section at the top of Settings
 
-### 3.3 OAuth Authorization Flow
+### 3.3 Enter OAuth Credentials
 
-1. A popup window will open asking you to sign in to Google
-2. Select the Google account you want to connect
-3. Review the permissions WolfCal is requesting:
+1. **Client ID:** Paste the Client ID from Step 2
+   - Format: `123456789-abc123def456.apps.googleusercontent.com`
+2. **Client Secret:** Paste the Client Secret from Step 2
+   - A random string of characters (24+ characters)
+3. Click **Save**
+4. You should see a success message: "OAuth credentials saved successfully"
+5. Status changes to "Configured" (green)
+
+**Validation:** WolfCal performs format-only validation:
+- Checks if Client ID matches pattern `*.apps.googleusercontent.com`
+- Checks if Client Secret is non-empty (24+ characters expected)
+- Real validation happens during first successful account connection
+
+**Note:** These credentials are stored in your browser's localStorage and reused for all Google accounts you add. You only need to configure them once.
+
+## Step 4: Connect Your First Google Account
+
+### 4.1 Add Account
+
+1. In Settings, click **Add Account** button
+2. The button is enabled only if OAuth credentials are configured
+3. A popup window will open for Google OAuth authorization
+
+### 4.2 OAuth Authorization Flow
+
+1. Sign in to the Google account you want to connect (if not already signed in)
+2. Review the permissions WolfCal is requesting:
    - Read and write access to Google Calendar
-4. Click **Allow** to grant permissions
-5. The popup will close automatically, and you'll return to WolfCal
+3. Click **Allow** to grant permissions
+4. The popup will close automatically, and you'll return to WolfCal
 
-### 3.4 Initial Sync
+### 4.3 Initial Sync
 
 WolfCal will immediately begin syncing your calendars:
-- Fetches all calendars associated with your Google account
+- Fetches all calendars associated with your Google account (with pagination for large calendar lists)
+- Primary calendar is enabled by default
+- All other calendars are saved but disabled
 - Downloads events within a 3-month window (1.5 months past, 1.5 months future)
 - Stores events in browser IndexedDB with encrypted OAuth tokens
 
 You should see a sync status indicator showing "Syncing..." followed by "Synced" when complete.
 
-## Step 4: Add Additional Accounts (Optional)
+## Step 5: Add Additional Accounts (Optional)
 
 To connect more Google accounts:
 
 1. Go to **Settings** (gear icon)
 2. Click **Add Account** again
-3. Repeat the OAuth credential entry and authorization flow
-4. Each account will have its own color coding in the calendar view
+3. Complete the OAuth authorization flow (no need to re-enter credentials)
+4. Each account's primary calendar is enabled by default
+5. Use the calendar toggles in Settings to enable/disable additional calendars
 
-## Step 5: Verify Everything Works
+**Note:** All accounts use the same OAuth credentials configured in Step 3. You don't need to create separate credentials for each account.
+
+## Step 6: Verify Everything Works
 
 ### 5.1 View Your Calendars
 

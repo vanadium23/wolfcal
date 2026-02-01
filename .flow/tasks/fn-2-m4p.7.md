@@ -12,6 +12,7 @@ Update docs/USER_GUIDE.md:
 - Account Management section: Change OAuth credential location from per-account to Settings
 - Settings section: Document new calendar enable/disable UI and format-only credential validation
 - Managing Events section: Document simplified form with expandable fields, optimistic UI behavior
+- Managing Events section: Document retry functionality for failed syncs (EventPopover shows error with "Retry Sync" button)
 - Note: Last used calendar stored in localStorage under 'wolfcal:lastUsedCalendarId' for persistence
 
 Update docs/SETUP.md:
@@ -35,7 +36,8 @@ Follow existing documentation style with numbered steps, bold UI element names, 
 - [ ] docs/USER_GUIDE.md Account Management section updated for Settings-based OAuth
 - [ ] docs/USER_GUIDE.md Settings section documents calendar enable/disable UI
 - [ ] docs/USER_GUIDE.md Managing Events section documents simplified form and expandable fields
-- [ ] docs/USER_GUIDE.md documents optimistic UI behavior (80% opacity, error revert)
+- [ ] docs/USER_GUIDE.md documents optimistic UI behavior (80% opacity, error revert, retry button for failed syncs)
+<!-- Updated by plan-sync: fn-2-m4p.6 added retry functionality in EventPopover for failed syncs -->
 - [ ] docs/SETUP.md Step 3 rewritten for Settings OAuth configuration
 - [ ] docs/SETUP.md Step 4 updated (no credential re-entry for additional accounts)
 - [ ] docs/OAUTH_CONFIG.md Step 8 updated to reference Settings
