@@ -50,9 +50,8 @@ Follow expandable section pattern from existing Settings.tsx structure.
 - [ ] Failed calendar list load shows "Failed to load calendars" with Retry button
 - [ ] CalendarManagement integrated into Settings.tsx as new section
 ## Done summary
-TBD
-
+Implemented calendar management UI in Settings page with expandable per-account sections, enable/disable toggles for calendars with 20-calendar limit enforcement per account, global and per-account refresh buttons fetching from Google API with pagination, error handling with retry functionality, and immediate sync on calendar enable.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 0345ae5df2352a13dad9e0e7056beb3616ddf8c9
+- Tests: npm run build
 - PRs:
