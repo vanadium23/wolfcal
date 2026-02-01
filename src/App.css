@@ -10,6 +10,7 @@
   border-bottom: 1px solid #e0e0e0;
   padding: 1rem 2rem;
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .header-content {
@@ -19,6 +20,7 @@
   max-width: 1280px;
   margin: 0 auto;
   gap: 2rem;
+  position: relative;
 }
 
 .header-actions {
@@ -193,5 +195,118 @@
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Hamburger Menu Button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 101;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger:hover span {
+  background: #4285f4;
+}
+
+/* Mobile Menu Dropdown */
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  min-width: 150px;
+  overflow: hidden;
+}
+
+.mobile-menu-link {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  min-height: 44px;
+}
+
+.mobile-menu-link:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.mobile-menu-link.active {
+  background: #4285f4;
+  color: white;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 640px) {
+  .app-header {
+    padding: 1rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .app-nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .header-content {
+    gap: 1rem;
+  }
+
+  .header-actions {
+    gap: 0.5rem;
+  }
+
+  .app-main {
+    padding: 0 1rem 1rem;
+  }
+
+  .sync-status-bar {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  .refresh-button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
   }
 }

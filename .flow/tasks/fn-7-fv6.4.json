@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-01T16:02:33.119366Z",
+  "depends_on": [],
+  "epic": "fn-7-fv6",
+  "id": "fn-7-fv6.4",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-7-fv6.4.md",
+  "status": "todo",
+  "title": "Add touch-friendly targets and mobile-optimized interactions",
+  "updated_at": "2026-02-01T16:02:33.119375Z"
+}

@@ -26,7 +26,9 @@ Add 5-minute sync interval option to Settings.
 ## Done summary
 Add 5-minute sync interval option to Settings
 
+Changes:
+- Added option value={5}>Every 5 minutes</option> to sync interval select
 ## Evidence
-- Commits:
-- Tests: Select 5-min option, verify sync runs accordingly
+- Commits: da6a0b8
+- Tests: Select 5-min option and verify sync runs accordingly
 - PRs:

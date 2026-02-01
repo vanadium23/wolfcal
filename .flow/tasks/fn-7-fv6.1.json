@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-01T16:02:26.247664Z",
+  "depends_on": [],
+  "epic": "fn-7-fv6",
+  "id": "fn-7-fv6.1",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-7-fv6.1.md",
+  "status": "todo",
+  "title": "Add responsive header with mobile navigation",
+  "updated_at": "2026-02-01T16:02:26.247683Z"
+}
