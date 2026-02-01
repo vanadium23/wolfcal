@@ -2,7 +2,7 @@
  * Event popover component for displaying event details and invitation actions
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { CalendarEvent, PendingChange } from '../lib/db/types';
 import { CalendarClient } from '../lib/api/calendar';
 import { updateEvent, addPendingChange, getPendingChangesByEvent, updatePendingChange } from '../lib/db';
@@ -29,6 +29,8 @@ export default function EventPopover({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pendingError, setPendingError] = useState<PendingChange | null>(null);
+  const [safePosition, setSafePosition] = useState(position);
+  const popoverRef = useRef<HTMLDivElement>(null);
 
   // Check for pending errors when event changes
   useEffect(() => {
@@ -41,6 +43,41 @@ export default function EventPopover({
     }
     checkPendingErrors();
   }, [event.id]);
+
+  /**
+   * Calculate safe position to keep popover within viewport
+   */
+  useEffect(() => {
+    if (popoverRef.current) {
+      const rect = popoverRef.current.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const viewportWidth = window.innerWidth;
+
+      let adjustedY = position.y;
+      let adjustedX = position.x;
+
+      // Flip to above if would go below viewport
+      if (position.y + rect.height > viewportHeight - 20) {
+        adjustedY = Math.max(10, position.y - rect.height - 10);
+      }
+
+      // Shift left if would go beyond right edge
+      if (position.x + rect.width > viewportWidth - 20) {
+        adjustedX = Math.max(10, viewportWidth - rect.width - 20);
+      }
+
+      // Keep within left edge
+      if (adjustedX < 10) adjustedX = 10;
+
+      // Keep within top edge
+      if (adjustedY < 10) adjustedY = 10;
+
+      setSafePosition({ x: adjustedX, y: adjustedY });
+    } else {
+      // Initial render with no ref yet, use original position
+      setSafePosition(position);
+    }
+  }, [position]);
 
   // Find current user's attendee info
   const currentUserAttendee = event.attendees?.find(
@@ -212,10 +249,11 @@ export default function EventPopover({
 
   return (
     <div
+      ref={popoverRef}
       style={{
         position: 'fixed',
-        top: position.y,
-        left: position.x,
+        top: safePosition.y,
+        left: safePosition.x,
         backgroundColor: 'white',
         border: '1px solid #e5e7eb',
         borderRadius: '8px',

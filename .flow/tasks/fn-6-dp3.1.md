@@ -28,7 +28,12 @@ Use an event emitter or callback prop to trigger refresh directly.
 ## Done summary
 Fix gray event color by triggering Calendar refresh after sync completes
 
+Changes:
+- Added refreshTrigger state in App.tsx
+- Passed refreshTrigger to Calendar component
+- Updated RefreshButton onSyncComplete to trigger refresh
+- Added useEffect in Calendar to refresh when refreshTrigger changes
 ## Evidence
-- Commits:
+- Commits: 3e0c27f
 - Tests: Manual test - create event, refresh, verify color changes without reload
 - PRs:
