@@ -45,9 +45,8 @@ Follow existing documentation style with numbered steps, bold UI element names, 
 - [ ] All cross-references between docs updated
 - [ ] Screenshot placeholders updated where OAuth flow changed
 ## Done summary
-TBD
-
+Updated all documentation files (USER_GUIDE.md, SETUP.md, OAUTH_CONFIG.md, README.md) to reflect new Settings-based OAuth flow, calendar management UI, simplified event form, optimistic UI behavior, and retry functionality for failed syncs.
 ## Evidence
-- Commits:
-- Tests:
+- Commits: 6d26f4457159c58664ea90e129ac811a1f2a4919
+- Tests: npm run build
 - PRs:
