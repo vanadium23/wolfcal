@@ -2,6 +2,16 @@
   width: 100%;
 }
 
+.calendar-global-actions {
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.calendar-global-actions .btn {
+  margin: 0;
+}
+
 .calendar-management-loading,
 .calendar-management-empty {
   padding: 2rem;

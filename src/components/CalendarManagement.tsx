@@ -13,7 +13,6 @@ import './CalendarManagement.css'
 interface AccountWithCalendars extends Account {
   calendars: Calendar[]
   isExpanded: boolean
-  isLoading: boolean
 }
 
 interface LoadingState {
@@ -30,6 +29,7 @@ export default function CalendarManagement() {
   const [loadingCalendars, setLoadingCalendars] = useState<LoadingState>({})
   const [syncingCalendar, setSyncingCalendar] = useState<string | null>(null)
   const [errors, setErrors] = useState<ErrorState>({})
+  const [globalRefreshLoading, setGlobalRefreshLoading] = useState(false)
 
   // Load initial data
   useEffect(() => {
@@ -40,13 +40,73 @@ export default function CalendarManagement() {
     setLoading(true)
     try {
       const allAccounts = await getAllAccounts()
+      const calendarClient = new CalendarClient()
+
       const accountsData = await Promise.all(
-        allAccounts.map(async (account) => ({
-          ...account,
-          calendars: await getCalendarsByAccount(account.id),
-          isExpanded: false,
-          isLoading: false,
-        }))
+        allAccounts.map(async (account) => {
+          try {
+            // Fetch calendars from Google API with pagination
+            const fetchedCalendars = []
+            let pageToken: string | undefined
+            do {
+              const response = await calendarClient.listCalendars(account.id, 250, pageToken)
+              fetchedCalendars.push(...response.items)
+              pageToken = response.nextPageToken
+            } while (pageToken)
+
+            // Get existing calendars to preserve visibility state
+            const existingCalendars = await getCalendarsByAccount(account.id)
+            const existingCalendarMap = new Map(existingCalendars.map((c) => [c.id, c]))
+
+            // Update or add calendars
+            for (const calendar of fetchedCalendars) {
+              const existing = existingCalendarMap.get(calendar.id)
+
+              if (existing) {
+                // Update existing calendar - preserve visibility
+                await updateCalendar({
+                  ...existing,
+                  summary: calendar.summary || existing.summary,
+                  description: calendar.description,
+                  color: calendar.colorId,
+                  backgroundColor: calendar.backgroundColor,
+                  updatedAt: Date.now(),
+                })
+              } else {
+                // New calendar - add as hidden by default
+                await addCalendar({
+                  id: calendar.id,
+                  accountId: account.id,
+                  summary: calendar.summary || 'Untitled Calendar',
+                  description: calendar.description,
+                  color: calendar.colorId,
+                  backgroundColor: calendar.backgroundColor,
+                  visible: false, // New calendars default to hidden
+                  primary: calendar.primary === true,
+                  createdAt: Date.now(),
+                  updatedAt: Date.now(),
+                })
+              }
+            }
+
+            // Return updated calendars from DB
+            const calendars = await getCalendarsByAccount(account.id)
+            return {
+              ...account,
+              calendars,
+              isExpanded: false,
+            }
+          } catch (error) {
+            console.error(`Failed to load calendars for account ${account.id}:`, error)
+            // Fall back to existing calendars in DB
+            const calendars = await getCalendarsByAccount(account.id)
+            return {
+              ...account,
+              calendars,
+              isExpanded: false,
+            }
+          }
+        })
       )
       setAccountsWithCalendars(accountsData)
     } catch (error) {
@@ -68,6 +128,78 @@ export default function CalendarManagement() {
   const getEnabledCalendarCount = (accountId: string): number => {
     const account = accountsWithCalendars.find((a) => a.id === accountId)
     return account ? account.calendars.filter((c) => c.visible).length : 0
+  }
+
+  const handleGlobalRefresh = async () => {
+    try {
+      setGlobalRefreshLoading(true)
+      setErrors({})
+
+      const calendarClient = new CalendarClient()
+      let totalRefreshed = 0
+
+      for (const account of accountsWithCalendars) {
+        try {
+          // Fetch all calendars with pagination
+          const allCalendars = []
+          let pageToken: string | undefined
+          do {
+            const response = await calendarClient.listCalendars(account.id, 250, pageToken)
+            allCalendars.push(...response.items)
+            pageToken = response.nextPageToken
+          } while (pageToken)
+
+          // Get existing calendars to preserve visibility state
+          const existingCalendars = account.calendars
+          const existingCalendarMap = new Map(existingCalendars.map((c) => [c.id, c]))
+
+          // Update or add calendars
+          for (const calendar of allCalendars) {
+            const existing = existingCalendarMap.get(calendar.id)
+
+            if (existing) {
+              // Update existing calendar - preserve visibility
+              await updateCalendar({
+                ...existing,
+                summary: calendar.summary || existing.summary,
+                description: calendar.description,
+                color: calendar.colorId,
+                backgroundColor: calendar.backgroundColor,
+                updatedAt: Date.now(),
+              })
+            } else {
+              // New calendar - add as hidden by default
+              await addCalendar({
+                id: calendar.id,
+                accountId: account.id,
+                summary: calendar.summary || 'Untitled Calendar',
+                description: calendar.description,
+                color: calendar.colorId,
+                backgroundColor: calendar.backgroundColor,
+                visible: false,
+                primary: calendar.primary === true,
+                createdAt: Date.now(),
+                updatedAt: Date.now(),
+              })
+            }
+          }
+
+          totalRefreshed += allCalendars.length
+        } catch (error) {
+          console.error(`Failed to refresh calendars for account ${account.id}:`, error)
+          // Continue with next account
+        }
+      }
+
+      // Reload all calendars
+      await loadAccountsAndCalendars()
+      alert(`Refreshed ${totalRefreshed} calendars from all accounts`)
+    } catch (error) {
+      console.error('Failed to global refresh calendars:', error)
+      alert(`Failed to refresh calendars: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    } finally {
+      setGlobalRefreshLoading(false)
+    }
   }
 
   const handleRefreshCalendars = async (accountId: string) => {
@@ -214,6 +346,16 @@ export default function CalendarManagement() {
 
   return (
     <div className="calendar-management">
+      <div className="calendar-global-actions">
+        <button
+          className="btn btn-primary btn-sm"
+          onClick={handleGlobalRefresh}
+          disabled={globalRefreshLoading}
+        >
+          {globalRefreshLoading ? 'Refreshing...' : 'Refresh Calendars'}
+        </button>
+      </div>
+
       {accountsWithCalendars.map((account) => (
         <div key={account.id} className="calendar-account-section">
           <div className="calendar-account-header" onClick={() => toggleAccountExpanded(account.id)}>
