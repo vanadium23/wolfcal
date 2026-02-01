@@ -131,3 +131,12 @@
     height: 40px !important;
   }
 }
+
+/* Touch-friendly targets for inline-styled buttons in Calendar */
+@media (max-width: 640px) {
+  /* Target the inline-styled view toggle and filter buttons */
+  button[style*="backgroundColor"] {
+    min-height: 44px !important;
+    padding: 10px 16px !important;
+  }
+}

@@ -308,5 +308,40 @@
   .refresh-button {
     padding: 0.5rem 0.75rem;
     font-size: 0.8rem;
+    min-height: 44px;
+  }
+}
+
+/* Touch-friendly targets and interactions */
+/* Ensure buttons meet WCAG 2.5.5 minimum 44x44px touch target */
+button {
+  -webkit-tap-highlight-color: rgba(66, 133, 244, 0.2);
+  tap-highlight-color: rgba(66, 133, 244, 0.2);
+}
+
+a, .clickable {
+  -webkit-tap-highlight-color: rgba(66, 133, 244, 0.2);
+  tap-highlight-color: rgba(66, 133, 244, 0.2);
+}
+
+@media (max-width: 640px) {
+  /* Ensure all interactive elements meet 44px minimum on mobile */
+  .nav-link {
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+  }
+
+  .refresh-button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .mobile-menu-link {
+    min-height: 44px;
+  }
+
+  .hamburger {
+    min-width: 44px;
+    min-height: 44px;
   }
 }

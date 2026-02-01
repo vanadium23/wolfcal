@@ -47,7 +47,12 @@ Make event modal and forms responsive - full-screen on mobile, proper padding, t
 ## Done summary
 Make event modal and forms responsive for mobile with full-screen layout
 
+Changes:
+- Full-screen modals on mobile
+- 16px font size on inputs (prevents iOS zoom)
+- Stacked form buttons with 48px touch targets
+- Compact spacing for mobile layout
 ## Evidence
-- Commits:
+- Commits: 7dc8c27
 - Tests: Manual test on mobile viewport
 - PRs:
