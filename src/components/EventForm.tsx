@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { CalendarEvent, Calendar } from '../lib/db/types';
 import {
   validateEventForm,
@@ -100,6 +100,12 @@ export default function EventForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showAdvancedFields, setShowAdvancedFields] = useState(!!event); // Show advanced fields when editing
 
+  // Store initialRange to preserve chosen time when toggling all-day
+  const initialRangeRef = useRef(initialRange);
+  useEffect(() => {
+    initialRangeRef.current = initialRange;
+  }, [initialRange]);
+
   // Update start/end format when allDay toggle changes
   useEffect(() => {
     if (formData.allDay) {
@@ -128,12 +134,16 @@ export default function EventForm({
       }));
     } else {
       // Convert to date-time format
+      // Use initial range times if available, otherwise use sensible defaults
+      const initialStart = initialRangeRef.current?.start;
+      const initialEnd = initialRangeRef.current?.end;
+
       const startDateTime = formData.start.date
-        ? formatDateTimeForInput(new Date(formData.start.date + 'T09:00:00'))
-        : formatDateTimeForInput(new Date());
+        ? formatDateTimeForInput(initialStart || new Date(formData.start.date + 'T09:00:00'))
+        : formatDateTimeForInput(initialStart || new Date());
       const endDateTime = formData.end.date
-        ? formatDateTimeForInput(new Date(formData.end.date + 'T10:00:00'))
-        : formatDateTimeForInput(new Date(Date.now() + 60 * 60 * 1000));
+        ? formatDateTimeForInput(initialEnd || new Date(formData.end.date + 'T10:00:00'))
+        : formatDateTimeForInput(initialEnd || new Date(Date.now() + 60 * 60 * 1000));
 
       setFormData((prev) => ({
         ...prev,
