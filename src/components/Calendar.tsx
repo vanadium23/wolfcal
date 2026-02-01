@@ -23,7 +23,7 @@ interface CalendarProps {
 }
 
 export default function Calendar({ refreshTrigger }: CalendarProps) {
-  const [currentView, setCurrentView] = useState<ViewType>('dayGridMonth')
+  const [currentView, setCurrentView] = useState<ViewType>('timeGridWeek')
   const [showFilters, setShowFilters] = useState(false)
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null)
   const [popoverPosition, setPopoverPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 })

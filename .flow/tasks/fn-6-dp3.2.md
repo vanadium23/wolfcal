@@ -51,7 +51,12 @@ useEffect(() => {
 ## Done summary
 Fix event popup positioning to account for viewport boundaries
 
+Changes:
+- Added useRef for popover element and useState for safePosition
+- Added useEffect to calculate safe position based on viewport dimensions
+- Popup flips above when would go below viewport
+- Popup shifts left when would go beyond right edge
 ## Evidence
-- Commits:
-- Tests: Manual test - click events at various positions
+- Commits: 3c4cb8a
+- Tests: Manual test - click events at various screen positions
 - PRs:
