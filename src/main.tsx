@@ -7,7 +7,7 @@ import OAuthCallback from './pages/OAuthCallback.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/wolfcal">
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/callback" element={<OAuthCallback />} />
