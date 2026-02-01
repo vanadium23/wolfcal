@@ -51,7 +51,12 @@ headerToolbar={{
 ## Done summary
 Optimize FullCalendar for mobile with responsive toolbar and touch-optimized display
 
+Changes:
+- Stacked toolbar layout on mobile
+- 44px minimum touch targets for buttons
+- 48px tall time slots for touch
+- Compact fonts and spacing for mobile
 ## Evidence
-- Commits:
+- Commits: 33aca22
 - Tests: Manual test on mobile viewport
 - PRs:
