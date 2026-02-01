@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import CredentialForm from '../components/CredentialForm'
 import AccountList from '../components/AccountList'
+import CalendarManagement from '../components/CalendarManagement'
 import ErrorLog from '../components/ErrorLog'
 import AddAccountButton from '../components/AddAccountButton'
 import type { OAuthTokenResponse } from '../lib/auth/types'
@@ -154,6 +155,15 @@ export default function Settings() {
           <AddAccountButton onAccountAdded={handleAccountAdded} onError={handleError} />
         </div>
         <AccountList />
+      </section>
+
+      <section className="settings-section">
+        <h2>Calendar Management</h2>
+        <p className="section-description">
+          Enable or disable calendars for each connected account. You can sync up to 20 calendars per account.
+          Disabled calendars will not be synced but their events remain in local storage.
+        </p>
+        <CalendarManagement />
       </section>
 
       <section className="settings-section">

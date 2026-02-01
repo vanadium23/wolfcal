@@ -1,0 +1,252 @@
+.calendar-management {
+  width: 100%;
+}
+
+.calendar-management-loading,
+.calendar-management-empty {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.calendar-account-section {
+  margin-bottom: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.calendar-account-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s;
+  user-select: none;
+}
+
+.calendar-account-header:hover {
+  background: #f0f0f0;
+}
+
+.calendar-account-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 0.8rem;
+  color: #666;
+  transition: transform 0.2s;
+}
+
+.calendar-account-email {
+  font-weight: 500;
+  color: #1a1a1a;
+  flex: 1;
+  font-family: monospace;
+}
+
+.calendar-account-count {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.calendar-account-content {
+  padding: 1.5rem;
+  background: #fafafa;
+}
+
+.calendar-actions {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.calendar-loading-message,
+.calendar-empty-message {
+  padding: 1rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  background: #f5f5f5;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.calendar-loading-message p,
+.calendar-empty-message p {
+  margin: 0;
+}
+
+.calendar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.calendar-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  transition: box-shadow 0.2s;
+}
+
+.calendar-item:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.calendar-item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.calendar-item-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.calendar-item-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.calendar-color-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.calendar-name {
+  font-weight: 500;
+  color: #1a1a1a;
+  word-break: break-word;
+}
+
+.calendar-primary-badge {
+  display: inline-block;
+  background: #e3f2fd;
+  color: #1565c0;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.calendar-description {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+  word-break: break-word;
+}
+
+.calendar-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.calendar-toggle-label input[type='checkbox'] {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.calendar-toggle-label span {
+  font-weight: 500;
+  color: #333;
+}
+
+.calendar-toggle-label input[type='checkbox']:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.calendar-syncing {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4285f4;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.calendar-syncing p {
+  margin: 0;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.calendar-limit-warning {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  color: #856404;
+}
+
+.calendar-limit-warning p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .calendar-account-header {
+    flex-wrap: wrap;
+  }
+
+  .calendar-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .calendar-item-content {
+    width: 100%;
+  }
+
+  .calendar-toggle-label {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .calendar-syncing {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
