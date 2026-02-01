@@ -21,7 +21,9 @@ const [currentView, setCurrentView] = useState<ViewType>('timeGridWeek')
 ## Done summary
 Change default calendar view to week view
 
+Changes:
+- Changed initial state from "dayGridMonth" to "timeGridWeek"
 ## Evidence
-- Commits:
-- Tests: Load app, verify week view is default
+- Commits: a3b2290
+- Tests: Load app and verify week view is default
 - PRs:

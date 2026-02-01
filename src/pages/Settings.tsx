@@ -197,6 +197,7 @@ export default function Settings() {
               onChange={(e) => updateSyncSettings({ syncInterval: parseInt(e.target.value) })}
               disabled={!syncSettings.autoSync}
             >
+              <option value={5}>Every 5 minutes</option>
               <option value={15}>Every 15 minutes</option>
               <option value={20}>Every 20 minutes</option>
               <option value={30}>Every 30 minutes</option>
