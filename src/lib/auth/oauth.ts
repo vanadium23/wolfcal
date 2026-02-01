@@ -6,7 +6,15 @@ import type { OAuthTokenResponse, OAuthMessage } from './types';
 
 const GOOGLE_AUTH_URL = 'https://accounts.google.com/o/oauth2/v2/auth';
 const GOOGLE_TOKEN_URL = 'https://oauth2.googleapis.com/token';
-const REDIRECT_URI = 'http://localhost:5173/callback';
+
+// Dynamic redirect URI based on environment
+// Local development: http://localhost:5173/callback
+// Production: https://vanadium23.me/wolfcal/callback
+const REDIRECT_URI =
+  import.meta.env.MODE === 'development'
+    ? 'http://localhost:5173/callback'
+    : 'https://vanadium23.me/wolfcal/callback';
+
 const SCOPE =
   'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.email';
 
