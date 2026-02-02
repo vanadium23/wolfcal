@@ -7,6 +7,9 @@ interface ExportConfigurationProps {
   className?: string;
 }
 
+// QR Code capacity for version 40-L (most common scan target)
+const MAX_QR_DATA_SIZE = 2953;
+
 export default function ExportConfiguration({ className = '' }: ExportConfigurationProps) {
   const [showPassphraseModal, setShowPassphraseModal] = useState(false);
   const [showResultModal, setShowResultModal] = useState(false);
@@ -16,7 +19,7 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
   const [isExporting, setIsExporting] = useState(false);
   const [exportUrl, setExportUrl] = useState('');
   const [copySuccess, setCopySuccess] = useState(false);
-  const [qrError, setQrError] = useState('');
+  const [qrCodeTooLarge, setQrCodeTooLarge] = useState(false);
 
   const handleStartExport = () => {
     setShowPassphraseModal(true);
@@ -27,7 +30,6 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
 
   const handleExport = async () => {
     setError('');
-    setQrError('');
     
     // Validate passphrase
     if (!passphrase) {
@@ -54,20 +56,26 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
       // Serialize to JSON
       const serialized = serializeBundle(bundle);
       
+      console.log('Config size:', serialized.length, 'bytes');
+      
       // Encrypt with passphrase
       const encrypted = await encrypt(serialized, passphrase);
+      
+      console.log('Encrypted size:', encrypted.length, 'bytes');
       
       // Generate URL
       const baseUrl = window.location.origin + window.location.pathname;
       const url = `${baseUrl}#config=${encrypted}`;
       
       console.log('URL size:', url.length, 'bytes');
-      console.log('Encrypted size:', encrypted.length, 'bytes');
       
       setExportUrl(url);
       setShowPassphraseModal(false);
       setShowResultModal(true);
       setCopySuccess(false);
+      
+      // Check if QR code can handle this data
+      setQrCodeTooLarge(url.length > MAX_QR_DATA_SIZE);
     } catch (err) {
       console.error('Export failed:', err);
       setError(err instanceof Error ? err.message : 'Export failed. Please try again.');
@@ -98,7 +106,6 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
     setShowResultModal(false);
     setExportUrl('');
     setCopySuccess(false);
-    setQrError('');
   };
 
   return (
@@ -182,7 +189,9 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
           <div className="modal-content export-result-modal" onClick={(e) => e.stopPropagation()}>
             <h2>Configuration Exported!</h2>
             <p className="modal-description">
-              Scan the QR code or copy the URL below to transfer your configuration to another device.
+              {!qrCodeTooLarge 
+                ? 'Scan the QR code or copy the URL below to transfer your configuration to another device.'
+                : 'Your configuration is too large for a QR code. Please use the "Copy" button to transfer the URL below.'}
             </p>
 
             {error && (
@@ -191,8 +200,8 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
               </div>
             )}
 
-            {/* QR Code */}
-            {!qrError && (
+            {/* QR Code - only show if data fits */}
+            {!qrCodeTooLarge && (
               <div className="qr-code-container">
                 <QRCodeSVG
                   value={exportUrl}
@@ -205,15 +214,27 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
               </div>
             )}
 
-            {qrError && (
+            {qrCodeTooLarge && (
               <div className="qr-code-warning">
-                <p><strong>QR code unavailable</strong></p>
-                <p>{qrError}</p>
+                <p>
+                  <strong>Configuration too large for QR code</strong>
+                </p>
+                <p>
+                  Your configuration is {exportUrl.length} bytes, but QR codes can only handle 
+                  up to {MAX_QR_DATA_SIZE} bytes reliably.
+                </p>
+                <p>
+                  This usually happens when you have many accounts or calendars.
+                  Please use the "Copy" button below to transfer your configuration.
+                </p>
               </div>
             )}
 
             <div className="form-group">
-              <label htmlFor="export-url">Export URL ({exportUrl.length} bytes)</label>
+              <label htmlFor="export-url">
+                Export URL ({exportUrl.length} bytes)
+                {qrCodeTooLarge && ' - Too large for QR code'}
+              </label>
               <div className="url-input-group">
                 <input
                   id="export-url"
@@ -232,15 +253,28 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
                   {copySuccess ? 'Copied!' : 'Copy'}
                 </button>
               </div>
-              <p className="form-help">
-                <strong>How to transfer:</strong>
-                <br />
-                • Scan the QR code with your phone's camera
-                <br />
-                • Or copy the URL and send it to yourself
-                <br />
-                • Open the URL on another device and enter your passphrase
-              </p>
+              {!qrCodeTooLarge && (
+                <p className="form-help">
+                  <strong>How to transfer:</strong>
+                  <br />
+                  • Scan the QR code with your phone's camera
+                  <br />
+                  • Or copy the URL and send it to yourself
+                  <br />
+                  • Open the URL on another device and enter your passphrase
+                </p>
+              )}
+              {qrCodeTooLarge && (
+                <p className="form-help">
+                  <strong>How to transfer:</strong>
+                  <br />
+                  • Click "Copy" button above
+                  <br />
+                  • Send the URL to yourself (email, messaging app, etc.)
+                  <br />
+                  • Open the URL on another device and enter your passphrase
+                </p>
+              )}
             </div>
 
             <div className="modal-actions">
