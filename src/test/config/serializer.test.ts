@@ -108,7 +108,7 @@ describe('serializer', () => {
         accessToken: 'plaintext-access-token',
         refreshToken: 'plaintext-refresh-token',
         tokenExpiry: expect.any(Number),
-        color: '#FF5722',
+        // color omitted for size optimization
       });
     });
 
@@ -125,7 +125,7 @@ describe('serializer', () => {
         createdAt: Date.now(),
         updatedAt: Date.now(),
       };
-      
+
       mockGetAll.mockImplementation((storeName) => {
         if (storeName === 'accounts') return Promise.resolve([]);
         if (storeName === 'calendars') return Promise.resolve([calendarData]);
@@ -135,15 +135,14 @@ describe('serializer', () => {
       const config = await exportConfig();
 
       expect(config.calendars).toHaveLength(1);
+      // Optimized export - only essential fields
       expect(config.calendars[0]).toEqual({
         id: 'primary-calendar',
         accountId: 'test@example.com',
         summary: 'My Calendar',
-        description: 'Personal calendar',
-        color: 'blue',
-        backgroundColor: '#0000FF',
         visible: true,
         primary: true,
+        // description, color, backgroundColor omitted for size optimization
       });
     });
 
@@ -212,6 +211,9 @@ describe('serializer', () => {
           id: 'cal1',
           accountId: 'user1@example.com',
           summary: 'Calendar 1',
+          description: 'First calendar',
+          color: 'red',
+          backgroundColor: '#FF0000',
           visible: true,
           primary: true,
           createdAt: Date.now(),
@@ -221,6 +223,9 @@ describe('serializer', () => {
           id: 'cal2',
           accountId: 'user1@example.com',
           summary: 'Calendar 2',
+          description: 'Second calendar',
+          color: 'blue',
+          backgroundColor: '#0000FF',
           visible: false,
           primary: false,
           createdAt: Date.now(),
