@@ -16,6 +16,7 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
   const [isExporting, setIsExporting] = useState(false);
   const [exportUrl, setExportUrl] = useState('');
   const [copySuccess, setCopySuccess] = useState(false);
+  const [qrError, setQrError] = useState('');
 
   const handleStartExport = () => {
     setShowPassphraseModal(true);
@@ -26,6 +27,7 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
 
   const handleExport = async () => {
     setError('');
+    setQrError('');
     
     // Validate passphrase
     if (!passphrase) {
@@ -58,6 +60,9 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
       // Generate URL
       const baseUrl = window.location.origin + window.location.pathname;
       const url = `${baseUrl}#config=${encrypted}`;
+      
+      console.log('URL size:', url.length, 'bytes');
+      console.log('Encrypted size:', encrypted.length, 'bytes');
       
       setExportUrl(url);
       setShowPassphraseModal(false);
@@ -93,6 +98,7 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
     setShowResultModal(false);
     setExportUrl('');
     setCopySuccess(false);
+    setQrError('');
   };
 
   return (
@@ -186,19 +192,28 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
             )}
 
             {/* QR Code */}
-            <div className="qr-code-container">
-              <QRCodeSVG
-                value={exportUrl}
-                size={200}
-                level="M"
-                bgColor="#ffffff"
-                fgColor="#000000"
-                includeMargin={true}
-              />
-            </div>
+            {!qrError && (
+              <div className="qr-code-container">
+                <QRCodeSVG
+                  value={exportUrl}
+                  size={200}
+                  level="L"
+                  bgColor="#ffffff"
+                  fgColor="#000000"
+                  includeMargin={true}
+                />
+              </div>
+            )}
+
+            {qrError && (
+              <div className="qr-code-warning">
+                <p><strong>QR code unavailable</strong></p>
+                <p>{qrError}</p>
+              </div>
+            )}
 
             <div className="form-group">
-              <label htmlFor="export-url">Export URL</label>
+              <label htmlFor="export-url">Export URL ({exportUrl.length} bytes)</label>
               <div className="url-input-group">
                 <input
                   id="export-url"
