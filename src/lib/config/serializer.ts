@@ -3,16 +3,22 @@
  *
  * Handles reading from and writing to IndexedDB and localStorage to create
  * a unified configuration bundle for export/import.
+ *
+ * IMPORTANT: Tokens are decrypted before export and re-encrypted after import
+ * because each device has its own master encryption key.
  */
 
 import { getDB } from '../db';
 import type { Account } from '../db/types';
+import { decryptToken, encryptToken } from '../auth/encryption';
 
 // LocalStorage keys
 const STORAGE_KEYS = {
   SYNC_SETTINGS: 'wolfcal:syncSettings',
   CALENDAR_FILTERS: 'calendar-filters',
   LAST_USED_CALENDAR: 'wolfcal:lastUsedCalendarId',
+  OAUTH_CLIENT_ID: 'wolfcal:oauth:clientId',
+  OAUTH_CLIENT_SECRET: 'wolfcal:oauth:clientSecret',
 } as const;
 
 /**
@@ -30,18 +36,34 @@ interface SyncSettings {
 type CalendarFilters = Record<string, boolean>;
 
 /**
+ * OAuth credentials from localStorage
+ */
+interface OAuthCredentials {
+  clientId: string;
+  clientSecret: string;
+}
+
+/**
  * Configuration bundle for export/import
  * Version 1 structure for future migration support
+ * 
+ * NOTE: accessTokens and refreshTokens are PLAINTEXT in this bundle
+ * The entire bundle is encrypted with the user's passphrase for transfer.
+ * Each device re-encrypts the tokens with its own master key.
  */
 export interface ConfigBundle {
   version: 1
   accounts: Array<{
     email: string;
-    encryptedAccessToken: string;
-    encryptedRefreshToken: string;
+    accessToken: string; // PLAINTEXT - will be encrypted with device master key on import
+    refreshToken: string; // PLAINTEXT - will be encrypted with device master key on import
     tokenExpiry: number;
     color?: string;
   }>;
+  oauthCredentials: {
+    clientId: string;
+    clientSecret: string;
+  };
   syncSettings: {
     autoSync: boolean;
     syncInterval: number;
@@ -123,6 +145,30 @@ function writeLastUsedCalendar(calendarId?: string): void {
 }
 
 /**
+ * Read OAuth credentials from localStorage
+ */
+function readOAuthCredentials(): OAuthCredentials | null {
+  try {
+    const clientId = localStorage.getItem(STORAGE_KEYS.OAUTH_CLIENT_ID);
+    const clientSecret = localStorage.getItem(STORAGE_KEYS.OAUTH_CLIENT_SECRET);
+    
+    if (!clientId || !clientSecret) return null;
+    
+    return { clientId, clientSecret };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Write OAuth credentials to localStorage
+ */
+function writeOAuthCredentials(credentials: OAuthCredentials): void {
+  localStorage.setItem(STORAGE_KEYS.OAUTH_CLIENT_ID, credentials.clientId);
+  localStorage.setItem(STORAGE_KEYS.OAUTH_CLIENT_SECRET, credentials.clientSecret);
+}
+
+/**
  * Validate a config bundle structure
  */
 function validateConfigBundle(data: unknown): data is ConfigBundle {
@@ -151,12 +197,34 @@ function validateConfigBundle(data: unknown): data is ConfigBundle {
 /**
  * Export current configuration as a ConfigBundle
  * Reads from IndexedDB and localStorage
+ * 
+ * IMPORTANT: Decrypts tokens before including in bundle
  */
 export async function exportConfig(): Promise<ConfigBundle> {
   try {
     // Read accounts from IndexedDB
     const db = await getDB();
     const accounts = await db.getAll('accounts');
+    
+    // Decrypt tokens for each account
+    const accountsWithPlainTokens = await Promise.all(
+      (accounts as Account[]).map(async (acc: Account) => {
+        try {
+          const accessToken = await decryptToken(acc.encryptedAccessToken);
+          const refreshToken = await decryptToken(acc.encryptedRefreshToken);
+          return {
+            email: acc.email,
+            accessToken,
+            refreshToken,
+            tokenExpiry: acc.tokenExpiry,
+            color: acc.color,
+          };
+        } catch (error) {
+          console.error(`Failed to decrypt tokens for account ${acc.email}:`, error);
+          throw new ConfigError(`Failed to decrypt tokens for account ${acc.email}`, error);
+        }
+      })
+    );
     
     // Read sync settings from localStorage
     const syncSettings = readSyncSettings() || { autoSync: true, syncInterval: 30 };
@@ -167,21 +235,22 @@ export async function exportConfig(): Promise<ConfigBundle> {
     // Read last used calendar from localStorage
     const lastUsedCalendarId = readLastUsedCalendar();
     
+    // Read OAuth credentials
+    const oauthCredentials = readOAuthCredentials() || { clientId: '', clientSecret: '' };
+    
     return {
       version: 1,
-      accounts: accounts.map((acc: Account) => ({
-        email: acc.email,
-        encryptedAccessToken: acc.encryptedAccessToken,
-        encryptedRefreshToken: acc.encryptedRefreshToken,
-        tokenExpiry: acc.tokenExpiry,
-        color: acc.color,
-      })),
+      accounts: accountsWithPlainTokens,
+      oauthCredentials,
       syncSettings,
       calendarFilters,
       lastUsedCalendarId,
       exportedAt: Date.now(),
     };
   } catch (error) {
+    if (error instanceof ConfigError) {
+      throw error;
+    }
     throw new ConfigError('Failed to export configuration', error);
   }
 }
@@ -195,6 +264,8 @@ export type ImportMode = 'replace' | 'merge';
  * Import a configuration bundle
  * @param bundle - The config bundle to import
  * @param mode - 'replace' to overwrite all settings, 'merge' to preserve existing
+ * 
+ * IMPORTANT: Re-encrypts plaintext tokens with this device's master key
  */
 export async function importConfig(bundle: ConfigBundle, mode: ImportMode): Promise<void> {
   try {
@@ -211,13 +282,16 @@ export async function importConfig(bundle: ConfigBundle, mode: ImportMode): Prom
       // Clear all accounts
       await db.clear('accounts');
       
-      // Import accounts
+      // Import accounts (re-encrypt tokens with this device's master key)
       for (const acc of bundle.accounts) {
+        const encryptedAccessToken = await encryptToken(acc.accessToken);
+        const encryptedRefreshToken = await encryptToken(acc.refreshToken);
+        
         await db.put('accounts', {
           id: acc.email, // Use email as ID
           email: acc.email,
-          encryptedAccessToken: acc.encryptedAccessToken,
-          encryptedRefreshToken: acc.encryptedRefreshToken,
+          encryptedAccessToken,
+          encryptedRefreshToken,
           tokenExpiry: acc.tokenExpiry,
           color: acc.color,
           createdAt: Date.now(),
@@ -231,6 +305,9 @@ export async function importConfig(bundle: ConfigBundle, mode: ImportMode): Prom
       // Replace calendar filters
       writeCalendarFilters(bundle.calendarFilters);
       
+      // Replace OAuth credentials
+      writeOAuthCredentials(bundle.oauthCredentials);
+      
       // Replace last used calendar
       writeLastUsedCalendar(bundle.lastUsedCalendarId);
       
@@ -240,11 +317,16 @@ export async function importConfig(bundle: ConfigBundle, mode: ImportMode): Prom
       // Merge accounts (by email)
       for (const acc of bundle.accounts) {
         const existing = await db.get('accounts', acc.email);
+        
+        // Encrypt tokens with this device's master key
+        const encryptedAccessToken = await encryptToken(acc.accessToken);
+        const encryptedRefreshToken = await encryptToken(acc.refreshToken);
+        
         await db.put('accounts', {
           id: acc.email,
           email: acc.email,
-          encryptedAccessToken: acc.encryptedAccessToken,
-          encryptedRefreshToken: acc.encryptedRefreshToken,
+          encryptedAccessToken,
+          encryptedRefreshToken,
           tokenExpiry: acc.tokenExpiry,
           color: acc.color || existing?.color,
           createdAt: existing?.createdAt || Date.now(),
@@ -259,6 +341,11 @@ export async function importConfig(bundle: ConfigBundle, mode: ImportMode): Prom
       const existingFilters = readCalendarFilters();
       const mergedFilters = { ...existingFilters, ...bundle.calendarFilters };
       writeCalendarFilters(mergedFilters);
+      
+      // Write OAuth credentials (imported takes precedence)
+      if (bundle.oauthCredentials.clientId || bundle.oauthCredentials.clientSecret) {
+        writeOAuthCredentials(bundle.oauthCredentials);
+      }
       
       // Set last used calendar only if not already set
       if (!readLastUsedCalendar() && bundle.lastUsedCalendarId) {
