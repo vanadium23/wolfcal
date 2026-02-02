@@ -9,7 +9,7 @@
  */
 
 import { getDB } from '../db';
-import type { Account } from '../db/types';
+import type { Account, Calendar } from '../db/types';
 import { decryptToken, encryptToken } from '../auth/encryption';
 
 // LocalStorage keys
@@ -59,6 +59,16 @@ export interface ConfigBundle {
     refreshToken: string; // PLAINTEXT - will be encrypted with device master key on import
     tokenExpiry: number;
     color?: string;
+  }>;
+  calendars: Array<{
+    id: string; // Google Calendar ID
+    accountId: string; // Account email (foreign key)
+    summary: string;
+    description?: string;
+    color?: string;
+    backgroundColor?: string;
+    visible: boolean;
+    primary: boolean;
   }>;
   oauthCredentials: {
     clientId: string;
@@ -182,6 +192,9 @@ function validateConfigBundle(data: unknown): data is ConfigBundle {
   // Check accounts array
   if (!Array.isArray(bundle.accounts)) return false;
   
+  // Check calendars array
+  if (!Array.isArray(bundle.calendars)) return false;
+  
   // Check sync settings
   if (typeof bundle.syncSettings !== 'object' || bundle.syncSettings === null) return false;
   
@@ -202,8 +215,9 @@ function validateConfigBundle(data: unknown): data is ConfigBundle {
  */
 export async function exportConfig(): Promise<ConfigBundle> {
   try {
-    // Read accounts from IndexedDB
     const db = await getDB();
+    
+    // Read accounts from IndexedDB
     const accounts = await db.getAll('accounts');
     
     // Decrypt tokens for each account
@@ -226,6 +240,9 @@ export async function exportConfig(): Promise<ConfigBundle> {
       })
     );
     
+    // Read calendars from IndexedDB
+    const calendars = await db.getAll('calendars');
+    
     // Read sync settings from localStorage
     const syncSettings = readSyncSettings() || { autoSync: true, syncInterval: 30 };
     
@@ -241,6 +258,16 @@ export async function exportConfig(): Promise<ConfigBundle> {
     return {
       version: 1,
       accounts: accountsWithPlainTokens,
+      calendars: (calendars as Calendar[]).map(cal => ({
+        id: cal.id,
+        accountId: cal.accountId,
+        summary: cal.summary,
+        description: cal.description,
+        color: cal.color,
+        backgroundColor: cal.backgroundColor,
+        visible: cal.visible,
+        primary: cal.primary,
+      })),
       oauthCredentials,
       syncSettings,
       calendarFilters,
@@ -279,8 +306,9 @@ export async function importConfig(bundle: ConfigBundle, mode: ImportMode): Prom
     if (mode === 'replace') {
       // Replace mode: Clear existing data first
       
-      // Clear all accounts
+      // Clear all accounts and calendars
       await db.clear('accounts');
+      await db.clear('calendars');
       
       // Import accounts (re-encrypt tokens with this device's master key)
       for (const acc of bundle.accounts) {
@@ -294,6 +322,22 @@ export async function importConfig(bundle: ConfigBundle, mode: ImportMode): Prom
           encryptedRefreshToken,
           tokenExpiry: acc.tokenExpiry,
           color: acc.color,
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        });
+      }
+      
+      // Import calendars
+      for (const cal of bundle.calendars) {
+        await db.put('calendars', {
+          id: cal.id,
+          accountId: cal.accountId,
+          summary: cal.summary,
+          description: cal.description,
+          color: cal.color,
+          backgroundColor: cal.backgroundColor,
+          visible: cal.visible,
+          primary: cal.primary,
           createdAt: Date.now(),
           updatedAt: Date.now(),
         });
@@ -329,6 +373,24 @@ export async function importConfig(bundle: ConfigBundle, mode: ImportMode): Prom
           encryptedRefreshToken,
           tokenExpiry: acc.tokenExpiry,
           color: acc.color || existing?.color,
+          createdAt: existing?.createdAt || Date.now(),
+          updatedAt: Date.now(),
+        });
+      }
+      
+      // Merge calendars (by id)
+      for (const cal of bundle.calendars) {
+        const existing = await db.get('calendars', cal.id);
+        
+        await db.put('calendars', {
+          id: cal.id,
+          accountId: cal.accountId,
+          summary: cal.summary,
+          description: cal.description,
+          color: cal.color || existing?.color,
+          backgroundColor: cal.backgroundColor || existing?.backgroundColor,
+          visible: cal.visible,
+          primary: cal.primary,
           createdAt: existing?.createdAt || Date.now(),
           updatedAt: Date.now(),
         });

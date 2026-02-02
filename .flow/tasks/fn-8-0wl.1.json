@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-01T16:53:23.248102Z",
+  "depends_on": [],
+  "epic": "fn-8-0wl",
+  "id": "fn-8-0wl.1",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-8-0wl.1.md",
+  "status": "todo",
+  "title": "Write tests for EventForm component with validation",
+  "updated_at": "2026-02-01T16:53:23.248111Z"
+}

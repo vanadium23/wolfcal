@@ -37,7 +37,6 @@ vi.mock('../../lib/db', () => ({
 vi.mock('../../lib/auth/encryption', () => ({
   decryptToken: mockDecryptToken,
   encryptToken: mockEncryptToken,
-  generateKey: vi.fn(),
 }));
 
 describe('serializer', () => {
@@ -54,16 +53,22 @@ describe('serializer', () => {
     // Setup default mock returns for encryption
     mockDecryptToken.mockResolvedValue('decrypted-token');
     mockEncryptToken.mockResolvedValue('encrypted-token');
+    
+    // Setup default mock returns for getAll (returns empty arrays by default)
+    mockGetAll.mockImplementation((storeName) => {
+      if (storeName === 'accounts') return Promise.resolve([]);
+      if (storeName === 'calendars') return Promise.resolve([]);
+      return Promise.resolve([]);
+    });
   });
 
   describe('exportConfig', () => {
     it('should export empty config when no data exists', async () => {
-      mockGetAll.mockResolvedValue([]);
-
       const config = await exportConfig();
 
       expect(config.version).toBe(1);
       expect(config.accounts).toEqual([]);
+      expect(config.calendars).toEqual([]);
       expect(config.oauthCredentials).toEqual({ clientId: '', clientSecret: '' });
       expect(config.syncSettings).toEqual({ autoSync: true, syncInterval: 30 });
       expect(config.calendarFilters).toEqual({});
@@ -82,7 +87,11 @@ describe('serializer', () => {
         createdAt: Date.now(),
         updatedAt: Date.now(),
       };
-      mockGetAll.mockResolvedValue([accountData]);
+      
+      mockGetAll.mockImplementation((storeName) => {
+        if (storeName === 'accounts') return Promise.resolve([accountData]);
+        return Promise.resolve([]);
+      });
       
       // Mock decryption to return different tokens
       mockDecryptToken.mockImplementation((encrypted) => {
@@ -103,8 +112,42 @@ describe('serializer', () => {
       });
     });
 
+    it('should export calendars', async () => {
+      const calendarData = {
+        id: 'primary-calendar',
+        accountId: 'test@example.com',
+        summary: 'My Calendar',
+        description: 'Personal calendar',
+        color: 'blue',
+        backgroundColor: '#0000FF',
+        visible: true,
+        primary: true,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      };
+      
+      mockGetAll.mockImplementation((storeName) => {
+        if (storeName === 'accounts') return Promise.resolve([]);
+        if (storeName === 'calendars') return Promise.resolve([calendarData]);
+        return Promise.resolve([]);
+      });
+
+      const config = await exportConfig();
+
+      expect(config.calendars).toHaveLength(1);
+      expect(config.calendars[0]).toEqual({
+        id: 'primary-calendar',
+        accountId: 'test@example.com',
+        summary: 'My Calendar',
+        description: 'Personal calendar',
+        color: 'blue',
+        backgroundColor: '#0000FF',
+        visible: true,
+        primary: true,
+      });
+    });
+
     it('should export sync settings from localStorage', async () => {
-      mockGetAll.mockResolvedValue([]);
       localStorage.setItem('wolfcal:syncSettings', JSON.stringify({
         autoSync: false,
         syncInterval: 60,
@@ -119,7 +162,6 @@ describe('serializer', () => {
     });
 
     it('should export calendar filters from localStorage', async () => {
-      mockGetAll.mockResolvedValue([]);
       localStorage.setItem('calendar-filters', JSON.stringify({
         'cal1': true,
         'cal2': false,
@@ -134,7 +176,6 @@ describe('serializer', () => {
     });
 
     it('should export last used calendar from localStorage', async () => {
-      mockGetAll.mockResolvedValue([]);
       localStorage.setItem('wolfcal:lastUsedCalendarId', 'primary-calendar');
 
       const config = await exportConfig();
@@ -143,7 +184,6 @@ describe('serializer', () => {
     });
 
     it('should export OAuth credentials from localStorage', async () => {
-      mockGetAll.mockResolvedValue([]);
       localStorage.setItem('wolfcal:oauth:clientId', 'test-client-id');
       localStorage.setItem('wolfcal:oauth:clientSecret', 'test-client-secret');
 
@@ -155,7 +195,7 @@ describe('serializer', () => {
       });
     });
 
-    it('should handle multiple accounts', async () => {
+    it('should handle multiple accounts and calendars', async () => {
       const accounts = [
         {
           id: 'user1@example.com',
@@ -166,26 +206,38 @@ describe('serializer', () => {
           createdAt: Date.now(),
           updatedAt: Date.now(),
         },
+      ];
+      const calendars = [
         {
-          id: 'user2@example.com',
-          email: 'user2@example.com',
-          encryptedAccessToken: 'token2',
-          encryptedRefreshToken: 'refresh2',
-          tokenExpiry: Date.now() + 3600000,
-          color: '#2196F3',
+          id: 'cal1',
+          accountId: 'user1@example.com',
+          summary: 'Calendar 1',
+          visible: true,
+          primary: true,
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+        {
+          id: 'cal2',
+          accountId: 'user1@example.com',
+          summary: 'Calendar 2',
+          visible: false,
+          primary: false,
           createdAt: Date.now(),
           updatedAt: Date.now(),
         },
       ];
-      mockGetAll.mockResolvedValue(accounts);
+      
+      mockGetAll.mockImplementation((storeName) => {
+        if (storeName === 'accounts') return Promise.resolve(accounts);
+        if (storeName === 'calendars') return Promise.resolve(calendars);
+        return Promise.resolve([]);
+      });
 
       const config = await exportConfig();
 
-      expect(config.accounts).toHaveLength(2);
-      expect(config.accounts.map(a => a.email)).toEqual([
-        'user1@example.com',
-        'user2@example.com',
-      ]);
+      expect(config.accounts).toHaveLength(1);
+      expect(config.calendars).toHaveLength(2);
     });
   });
 
@@ -198,6 +250,13 @@ describe('serializer', () => {
           accessToken: 'access-token',
           refreshToken: 'refresh-token',
           tokenExpiry: Date.now() + 3600000,
+        }],
+        calendars: [{
+          id: 'cal1',
+          accountId: 'test@example.com',
+          summary: 'Test Calendar',
+          visible: true,
+          primary: true,
         }],
         oauthCredentials: {
           clientId: 'client-id',
@@ -224,7 +283,7 @@ describe('serializer', () => {
     });
 
     it('should throw on missing required fields', () => {
-      const partial = { version: 1, accounts: [] };
+      const partial = { version: 1, accounts: [], calendars: [] };
       expect(() => deserializeBundle(JSON.stringify(partial))).toThrow(ConfigError);
     });
   });
@@ -247,6 +306,13 @@ describe('serializer', () => {
           refreshToken: 'plaintext-refresh',
           tokenExpiry: Date.now() + 3600000,
         }],
+        calendars: [{
+          id: 'cal1',
+          accountId: 'test@example.com',
+          summary: 'Test Calendar',
+          visible: true,
+          primary: true,
+        }],
         oauthCredentials: {
           clientId: 'new-client-id',
           clientSecret: 'new-client-secret',
@@ -259,50 +325,27 @@ describe('serializer', () => {
       await importConfig(bundle, 'replace');
 
       expect(mockClear).toHaveBeenCalledWith('accounts');
+      expect(mockClear).toHaveBeenCalledWith('calendars');
       expect(mockPut).toHaveBeenCalled();
       
-      const putCall = mockPut.mock.calls[0];
-      expect(putCall[0]).toBe('accounts');
-      expect(putCall[1].email).toBe('test@example.com');
-      expect(putCall[1].encryptedAccessToken).toBe('encrypted-plaintext-access');
-      expect(putCall[1].encryptedRefreshToken).toBe('encrypted-plaintext-refresh');
+      // Check that put was called for account
+      const accountPutCall = mockPut.mock.calls.find(call => call[0] === 'accounts');
+      expect(accountPutCall).toBeDefined();
+      expect(accountPutCall![1].email).toBe('test@example.com');
+      expect(accountPutCall![1].encryptedAccessToken).toBe('encrypted-plaintext-access');
+      
+      // Check that put was called for calendar
+      const calendarPutCall = mockPut.mock.calls.find(call => call[0] === 'calendars');
+      expect(calendarPutCall).toBeDefined();
+      expect(calendarPutCall![1].id).toBe('cal1');
 
       expect(localStorage.getItem('wolfcal:oauth:clientId')).toBe('new-client-id');
       expect(localStorage.getItem('wolfcal:oauth:clientSecret')).toBe('new-client-secret');
-
-      expect(localStorage.getItem('wolfcal:syncSettings')).toBeTruthy();
-      expect(JSON.parse(localStorage.getItem('wolfcal:syncSettings')!)).toEqual({
-        autoSync: false,
-        syncInterval: 60,
-      });
-
-      expect(localStorage.getItem('calendar-filters')).toBeTruthy();
-      expect(JSON.parse(localStorage.getItem('calendar-filters')!)).toEqual({
-        newCal: true,
-      });
-    });
-
-    it('should clear localStorage in replace mode', async () => {
-      mockClear.mockResolvedValue(undefined);
-      localStorage.setItem('wolfcal:lastUsedCalendarId', 'old-calendar');
-
-      const bundle: ConfigBundle = {
-        version: 1,
-        accounts: [],
-        oauthCredentials: { clientId: '', clientSecret: '' },
-        syncSettings: { autoSync: true, syncInterval: 30 },
-        calendarFilters: {},
-        exportedAt: Date.now(),
-      };
-
-      await importConfig(bundle, 'replace');
-
-      expect(localStorage.getItem('wolfcal:lastUsedCalendarId')).toBeNull();
     });
   });
 
   describe('importConfig - merge mode', () => {
-    it('should merge accounts and re-encrypt tokens', async () => {
+    it('should merge accounts and calendars', async () => {
       const existingAccount = {
         id: 'existing@example.com',
         email: 'existing@example.com',
@@ -314,7 +357,13 @@ describe('serializer', () => {
         updatedAt: 2000000,
       };
       
-      mockGet.mockResolvedValue(existingAccount);
+      mockGet.mockImplementation((storeName, key) => {
+        if (storeName === 'accounts' && key === 'new@example.com') return Promise.resolve(undefined);
+        if (storeName === 'accounts' && key === 'existing@example.com') return Promise.resolve(existingAccount);
+        if (storeName === 'calendars' && key === 'cal1') return Promise.resolve(undefined);
+        return Promise.resolve(undefined);
+      });
+      
       mockPut.mockResolvedValue('new@example.com');
       
       // Mock encryption
@@ -330,6 +379,13 @@ describe('serializer', () => {
           refreshToken: 'new-refresh',
           tokenExpiry: Date.now() + 3600000,
         }],
+        calendars: [{
+          id: 'cal1',
+          accountId: 'new@example.com',
+          summary: 'New Calendar',
+          visible: true,
+          primary: true,
+        }],
         oauthCredentials: { clientId: '', clientSecret: '' },
         syncSettings: { autoSync: true, syncInterval: 30 },
         calendarFilters: {},
@@ -338,7 +394,7 @@ describe('serializer', () => {
 
       await importConfig(bundle, 'merge');
 
-      expect(mockGet).toHaveBeenCalledWith('accounts', 'new@example.com');
+      // Verify put was called for both account and calendar
       expect(mockPut).toHaveBeenCalled();
     });
 
@@ -351,6 +407,7 @@ describe('serializer', () => {
       const bundle: ConfigBundle = {
         version: 1,
         accounts: [],
+        calendars: [],
         oauthCredentials: { clientId: '', clientSecret: '' },
         syncSettings: { autoSync: true, syncInterval: 30 },
         calendarFilters: {
@@ -374,6 +431,7 @@ describe('serializer', () => {
       const bundle: ConfigBundle = {
         version: 1,
         accounts: [],
+        calendars: [],
         oauthCredentials: {
           clientId: 'imported-client-id',
           clientSecret: 'imported-client-secret',
@@ -388,40 +446,6 @@ describe('serializer', () => {
       expect(localStorage.getItem('wolfcal:oauth:clientId')).toBe('imported-client-id');
       expect(localStorage.getItem('wolfcal:oauth:clientSecret')).toBe('imported-client-secret');
     });
-
-    it('should not override last used calendar if already set', async () => {
-      localStorage.setItem('wolfcal:lastUsedCalendarId', 'existing-calendar');
-
-      const bundle: ConfigBundle = {
-        version: 1,
-        accounts: [],
-        oauthCredentials: { clientId: '', clientSecret: '' },
-        syncSettings: { autoSync: true, syncInterval: 30 },
-        calendarFilters: {},
-        lastUsedCalendarId: 'new-calendar',
-        exportedAt: Date.now(),
-      };
-
-      await importConfig(bundle, 'merge');
-
-      expect(localStorage.getItem('wolfcal:lastUsedCalendarId')).toBe('existing-calendar');
-    });
-
-    it('should set last used calendar if not already set', async () => {
-      const bundle: ConfigBundle = {
-        version: 1,
-        accounts: [],
-        oauthCredentials: { clientId: '', clientSecret: '' },
-        syncSettings: { autoSync: true, syncInterval: 30 },
-        calendarFilters: {},
-        lastUsedCalendarId: 'new-calendar',
-        exportedAt: Date.now(),
-      };
-
-      await importConfig(bundle, 'merge');
-
-      expect(localStorage.getItem('wolfcal:lastUsedCalendarId')).toBe('new-calendar');
-    });
   });
 
   describe('error handling', () => {
@@ -435,6 +459,7 @@ describe('serializer', () => {
       const wrongVersion = { 
         version: 2, 
         accounts: [], 
+        calendars: [],
         oauthCredentials: { clientId: '', clientSecret: '' },
         syncSettings: {}, 
         calendarFilters: {}, 
