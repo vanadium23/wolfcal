@@ -108,7 +108,7 @@ describe('serializer', () => {
         accessToken: 'plaintext-access-token',
         refreshToken: 'plaintext-refresh-token',
         tokenExpiry: expect.any(Number),
-        // color omitted for size optimization
+        createdAt: expect.any(Number),
       });
     });
 
@@ -135,14 +135,15 @@ describe('serializer', () => {
       const config = await exportConfig();
 
       expect(config.calendars).toHaveLength(1);
-      // Optimized export - only essential fields
       expect(config.calendars[0]).toEqual({
         id: 'primary-calendar',
         accountId: 'test@example.com',
         summary: 'My Calendar',
+        color: 'blue',
+        backgroundColor: '#0000FF',
         visible: true,
         primary: true,
-        // description, color, backgroundColor omitted for size optimization
+        // description omitted (will be fetched from Google API)
       });
     });
 
@@ -255,6 +256,7 @@ describe('serializer', () => {
           accessToken: 'access-token',
           refreshToken: 'refresh-token',
           tokenExpiry: Date.now() + 3600000,
+          createdAt: Date.now(),
         }],
         calendars: [{
           id: 'cal1',
@@ -310,6 +312,7 @@ describe('serializer', () => {
           accessToken: 'plaintext-access',
           refreshToken: 'plaintext-refresh',
           tokenExpiry: Date.now() + 3600000,
+          createdAt: Date.now(),
         }],
         calendars: [{
           id: 'cal1',
@@ -383,6 +386,7 @@ describe('serializer', () => {
           accessToken: 'new-access',
           refreshToken: 'new-refresh',
           tokenExpiry: Date.now() + 3600000,
+          createdAt: Date.now(),
         }],
         calendars: [{
           id: 'cal1',

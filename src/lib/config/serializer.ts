@@ -61,11 +61,14 @@ export interface ConfigBundle {
     accessToken: string; // PLAINTEXT - will be encrypted with device master key on import
     refreshToken: string; // PLAINTEXT - will be encrypted with device master key on import
     tokenExpiry: number;
+    createdAt: number;
   }>;
   calendars: Array<{
     id: string; // Google Calendar ID
     accountId: string; // Account email (foreign key)
     summary: string;
+    color?: string;
+    backgroundColor?: string;
     visible: boolean;
     primary: boolean;
   }>;
@@ -219,7 +222,7 @@ export async function exportConfig(): Promise<ConfigBundle> {
     // Read accounts from IndexedDB
     const accounts = await db.getAll('accounts');
     
-    // Decrypt tokens for each account (optimized for size)
+    // Decrypt tokens for each account
     const accountsWithPlainTokens = await Promise.all(
       (accounts as Account[]).map(async (acc: Account) => {
         try {
@@ -230,7 +233,7 @@ export async function exportConfig(): Promise<ConfigBundle> {
             accessToken,
             refreshToken,
             tokenExpiry: acc.tokenExpiry,
-            // Don't export createdAt/updatedAt/color - will be set on import
+            createdAt: acc.createdAt,
           };
         } catch (error) {
           console.error(`Failed to decrypt tokens for account ${acc.email}:`, error);
@@ -261,7 +264,8 @@ export async function exportConfig(): Promise<ConfigBundle> {
         id: cal.id,
         accountId: cal.accountId,
         summary: cal.summary,
-        // Omit description, color, backgroundColor - re-fetched from Google API on import
+        color: cal.color,
+        backgroundColor: cal.backgroundColor,
         visible: cal.visible,
         primary: cal.primary,
       })),
@@ -319,20 +323,20 @@ export async function importConfig(bundle: ConfigBundle, mode: ImportMode): Prom
           encryptedRefreshToken,
           tokenExpiry: acc.tokenExpiry,
           color: undefined, // Will be assigned on sync
-          createdAt: Date.now(),
+          createdAt: acc.createdAt,
           updatedAt: Date.now(),
         });
       }
       
-      // Import calendars (set default/empty values for fields not in bundle)
+      // Import calendars
       for (const cal of bundle.calendars) {
         await db.put('calendars', {
           id: cal.id,
           accountId: cal.accountId,
           summary: cal.summary,
           description: undefined, // Will be fetched from Google API on sync
-          color: undefined, // Will be fetched from Google API on sync
-          backgroundColor: undefined, // Will be fetched from Google API on sync
+          color: cal.color,
+          backgroundColor: cal.backgroundColor,
           visible: cal.visible,
           primary: cal.primary,
           createdAt: Date.now(),
@@ -370,7 +374,7 @@ export async function importConfig(bundle: ConfigBundle, mode: ImportMode): Prom
           encryptedRefreshToken,
           tokenExpiry: acc.tokenExpiry,
           color: existing?.color, // Preserve existing color or leave undefined
-          createdAt: existing?.createdAt || Date.now(),
+          createdAt: acc.createdAt, // Use imported createdAt
           updatedAt: Date.now(),
         });
       }
@@ -384,8 +388,8 @@ export async function importConfig(bundle: ConfigBundle, mode: ImportMode): Prom
           accountId: cal.accountId,
           summary: cal.summary,
           description: existing?.description, // Preserve existing or leave undefined
-          color: existing?.color, // Preserve existing or leave undefined
-          backgroundColor: existing?.backgroundColor, // Preserve existing or leave undefined
+          color: cal.color || existing?.color, // Use imported or preserve existing
+          backgroundColor: cal.backgroundColor || existing?.backgroundColor, // Use imported or preserve existing
           visible: cal.visible,
           primary: cal.primary,
           createdAt: existing?.createdAt || Date.now(),
