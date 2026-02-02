@@ -66,7 +66,7 @@ describe('serializer', () => {
     it('should export empty config when no data exists', async () => {
       const config = await exportConfig();
 
-      expect(config.version).toBe(1);
+      expect(config.version).toBe(2);
       expect(config.accounts).toEqual([]);
       expect(config.calendars).toEqual([]);
       expect(config.oauthCredentials).toEqual({ clientId: '', clientSecret: '' });
@@ -76,7 +76,7 @@ describe('serializer', () => {
       expect(config.exportedAt).toBeLessThanOrEqual(Date.now());
     });
 
-    it('should export accounts with decrypted tokens', async () => {
+    it('should export accounts without tokens (metadata only)', async () => {
       const accountData = {
         id: 'test@example.com',
         email: 'test@example.com',
@@ -87,17 +87,10 @@ describe('serializer', () => {
         createdAt: Date.now(),
         updatedAt: Date.now(),
       };
-      
+
       mockGetAll.mockImplementation((storeName) => {
         if (storeName === 'accounts') return Promise.resolve([accountData]);
         return Promise.resolve([]);
-      });
-      
-      // Mock decryption to return different tokens
-      mockDecryptToken.mockImplementation((encrypted) => {
-        if (encrypted === 'enc-access') return Promise.resolve('plaintext-access-token');
-        if (encrypted === 'enc-refresh') return Promise.resolve('plaintext-refresh-token');
-        return Promise.resolve('decrypted-token');
       });
 
       const config = await exportConfig();
@@ -105,11 +98,15 @@ describe('serializer', () => {
       expect(config.accounts).toHaveLength(1);
       expect(config.accounts[0]).toEqual({
         email: 'test@example.com',
-        accessToken: 'plaintext-access-token',
-        refreshToken: 'plaintext-refresh-token',
-        tokenExpiry: expect.any(Number),
+        needsReauth: true,
         createdAt: expect.any(Number),
       });
+      // Verify tokens are NOT exported
+      expect('accessToken' in config.accounts[0]).toBe(false);
+      expect('refreshToken' in config.accounts[0]).toBe(false);
+      expect('tokenExpiry' in config.accounts[0]).toBe(false);
+      // Verify decryptToken was NOT called
+      expect(mockDecryptToken).not.toHaveBeenCalled();
     });
 
     it('should export calendars', async () => {
@@ -248,14 +245,12 @@ describe('serializer', () => {
   });
 
   describe('serializeBundle/deserializeBundle', () => {
-    it('should serialize and deserialize correctly', () => {
+    it('should serialize and deserialize correctly (version 2)', () => {
       const bundle: ConfigBundle = {
-        version: 1,
+        version: 2,
         accounts: [{
           email: 'test@example.com',
-          accessToken: 'access-token',
-          refreshToken: 'refresh-token',
-          tokenExpiry: Date.now() + 3600000,
+          needsReauth: true,
           createdAt: Date.now(),
         }],
         calendars: [{
@@ -280,12 +275,35 @@ describe('serializer', () => {
       expect(deserialized).toEqual(bundle);
     });
 
+    it('should support version 1 bundles for migration', () => {
+      const v1Bundle = {
+        version: 1,
+        accounts: [{
+          email: 'test@example.com',
+          accessToken: 'access-token',
+          refreshToken: 'refresh-token',
+          tokenExpiry: Date.now() + 3600000,
+          createdAt: Date.now(),
+        }],
+        calendars: [],
+        oauthCredentials: { clientId: '', clientSecret: '' },
+        syncSettings: { autoSync: true, syncInterval: 30 },
+        calendarFilters: {},
+        exportedAt: Date.now(),
+      };
+
+      const serialized = serializeBundle(v1Bundle as ConfigBundle);
+      const deserialized = deserializeBundle(serialized);
+
+      expect(deserialized.version).toBe(1);
+    });
+
     it('should throw on invalid JSON', () => {
       expect(() => deserializeBundle('not-json')).toThrow(ConfigError);
     });
 
     it('should throw on invalid bundle structure', () => {
-      expect(() => deserializeBundle(JSON.stringify({ version: 2 }))).toThrow(ConfigError);
+      expect(() => deserializeBundle(JSON.stringify({ version: 3 }))).toThrow(ConfigError);
       expect(() => deserializeBundle(JSON.stringify({ version: 1 }))).toThrow(ConfigError);
     });
 
@@ -296,22 +314,15 @@ describe('serializer', () => {
   });
 
   describe('importConfig - replace mode', () => {
-    it('should replace all existing data and re-encrypt tokens', async () => {
+    it('should replace all existing data with placeholder accounts (version 2)', async () => {
       mockClear.mockResolvedValue(undefined);
       mockPut.mockResolvedValue('test@example.com');
-      
-      // Mock encryption to return specific values
-      mockEncryptToken.mockImplementation((token) => {
-        return Promise.resolve(`encrypted-${token}`);
-      });
 
       const bundle: ConfigBundle = {
-        version: 1,
+        version: 2,
         accounts: [{
           email: 'test@example.com',
-          accessToken: 'plaintext-access',
-          refreshToken: 'plaintext-refresh',
-          tokenExpiry: Date.now() + 3600000,
+          needsReauth: true,
           createdAt: Date.now(),
         }],
         calendars: [{
@@ -335,13 +346,15 @@ describe('serializer', () => {
       expect(mockClear).toHaveBeenCalledWith('accounts');
       expect(mockClear).toHaveBeenCalledWith('calendars');
       expect(mockPut).toHaveBeenCalled();
-      
-      // Check that put was called for account
+
+      // Check that put was called for account with empty tokens
       const accountPutCall = mockPut.mock.calls.find(call => call[0] === 'accounts');
       expect(accountPutCall).toBeDefined();
       expect(accountPutCall![1].email).toBe('test@example.com');
-      expect(accountPutCall![1].encryptedAccessToken).toBe('encrypted-plaintext-access');
-      
+      expect(accountPutCall![1].encryptedAccessToken).toBe('');
+      expect(accountPutCall![1].encryptedRefreshToken).toBe('');
+      expect(accountPutCall![1].tokenExpiry).toBe(0);
+
       // Check that put was called for calendar
       const calendarPutCall = mockPut.mock.calls.find(call => call[0] === 'calendars');
       expect(calendarPutCall).toBeDefined();
@@ -350,10 +363,42 @@ describe('serializer', () => {
       expect(localStorage.getItem('wolfcal:oauth:clientId')).toBe('new-client-id');
       expect(localStorage.getItem('wolfcal:oauth:clientSecret')).toBe('new-client-secret');
     });
+
+    it('should support version 1 bundles with token re-encryption', async () => {
+      mockClear.mockResolvedValue(undefined);
+      mockPut.mockResolvedValue('test@example.com');
+
+      // Mock encryption to return specific values
+      mockEncryptToken.mockImplementation((token) => {
+        return Promise.resolve(`encrypted-${token}`);
+      });
+
+      const v1Bundle = {
+        version: 1,
+        accounts: [{
+          email: 'test@example.com',
+          accessToken: 'plaintext-access',
+          refreshToken: 'plaintext-refresh',
+          tokenExpiry: Date.now() + 3600000,
+          createdAt: Date.now(),
+        }],
+        calendars: [],
+        oauthCredentials: { clientId: '', clientSecret: '' },
+        syncSettings: { autoSync: true, syncInterval: 30 },
+        calendarFilters: {},
+        exportedAt: Date.now(),
+      };
+
+      await importConfig(v1Bundle as ConfigBundle, 'replace');
+
+      // Check that encryptToken was called for version 1 bundle
+      expect(mockEncryptToken).toHaveBeenCalledWith('plaintext-access');
+      expect(mockEncryptToken).toHaveBeenCalledWith('plaintext-refresh');
+    });
   });
 
   describe('importConfig - merge mode', () => {
-    it('should merge accounts and calendars', async () => {
+    it('should merge accounts and calendars with placeholder tokens (version 2)', async () => {
       const existingAccount = {
         id: 'existing@example.com',
         email: 'existing@example.com',
@@ -364,28 +409,21 @@ describe('serializer', () => {
         createdAt: 1000000,
         updatedAt: 2000000,
       };
-      
+
       mockGet.mockImplementation((storeName, key) => {
         if (storeName === 'accounts' && key === 'new@example.com') return Promise.resolve(undefined);
         if (storeName === 'accounts' && key === 'existing@example.com') return Promise.resolve(existingAccount);
         if (storeName === 'calendars' && key === 'cal1') return Promise.resolve(undefined);
         return Promise.resolve(undefined);
       });
-      
+
       mockPut.mockResolvedValue('new@example.com');
-      
-      // Mock encryption
-      mockEncryptToken.mockImplementation((token) => {
-        return Promise.resolve(`encrypted-${token}`);
-      });
 
       const bundle: ConfigBundle = {
-        version: 1,
+        version: 2,
         accounts: [{
           email: 'new@example.com',
-          accessToken: 'new-access',
-          refreshToken: 'new-refresh',
-          tokenExpiry: Date.now() + 3600000,
+          needsReauth: true,
           createdAt: Date.now(),
         }],
         calendars: [{
@@ -405,6 +443,15 @@ describe('serializer', () => {
 
       // Verify put was called for both account and calendar
       expect(mockPut).toHaveBeenCalled();
+
+      // Check that new account has empty tokens
+      const newAccountPutCall = mockPut.mock.calls.find(call =>
+        call[0] === 'accounts' && call[1].email === 'new@example.com'
+      );
+      expect(newAccountPutCall).toBeDefined();
+      expect(newAccountPutCall![1].encryptedAccessToken).toBe('');
+      expect(newAccountPutCall![1].encryptedRefreshToken).toBe('');
+      expect(newAccountPutCall![1].tokenExpiry).toBe(0);
     });
 
     it('should merge calendar filters', async () => {
@@ -414,7 +461,7 @@ describe('serializer', () => {
       }));
 
       const bundle: ConfigBundle = {
-        version: 1,
+        version: 2,
         accounts: [],
         calendars: [],
         oauthCredentials: { clientId: '', clientSecret: '' },
@@ -438,7 +485,7 @@ describe('serializer', () => {
 
     it('should import OAuth credentials in merge mode', async () => {
       const bundle: ConfigBundle = {
-        version: 1,
+        version: 2,
         accounts: [],
         calendars: [],
         oauthCredentials: {
@@ -460,21 +507,21 @@ describe('serializer', () => {
   describe('error handling', () => {
     it('should throw ConfigError for invalid bundle', async () => {
       const invalid = { version: 1 } as any;
-      
+
       await expect(importConfig(invalid, 'replace')).rejects.toThrow(ConfigError);
     });
 
-    it('should throw ConfigError with wrong version', async () => {
-      const wrongVersion = { 
-        version: 2, 
-        accounts: [], 
+    it('should throw ConfigError with unsupported version', async () => {
+      const wrongVersion = {
+        version: 3,
+        accounts: [],
         calendars: [],
         oauthCredentials: { clientId: '', clientSecret: '' },
-        syncSettings: {}, 
-        calendarFilters: {}, 
-        exportedAt: Date.now() 
+        syncSettings: {},
+        calendarFilters: {},
+        exportedAt: Date.now()
       } as any;
-      
+
       await expect(importConfig(wrongVersion, 'replace')).rejects.toThrow(ConfigError);
     });
   });

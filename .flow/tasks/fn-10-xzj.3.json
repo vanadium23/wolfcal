@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-02T15:42:09.025915Z",
+  "depends_on": [],
+  "epic": "fn-10-xzj",
+  "id": "fn-10-xzj.3",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-10-xzj.3.md",
+  "status": "todo",
+  "title": "Update importConfig() replace mode to create accounts with empty tokens",
+  "updated_at": "2026-02-02T15:42:09.025927Z"
+}

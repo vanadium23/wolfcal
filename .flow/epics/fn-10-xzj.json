@@ -1,0 +1,13 @@
+{
+  "branch_name": "fn-10-xzj",
+  "created_at": "2026-02-02T15:39:48.036684Z",
+  "depends_on_epics": [],
+  "id": "fn-10-xzj",
+  "next_task": 1,
+  "plan_review_status": "unknown",
+  "plan_reviewed_at": null,
+  "spec_path": ".flow/specs/fn-10-xzj.md",
+  "status": "open",
+  "title": "Fix Export Settings to Exclude Tokens - Require Re-auth on Import",
+  "updated_at": "2026-02-02T15:40:11.689561Z"
+}

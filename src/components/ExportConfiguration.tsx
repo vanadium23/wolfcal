@@ -55,12 +55,12 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
 
       // Debug: log bundle structure and sizes
       console.log('=== Export Debug ===');
+      console.log('Version:', bundle.version);
       console.log('Accounts:', bundle.accounts.length, 'items');
       console.log('Calendars:', bundle.calendars.length, 'items');
       console.log('Account data:', bundle.accounts.map(a => ({
         email: a.email,
-        tokenLen: a.accessToken.length,
-        refreshLen: a.refreshToken.length,
+        needsReauth: a.needsReauth,
       })));
       console.log('Calendar data:', bundle.calendars.map(c => ({
         id: c.id,
@@ -139,9 +139,30 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <h2>Export Configuration</h2>
             <p className="modal-description">
-              Create a secure passphrase to encrypt your configuration. You'll need this passphrase 
+              Create a secure passphrase to encrypt your configuration. You'll need this passphrase
               to import your configuration on another device.
             </p>
+            <div style={{
+              background: '#e3f2fd',
+              border: '1px solid #2196f3',
+              borderRadius: '4px',
+              padding: '12px',
+              marginTop: '12px',
+              marginBottom: '12px'
+            }}>
+              <p style={{ margin: '0 0 8px 0', color: '#0d47a1', fontWeight: 500 }}>
+                What's included:
+              </p>
+              <ul style={{ margin: 0, paddingLeft: '20px', color: '#0d47a1', fontSize: '14px' }}>
+                <li>Account information (email, created date)</li>
+                <li>Calendar settings and preferences</li>
+                <li>OAuth credentials (client ID, client secret)</li>
+                <li>Sync settings and filters</li>
+              </ul>
+              <p style={{ margin: '8px 0 0 0', color: '#0d47a1', fontWeight: 500, fontSize: '14px' }}>
+                ⚠️ Authentication tokens are NOT exported. You'll need to re-authenticate each account on the new device.
+              </p>
+            </div>
 
             {error && (
               <div className="modal-error">
@@ -205,10 +226,26 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
           <div className="modal-content export-result-modal" onClick={(e) => e.stopPropagation()}>
             <h2>Configuration Exported!</h2>
             <p className="modal-description">
-              {!qrCodeTooLarge 
+              {!qrCodeTooLarge
                 ? 'Scan the QR code or copy the URL below to transfer your configuration to another device.'
                 : 'Your configuration is too large for a QR code. Please use the "Copy" button to transfer the URL below.'}
             </p>
+
+            <div style={{
+              background: '#fff3cd',
+              border: '1px solid #ffc107',
+              borderRadius: '4px',
+              padding: '12px',
+              marginTop: '12px',
+              marginBottom: '12px'
+            }}>
+              <p style={{ margin: '0 0 8px 0', color: '#856404', fontWeight: 500 }}>
+                ⚠️ Important: Re-authentication Required
+              </p>
+              <p style={{ margin: 0, color: '#856404', fontSize: '14px' }}>
+                When you import this configuration on another device, you will need to re-authenticate each account. This is intentional for security reasons - authentication tokens are not transferred.
+              </p>
+            </div>
 
             {error && (
               <div className="modal-error">

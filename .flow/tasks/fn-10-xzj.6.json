@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-02T15:42:42.661684Z",
+  "depends_on": [],
+  "epic": "fn-10-xzj",
+  "id": "fn-10-xzj.6",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-10-xzj.6.md",
+  "status": "todo",
+  "title": "Update ImportConfiguration component to show re-auth requirement and prompt",
+  "updated_at": "2026-02-02T15:42:42.661691Z"
+}

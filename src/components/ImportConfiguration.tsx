@@ -61,10 +61,13 @@ export function ImportConfigurationModal({ encryptedData, onComplete, onCancel }
       window.history.replaceState({}, '', window.location.pathname);
       
       setStep('success');
+      const reauthMessage = decryptedBundle.accounts.length > 0
+        ? `\n\n⚠️ ${decryptedBundle.accounts.length} account${decryptedBundle.accounts.length > 1 ? 's' : ''} need re-authentication. Go to Settings to complete the setup.`
+        : '';
       setSuccessMessage(
-        mergeMode === 'replace' 
-          ? 'Configuration imported successfully! All settings have been replaced.' 
-          : 'Configuration imported successfully! Settings have been merged with your existing configuration.'
+        mergeMode === 'replace'
+          ? `Configuration imported successfully! All settings have been replaced.${reauthMessage}`
+          : `Configuration imported successfully! Settings have been merged with your existing configuration.${reauthMessage}`
       );
 
       // Auto-close after 2 seconds and reload
@@ -150,6 +153,22 @@ export function ImportConfigurationModal({ encryptedData, onComplete, onCancel }
               <p><strong>Accounts:</strong> {decryptedBundle.accounts.length}</p>
               <p><strong>Sync Settings:</strong> Auto-sync: {decryptedBundle.syncSettings.autoSync ? 'On' : 'Off'}, Interval: {decryptedBundle.syncSettings.syncInterval} min</p>
               <p><strong>Calendars:</strong> {Object.keys(decryptedBundle.calendarFilters).length}</p>
+            </div>
+
+            <div style={{
+              background: '#fff3cd',
+              border: '1px solid #ffc107',
+              borderRadius: '4px',
+              padding: '12px',
+              marginTop: '16px',
+              marginBottom: '16px'
+            }}>
+              <p style={{ margin: '0 0 8px 0', color: '#856404', fontWeight: 500 }}>
+                Re-authentication Required
+              </p>
+              <p style={{ margin: 0, color: '#856404', fontSize: '14px' }}>
+                For security reasons, authentication tokens are not transferred. You will need to re-authenticate each account after import. Go to Settings after import to complete the setup.
+              </p>
             </div>
 
             <div className="merge-choice-options">

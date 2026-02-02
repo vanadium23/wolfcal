@@ -7,7 +7,8 @@ import AddAccountButton from '../components/AddAccountButton'
 import ExportConfiguration from '../components/ExportConfiguration'
 import type { OAuthTokenResponse } from '../lib/auth/types'
 import { encryptToken } from '../lib/auth/encryption'
-import { addAccount, addCalendar } from '../lib/db'
+import { addAccount, addCalendar, getAllAccounts } from '../lib/db'
+import type { Account } from '../lib/db/types'
 import { CalendarClient } from '../lib/api'
 import { SyncEngine } from '../lib/sync/engine'
 import './Settings.css'
@@ -22,6 +23,8 @@ export default function Settings() {
     autoSync: true,
     syncInterval: 15,
   })
+  const [accountsNeedingReauth, setAccountsNeedingReauth] = useState<Account[]>([])
+  const [showReauthPrompt, setShowReauthPrompt] = useState(false)
 
   const handleAccountAdded = async (tokens: OAuthTokenResponse) => {
     try {
@@ -127,6 +130,25 @@ export default function Settings() {
     }
   }, [])
 
+  // Check for accounts needing re-authentication
+  useEffect(() => {
+    const checkAccountsNeedingReauth = async () => {
+      try {
+        const allAccounts = await getAllAccounts()
+        const needsReauth = allAccounts.filter(
+          acc => !acc.encryptedAccessToken || acc.tokenExpiry === 0
+        )
+        if (needsReauth.length > 0) {
+          setAccountsNeedingReauth(needsReauth)
+          setShowReauthPrompt(true)
+        }
+      } catch (error) {
+        console.error('Failed to check accounts needing re-auth:', error)
+      }
+    }
+    checkAccountsNeedingReauth()
+  }, [])
+
   // Save sync settings to localStorage when changed
   const updateSyncSettings = (updates: Partial<SyncSettings>) => {
     const newSettings = { ...syncSettings, ...updates }
@@ -134,8 +156,95 @@ export default function Settings() {
     localStorage.setItem('wolfcal:syncSettings', JSON.stringify(newSettings))
   }
 
+  const handleReauthClick = (email: string) => {
+    // Scroll to the Add Account button and highlight it
+    const addAccountSection = document.querySelector('.settings-section:nth-child(2)')
+    if (addAccountSection) {
+      addAccountSection.scrollIntoView({ behavior: 'smooth' })
+      // Flash the section to draw attention
+      addAccountSection.classList.add('highlight-pulse')
+      setTimeout(() => addAccountSection.classList.remove('highlight-pulse'), 2000)
+    }
+    alert(`Please use the "Add Account" button below to re-authenticate ${email}.\n\nThis will update your account with fresh tokens and restore full functionality.`)
+  }
+
+  const dismissReauthPrompt = () => {
+    setShowReauthPrompt(false)
+  }
+
   return (
     <div className="settings-container">
+      {/* Re-authentication Prompt */}
+      {showReauthPrompt && accountsNeedingReauth.length > 0 && (
+        <div className="reauth-prompt-banner" style={{
+          background: '#fff3cd',
+          border: '2px solid #ffc107',
+          borderRadius: '8px',
+          padding: '16px',
+          marginBottom: '20px',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+        }}>
+          <h3 style={{ margin: '0 0 8px 0', color: '#856404' }}>
+            Authentication Required
+          </h3>
+          <p style={{ margin: '0 0 12px 0', color: '#856404' }}>
+            {accountsNeedingReauth.length === 1
+              ? '1 account needs re-authentication. This can happen after importing settings from another device.'
+              : `${accountsNeedingReauth.length} accounts need re-authentication. This can happen after importing settings from another device.`
+            }
+          </p>
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+            <span style={{ color: '#856404', fontWeight: 500 }}>Accounts:</span>
+            {accountsNeedingReauth.map(acc => (
+              <span
+                key={acc.id}
+                style={{
+                  background: '#fff',
+                  border: '1px solid #ffc107',
+                  borderRadius: '4px',
+                  padding: '4px 12px',
+                  fontSize: '14px',
+                  color: '#856404'
+                }}
+              >
+                {acc.email}
+              </span>
+            ))}
+          </div>
+          <div style={{ marginTop: '12px', display: 'flex', gap: '8px' }}>
+            <button
+              className="btn btn-primary"
+              onClick={() => handleReauthClick(accountsNeedingReauth[0]?.email || '')}
+              style={{
+                background: '#007bff',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '4px',
+                padding: '8px 16px',
+                cursor: 'pointer',
+                fontSize: '14px'
+              }}
+            >
+              Re-authenticate Now
+            </button>
+            <button
+              className="btn"
+              onClick={dismissReauthPrompt}
+              style={{
+                background: '#6c757d',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '4px',
+                padding: '8px 16px',
+                cursor: 'pointer',
+                fontSize: '14px'
+              }}
+            >
+              Dismiss
+            </button>
+          </div>
+        </div>
+      )}
       <h1>Settings</h1>
 
       <section className="settings-section">

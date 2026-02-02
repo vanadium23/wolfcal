@@ -10,7 +10,7 @@
 
 import { getDB } from '../db';
 import type { Account, Calendar } from '../db/types';
-import { decryptToken, encryptToken } from '../auth/encryption';
+import { encryptToken } from '../auth/encryption';
 
 // LocalStorage keys
 const STORAGE_KEYS = {
@@ -45,23 +45,27 @@ interface OAuthCredentials {
 
 /**
  * Configuration bundle for export/import
- * Version 1 structure for future migration support
+ * Version 2 structure for future migration support
  *
- * NOTE: accessTokens and refreshTokens are PLAINTEXT in this bundle
+ * NOTE: accessTokens and refreshTokens are NOT exported in version 2 to prevent race conditions
+ * when syncing across multiple devices. Users must re-authenticate on import.
+ *
  * The entire bundle is encrypted with the user's passphrase for transfer.
- * Each device re-encrypts the tokens with its own master key.
  *
  * Optimized for size: Only includes essential fields, omits metadata and
  * optional fields that can be re-fetched from Google API.
  */
 export interface ConfigBundle {
-  version: 1
+  version: 1 | 2
   accounts: Array<{
     email: string;
-    accessToken: string; // PLAINTEXT - will be encrypted with device master key on import
-    refreshToken: string; // PLAINTEXT - will be encrypted with device master key on import
-    tokenExpiry: number;
     createdAt: number;
+    // Version 1 fields (for migration support)
+    accessToken?: string;
+    refreshToken?: string;
+    tokenExpiry?: number;
+    // Version 2 fields
+    needsReauth?: true; // Flag indicating re-authentication is required on import
   }>;
   calendars: Array<{
     id: string; // Google Calendar ID
@@ -181,15 +185,28 @@ function writeOAuthCredentials(credentials: OAuthCredentials): void {
 }
 
 /**
+ * Type guard to check if an account has version 1 token fields
+ */
+function isV1Account(acc: { email: string; createdAt: number; [key: string]: unknown }): acc is {
+  email: string;
+  createdAt: number;
+  accessToken: string;
+  refreshToken: string;
+  tokenExpiry: number;
+} {
+  return 'accessToken' in acc && 'refreshToken' in acc && 'tokenExpiry' in acc;
+}
+
+/**
  * Validate a config bundle structure
  */
 function validateConfigBundle(data: unknown): data is ConfigBundle {
   if (typeof data !== 'object' || data === null) return false;
-  
+
   const bundle = data as Record<string, unknown>;
-  
-  // Check version
-  if (bundle.version !== 1) return false;
+
+  // Check version (support version 1 for migration, version 2 is current)
+  if (bundle.version !== 1 && bundle.version !== 2) return false;
   
   // Check accounts array
   if (!Array.isArray(bundle.accounts)) return false;
@@ -212,35 +229,22 @@ function validateConfigBundle(data: unknown): data is ConfigBundle {
 /**
  * Export current configuration as a ConfigBundle
  * Reads from IndexedDB and localStorage
- * 
- * IMPORTANT: Decrypts tokens before including in bundle
+ *
+ * IMPORTANT: Does NOT export tokens - users must re-authenticate on import
  */
 export async function exportConfig(): Promise<ConfigBundle> {
   try {
     const db = await getDB();
-    
-    // Read accounts from IndexedDB
+
+    // Read accounts from IndexedDB - export ONLY metadata (no tokens)
     const accounts = await db.getAll('accounts');
-    
-    // Decrypt tokens for each account
-    const accountsWithPlainTokens = await Promise.all(
-      (accounts as Account[]).map(async (acc: Account) => {
-        try {
-          const accessToken = await decryptToken(acc.encryptedAccessToken);
-          const refreshToken = await decryptToken(acc.encryptedRefreshToken);
-          return {
-            email: acc.email,
-            accessToken,
-            refreshToken,
-            tokenExpiry: acc.tokenExpiry,
-            createdAt: acc.createdAt,
-          };
-        } catch (error) {
-          console.error(`Failed to decrypt tokens for account ${acc.email}:`, error);
-          throw new ConfigError(`Failed to decrypt tokens for account ${acc.email}`, error);
-        }
-      })
-    );
+
+    // Export account metadata without tokens (re-auth required on import)
+    const accountsMetadata = (accounts as Account[]).map((acc: Account) => ({
+      email: acc.email,
+      needsReauth: true as const,
+      createdAt: acc.createdAt,
+    }));
     
     // Read calendars from IndexedDB (optimized for size - only essential fields)
     const calendars = await db.getAll('calendars');
@@ -258,8 +262,8 @@ export async function exportConfig(): Promise<ConfigBundle> {
     const oauthCredentials = readOAuthCredentials() || { clientId: '', clientSecret: '' };
     
     return {
-      version: 1,
-      accounts: accountsWithPlainTokens,
+      version: 2,
+      accounts: accountsMetadata,
       calendars: (calendars as Calendar[]).map(cal => ({
         id: cal.id,
         accountId: cal.accountId,
@@ -292,8 +296,9 @@ export type ImportMode = 'replace' | 'merge';
  * Import a configuration bundle
  * @param bundle - The config bundle to import
  * @param mode - 'replace' to overwrite all settings, 'merge' to preserve existing
- * 
- * IMPORTANT: Re-encrypts plaintext tokens with this device's master key
+ *
+ * IMPORTANT: Version 2 bundles do NOT include tokens - accounts require re-authentication
+ * Version 1 bundles (legacy) include tokens that will be re-encrypted with this device's master key
  */
 export async function importConfig(bundle: ConfigBundle, mode: ImportMode): Promise<void> {
   try {
@@ -306,22 +311,35 @@ export async function importConfig(bundle: ConfigBundle, mode: ImportMode): Prom
     
     if (mode === 'replace') {
       // Replace mode: Clear existing data first
-      
+
       // Clear all accounts and calendars
       await db.clear('accounts');
       await db.clear('calendars');
-      
-      // Import accounts (re-encrypt tokens with this device's master key)
+
+      // Import accounts (handle both version 1 with tokens and version 2 without)
       for (const acc of bundle.accounts) {
-        const encryptedAccessToken = await encryptToken(acc.accessToken);
-        const encryptedRefreshToken = await encryptToken(acc.refreshToken);
+        let encryptedAccessToken: string;
+        let encryptedRefreshToken: string;
+        let tokenExpiry: number;
+
+        if (isV1Account(acc)) {
+          // Version 1: Re-encrypt tokens with this device's master key
+          encryptedAccessToken = await encryptToken(acc.accessToken);
+          encryptedRefreshToken = await encryptToken(acc.refreshToken);
+          tokenExpiry = acc.tokenExpiry;
+        } else {
+          // Version 2: No tokens - create placeholder requiring re-auth
+          encryptedAccessToken = '';
+          encryptedRefreshToken = '';
+          tokenExpiry = 0; // Forces re-authentication
+        }
 
         await db.put('accounts', {
           id: acc.email, // Use email as ID
           email: acc.email,
           encryptedAccessToken,
           encryptedRefreshToken,
-          tokenExpiry: acc.tokenExpiry,
+          tokenExpiry,
           color: undefined, // Will be assigned on sync
           createdAt: acc.createdAt,
           updatedAt: Date.now(),
@@ -358,21 +376,40 @@ export async function importConfig(bundle: ConfigBundle, mode: ImportMode): Prom
       
     } else {
       // Merge mode: Preserve existing data, add new
-      
+
       // Merge accounts (by email)
       for (const acc of bundle.accounts) {
         const existing = await db.get('accounts', acc.email);
-        
-        // Encrypt tokens with this device's master key
-        const encryptedAccessToken = await encryptToken(acc.accessToken);
-        const encryptedRefreshToken = await encryptToken(acc.refreshToken);
-        
+
+        let encryptedAccessToken: string;
+        let encryptedRefreshToken: string;
+        let tokenExpiry: number;
+
+        if (isV1Account(acc)) {
+          // Version 1: Re-encrypt tokens with this device's master key
+          encryptedAccessToken = await encryptToken(acc.accessToken);
+          encryptedRefreshToken = await encryptToken(acc.refreshToken);
+          tokenExpiry = acc.tokenExpiry;
+        } else {
+          // Version 2: No tokens - create placeholder requiring re-auth
+          // Preserve existing tokens if account exists
+          if (existing) {
+            encryptedAccessToken = existing.encryptedAccessToken;
+            encryptedRefreshToken = existing.encryptedRefreshToken;
+            tokenExpiry = existing.tokenExpiry;
+          } else {
+            encryptedAccessToken = '';
+            encryptedRefreshToken = '';
+            tokenExpiry = 0; // Forces re-authentication
+          }
+        }
+
         await db.put('accounts', {
           id: acc.email,
           email: acc.email,
           encryptedAccessToken,
           encryptedRefreshToken,
-          tokenExpiry: acc.tokenExpiry,
+          tokenExpiry,
           color: existing?.color, // Preserve existing color or leave undefined
           createdAt: acc.createdAt, // Use imported createdAt
           updatedAt: Date.now(),
