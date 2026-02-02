@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { exportConfig, serializeBundle, encrypt } from '../lib/config';
 import type { ConfigBundle } from '../lib/config/serializer';
+import { QRCodeSVG } from 'qrcode.react';
 
 interface ExportConfigurationProps {
   className?: string;
@@ -172,12 +173,29 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
       {/* Result Modal */}
       {showResultModal && (
         <div className="modal-overlay" onClick={handleCloseResultModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-content export-result-modal" onClick={(e) => e.stopPropagation()}>
             <h2>Configuration Exported!</h2>
             <p className="modal-description">
-              Your configuration has been encrypted and exported. Copy the URL below and share it 
-              with your other device, or save it for later.
+              Scan the QR code or copy the URL below to transfer your configuration to another device.
             </p>
+
+            {error && (
+              <div className="modal-error">
+                {error}
+              </div>
+            )}
+
+            {/* QR Code */}
+            <div className="qr-code-container">
+              <QRCodeSVG
+                value={exportUrl}
+                size={200}
+                level="M"
+                bgColor="#ffffff"
+                fgColor="#000000"
+                includeMargin={true}
+              />
+            </div>
 
             <div className="form-group">
               <label htmlFor="export-url">Export URL</label>
@@ -200,7 +218,13 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
                 </button>
               </div>
               <p className="form-help">
-                Open this URL on another device and enter your passphrase to import your configuration.
+                <strong>How to transfer:</strong>
+                <br />
+                • Scan the QR code with your phone's camera
+                <br />
+                • Or copy the URL and send it to yourself
+                <br />
+                • Open the URL on another device and enter your passphrase
               </p>
             </div>
 

@@ -513,3 +513,24 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Export Result Modal with QR Code */
+.export-result-modal {
+  max-width: 600px;
+}
+
+.qr-code-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.qr-code-container canvas {
+  max-width: 100%;
+  height: auto;
+}
