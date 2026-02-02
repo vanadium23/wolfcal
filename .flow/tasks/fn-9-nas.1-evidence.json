@@ -1,0 +1,17 @@
+{
+  "tests": {
+    "file": "src/test/config/transferCrypto.test.ts",
+    "test_count": 17,
+    "passed": 17,
+    "failed": 0
+  },
+  "files_created": [
+    "src/lib/config/transferCrypto.ts",
+    "src/lib/config/index.ts",
+    "src/test/config/transferCrypto.test.ts"
+  ],
+  "output_size": {
+    "typical_config_bytes": 964,
+    "url_limit_kb": 2
+  }
+}

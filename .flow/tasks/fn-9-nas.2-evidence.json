@@ -1,0 +1,12 @@
+{
+  "tests": {
+    "file": "src/test/config/serializer.test.ts",
+    "test_count": 19,
+    "passed": 19,
+    "failed": 0
+  },
+  "files_created": [
+    "src/lib/config/serializer.ts",
+    "src/test/config/serializer.test.ts"
+  ]
+}

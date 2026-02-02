@@ -1,0 +1,9 @@
+{
+  "files_created": [
+    "src/components/ExportConfiguration.tsx"
+  ],
+  "files_modified": [
+    "src/pages/Settings.tsx",
+    "src/pages/Settings.css"
+  ]
+}

@@ -5,6 +5,7 @@ import Settings from './pages/Settings'
 import { SyncStatusBar } from './components/SyncStatusBar'
 import { RefreshButton } from './components/RefreshButton'
 import { useSyncScheduler } from './hooks/useSyncScheduler'
+import { ImportConfigurationModal } from './components/ImportConfiguration'
 
 type View = 'calendar' | 'settings'
 
@@ -15,6 +16,18 @@ function App() {
   const [refreshTrigger, setRefreshTrigger] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const [showImportModal, setShowImportModal] = useState(false)
+  const [encryptedConfigData, setEncryptedConfigData] = useState('')
+
+  // Check for #config hash on mount
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#config=')) {
+      const configData = hash.substring(8); // Remove '#config='
+      setEncryptedConfigData(configData);
+      setShowImportModal(true);
+    }
+  }, []);
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -107,6 +120,14 @@ function App() {
 
         {currentView === 'settings' && <Settings />}
       </main>
+
+      {showImportModal && (
+        <ImportConfigurationModal
+          encryptedData={encryptedConfigData}
+          onComplete={() => setShowImportModal(false)}
+          onCancel={() => setShowImportModal(false)}
+        />
+      )}
     </div>
   )
 }

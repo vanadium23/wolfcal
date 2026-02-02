@@ -1,0 +1,13 @@
+{
+  "branch_name": "fn-9-url-hash-transfer",
+  "created_at": "2026-02-02T09:33:25.222584Z",
+  "depends_on_epics": [],
+  "id": "fn-9-nas",
+  "next_task": 1,
+  "plan_review_status": "unknown",
+  "plan_reviewed_at": null,
+  "spec_path": ".flow/specs/fn-9-nas.md",
+  "status": "open",
+  "title": "Implement URL Hash Transfer for Cross-Device Configuration",
+  "updated_at": "2026-02-02T09:34:38.437303Z"
+}

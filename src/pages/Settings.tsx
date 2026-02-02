@@ -4,6 +4,7 @@ import AccountList from '../components/AccountList'
 import CalendarManagement from '../components/CalendarManagement'
 import ErrorLog from '../components/ErrorLog'
 import AddAccountButton from '../components/AddAccountButton'
+import ExportConfiguration from '../components/ExportConfiguration'
 import type { OAuthTokenResponse } from '../lib/auth/types'
 import { encryptToken } from '../lib/auth/encryption'
 import { addAccount, addCalendar } from '../lib/db'
@@ -215,6 +216,15 @@ export default function Settings() {
           View and troubleshoot synchronization errors. Errors are logged automatically when sync operations fail.
         </p>
         <ErrorLog />
+      </section>
+
+      <section className="settings-section">
+        <h2>Cross-Device Configuration</h2>
+        <p className="section-description">
+          Export your configuration to transfer it to another device. Your OAuth credentials,
+          calendar settings, and preferences will be encrypted with a passphrase you choose.
+        </p>
+        <ExportConfiguration className="btn btn-primary" />
       </section>
     </div>
   )

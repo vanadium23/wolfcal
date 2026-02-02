@@ -1,0 +1,7 @@
+{
+  "test_file": "src/test/e2e/cross-device-config.spec.ts",
+  "test_count": 9,
+  "passed": 9,
+  "failed": 0,
+  "runtime_seconds": 10.0
+}
