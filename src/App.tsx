@@ -19,7 +19,12 @@ function App() {
   // Close mobile menu when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+      // Also check if click is inside mobile-menu (which is a sibling, not a child of header-actions)
+      const mobileMenu = document.querySelector('.mobile-menu')
+      const clickedInsideHeaderActions = mobileMenuRef.current?.contains(event.target as Node)
+      const clickedInsideMobileMenu = mobileMenu?.contains(event.target as Node)
+
+      if (mobileMenuOpen && !clickedInsideHeaderActions && !clickedInsideMobileMenu) {
         setMobileMenuOpen(false)
       }
     }
