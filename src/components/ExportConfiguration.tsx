@@ -52,28 +52,44 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
     try {
       // Export configuration
       const bundle: ConfigBundle = await exportConfig();
-      
+
+      // Debug: log bundle structure and sizes
+      console.log('=== Export Debug ===');
+      console.log('Accounts:', bundle.accounts.length, 'items');
+      console.log('Calendars:', bundle.calendars.length, 'items');
+      console.log('Account data:', bundle.accounts.map(a => ({
+        email: a.email,
+        tokenLen: a.accessToken.length,
+        refreshLen: a.refreshToken.length,
+      })));
+      console.log('Calendar data:', bundle.calendars.map(c => ({
+        id: c.id,
+        summary: c.summary,
+        summaryLen: c.summary.length,
+      })));
+
       // Serialize to JSON
       const serialized = serializeBundle(bundle);
-      
-      console.log('Config size:', serialized.length, 'bytes');
-      
+
+      console.log('Config JSON size:', serialized.length, 'bytes');
+
       // Encrypt with passphrase
       const encrypted = await encrypt(serialized, passphrase);
-      
+
       console.log('Encrypted size:', encrypted.length, 'bytes');
-      
+
       // Generate URL
       const baseUrl = window.location.origin + window.location.pathname;
       const url = `${baseUrl}#config=${encrypted}`;
-      
-      console.log('URL size:', url.length, 'bytes');
-      
+
+      console.log('Final URL size:', url.length, 'bytes');
+      console.log('==================');
+
       setExportUrl(url);
       setShowPassphraseModal(false);
       setShowResultModal(true);
       setCopySuccess(false);
-      
+
       // Check if QR code can handle this data
       setQrCodeTooLarge(url.length > MAX_QR_DATA_SIZE);
     } catch (err) {
