@@ -2227,3 +2227,719 @@
 2026-02-03T05:10:58.429Z [DEBUG] [API:auth] OAuth token check complete
 2026-02-03T05:10:59.097Z [DEBUG] Stream started - received first chunk
 2026-02-03T05:10:59.224Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:02.528Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:11:02.542Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:11:02.542Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:02.542Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:02.556Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:02.835Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:02.836Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:02.836Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:02.836Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:02.863Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:11:02.863Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:02.864Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:02.873Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:02.903Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:11:02.921Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:11:02.921Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:02.921Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:02.949Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:02.980Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:02.981Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:02.981Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:02.981Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:02.981Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:02.981Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:02.981Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:02.982Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:03.501Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:03.679Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:03.765Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:04.048Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:04.049Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:04.049Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:04.049Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:04.069Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:11:04.069Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:04.069Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:04.079Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:04.153Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:04.156Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:04.156Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:04.156Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:04.790Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:04.823Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:06.410Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:11:06.428Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:11:06.428Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:06.428Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:06.443Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:06.489Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:06.489Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:06.489Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:06.490Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:06.505Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:11:06.505Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:06.505Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:06.522Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:06.547Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:11:06.573Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:11:06.573Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:06.573Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:06.587Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:06.638Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:06.638Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:06.638Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:06.638Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:06.639Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:06.639Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:06.639Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:06.639Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:16.639Z [ERROR] Error: Error: console.error: [33m⚠️  [BashTool] Pre-flight check is taking longer than expected. Run with ANTHROPIC_LOG=debug to check for failed or slow API requests.[39m
+
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:626:6584
+    at B.write (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:568:11874)
+    at Console.value (node:internal/console/constructor:298:16)
+    at Console.warn (node:internal/console/constructor:405:26)
+    at Timeout._onTimeout (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4460:7133)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7)
+2026-02-03T05:11:16.639Z [ERROR] Error: Error: console.error: [33m⚠️  [BashTool] Pre-flight check is taking longer than expected. Run with ANTHROPIC_LOG=debug to check for failed or slow API requests.[39m
+
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:626:6584
+    at B.write (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:568:11874)
+    at Console.value (node:internal/console/constructor:298:16)
+    at Console.warn (node:internal/console/constructor:405:26)
+    at Timeout._onTimeout (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4460:7133)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7)
+2026-02-03T05:11:25.703Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:25.794Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:25.798Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:28.231Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:28.231Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:28.231Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:28.232Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:28.259Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:11:28.259Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:28.259Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:28.271Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:28.339Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:28.344Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:28.344Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:28.344Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:28.820Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:29.054Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:30.863Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:11:30.877Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:11:30.877Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:30.877Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:30.892Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:30.936Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:30.936Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:30.936Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:30.937Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:30.957Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:11:30.957Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:30.957Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:30.967Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:30.999Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:11:31.015Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:11:31.015Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:31.015Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:31.039Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:31.101Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:31.111Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:31.111Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:31.112Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:31.136Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:11:31.136Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:31.136Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:31.151Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:31.226Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:31.232Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:31.232Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:31.232Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:31.636Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:31.798Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:32.066Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:33.626Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:11:33.640Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:11:33.640Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:33.640Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:33.653Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:33.689Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:33.689Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:33.689Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:33.690Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:34.370Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:34.728Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:34.728Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:34.728Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:34.728Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:34.746Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:11:34.746Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:34.746Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:34.760Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:34.827Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:34.830Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:34.830Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:34.830Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:35.311Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:35.471Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:36.765Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:11:36.811Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:11:36.811Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:36.811Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:36.825Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:37.000Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:37.000Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:37.000Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:37.001Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:37.021Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:11:37.021Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:37.021Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:37.033Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:37.103Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:37.106Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:37.106Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:37.107Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:37.705Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:37.774Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:44.503Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-02-03T05:11:44.503Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:44.503Z [DEBUG] Matched 1 unique hooks for query "no match query" (1 before deduplication)
+2026-02-03T05:11:44.518Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:44.563Z [DEBUG] Getting matching hook commands for PostToolUse with query: Task
+2026-02-03T05:11:44.563Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:44.563Z [DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+2026-02-03T05:11:44.588Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T05:11:44.588Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T05:11:44.588Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T05:11:44.588Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T05:11:44.637Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:44.655Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:44.655Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:44.655Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:45.344Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:47.362Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:11:47.374Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:11:47.374Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:47.374Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:47.391Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:47.434Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:47.434Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:47.434Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:47.434Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:47.434Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:47.434Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:47.435Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:47.435Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:48.104Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:48.133Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:48.363Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:48.363Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:48.363Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:48.364Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:48.403Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:11:48.403Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:48.403Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:48.411Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:48.413Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T05:11:48.413Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T05:11:48.413Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T05:11:48.413Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T05:11:48.457Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:48.478Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:48.478Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:48.478Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:48.989Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:49.183Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:50.723Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:11:50.739Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:11:50.740Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:50.740Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:50.754Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:50.943Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:50.943Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:50.943Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:50.944Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:50.980Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:11:50.980Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:50.980Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:50.992Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:50.994Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T05:11:50.994Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T05:11:50.994Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T05:11:50.994Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T05:11:51.052Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:51.079Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:51.079Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:51.079Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:51.585Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:51.652Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:53.410Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:11:53.427Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:11:53.427Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:53.427Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:53.452Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:53.496Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:53.496Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:53.496Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:53.496Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:53.496Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:53.496Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:53.497Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:53.497Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:54.124Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:54.126Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:54.693Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:54.693Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:54.693Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:54.694Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:54.731Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:11:54.731Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:54.731Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:11:54.740Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:11:54.741Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T05:11:54.741Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T05:11:54.741Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T05:11:54.741Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T05:11:54.790Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:54.813Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:54.813Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:54.813Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:55.533Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:11:57.839Z [DEBUG] executePreToolHooks called for tool: Task
+2026-02-03T05:11:57.855Z [DEBUG] Getting matching hook commands for PreToolUse with query: Task
+2026-02-03T05:11:57.855Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:11:57.855Z [DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+2026-02-03T05:11:57.943Z [DEBUG] Getting matching hook commands for SubagentStart with query: flow-next:worker
+2026-02-03T05:11:57.943Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T05:11:57.943Z [DEBUG] Matched 0 unique hooks for query "flow-next:worker" (0 before deduplication)
+2026-02-03T05:11:57.983Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:11:57.985Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:11:57.985Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:11:57.985Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:11:58.502Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:00.621Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:12:00.643Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:12:00.643Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:00.643Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:00.658Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:00.698Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:00.698Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:00.698Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:00.699Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:10.699Z [ERROR] Error: Error: console.error: [33m⚠️  [BashTool] Pre-flight check is taking longer than expected. Run with ANTHROPIC_LOG=debug to check for failed or slow API requests.[39m
+
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:626:6584
+    at B.write (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:568:11874)
+    at Console.value (node:internal/console/constructor:298:16)
+    at Console.warn (node:internal/console/constructor:405:26)
+    at Timeout._onTimeout (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4460:7133)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7)
+2026-02-03T05:12:14.106Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:14.333Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:15.343Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:15.343Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:15.343Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:15.344Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:15.371Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:12:15.371Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:15.371Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:15.382Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:15.413Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:12:15.433Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:12:15.433Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:15.433Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:15.454Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:15.495Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:15.495Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:15.495Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:15.496Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:15.910Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:16.088Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:16.393Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:16.394Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:16.394Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:16.395Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:16.420Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:12:16.420Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:16.420Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:16.431Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:16.457Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:12:16.478Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:12:16.478Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:16.478Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:16.499Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:16.676Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:16.677Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:16.677Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:16.677Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:16.696Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:12:16.696Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:16.696Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:16.703Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:16.737Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:12:16.768Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:12:16.768Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:16.768Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:16.785Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:16.965Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:16.966Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:16.966Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:16.966Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:16.993Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:12:16.993Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:16.993Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:17.004Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:17.078Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:17.080Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:17.080Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:17.080Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:17.100Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:17.305Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:17.793Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:17.876Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:19.734Z [ERROR] Error: Error: ENOTDIR: not a directory, scandir '/home/deploy/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl'
+    at Module.readdirSync (node:fs:1597:26)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:9:1766
+    at jI (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:34380)
+    at Object.readdirSync (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:9:1736)
+    at qZ1 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4566:473)
+    at Object.validateInput (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1528:4268)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4547:1479
+2026-02-03T05:12:20.374Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:12:20.374Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:12:20.397Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:12:20.397Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:20.397Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:20.397Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:12:20.397Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:20.397Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:20.420Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:20.423Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:20.523Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:20.523Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:20.523Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:20.524Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:20.637Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:12:20.637Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:20.637Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:20.651Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:20.651Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:20.651Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:20.652Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:20.685Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:20.712Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:12:20.712Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:20.712Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:20.753Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:20.799Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:12:20.817Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:12:20.817Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:20.817Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:20.839Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:21.016Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:21.016Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:21.016Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:21.017Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:21.043Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:12:21.043Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:21.043Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:21.054Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:21.138Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:21.140Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:21.140Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:21.141Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:21.219Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:21.268Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:21.585Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:21.694Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:22.969Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:12:22.969Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:12:22.969Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:12:22.989Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:12:22.989Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:22.989Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:22.989Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:12:22.990Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:22.990Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:22.990Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:12:22.990Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:22.990Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:23.034Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:23.035Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:23.036Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:23.153Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:23.154Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:23.154Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:23.154Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:23.161Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:23.162Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:23.162Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:23.162Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:23.175Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:23.175Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:23.175Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:23.176Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:23.230Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:12:23.230Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:23.230Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:23.230Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:12:23.230Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:23.230Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:23.230Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:12:23.230Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:23.230Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:23.260Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:23.266Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:23.268Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:23.421Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:23.423Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:23.423Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:23.423Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:23.797Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:23.804Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:23.817Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:23.982Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:25.829Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:12:25.829Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:12:25.854Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:12:25.854Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:25.854Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:12:25.854Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:12:25.854Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:25.854Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:12:25.950Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:12:25.950Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:25.950Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:12:25.950Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:12:25.950Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:25.950Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:12:26.031Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:26.033Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:26.033Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:26.033Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:26.585Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:27.613Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:12:27.638Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:12:27.638Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:27.638Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:27.656Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:27.692Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:27.692Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:27.692Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:27.692Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:28.262Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:30.661Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:30.662Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:30.662Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:30.662Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:30.685Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:12:30.685Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:30.685Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:30.695Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:30.765Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:30.769Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:30.769Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:30.770Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:31.470Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:31.611Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:33.481Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:12:33.503Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:12:33.503Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:33.503Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:33.524Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:33.578Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:33.579Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:33.579Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:33.579Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:33.617Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:12:33.617Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:33.618Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:33.628Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:33.704Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:33.707Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:33.707Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:33.708Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:34.141Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:34.271Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:35.324Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:12:35.352Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:12:35.352Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:35.352Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:12:35.436Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:12:35.436Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:35.436Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:12:35.561Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:35.564Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:35.564Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:35.564Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:36.086Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:42.098Z [DEBUG] executePreToolHooks called for tool: Write
+2026-02-03T05:12:42.117Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-02-03T05:12:42.117Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:42.117Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T05:12:42.190Z [DEBUG] Writing to temp file: /home/deploy/src/wolfcal/src/test/config/generateOldFormat.ts.tmp.129768.1770095562190
+2026-02-03T05:12:42.191Z [DEBUG] Temp file written successfully, size: 2454 bytes
+2026-02-03T05:12:42.191Z [DEBUG] Renaming /home/deploy/src/wolfcal/src/test/config/generateOldFormat.ts.tmp.129768.1770095562190 to /home/deploy/src/wolfcal/src/test/config/generateOldFormat.ts
+2026-02-03T05:12:42.191Z [DEBUG] File /home/deploy/src/wolfcal/src/test/config/generateOldFormat.ts written atomically
+2026-02-03T05:12:42.217Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-02-03T05:12:42.217Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:42.217Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-02-03T05:12:42.287Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:42.292Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:42.292Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:42.292Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:42.847Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:44.022Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:12:44.043Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:12:44.043Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:44.043Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:44.071Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:44.103Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:44.103Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:44.103Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:44.103Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:44.842Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:50.676Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:50.678Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:50.678Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:50.678Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:50.710Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:12:50.710Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:50.710Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:12:50.720Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:12:50.819Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:50.821Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:50.821Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:50.822Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:51.533Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:51.667Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:12:53.697Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T05:12:53.721Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T05:12:53.721Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:53.721Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:12:53.770Z [DEBUG] Writing to temp file: /home/deploy/src/wolfcal/src/test/config/transferCrypto.test.ts.tmp.129768.1770095573770
+2026-02-03T05:12:53.770Z [DEBUG] Preserving file permissions: 100664
+2026-02-03T05:12:53.770Z [DEBUG] Temp file written successfully, size: 7874 bytes
+2026-02-03T05:12:53.770Z [DEBUG] Applied original permissions to temp file
+2026-02-03T05:12:53.770Z [DEBUG] Renaming /home/deploy/src/wolfcal/src/test/config/transferCrypto.test.ts.tmp.129768.1770095573770 to /home/deploy/src/wolfcal/src/test/config/transferCrypto.test.ts
+2026-02-03T05:12:53.770Z [DEBUG] File /home/deploy/src/wolfcal/src/test/config/transferCrypto.test.ts written atomically
+2026-02-03T05:12:53.807Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T05:12:53.807Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:12:53.807Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:12:53.864Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:12:53.867Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:12:53.867Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:12:53.867Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:12:54.514Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:13:33.862Z [DEBUG] Metrics opt-out check failed: No API key available
+2026-02-03T05:13:33.862Z [DEBUG] Metrics check failed, defaulting to disabled
+2026-02-03T05:13:33.862Z [DEBUG] Metrics export disabled by organization setting
+2026-02-03T05:13:41.108Z [WARN] Streaming stall detected: 45.2s gap between events (stall #1)
+2026-02-03T05:13:41.163Z [WARN] Streaming completed with 1 stall(s), total stall time: 45.2s
+2026-02-03T05:13:41.214Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T05:13:41.241Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T05:13:41.241Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:13:41.241Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:13:41.303Z [DEBUG] Writing to temp file: /home/deploy/src/wolfcal/src/test/config/transferCrypto.test.ts.tmp.129768.1770095621303
+2026-02-03T05:13:41.303Z [DEBUG] Preserving file permissions: 100664
+2026-02-03T05:13:41.303Z [DEBUG] Temp file written successfully, size: 21701 bytes
+2026-02-03T05:13:41.303Z [DEBUG] Applied original permissions to temp file
+2026-02-03T05:13:41.303Z [DEBUG] Renaming /home/deploy/src/wolfcal/src/test/config/transferCrypto.test.ts.tmp.129768.1770095621303 to /home/deploy/src/wolfcal/src/test/config/transferCrypto.test.ts
+2026-02-03T05:13:41.303Z [DEBUG] File /home/deploy/src/wolfcal/src/test/config/transferCrypto.test.ts written atomically
+2026-02-03T05:13:41.345Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T05:13:41.345Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:13:41.345Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:13:41.404Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:13:41.407Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:13:41.407Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:13:41.407Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:13:42.674Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:13:43.861Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:13:43.889Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:13:43.889Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:13:43.889Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:13:43.909Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:13:47.840Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:13:47.841Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:13:47.841Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:13:47.841Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:13:47.869Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:13:47.869Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:13:47.869Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:13:47.880Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:13:47.959Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:13:47.961Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:13:47.961Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:13:47.961Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:13:48.639Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:13:49.967Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:13:50.314Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:13:50.329Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:13:50.329Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:13:50.329Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:13:50.343Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:13:50.416Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:13:50.417Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:13:50.417Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:13:50.417Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:13:50.434Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:13:50.434Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:13:50.434Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:13:50.469Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:13:50.554Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:13:50.556Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:13:50.556Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:13:50.557Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:13:51.182Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:13:52.015Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:13:52.041Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:13:52.041Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:13:52.041Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:13:52.059Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:14:00.842Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:14:31.121Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: Bash
+2026-02-03T05:14:31.121Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T05:14:31.121Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T05:14:31.208Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:14:31.211Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:14:31.211Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:14:31.211Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:14:32.114Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:14:37.773Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:14:37.803Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:14:37.803Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:14:37.803Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:14:37.829Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:14:37.880Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:14:37.881Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:14:37.881Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:14:37.881Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:14:37.881Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:14:37.881Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:14:37.882Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:14:37.882Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:14:38.582Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:14:38.597Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:14:54.350Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:14:54.351Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:14:54.351Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:14:54.351Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:14:54.361Z [DEBUG] Persisted tool result to ~/.claude-zai/projects/-home-deploy-src-wolfcal/9347b575-71c6-4e52-bb78-8a7703d31b6f/tool-results/call_e8fdcd11a8df44aba9f7aa39.txt (31.7KB)
+2026-02-03T05:14:54.385Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:14:54.385Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:14:54.385Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:14:54.395Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:14:54.488Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:14:54.492Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:14:54.492Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:14:54.492Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:14:55.398Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:14:56.759Z [DEBUG] Stream started - received first chunk
