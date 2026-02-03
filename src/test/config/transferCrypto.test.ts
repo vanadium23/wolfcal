@@ -181,10 +181,8 @@ describe('transferCrypto', () => {
 
       const encrypted = await encrypt(plaintext, passphrase);
 
-      // Standard base64 may contain + and / which are URL-safe
-      // If we needed URL-safe encoding (with - and _), we'd need to use btoa replacement
-      // For now, we're using standard base64 which works in URL hash fragments
-      expect(encrypted).toMatch(/^[A-Za-z0-9+/=]+$/);
+      // New format uses base64url (with - and _ instead of + and /)
+      expect(encrypted).toMatch(/^[A-Za-z0-9\-_]+$/);
     });
 
     it('should produce reasonably compact output for URL use', async () => {

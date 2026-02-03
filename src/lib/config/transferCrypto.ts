@@ -184,7 +184,46 @@ export async function encrypt(data: string, passphrase: string): Promise<string>
 }
 
 /**
+ * Decompresses data using gzip decompression
+ * @param compressedData - Compressed data as Uint8Array
+ * @returns Decompressed string
+ */
+async function decompressData(compressedData: Uint8Array): Promise<string> {
+  // Use DecompressionStream API (available in modern browsers)
+  const decompressionStream = new DecompressionStream('gzip');
+  const writer = decompressionStream.writable.getWriter();
+  const reader = decompressionStream.readable.getReader();
+
+  // Write compressed data to the decompressor
+  await writer.write(compressedData as unknown as BufferSource);
+  writer.close();
+
+  // Read decompressed data
+  const chunks: Uint8Array[] = [];
+  let done = false;
+  while (!done) {
+    const { value, done: readerDone } = await reader.read();
+    done = readerDone;
+    if (value) chunks.push(value);
+  }
+
+  // Concatenate all chunks
+  const totalLength = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
+  const decompressed = new Uint8Array(totalLength);
+  let offset = 0;
+  for (const chunk of chunks) {
+    decompressed.set(chunk, offset);
+    offset += chunk.length;
+  }
+
+  // Decode bytes to string
+  const decoder = new TextDecoder();
+  return decoder.decode(decompressed);
+}
+
+/**
  * Decrypts data with a passphrase
+ * Supports both old (double-base64 JSON) and new (binary) formats
  * @param encryptedData - Base64-encoded string from encrypt()
  * @param passphrase - User-provided passphrase
  * @returns Decrypted string data
@@ -192,33 +231,95 @@ export async function encrypt(data: string, passphrase: string): Promise<string>
  */
 export async function decrypt(encryptedData: string, passphrase: string): Promise<string> {
   try {
-    // Decode base64 to get structured data
-    const encryptedJson = atob(encryptedData);
-    const encrypted: EncryptedData = JSON.parse(encryptedJson);
+    // Detect format by checking first character after base64 decode
+    // Old format: starts with '{' (JSON structure)
+    // New format: starts with version byte (0x01 for version 1)
+    let decodedBytes: Uint8Array;
 
-    // Decode components from base64
-    const salt = Uint8Array.from(atob(encrypted.salt), c => c.charCodeAt(0));
-    const iv = Uint8Array.from(atob(encrypted.iv), c => c.charCodeAt(0));
-    const ciphertext = Uint8Array.from(atob(encrypted.data), c => c.charCodeAt(0));
+    try {
+      decodedBytes = base64UrlToUint8Array(encryptedData);
+    } catch (e) {
+      // If base64url decode fails, try standard base64 (old format)
+      try {
+        const binary = atob(encryptedData);
+        decodedBytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+      } catch (e2) {
+        // Both decoding attempts failed - likely corrupted data
+        throw new Error('Decryption failed. Check your passphrase and try again.');
+      }
+    }
 
-    // Derive decryption key from passphrase
-    const key = await deriveKey(passphrase, salt);
+    // Check format by looking at first byte
+    const firstByte = decodedBytes[0];
 
-    // Decrypt
-    const decrypted = await crypto.subtle.decrypt(
-      {
-        name: AES_CONFIG.algorithm,
-        iv,
-      },
-      key,
-      ciphertext
-    );
+    if (firstByte === CURRENT_FORMAT_VERSION) {
+      // New binary format: version(1) || salt(16) || iv(12) || compressed_ciphertext
+      if (decodedBytes.length < 1 + PBKDF2_CONFIG.saltLength + AES_CONFIG.ivLength) {
+        throw new Error('Invalid encrypted data: truncated');
+      }
 
-    // Decode bytes to string
-    const decoder = new TextDecoder();
-    return decoder.decode(decrypted);
+      // Extract components
+      const salt = decodedBytes.slice(1, 1 + PBKDF2_CONFIG.saltLength);
+      const iv = decodedBytes.slice(1 + PBKDF2_CONFIG.saltLength, 1 + PBKDF2_CONFIG.saltLength + AES_CONFIG.ivLength);
+      const ciphertext = decodedBytes.slice(1 + PBKDF2_CONFIG.saltLength + AES_CONFIG.ivLength);
+
+      // Derive decryption key from passphrase
+      const key = await deriveKey(passphrase, salt);
+
+      // Decrypt
+      const decrypted = await crypto.subtle.decrypt(
+        {
+          name: AES_CONFIG.algorithm,
+          iv,
+        },
+        key,
+        ciphertext
+      );
+
+      // Decompress the decrypted data
+      const decryptedBytes = new Uint8Array(decrypted);
+      return await decompressData(decryptedBytes);
+    } else if (firstByte === 123 || String.fromCharCode(firstByte) === '{') {
+      // Old JSON format (first byte is ASCII for '{' = 123)
+      // Decode base64 to get structured data
+      const encryptedJson = atob(encryptedData);
+      const encrypted: EncryptedData = JSON.parse(encryptedJson);
+
+      // Decode components from base64
+      const salt = Uint8Array.from(atob(encrypted.salt), c => c.charCodeAt(0));
+      const iv = Uint8Array.from(atob(encrypted.iv), c => c.charCodeAt(0));
+      const ciphertext = Uint8Array.from(atob(encrypted.data), c => c.charCodeAt(0));
+
+      // Derive decryption key from passphrase
+      const key = await deriveKey(passphrase, salt);
+
+      // Decrypt
+      const decrypted = await crypto.subtle.decrypt(
+        {
+          name: AES_CONFIG.algorithm,
+          iv,
+        },
+        key,
+        ciphertext
+      );
+
+      // Decode bytes to string
+      const decoder = new TextDecoder();
+      return decoder.decode(decrypted);
+    } else {
+      throw new Error('Unsupported encrypted data format');
+    }
   } catch (error) {
     // Throw a more user-friendly error
+    // For backward compatibility, maintain the same error message format
+    // Check if it's a crypto operation failure (likely wrong passphrase)
+    if (error instanceof Error && error.message.includes('The operation failed')) {
+      throw new Error('Decryption failed. Check your passphrase and try again.');
+    }
+    // For other errors, preserve the original message for debugging
+    if (error instanceof Error) {
+      throw new Error(`Decryption failed: ${error.message}`);
+    }
     throw new Error('Decryption failed. Check your passphrase and try again.');
   }
 }
