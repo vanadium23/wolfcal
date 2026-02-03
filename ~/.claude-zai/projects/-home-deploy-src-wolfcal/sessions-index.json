@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "sessionId": "382e50bc-593b-48dd-ab58-96dd192e49fd",
+      "fullPath": "~/.claude-zai/projects/-home-deploy-src-wolfcal/382e50bc-593b-48dd-ab58-96dd192e49fd.jsonl",
+      "fileMtime": 1770063052007,
+      "firstPrompt": "Unknown skill: q0init",
+      "summary": "Local Command Skill Error Resolution",
+      "messageCount": 2,
+      "created": "2026-02-02T20:07:53.211Z",
+      "modified": "2026-02-02T20:08:00.804Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "4f1c09af-1b18-4df8-83f3-0efefc4542a9",
+      "fullPath": "~/.claude-zai/projects/-home-deploy-src-wolfcal/4f1c09af-1b18-4df8-83f3-0efefc4542a9.jsonl",
+      "fileMtime": 1770063103800,
+      "firstPrompt": "Unknown skill: q0-init",
+      "summary": "Skill Initialization Error Fix",
+      "messageCount": 1,
+      "created": "2026-02-02T20:10:53.826Z",
+      "modified": "2026-02-02T20:11:00.421Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "b1ef8e35-dd88-41f6-b059-1a0c31172d81",
+      "fullPath": "~/.claude-zai/projects/-home-deploy-src-wolfcal/b1ef8e35-dd88-41f6-b059-1a0c31172d81.jsonl",
+      "fileMtime": 1770063514907,
+      "firstPrompt": "No prompt",
+      "summary": "Claude Plugin Marketplace: Install Flow-Next",
+      "messageCount": 4,
+      "created": "2026-02-02T20:12:29.080Z",
+      "modified": "2026-02-02T20:12:58.810Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    }
+  ]
+}

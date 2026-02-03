@@ -1,0 +1,1437 @@
+2026-02-02T20:18:32.779Z [DEBUG] Watching for changes in setting files /home/deploy/src/wolfcal/~/.claude-zai, /home/deploy/src/wolfcal/.claude, /home/deploy/src/wolfcal/.claude...
+2026-02-02T20:18:32.787Z [DEBUG] [init] configureGlobalMTLS starting
+2026-02-02T20:18:32.787Z [DEBUG] [init] configureGlobalMTLS complete
+2026-02-02T20:18:32.787Z [DEBUG] [init] configureGlobalAgents starting
+2026-02-02T20:18:32.787Z [DEBUG] [init] configureGlobalAgents complete
+2026-02-02T20:18:32.795Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-02-02T20:18:32.795Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-02-02T20:18:32.795Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-02-02T20:18:32.801Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-02-02T20:18:32.820Z [DEBUG] Loading plugin flow-next from source: "./plugins/flow-next"
+2026-02-02T20:18:32.829Z [DEBUG] Using manifest version for flow-next@gmickel-claude-marketplace: 0.20.7
+2026-02-02T20:18:32.829Z [DEBUG] Plugin flow-next@gmickel-claude-marketplace version 0.20.7 already cached at ~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7
+2026-02-02T20:18:32.829Z [DEBUG] Copied local plugin flow-next to versioned cache: ~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7
+2026-02-02T20:18:32.832Z [DEBUG] Loaded hooks from standard location for plugin flow-next: ~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/hooks/hooks.json
+2026-02-02T20:18:32.836Z [DEBUG] Loading plugin feature-dev from source: "./plugins/feature-dev"
+2026-02-02T20:18:32.848Z [DEBUG] Using git SHA for feature-dev@claude-plugins-official: 27d2b86d72da
+2026-02-02T20:18:32.848Z [DEBUG] Plugin feature-dev@claude-plugins-official version 27d2b86d72da already cached at ~/.claude-zai/plugins/cache/claude-plugins-official/feature-dev/27d2b86d72da
+2026-02-02T20:18:32.848Z [DEBUG] Copied local plugin feature-dev to versioned cache: ~/.claude-zai/plugins/cache/claude-plugins-official/feature-dev/27d2b86d72da
+2026-02-02T20:18:32.850Z [DEBUG] Loading plugin superpowers from source: {"source":"url","url":"https://github.com/obra/superpowers.git"}
+2026-02-02T20:18:32.850Z [DEBUG] No version found for superpowers@claude-plugins-official, using 'unknown'
+2026-02-02T20:18:32.851Z [DEBUG] Caching plugin from source: {"source":"url","url":"https://github.com/obra/superpowers.git"} to temporary path ~/.claude-zai/plugins/cache/temp_git_1770063512851_atj1rh
+2026-02-02T20:18:32.862Z [DEBUG] Watching for changes in skill/command directories: /home/deploy/src/wolfcal/.claude/commands...
+2026-02-02T20:18:32.864Z [DEBUG] [Claude in Chrome] Extension not found in any browser
+2026-02-02T20:18:33.607Z [DEBUG] Cloned repository from https://github.com/obra/superpowers.git to ~/.claude-zai/plugins/cache/temp_git_1770063512851_atj1rh
+2026-02-02T20:18:33.608Z [DEBUG] Successfully cached plugin superpowers to ~/.claude-zai/plugins/cache/superpowers
+2026-02-02T20:18:33.608Z [DEBUG] Using manifest version for superpowers@claude-plugins-official: 4.1.1
+2026-02-02T20:18:33.608Z [DEBUG] Plugin superpowers@claude-plugins-official version 4.1.1 already cached at ~/.claude-zai/plugins/cache/claude-plugins-official/superpowers/4.1.1
+2026-02-02T20:18:33.614Z [DEBUG] Loaded hooks from standard location for plugin superpowers: ~/.claude-zai/plugins/cache/claude-plugins-official/superpowers/4.1.1/hooks/hooks.json
+2026-02-02T20:18:33.614Z [DEBUG] Found 3 plugins (3 enabled, 0 disabled)
+2026-02-02T20:18:33.615Z [DEBUG] [STARTUP] MCP configs loaded in 814ms
+2026-02-02T20:18:33.616Z [DEBUG] [STARTUP] Running setup()...
+2026-02-02T20:18:33.618Z [DEBUG] Stats cache does not exist, returning empty cache
+2026-02-02T20:18:33.618Z [DEBUG] Stats cache empty, processing all historical data in background
+2026-02-02T20:18:33.635Z [DEBUG] Loading skills from: managed=/etc/claude-code/.claude/skills, user=~/.claude-zai/skills, project=[]
+2026-02-02T20:18:33.660Z [DEBUG] Loaded 3 installed plugins from ~/.claude-zai/plugins/installed_plugins.json
+2026-02-02T20:18:33.680Z [ERROR] Error: Error: ENOENT: no such file or directory, scandir '/etc/claude-code/.claude/skills'
+    at Module.readdirSync (node:fs:1597:26)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:9:1766
+    at jI (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:34380)
+    at Object.readdirSync (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:9:1736)
+    at FZ1 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1523:369)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1523:4274
+    at B (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:6808)
+    at lz7 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4154:4354)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4154:6941
+    at B (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:6808)
+2026-02-02T20:18:33.680Z [ERROR] Error: Error: ENOENT: no such file or directory, scandir '~/.claude-zai/skills'
+    at Module.readdirSync (node:fs:1597:26)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:9:1766
+    at jI (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:34380)
+    at Object.readdirSync (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:9:1736)
+    at FZ1 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1523:369)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1523:4317
+    at B (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:6808)
+    at lz7 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4154:4354)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4154:6941
+    at B (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:6808)
+2026-02-02T20:18:33.680Z [DEBUG] Error log sink initialized
+2026-02-02T20:18:33.688Z [DEBUG] Writing to temp file: ~/.claude-zai/todos/9347b575-71c6-4e52-bb78-8a7703d31b6f-agent-9347b575-71c6-4e52-bb78-8a7703d31b6f.json.tmp.129768.1770063513688
+2026-02-02T20:18:33.688Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-02-02T20:18:33.688Z [DEBUG] Renaming ~/.claude-zai/todos/9347b575-71c6-4e52-bb78-8a7703d31b6f-agent-9347b575-71c6-4e52-bb78-8a7703d31b6f.json.tmp.129768.1770063513688 to ~/.claude-zai/todos/9347b575-71c6-4e52-bb78-8a7703d31b6f-agent-9347b575-71c6-4e52-bb78-8a7703d31b6f.json
+2026-02-02T20:18:33.688Z [DEBUG] File ~/.claude-zai/todos/9347b575-71c6-4e52-bb78-8a7703d31b6f-agent-9347b575-71c6-4e52-bb78-8a7703d31b6f.json written atomically
+2026-02-02T20:18:33.699Z [DEBUG] getPluginSkills: Processing 3 enabled plugins
+2026-02-02T20:18:33.699Z [DEBUG] Checking plugin flow-next: skillsPath=exists, skillsPaths=0 paths
+2026-02-02T20:18:33.699Z [DEBUG] Attempting to load skills from plugin flow-next default skillsPath: ~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/skills
+2026-02-02T20:18:33.720Z [DEBUG] Loading hooks from plugin: flow-next
+2026-02-02T20:18:33.720Z [DEBUG] Loading hooks from plugin: superpowers
+2026-02-02T20:18:33.720Z [DEBUG] Registered 5 hooks from 3 plugins
+2026-02-02T20:18:33.728Z [DEBUG] [STARTUP] setup() completed in 112ms
+2026-02-02T20:18:33.728Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-02-02T20:18:33.729Z [DEBUG] Loaded 16 skills from plugin flow-next default directory
+2026-02-02T20:18:33.729Z [DEBUG] Checking plugin feature-dev: skillsPath=none, skillsPaths=0 paths
+2026-02-02T20:18:33.729Z [DEBUG] Checking plugin superpowers: skillsPath=exists, skillsPaths=0 paths
+2026-02-02T20:18:33.729Z [DEBUG] Attempting to load skills from plugin superpowers default skillsPath: ~/.claude-zai/plugins/cache/claude-plugins-official/superpowers/4.1.1/skills
+2026-02-02T20:18:33.742Z [DEBUG] Loaded 11 commands from plugin flow-next default directory
+2026-02-02T20:18:33.762Z [DEBUG] Loaded 14 skills from plugin superpowers default directory
+2026-02-02T20:18:33.762Z [DEBUG] Total plugin skills loaded: 30
+2026-02-02T20:18:33.762Z [DEBUG] Loaded 1 commands from plugin feature-dev default directory
+2026-02-02T20:18:33.764Z [DEBUG] Loaded 3 commands from plugin superpowers default directory
+2026-02-02T20:18:33.764Z [DEBUG] Total plugin commands loaded: 15
+2026-02-02T20:18:33.773Z [DEBUG] Loaded 20 agents from plugin flow-next default directory
+2026-02-02T20:18:33.774Z [DEBUG] Loaded 3 agents from plugin feature-dev default directory
+2026-02-02T20:18:33.775Z [DEBUG] Loaded 1 agents from plugin superpowers default directory
+2026-02-02T20:18:33.775Z [DEBUG] Total plugin agents loaded: 24
+2026-02-02T20:18:33.799Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/usr/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/x64-linux/rg)
+2026-02-02T20:18:33.812Z [DEBUG] Total LSP servers loaded: 0
+2026-02-02T20:18:33.812Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-02-02T20:18:33.812Z [DEBUG] LSP manager initialized with 0 servers
+2026-02-02T20:18:33.812Z [DEBUG] LSP server manager initialized successfully
+2026-02-02T20:18:33.813Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-02-02T20:18:33.815Z [DEBUG] Summarizing all 7 messages (~0 tokens)
+2026-02-02T20:18:33.817Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-02T20:18:33.819Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-02T20:18:33.819Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-02T20:18:33.820Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-02T20:18:33.842Z [DEBUG] Loaded 12 unique skills (managed: 0, user: 0, project: 0, legacy commands: 12)
+2026-02-02T20:18:33.842Z [DEBUG] getSkills returning: 12 skill dir commands, 30 plugin skills, 0 bundled skills
+2026-02-02T20:18:33.843Z [DEBUG] [STARTUP] Commands and agents loaded in 115ms
+2026-02-02T20:18:33.843Z [DEBUG] [STARTUP] Running showSetupScreens()...
+2026-02-02T20:18:33.848Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-02-02T20:18:33.850Z [DEBUG] [STARTUP] showSetupScreens() completed in 7ms
+2026-02-02T20:18:33.857Z [DEBUG] MCP server "quint-code": Starting connection with timeout of 30000ms
+2026-02-02T20:18:33.866Z [DEBUG] All plugins already exist, skipping migration
+2026-02-02T20:18:33.866Z [DEBUG] Initialized versioned plugins system with 3 plugins
+2026-02-02T20:18:33.870Z [DEBUG] Writing to temp file: ~/.claude-zai/.claude.json.tmp.129768.1770063513870
+2026-02-02T20:18:33.870Z [DEBUG] Preserving file permissions: 100600
+2026-02-02T20:18:33.870Z [DEBUG] Temp file written successfully, size: 3345 bytes
+2026-02-02T20:18:33.870Z [DEBUG] Applied original permissions to temp file
+2026-02-02T20:18:33.870Z [DEBUG] Renaming ~/.claude-zai/.claude.json.tmp.129768.1770063513870 to ~/.claude-zai/.claude.json
+2026-02-02T20:18:33.870Z [DEBUG] File ~/.claude-zai/.claude.json written atomically
+2026-02-02T20:18:33.876Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-02-02T20:18:33.876Z [DEBUG] Found 1 hook matchers in settings
+2026-02-02T20:18:33.876Z [DEBUG] Matched 1 unique hooks for query "startup" (1 before deduplication)
+2026-02-02T20:18:33.888Z [DEBUG] MCP server "quint-code": Successfully connected to undefined server in 36ms
+2026-02-02T20:18:33.888Z [DEBUG] MCP server "quint-code": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"quint-code","version":"4.0.0"}}
+2026-02-02T20:18:33.890Z [DEBUG] Git remote URL: git@github.com:vanadium23/wolfcal.git
+2026-02-02T20:18:33.890Z [DEBUG] Parsed repository: vanadium23/wolfcal from git@github.com:vanadium23/wolfcal.git
+2026-02-02T20:18:33.890Z [DEBUG] Parsed repository: vanadium23/wolfcal from URL: git@github.com:vanadium23/wolfcal.git
+2026-02-02T20:18:33.890Z [DEBUG] Path /home/deploy/src/wolfcal already tracked for repo vanadium23/wolfcal
+2026-02-02T20:18:33.906Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:epic-review" (userFacingName="flow-next:epic-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:impl-review" (userFacingName="flow-next:impl-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:interview" (userFacingName="flow-next:interview")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:plan-review" (userFacingName="flow-next:plan-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:plan" (userFacingName="flow-next:plan")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:prime" (userFacingName="flow-next:prime")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:ralph-init" (userFacingName="flow-next:ralph-init")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:setup" (userFacingName="flow-next:setup")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:sync" (userFacingName="flow-next:sync")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:uninstall" (userFacingName="flow-next:uninstall")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:work" (userFacingName="flow-next:work")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:browser" (userFacingName="browser")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next" (userFacingName="flow-next")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-deps" (userFacingName="flow-next-deps")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-epic-review" (userFacingName="flow-next-epic-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-export-context" (userFacingName="flow-next-export-context")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-impl-review" (userFacingName="flow-next-impl-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-interview" (userFacingName="flow-next-interview")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-plan" (userFacingName="flow-next-plan")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-plan-review" (userFacingName="flow-next-plan-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-prime" (userFacingName="flow-next-prime")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-ralph-init" (userFacingName="flow-next-ralph-init")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-rp-explorer" (userFacingName="flow-next-rp-explorer")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-setup" (userFacingName="flow-next-setup")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-sync" (userFacingName="flow-next-sync")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-work" (userFacingName="flow-next-work")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-worktree-kit" (userFacingName="flow-next-worktree-kit")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:brainstorming" (userFacingName="brainstorming")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:dispatching-parallel-agents" (userFacingName="dispatching-parallel-agents")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:executing-plans" (userFacingName="executing-plans")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:finishing-a-development-branch" (userFacingName="finishing-a-development-branch")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:receiving-code-review" (userFacingName="receiving-code-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:requesting-code-review" (userFacingName="requesting-code-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:subagent-driven-development" (userFacingName="subagent-driven-development")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:systematic-debugging" (userFacingName="systematic-debugging")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:test-driven-development" (userFacingName="test-driven-development")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:using-git-worktrees" (userFacingName="using-git-worktrees")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:using-superpowers" (userFacingName="using-superpowers")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:verification-before-completion" (userFacingName="verification-before-completion")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:writing-plans" (userFacingName="writing-plans")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:writing-skills" (userFacingName="writing-skills")
+2026-02-02T20:18:33.911Z [DEBUG] Skills and commands included in Skill tool: q2-verify, q0-init, q1-hypothesize, q4-audit, q-actualize, q-query, q1-add, q3-validate, q-decay, q-reset, q5-decide, q-status, flow-next:epic-review, flow-next:impl-review, flow-next:interview, flow-next:plan-review, flow-next:plan, flow-next:prime, flow-next:ralph-init, flow-next:setup, flow-next:sync, flow-next:uninstall, flow-next:work, feature-dev:feature-dev, browser, flow-next, flow-next-deps, flow-next-epic-review, flow-next-export-context, flow-next-impl-review, flow-next-interview, flow-next-plan, flow-next-plan-review, flow-next-prime, flow-next-ralph-init, flow-next-rp-explorer, flow-next-setup, flow-next-sync, flow-next-work, flow-next-worktree-kit, brainstorming, dispatching-parallel-agents, executing-plans, finishing-a-development-branch, receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:epic-review" (userFacingName="flow-next:epic-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:impl-review" (userFacingName="flow-next:impl-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:interview" (userFacingName="flow-next:interview")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:plan-review" (userFacingName="flow-next:plan-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:plan" (userFacingName="flow-next:plan")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:prime" (userFacingName="flow-next:prime")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:ralph-init" (userFacingName="flow-next:ralph-init")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:setup" (userFacingName="flow-next:setup")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:sync" (userFacingName="flow-next:sync")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:uninstall" (userFacingName="flow-next:uninstall")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next:work" (userFacingName="flow-next:work")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:browser" (userFacingName="browser")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next" (userFacingName="flow-next")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-deps" (userFacingName="flow-next-deps")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-epic-review" (userFacingName="flow-next-epic-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-export-context" (userFacingName="flow-next-export-context")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-impl-review" (userFacingName="flow-next-impl-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-interview" (userFacingName="flow-next-interview")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-plan" (userFacingName="flow-next-plan")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-plan-review" (userFacingName="flow-next-plan-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-prime" (userFacingName="flow-next-prime")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-ralph-init" (userFacingName="flow-next-ralph-init")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-rp-explorer" (userFacingName="flow-next-rp-explorer")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-setup" (userFacingName="flow-next-setup")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-sync" (userFacingName="flow-next-sync")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-work" (userFacingName="flow-next-work")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "flow-next:flow-next-worktree-kit" (userFacingName="flow-next-worktree-kit")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:brainstorming" (userFacingName="brainstorming")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:dispatching-parallel-agents" (userFacingName="dispatching-parallel-agents")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:executing-plans" (userFacingName="executing-plans")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:finishing-a-development-branch" (userFacingName="finishing-a-development-branch")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:receiving-code-review" (userFacingName="receiving-code-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:requesting-code-review" (userFacingName="requesting-code-review")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:subagent-driven-development" (userFacingName="subagent-driven-development")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:systematic-debugging" (userFacingName="systematic-debugging")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:test-driven-development" (userFacingName="test-driven-development")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:using-git-worktrees" (userFacingName="using-git-worktrees")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:using-superpowers" (userFacingName="using-superpowers")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:verification-before-completion" (userFacingName="verification-before-completion")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:writing-plans" (userFacingName="writing-plans")
+2026-02-02T20:18:33.911Z [DEBUG] Skill prompt: showing "superpowers:writing-skills" (userFacingName="writing-skills")
+2026-02-02T20:18:33.912Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-02T20:18:33.912Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-02T20:18:33.912Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-02T20:18:34.053Z [DEBUG] Hooks: Checking initial response for async: {
+  "hookSpecificOutput": {
+    "hookEventName": "SessionStart",
+    "additionalContext": "<EXTREMELY_IMPORTANT>\nYou have superpowers.\n\n**Below is the full content of your 'superpowers:using-superpowers' skill - your introduction to using skills. For all other skills, use the 'Skill' tool:**\n\n---\nname: using-superpowers\ndescription: Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions\n---\n\n<EXTREMELY-IMPORTANT>\nIf you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.\n\nIF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.\n\nThis is not negotiable. This is not optional. You cannot rationalize your way out of this.\n</EXTREMELY-IMPORTANT>\n\n## How to Access Skills\n\n**In Claude Code:** Use the `Skill` tool. When you invoke a skill, its content is loaded and presented to you—follow it directly. Never use the Read tool on skill files.\n\n**In other environments:** Check your platform's documentation for how skills are loaded.\n\n# Using Skills\n\n## The Rule\n\n**Invoke relevant or requested skills BEFORE any response or action.** Even a 1% chance a skill might apply means that you should invoke the skill to check. If an invoked skill turns out to be wrong for the situation, you don't need to use it.\n\n```dot\ndigraph skill_flow {\n    \"User message received\" [shape=doublecircle];\n    \"Might any skill apply?\" [shape=diamond];\n    \"Invoke Skill tool\" [shape=box];\n    \"Announce: 'Using [skill] to [purpose]'\" [shape=box];\n    \"Has checklist?\" [shape=diamond];\n    \"Create TodoWrite todo per item\" [shape=box];\n    \"Follow skill exactly\" [shape=box];\n    \"Respond (including clarifications)\" [shape=doublecircle];\n\n    \"User message received\" -> \"Might any skill apply?\";\n    \"Might any skill apply?\" -> \"Invoke Skill tool\" [label=\"yes, even 1%\"];\n    \"Might any skill apply?\" -> \"Respond (including clarifications)\" [label=\"definitely not\"];\n    \"Invoke Skill tool\" -> \"Announce: 'Using [skill] to [purpose]'\";\n    \"Announce: 'Using [skill] to [purpose]'\" -> \"Has checklist?\";\n    \"Has checklist?\" -> \"Create TodoWrite todo per item\" [label=\"yes\"];\n    \"Has checklist?\" -> \"Follow skill exactly\" [label=\"no\"];\n    \"Create TodoWrite todo per item\" -> \"Follow skill exactly\";\n}\n```\n\n## Red Flags\n\nThese thoughts mean STOP—you're rationalizing:\n\n| Thought | Reality |\n|---------|---------|\n| \"This is just a simple question\" | Questions are tasks. Check for skills. |\n| \"I need more context first\" | Skill check comes BEFORE clarifying questions. |\n| \"Let me explore the codebase first\" | Skills tell you HOW to explore. Check first. |\n| \"I can check git/files quickly\" | Files lack conversation context. Check for skills. |\n| \"Let me gather information first\" | Skills tell you HOW to gather information. |\n| \"This doesn't need a formal skill\" | If a skill exists, use it. |\n| \"I remember this skill\" | Skills evolve. Read current version. |\n| \"This doesn't count as a task\" | Action = task. Check for skills. |\n| \"The skill is overkill\" | Simple things become complex. Use it. |\n| \"I'll just do this one thing first\" | Check BEFORE doing anything. |\n| \"This feels productive\" | Undisciplined action wastes time. Skills prevent this. |\n| \"I know what that means\" | Knowing the concept ≠ using the skill. Invoke it. |\n\n## Skill Priority\n\nWhen multiple skills could apply, use this order:\n\n1. **Process skills first** (brainstorming, debugging) - these determine HOW to approach the task\n2. **Implementation skills second** (frontend-design, mcp-builder) - these guide execution\n\n\"Let's build X\" → brainstorming first, then implementation skills.\n\"Fix this bug\" → debugging first, then domain-specific skills.\n\n## Skill Types\n\n**Rigid** (TDD, debugging): Follow exactly. Don't adapt away discipline.\n\n**Flexible** (patterns): Adapt principles to context.\n\nThe skill itself tells you which.\n\n## User Instructions\n\nInstructions say WHAT, not HOW. \"Add X\" or \"Fix Y\" doesn't mean skip workflows.\n\n\n</EXTREMELY_IMPORTANT>"
+  }
+}
+2026-02-02T20:18:34.053Z [DEBUG] Hooks: Parsed initial response: {"hookSpecificOutput":{"hookEventName":"SessionStart","additionalContext":"<EXTREMELY_IMPORTANT>\nYou have superpowers.\n\n**Below is the full content of your 'superpowers:using-superpowers' skill - your introduction to using skills. For all other skills, use the 'Skill' tool:**\n\n---\nname: using-superpowers\ndescription: Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions\n---\n\n<EXTREMELY-IMPORTANT>\nIf you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.\n\nIF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.\n\nThis is not negotiable. This is not optional. You cannot rationalize your way out of this.\n</EXTREMELY-IMPORTANT>\n\n## How to Access Skills\n\n**In Claude Code:** Use the `Skill` tool. When you invoke a skill, its content is loaded and presented to you—follow it directly. Never use the Read tool on skill files.\n\n**In other environments:** Check your platform's documentation for how skills are loaded.\n\n# Using Skills\n\n## The Rule\n\n**Invoke relevant or requested skills BEFORE any response or action.** Even a 1% chance a skill might apply means that you should invoke the skill to check. If an invoked skill turns out to be wrong for the situation, you don't need to use it.\n\n```dot\ndigraph skill_flow {\n    \"User message received\" [shape=doublecircle];\n    \"Might any skill apply?\" [shape=diamond];\n    \"Invoke Skill tool\" [shape=box];\n    \"Announce: 'Using [skill] to [purpose]'\" [shape=box];\n    \"Has checklist?\" [shape=diamond];\n    \"Create TodoWrite todo per item\" [shape=box];\n    \"Follow skill exactly\" [shape=box];\n    \"Respond (including clarifications)\" [shape=doublecircle];\n\n    \"User message received\" -> \"Might any skill apply?\";\n    \"Might any skill apply?\" -> \"Invoke Skill tool\" [label=\"yes, even 1%\"];\n    \"Might any skill apply?\" -> \"Respond (including clarifications)\" [label=\"definitely not\"];\n    \"Invoke Skill tool\" -> \"Announce: 'Using [skill] to [purpose]'\";\n    \"Announce: 'Using [skill] to [purpose]'\" -> \"Has checklist?\";\n    \"Has checklist?\" -> \"Create TodoWrite todo per item\" [label=\"yes\"];\n    \"Has checklist?\" -> \"Follow skill exactly\" [label=\"no\"];\n    \"Create TodoWrite todo per item\" -> \"Follow skill exactly\";\n}\n```\n\n## Red Flags\n\nThese thoughts mean STOP—you're rationalizing:\n\n| Thought | Reality |\n|---------|---------|\n| \"This is just a simple question\" | Questions are tasks. Check for skills. |\n| \"I need more context first\" | Skill check comes BEFORE clarifying questions. |\n| \"Let me explore the codebase first\" | Skills tell you HOW to explore. Check first. |\n| \"I can check git/files quickly\" | Files lack conversation context. Check for skills. |\n| \"Let me gather information first\" | Skills tell you HOW to gather information. |\n| \"This doesn't need a formal skill\" | If a skill exists, use it. |\n| \"I remember this skill\" | Skills evolve. Read current version. |\n| \"This doesn't count as a task\" | Action = task. Check for skills. |\n| \"The skill is overkill\" | Simple things become complex. Use it. |\n| \"I'll just do this one thing first\" | Check BEFORE doing anything. |\n| \"This feels productive\" | Undisciplined action wastes time. Skills prevent this. |\n| \"I know what that means\" | Knowing the concept ≠ using the skill. Invoke it. |\n\n## Skill Priority\n\nWhen multiple skills could apply, use this order:\n\n1. **Process skills first** (brainstorming, debugging) - these determine HOW to approach the task\n2. **Implementation skills second** (frontend-design, mcp-builder) - these guide execution\n\n\"Let's build X\" → brainstorming first, then implementation skills.\n\"Fix this bug\" → debugging first, then domain-specific skills.\n\n## Skill Types\n\n**Rigid** (TDD, debugging): Follow exactly. Don't adapt away discipline.\n\n**Flexible** (patterns): Adapt principles to context.\n\nThe skill itself tells you which.\n\n## User Instructions\n\nInstructions say WHAT, not HOW. \"Add X\" or \"Fix Y\" doesn't mean skip workflows.\n\n\n</EXTREMELY_IMPORTANT>"}}
+2026-02-02T20:18:34.053Z [DEBUG] Hooks: Initial response is not async, continuing normal processing
+2026-02-02T20:18:34.060Z [DEBUG] Successfully parsed and validated hook JSON output
+2026-02-02T20:18:34.061Z [DEBUG] [render] initYoga starting
+2026-02-02T20:18:34.079Z [DEBUG] [render] initYoga complete
+2026-02-02T20:18:34.093Z [DEBUG] [keybindings] KeybindingSetup initialized with 45 bindings, 0 warnings
+2026-02-02T20:18:34.164Z [DEBUG] [keybindings] Skipping file watcher - user customization disabled
+2026-02-02T20:18:34.164Z [DEBUG] [REPL:mount] REPL mounted, disabled=false
+2026-02-02T20:18:34.173Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2026-02-02T20:18:34.173Z [DEBUG] performStartupChecks called
+2026-02-02T20:18:34.174Z [DEBUG] Starting background plugin installations
+2026-02-02T20:18:34.174Z [DEBUG] performBackgroundPluginInstallations called
+2026-02-02T20:18:34.177Z [DEBUG] Found 3 enabled plugins
+2026-02-02T20:18:34.178Z [DEBUG] All plugins already exist, skipping migration
+2026-02-02T20:18:34.178Z [DEBUG] Found 3 installed plugins (V2 format)
+2026-02-02T20:18:34.178Z [DEBUG] Loaded plugins - Enabled: 3, Disabled: 0, Commands: 15, Agents: 24, Errors: 0
+2026-02-02T20:18:34.178Z [DEBUG] Found 0 missing plugins (not installed):
+2026-02-02T20:18:34.178Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2026-02-02T20:18:34.180Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-02T20:18:34.181Z [DEBUG] [claudeai-mcp] Gate returned: false
+2026-02-02T20:18:34.181Z [DEBUG] [claudeai-mcp] Disabled via gate
+2026-02-02T20:18:34.217Z [DEBUG] Writing to temp file: ~/.claude-zai/.claude.json.tmp.129768.1770063514217
+2026-02-02T20:18:34.217Z [DEBUG] Preserving file permissions: 100600
+2026-02-02T20:18:34.217Z [DEBUG] Temp file written successfully, size: 3345 bytes
+2026-02-02T20:18:34.217Z [DEBUG] Applied original permissions to temp file
+2026-02-02T20:18:34.217Z [DEBUG] Renaming ~/.claude-zai/.claude.json.tmp.129768.1770063514217 to ~/.claude-zai/.claude.json
+2026-02-02T20:18:34.217Z [DEBUG] File ~/.claude-zai/.claude.json written atomically
+2026-02-02T20:18:34.297Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-02T20:18:34.759Z [DEBUG] Stream started - received first chunk
+2026-02-02T20:18:34.911Z [DEBUG] Generated summary for session b1ef8e35-dd88-41f6-b059-1a0c31172d81: "Claude Plugin Marketplace: Install Flow-Next"
+2026-02-02T20:18:34.916Z [DEBUG] Session index: added 1, updated 0, removed 0, summaries generated 1 (total: 3)
+2026-02-02T20:18:34.918Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-02T20:18:34.918Z [DEBUG] AutoUpdater: Using global update method
+2026-02-02T20:18:35.011Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-02T20:18:35.366Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-02-02T20:18:35.366Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-02-02T20:18:35.375Z [DEBUG] Caching plugin from source: {"source":"url","url":"https://github.com/obra/superpowers.git"} to temporary path ~/.claude-zai/plugins/cache/temp_git_1770063515375_q96703
+2026-02-02T20:18:35.382Z [DEBUG] Using git SHA for feature-dev@claude-plugins-official: 27d2b86d72da
+2026-02-02T20:18:36.127Z [DEBUG] Cloned repository from https://github.com/obra/superpowers.git to ~/.claude-zai/plugins/cache/temp_git_1770063515375_q96703
+2026-02-02T20:18:36.127Z [DEBUG] Successfully cached plugin superpowers to ~/.claude-zai/plugins/cache/superpowers
+2026-02-02T20:18:36.127Z [DEBUG] Using manifest version for superpowers@claude-plugins-official: 4.1.1
+2026-02-02T20:19:45.948Z [DEBUG] High write ratio: blit=558, write=594 (51.6% writes), screen=16x93
+2026-02-02T20:19:46.060Z [DEBUG] High write ratio: blit=558, write=725 (56.5% writes), screen=16x93
+2026-02-02T20:19:46.790Z [DEBUG] High write ratio: blit=558, write=594 (51.6% writes), screen=16x93
+2026-02-02T20:19:46.966Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-02T20:19:47.610Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-02T20:19:47.610Z [DEBUG] AutoUpdater: Using global update method
+2026-02-02T20:19:47.700Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-02T20:23:33.852Z [DEBUG] Metrics opt-out check failed: No API key available
+2026-02-02T20:23:33.852Z [DEBUG] Metrics check failed, defaulting to disabled
+2026-02-02T20:23:33.852Z [DEBUG] Metrics export disabled by organization setting
+2026-02-02T20:49:47.642Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-02T20:49:47.642Z [DEBUG] AutoUpdater: Using global update method
+2026-02-02T20:49:47.739Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-02T21:19:47.665Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-02T21:19:47.666Z [DEBUG] AutoUpdater: Using global update method
+2026-02-02T21:19:47.757Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-02T21:49:47.625Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-02T21:49:47.625Z [DEBUG] AutoUpdater: Using global update method
+2026-02-02T21:49:47.723Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-02T22:19:47.627Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-02T22:19:47.627Z [DEBUG] AutoUpdater: Using global update method
+2026-02-02T22:19:47.711Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-02T22:49:47.639Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-02T22:49:47.639Z [DEBUG] AutoUpdater: Using global update method
+2026-02-02T22:49:47.724Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-02T23:19:47.594Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-02T23:19:47.594Z [DEBUG] AutoUpdater: Using global update method
+2026-02-02T23:19:47.680Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-02T23:49:47.579Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-02T23:49:47.579Z [DEBUG] AutoUpdater: Using global update method
+2026-02-02T23:49:47.663Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-03T00:19:47.612Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-03T00:19:47.612Z [DEBUG] AutoUpdater: Using global update method
+2026-02-03T00:19:47.698Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-03T00:49:47.594Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-03T00:49:47.594Z [DEBUG] AutoUpdater: Using global update method
+2026-02-03T00:49:47.679Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-03T01:19:47.610Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-03T01:19:47.610Z [DEBUG] AutoUpdater: Using global update method
+2026-02-03T01:19:47.695Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-03T01:49:47.620Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-03T01:49:47.620Z [DEBUG] AutoUpdater: Using global update method
+2026-02-03T01:49:47.703Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-03T02:19:47.614Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-03T02:19:47.614Z [DEBUG] AutoUpdater: Using global update method
+2026-02-03T02:19:47.704Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-03T02:49:47.647Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-03T02:49:47.647Z [DEBUG] AutoUpdater: Using global update method
+2026-02-03T02:49:47.732Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-03T03:19:47.620Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-03T03:19:47.620Z [DEBUG] AutoUpdater: Using global update method
+2026-02-03T03:19:47.706Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-03T03:49:47.614Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-03T03:49:47.614Z [DEBUG] AutoUpdater: Using global update method
+2026-02-03T03:49:47.701Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-03T04:19:47.629Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-03T04:19:47.629Z [DEBUG] AutoUpdater: Using global update method
+2026-02-03T04:19:47.717Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-03T04:49:47.669Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-03T04:49:47.669Z [DEBUG] AutoUpdater: Using global update method
+2026-02-03T04:49:47.755Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async Object.current (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495)
+2026-02-03T05:01:40.522Z [DEBUG] Writing to temp file: ~/.claude-zai/.claude.json.tmp.129768.1770094900522
+2026-02-03T05:01:40.522Z [DEBUG] Preserving file permissions: 100600
+2026-02-03T05:01:40.523Z [DEBUG] Temp file written successfully, size: 3455 bytes
+2026-02-03T05:01:40.523Z [DEBUG] Applied original permissions to temp file
+2026-02-03T05:01:40.523Z [DEBUG] Renaming ~/.claude-zai/.claude.json.tmp.129768.1770094900522 to ~/.claude-zai/.claude.json
+2026-02-03T05:01:40.523Z [DEBUG] File ~/.claude-zai/.claude.json written atomically
+2026-02-03T05:01:40.524Z [DEBUG] Metadata string for flow-next:work:
+2026-02-03T05:01:40.524Z [DEBUG] <command-message>flow-next:work</command-message>
+<command-name>/flow-next:work</command-name>
+<command-args>fn-11-01z --branch=current --review=none</command-args>
+2026-02-03T05:01:40.524Z [DEBUG] command-message tags in metadata: 1
+2026-02-03T05:01:40.554Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T05:01:40.554Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T05:01:40.554Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T05:01:40.554Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T05:01:40.567Z [DEBUG] processPromptSlashCommand creating 3 messages for flow-next:work
+2026-02-03T05:01:40.567Z [DEBUG] Message 1: <command-message>flow-next:work</command-message>
+<command-name>/flow-next:work</command-name>
+<command-args>fn-11-01z --branch=current --review=none</command-args>
+2026-02-03T05:01:40.567Z [DEBUG] Message 2 [META]: [{"type":"text","text":"# IMPORTANT: This command MUST invoke the skill `flow-next-work`\n\nThe ONLY purpose of this command is to call the `flow-next-work` skill. You MUST use that skill now.\n\n**Us
+2026-02-03T05:01:40.567Z [DEBUG] Message 3: [ATTACHMENT]
+2026-02-03T05:01:40.579Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-03T05:01:40.579Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T05:01:40.579Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-03T05:01:40.583Z [DEBUG] FileHistory: Added snapshot for 764b8f65-20fd-4fc9-904c-571dcefa77cc, tracking 0 files
+2026-02-03T05:01:40.604Z [DEBUG] Total plugin output styles loaded: 0
+2026-02-03T05:01:40.610Z [DEBUG] Writing to temp file: ~/.claude-zai/.claude.json.tmp.129768.1770094900610
+2026-02-03T05:01:40.610Z [DEBUG] Preserving file permissions: 100600
+2026-02-03T05:01:40.610Z [DEBUG] Temp file written successfully, size: 3501 bytes
+2026-02-03T05:01:40.610Z [DEBUG] Applied original permissions to temp file
+2026-02-03T05:01:40.610Z [DEBUG] Renaming ~/.claude-zai/.claude.json.tmp.129768.1770094900610 to ~/.claude-zai/.claude.json
+2026-02-03T05:01:40.610Z [DEBUG] File ~/.claude-zai/.claude.json written atomically
+2026-02-03T05:01:40.625Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:40.642Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:40.642Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:40.642Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:41.865Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:01:45.277Z [DEBUG] Writing to temp file: ~/.claude-zai/.claude.json.tmp.129768.1770094905277
+2026-02-03T05:01:45.277Z [DEBUG] Preserving file permissions: 100600
+2026-02-03T05:01:45.277Z [DEBUG] Temp file written successfully, size: 3536 bytes
+2026-02-03T05:01:45.277Z [DEBUG] Applied original permissions to temp file
+2026-02-03T05:01:45.277Z [DEBUG] Renaming ~/.claude-zai/.claude.json.tmp.129768.1770094905277 to ~/.claude-zai/.claude.json
+2026-02-03T05:01:45.277Z [DEBUG] File ~/.claude-zai/.claude.json written atomically
+2026-02-03T05:01:45.311Z [DEBUG] executePreToolHooks called for tool: Skill
+2026-02-03T05:01:45.323Z [DEBUG] Getting matching hook commands for PreToolUse with query: Skill
+2026-02-03T05:01:45.323Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:01:45.323Z [DEBUG] Matched 0 unique hooks for query "Skill" (0 before deduplication)
+2026-02-03T05:01:45.350Z [DEBUG] Writing to temp file: ~/.claude-zai/.claude.json.tmp.129768.1770094905350
+2026-02-03T05:01:45.350Z [DEBUG] Preserving file permissions: 100600
+2026-02-03T05:01:45.350Z [DEBUG] Temp file written successfully, size: 3634 bytes
+2026-02-03T05:01:45.350Z [DEBUG] Applied original permissions to temp file
+2026-02-03T05:01:45.350Z [DEBUG] Renaming ~/.claude-zai/.claude.json.tmp.129768.1770094905350 to ~/.claude-zai/.claude.json
+2026-02-03T05:01:45.350Z [DEBUG] File ~/.claude-zai/.claude.json written atomically
+2026-02-03T05:01:45.351Z [DEBUG] Metadata string for flow-next-work:
+2026-02-03T05:01:45.351Z [DEBUG] <command-message>flow-next-work</command-message>
+<command-name>/flow-next-work</command-name>
+<command-args>fn-11-01z --branch=current --review=none</command-args>
+2026-02-03T05:01:45.351Z [DEBUG] command-message tags in metadata: 1
+2026-02-03T05:01:45.362Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T05:01:45.362Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T05:01:45.362Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T05:01:45.362Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T05:01:45.375Z [DEBUG] processPromptSlashCommand creating 3 messages for flow-next-work
+2026-02-03T05:01:45.375Z [DEBUG] Message 1: <command-message>flow-next-work</command-message>
+<command-name>/flow-next-work</command-name>
+<command-args>fn-11-01z --branch=current --review=none</command-args>
+2026-02-03T05:01:45.375Z [DEBUG] Message 2 [META]: [{"type":"text","text":"Base directory for this skill: ~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/skills/flow-next-work\n\n# Flow work\n\nExecute a plan systematically. Fo
+2026-02-03T05:01:45.375Z [DEBUG] Message 3: [ATTACHMENT]
+2026-02-03T05:01:45.376Z [DEBUG] SkillTool returning 2 newMessages for skill flow-next:flow-next-work
+2026-02-03T05:01:45.376Z [DEBUG] newMessage 1: [{"type":"text","text":"Base directory for this skill: ~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/skills/flow-next-work\n...
+2026-02-03T05:01:45.423Z [DEBUG] Getting matching hook commands for PostToolUse with query: Skill
+2026-02-03T05:01:45.423Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:01:45.423Z [DEBUG] Matched 0 unique hooks for query "Skill" (0 before deduplication)
+2026-02-03T05:01:45.474Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T05:01:45.474Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T05:01:45.474Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T05:01:45.474Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T05:01:45.502Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:45.517Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:45.517Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:45.517Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:46.239Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:01:47.866Z [DEBUG] High write ratio: blit=504, write=764 (60.3% writes), screen=39x56
+2026-02-03T05:01:48.271Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:01:48.288Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:01:48.288Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:01:48.288Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:01:48.306Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:01:48.330Z [DEBUG] tree-sitter: WASM files not found
+2026-02-03T05:01:48.345Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:48.345Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:48.346Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:48.346Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:48.346Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:48.346Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:48.346Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:48.347Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:48.347Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:48.347Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:48.348Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:48.348Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:48.996Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:01:49.239Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:01:49.295Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:01:49.565Z [DEBUG] Creating shell snapshot for bash (/bin/bash)
+2026-02-03T05:01:49.565Z [DEBUG] Looking for shell config file: /home/deploy/.bashrc
+2026-02-03T05:01:49.565Z [DEBUG] Snapshots directory: ~/.claude-zai/shell-snapshots
+2026-02-03T05:01:49.566Z [DEBUG] Creating snapshot at: ~/.claude-zai/shell-snapshots/snapshot-bash-1770094909565-ksrsjk.sh
+2026-02-03T05:01:49.566Z [DEBUG] Shell binary exists: true
+2026-02-03T05:01:49.566Z [DEBUG] Execution timeout: 10000ms
+2026-02-03T05:01:49.591Z [DEBUG] Shell snapshot file not found after creation: ~/.claude-zai/shell-snapshots/snapshot-bash-1770094909565-ksrsjk.sh
+2026-02-03T05:01:49.591Z [DEBUG] Checking if parent directory still exists: ~/.claude-zai/shell-snapshots
+2026-02-03T05:01:49.591Z [DEBUG] Parent directory exists: true
+2026-02-03T05:01:49.591Z [DEBUG] Directory contains 0 files
+2026-02-03T05:01:49.593Z [DEBUG] No session environment scripts found
+2026-02-03T05:01:49.628Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: Bash
+2026-02-03T05:01:49.628Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T05:01:49.628Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T05:01:49.647Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:01:49.661Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:01:49.661Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:01:49.661Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:01:49.678Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:01:49.711Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:49.712Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:49.712Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:49.712Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:49.712Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:49.712Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:49.713Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:49.713Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:50.623Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:01:50.789Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:01:50.869Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: Bash
+2026-02-03T05:01:50.869Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T05:01:50.869Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T05:01:50.883Z [DEBUG] High write ratio: blit=952, write=1015 (51.6% writes), screen=54x56
+2026-02-03T05:01:50.884Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T05:01:50.884Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T05:01:50.884Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T05:01:50.884Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T05:01:50.909Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:50.926Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:50.926Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:50.926Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:51.575Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:01:52.523Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:01:52.539Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:01:52.539Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:01:52.539Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:01:52.566Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:01:52.962Z [DEBUG] Writing to temp file: ~/.claude-zai/.claude.json.tmp.129768.1770094912962
+2026-02-03T05:01:52.962Z [DEBUG] Preserving file permissions: 100600
+2026-02-03T05:01:52.962Z [DEBUG] Temp file written successfully, size: 3673 bytes
+2026-02-03T05:01:52.962Z [DEBUG] Applied original permissions to temp file
+2026-02-03T05:01:52.962Z [DEBUG] Renaming ~/.claude-zai/.claude.json.tmp.129768.1770094912962 to ~/.claude-zai/.claude.json
+2026-02-03T05:01:52.962Z [DEBUG] File ~/.claude-zai/.claude.json written atomically
+2026-02-03T05:01:52.963Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:52.964Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:52.964Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:52.965Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:52.994Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:01:52.994Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:01:52.994Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:01:53.005Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:01:53.006Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T05:01:53.006Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T05:01:53.006Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T05:01:53.006Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T05:01:53.042Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:53.061Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:53.061Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:53.061Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:53.702Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:01:53.917Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:01:55.634Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:01:55.646Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:01:55.646Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:01:55.646Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:01:55.672Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:01:55.700Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:55.701Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:55.701Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:55.701Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:55.701Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:55.701Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:55.702Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:55.702Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:56.406Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:01:56.436Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:01:57.245Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:57.246Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:57.246Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:57.247Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:57.271Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:01:57.271Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:01:57.271Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:01:57.278Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:01:57.280Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:01:57.290Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:01:57.290Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:01:57.290Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:01:57.310Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:01:57.358Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:57.359Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:57.359Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:57.359Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:58.174Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:01:58.192Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:01:58.366Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:58.367Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:58.367Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:58.367Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:58.395Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:01:58.395Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:01:58.395Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:01:58.404Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:01:58.406Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T05:01:58.406Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T05:01:58.406Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T05:01:58.406Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T05:01:58.447Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:01:58.480Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:01:58.480Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:01:58.480Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:01:58.986Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:01:59.201Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:00.375Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:02:00.386Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:02:00.386Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:00.386Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:02:00.386Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:02:00.410Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:02:00.410Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:00.410Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:02:00.410Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:02:00.494Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:02:00.494Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:00.494Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:02:00.508Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:00.509Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:00.509Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:00.509Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:00.547Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:02:00.547Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:00.547Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:02:00.557Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:02:00.560Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T05:02:00.560Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T05:02:00.560Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T05:02:00.560Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T05:02:00.599Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:00.622Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:00.622Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:00.622Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:01.346Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:01.446Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:02.399Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:02:02.399Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:02:02.410Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:02:02.410Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:02.410Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:02:02.411Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:02:02.411Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:02.411Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:02:02.489Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:02:02.489Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:02.489Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:02:02.489Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:02:02.489Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:02.489Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:02:02.505Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T05:02:02.505Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T05:02:02.505Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T05:02:02.505Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T05:02:02.545Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:02.565Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:02.565Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:02.565Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:03.348Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:11.410Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:02:11.424Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:02:11.424Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:11.424Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:02:11.493Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:02:11.493Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:11.493Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:02:11.504Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:02:11.528Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:02:11.528Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:11.528Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:02:11.552Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:02:11.590Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:11.590Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:11.590Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:11.590Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:11.591Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:11.591Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:11.591Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:11.591Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:12.254Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:12.504Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:12.765Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:12.766Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:12.766Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:12.766Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:12.792Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:02:12.792Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:12.792Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:02:12.801Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:02:12.803Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T05:02:12.803Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T05:02:12.803Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T05:02:12.803Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T05:02:12.856Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:12.880Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:12.880Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:12.880Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:13.633Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:14.250Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:19.147Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:02:19.171Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:02:19.171Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:19.171Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:02:19.193Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:02:19.235Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:19.235Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:19.235Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:19.235Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:19.236Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:19.236Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:19.236Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:19.236Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:19.875Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:20.077Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:20.760Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:20.761Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:20.761Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:20.761Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:20.793Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:02:20.793Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:20.793Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:02:20.803Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:02:20.805Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T05:02:20.805Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T05:02:20.805Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T05:02:20.805Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T05:02:20.849Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:20.879Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:20.879Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:20.879Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:21.697Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:23.684Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:38.894Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:02:38.913Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:02:38.913Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:38.913Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:02:38.930Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:02:38.968Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:38.968Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:38.969Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:38.969Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:38.969Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:38.969Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:38.969Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:38.970Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:39.602Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:39.988Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:40.435Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:40.436Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:40.436Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:40.436Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:40.470Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:02:40.470Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:40.470Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:02:40.478Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:02:40.479Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-03T05:02:40.479Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-03T05:02:40.479Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-03T05:02:40.479Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-03T05:02:40.523Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:40.544Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:40.544Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:40.545Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:41.112Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:41.255Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:43.559Z [DEBUG] executePreToolHooks called for tool: Task
+2026-02-03T05:02:43.573Z [DEBUG] Getting matching hook commands for PreToolUse with query: Task
+2026-02-03T05:02:43.574Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:43.574Z [DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+2026-02-03T05:02:43.655Z [DEBUG] Getting matching hook commands for SubagentStart with query: flow-next:worker
+2026-02-03T05:02:43.655Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T05:02:43.655Z [DEBUG] Matched 0 unique hooks for query "flow-next:worker" (0 before deduplication)
+2026-02-03T05:02:43.673Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:43.675Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:43.675Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:43.675Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:44.343Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:50.412Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:02:50.432Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:02:50.432Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:50.432Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:02:50.459Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:02:50.492Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:50.492Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:50.492Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:50.492Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:58.387Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:02:58.938Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:58.939Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:58.939Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:58.942Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:58.968Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:02:58.968Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:58.968Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:02:58.979Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:02:59.018Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:02:59.034Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:02:59.034Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:02:59.034Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:02:59.055Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:02:59.085Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:02:59.085Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:02:59.085Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:02:59.086Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:02:59.576Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:00.184Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:00.791Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:00.792Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:00.792Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:00.792Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:00.809Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:03:00.809Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:00.809Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:00.817Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:00.851Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:03:00.867Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:03:00.867Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:00.867Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:00.886Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:00.914Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:00.914Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:00.914Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:00.914Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:01.837Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:02.256Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:02.256Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:02.256Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:02.257Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:02.275Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:03:02.275Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:02.275Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:02.283Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:02.307Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:03:02.338Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:03:02.338Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:02.338Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:02.351Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:02.354Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:02.388Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:02.389Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:02.389Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:02.389Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:02.861Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:03.383Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:03.545Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:03.546Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:03.546Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:03.546Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:03.566Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:03:03.566Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:03.566Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:03.577Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:03.648Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:03.650Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:03.650Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:03.650Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:04.266Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:04.703Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:05.963Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:03:05.963Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:03:05.984Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:03:05.984Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:05.984Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:05.984Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:03:05.984Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:05.984Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:06.011Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:06.012Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:06.099Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:06.100Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:06.100Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:06.100Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:06.129Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:06.130Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:06.130Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:06.130Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:06.153Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:03:06.153Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:06.153Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:06.186Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:03:06.186Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:06.186Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:06.193Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:06.208Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:06.263Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:03:06.285Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:03:06.285Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:06.285Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:06.302Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:06.341Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:06.341Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:06.341Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:06.342Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:06.770Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:06.771Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:07.006Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:07.845Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:07.846Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:07.846Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:07.846Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:07.871Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:03:07.871Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:07.871Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:07.883Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:07.948Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:07.950Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:07.950Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:07.951Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:08.532Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:08.594Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:09.778Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:03:09.778Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:03:09.779Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:03:09.799Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:03:09.799Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:09.799Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:09.799Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:03:09.799Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:09.799Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:09.799Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:03:09.799Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:09.799Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:09.836Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:09.837Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:09.841Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:09.942Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:09.943Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:09.943Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:09.943Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:09.949Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:09.950Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:09.950Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:09.950Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:09.960Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:09.961Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:09.961Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:09.961Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:10.009Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:03:10.009Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:10.009Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:10.009Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:03:10.009Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:10.009Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:10.009Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:03:10.009Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:10.009Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:10.035Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:10.041Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:10.042Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:10.185Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:10.187Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:10.187Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:10.188Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:10.838Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:13.865Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:03:13.892Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:03:13.892Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:13.892Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:13.910Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:13.956Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:13.956Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:13.957Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:13.957Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:13.957Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:13.957Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:13.957Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:13.957Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:14.493Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:14.525Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:14.649Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:15.279Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:17.572Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:33.863Z [DEBUG] Metrics opt-out check failed: No API key available
+2026-02-03T05:03:33.863Z [DEBUG] Metrics check failed, defaulting to disabled
+2026-02-03T05:03:33.863Z [DEBUG] Metrics export disabled by organization setting
+2026-02-03T05:03:37.148Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:37.149Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:37.149Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:37.150Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:37.182Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:03:37.182Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:37.182Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:37.191Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:37.275Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:37.278Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:37.278Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:37.278Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:37.916Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:38.217Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:38.696Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:03:38.716Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:03:38.716Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:38.716Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:03:38.786Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:03:38.786Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:38.786Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:03:38.841Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:38.844Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:38.844Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:38.844Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:39.475Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:40.106Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:03:40.119Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:03:40.119Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:40.119Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:03:40.191Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:03:40.191Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:40.191Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:03:40.240Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:40.245Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:40.245Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:40.245Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:40.799Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:42.133Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:03:42.153Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:03:42.153Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:42.153Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:42.171Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:42.287Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:42.288Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:42.288Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:42.288Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:42.310Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:03:42.310Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:42.310Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:42.321Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:42.395Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:42.397Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:42.397Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:42.398Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:42.906Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:43.536Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:44.415Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:03:44.437Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:03:44.437Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:44.437Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:44.451Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:44.524Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:44.525Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:44.525Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:44.525Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:44.545Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:03:44.545Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:44.545Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:44.557Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:44.629Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:44.632Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:44.632Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:44.632Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:45.320Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:45.357Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:46.574Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:03:46.605Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:03:46.605Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:46.605Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:46.621Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:46.663Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:46.663Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:46.663Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:46.663Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:46.679Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:03:46.679Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:46.679Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:03:46.695Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:03:46.758Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:46.761Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:46.761Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:46.761Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:47.338Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:47.474Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:50.545Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:50.548Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:50.548Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:50.548Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:51.182Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:53.548Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:03:53.562Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:03:53.562Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:53.562Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:03:53.630Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:03:53.630Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:53.630Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:03:53.681Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:53.686Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:53.686Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:53.686Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:54.237Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:56.027Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T05:03:56.042Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T05:03:56.042Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:56.042Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:03:56.083Z [DEBUG] Writing to temp file: /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts.tmp.129768.1770095036083
+2026-02-03T05:03:56.083Z [DEBUG] Preserving file permissions: 100664
+2026-02-03T05:03:56.083Z [DEBUG] Temp file written successfully, size: 5038 bytes
+2026-02-03T05:03:56.083Z [DEBUG] Applied original permissions to temp file
+2026-02-03T05:03:56.083Z [DEBUG] Renaming /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts.tmp.129768.1770095036083 to /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts
+2026-02-03T05:03:56.083Z [DEBUG] File /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts written atomically
+2026-02-03T05:03:56.116Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T05:03:56.116Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:56.116Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:03:56.165Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:56.171Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:56.171Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:56.172Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:56.885Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:03:58.157Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:03:58.183Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:03:58.183Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:58.183Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:03:58.267Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:03:58.267Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:03:58.267Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:03:58.314Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:03:58.317Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:03:58.317Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:03:58.317Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:03:58.968Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:04:01.997Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T05:04:02.011Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T05:04:02.011Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:02.011Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:04:02.103Z [DEBUG] Writing to temp file: /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts.tmp.129768.1770095042103
+2026-02-03T05:04:02.103Z [DEBUG] Preserving file permissions: 100664
+2026-02-03T05:04:02.103Z [DEBUG] Temp file written successfully, size: 6151 bytes
+2026-02-03T05:04:02.103Z [DEBUG] Applied original permissions to temp file
+2026-02-03T05:04:02.103Z [DEBUG] Renaming /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts.tmp.129768.1770095042103 to /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts
+2026-02-03T05:04:02.103Z [DEBUG] File /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts written atomically
+2026-02-03T05:04:02.167Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T05:04:02.167Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:02.167Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:04:02.216Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:04:02.219Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:04:02.219Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:04:02.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:04:02.878Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:04:03.991Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:04:04.005Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:04:04.005Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:04.005Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:04:04.073Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:04:04.073Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:04.073Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:04:04.122Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:04:04.125Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:04:04.125Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:04:04.125Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:04:04.923Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:04:21.283Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:04:21.294Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:04:21.294Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:21.294Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:04:21.376Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:04:21.376Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:21.376Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:04:21.428Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:04:21.431Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:04:21.431Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:04:21.431Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:04:22.060Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:04:28.432Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T05:04:28.446Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T05:04:28.446Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:28.446Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:04:28.488Z [DEBUG] Writing to temp file: /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts.tmp.129768.1770095068488
+2026-02-03T05:04:28.488Z [DEBUG] Preserving file permissions: 100664
+2026-02-03T05:04:28.488Z [DEBUG] Temp file written successfully, size: 6665 bytes
+2026-02-03T05:04:28.488Z [DEBUG] Applied original permissions to temp file
+2026-02-03T05:04:28.488Z [DEBUG] Renaming /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts.tmp.129768.1770095068488 to /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts
+2026-02-03T05:04:28.488Z [DEBUG] File /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts written atomically
+2026-02-03T05:04:28.526Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T05:04:28.526Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:28.526Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:04:28.580Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:04:28.583Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:04:28.583Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:04:28.583Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:04:29.170Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:04:37.702Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T05:04:37.715Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T05:04:37.715Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:37.715Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:04:37.822Z [DEBUG] Writing to temp file: /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts.tmp.129768.1770095077822
+2026-02-03T05:04:37.822Z [DEBUG] Preserving file permissions: 100664
+2026-02-03T05:04:37.822Z [DEBUG] Temp file written successfully, size: 6967 bytes
+2026-02-03T05:04:37.822Z [DEBUG] Applied original permissions to temp file
+2026-02-03T05:04:37.822Z [DEBUG] Renaming /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts.tmp.129768.1770095077822 to /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts
+2026-02-03T05:04:37.822Z [DEBUG] File /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts written atomically
+2026-02-03T05:04:37.880Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T05:04:37.880Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:37.880Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:04:37.935Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:04:37.938Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:04:37.938Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:04:37.939Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:04:38.592Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:04:42.602Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T05:04:42.620Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T05:04:42.620Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:42.620Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:04:42.665Z [DEBUG] Writing to temp file: /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts.tmp.129768.1770095082665
+2026-02-03T05:04:42.665Z [DEBUG] Preserving file permissions: 100664
+2026-02-03T05:04:42.665Z [DEBUG] Temp file written successfully, size: 7506 bytes
+2026-02-03T05:04:42.665Z [DEBUG] Applied original permissions to temp file
+2026-02-03T05:04:42.665Z [DEBUG] Renaming /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts.tmp.129768.1770095082665 to /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts
+2026-02-03T05:04:42.665Z [DEBUG] File /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts written atomically
+2026-02-03T05:04:42.700Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T05:04:42.700Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:42.700Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:04:42.747Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:04:42.754Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:04:42.754Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:04:42.755Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:04:43.503Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:04:45.119Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:04:45.133Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:04:45.133Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:45.133Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:04:45.148Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:04:45.263Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:04:45.264Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:04:45.264Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:04:45.264Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:04:45.283Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:04:45.283Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:45.283Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:04:45.295Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:04:45.367Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:04:45.370Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:04:45.370Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:04:45.370Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:04:46.034Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:04:46.154Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:04:49.889Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:04:49.914Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:04:49.914Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:49.914Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:04:49.933Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:04:49.977Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:04:49.977Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:04:49.977Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:04:49.977Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:04:49.978Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:04:49.978Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:04:49.978Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:04:49.978Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:04:50.657Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:04:50.748Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:04:57.154Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:04:57.155Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:04:57.155Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:04:57.155Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:04:57.177Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:04:57.177Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:04:57.177Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:04:57.186Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:04:57.270Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:04:57.273Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:04:57.273Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:04:57.273Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:04:57.988Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:04:58.043Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:05:05.441Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:05:05.455Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:05:05.455Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:05:05.455Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:05:05.613Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:05:05.613Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:05:05.613Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:05:05.666Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:05:05.669Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:05:05.669Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:05:05.669Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:05:06.450Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:05:07.721Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T05:05:07.734Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T05:05:07.734Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:05:07.734Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:05:07.776Z [DEBUG] Writing to temp file: /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts.tmp.129768.1770095107776
+2026-02-03T05:05:07.776Z [DEBUG] Preserving file permissions: 100664
+2026-02-03T05:05:07.777Z [DEBUG] Temp file written successfully, size: 7533 bytes
+2026-02-03T05:05:07.777Z [DEBUG] Applied original permissions to temp file
+2026-02-03T05:05:07.777Z [DEBUG] Renaming /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts.tmp.129768.1770095107776 to /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts
+2026-02-03T05:05:07.777Z [DEBUG] File /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts written atomically
+2026-02-03T05:05:07.805Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T05:05:07.805Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:05:07.805Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:05:07.861Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:05:07.864Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:05:07.864Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:05:07.864Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:05:08.453Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:05:11.448Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:05:11.467Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:05:11.467Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:05:11.467Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:05:11.491Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:05:11.519Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:05:11.519Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:05:11.519Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:05:11.520Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:05:12.240Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:05:18.360Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: Bash
+2026-02-03T05:05:18.360Z [DEBUG] Found 0 hook matchers in settings
+2026-02-03T05:05:18.360Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-03T05:05:18.416Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:05:18.422Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:05:18.422Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:05:18.422Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:05:19.261Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:05:21.849Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-02-03T05:05:21.866Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-02-03T05:05:21.866Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:05:21.866Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:05:21.909Z [DEBUG] Writing to temp file: /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts.tmp.129768.1770095121909
+2026-02-03T05:05:21.909Z [DEBUG] Preserving file permissions: 100664
+2026-02-03T05:05:21.909Z [DEBUG] Temp file written successfully, size: 7540 bytes
+2026-02-03T05:05:21.909Z [DEBUG] Applied original permissions to temp file
+2026-02-03T05:05:21.909Z [DEBUG] Renaming /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts.tmp.129768.1770095121909 to /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts
+2026-02-03T05:05:21.909Z [DEBUG] File /home/deploy/src/wolfcal/src/lib/config/transferCrypto.ts written atomically
+2026-02-03T05:05:21.940Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-02-03T05:05:21.941Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:05:21.941Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-02-03T05:05:21.987Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:05:21.992Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:05:21.992Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:05:21.992Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:05:22.587Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:05:23.289Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:05:23.306Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:05:23.306Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:05:23.306Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:05:23.321Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:05:32.889Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:05:32.890Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:05:32.890Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:05:32.891Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:05:32.917Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:05:32.917Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:05:32.917Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:05:32.926Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:05:33.012Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:05:33.015Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:05:33.015Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:05:33.015Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:05:33.651Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:05:33.834Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:05:54.287Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:05:54.298Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:05:54.298Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:05:54.298Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:05:54.381Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:05:54.381Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:05:54.381Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:05:54.433Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:05:54.439Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:05:54.439Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:05:54.439Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:05:55.474Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:05:56.799Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:05:56.818Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:05:56.818Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:05:56.818Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:05:56.840Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:06:15.215Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:06:15.215Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:06:15.215Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:06:15.216Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:06:15.252Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:06:15.252Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:06:15.252Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:06:15.267Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:06:15.358Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:06:15.361Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:06:15.361Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:06:15.361Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:06:16.068Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:06:16.345Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:06:20.915Z [DEBUG] executePreToolHooks called for tool: Read
+2026-02-03T05:06:20.929Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-02-03T05:06:20.929Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:06:20.929Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:06:21.025Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-02-03T05:06:21.025Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:06:21.025Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-02-03T05:06:21.082Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:06:21.085Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:06:21.085Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:06:21.085Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:06:21.755Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:06:25.728Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:06:25.752Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:06:25.752Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:06:25.752Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:06:25.769Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:06:25.889Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:06:25.889Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:06:25.889Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:06:25.890Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:06:25.906Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-03T05:06:25.906Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:06:25.906Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:06:25.915Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:06:25.985Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:06:25.988Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:06:25.988Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:06:25.988Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:06:26.496Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:06:26.717Z [DEBUG] Stream started - received first chunk
+2026-02-03T05:06:38.882Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-03T05:06:38.907Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-03T05:06:38.907Z [DEBUG] Found 1 hook matchers in settings
+2026-02-03T05:06:38.907Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-03T05:06:38.927Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-03T05:06:38.963Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:06:38.963Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:06:38.963Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-03T05:06:38.963Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:06:38.963Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:06:38.963Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:06:38.963Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:06:38.964Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-03T05:06:38.964Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-03T05:06:38.964Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:06:38.964Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:06:38.964Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-03T05:06:39.725Z [DEBUG] Stream started - received first chunk

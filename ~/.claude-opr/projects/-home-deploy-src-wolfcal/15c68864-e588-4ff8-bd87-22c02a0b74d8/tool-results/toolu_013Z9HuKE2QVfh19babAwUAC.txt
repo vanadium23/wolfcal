@@ -1,0 +1,537 @@
+src/test/validation/cross-device-config-validation.test.ts:20:      accessToken: 'encrypted-access-token-placeholder-32bytes',
+src/test/validation/cross-device-config-validation.test.ts:21:      refreshToken: 'encrypted-refresh-token-placeholder-32bytes',
+src/test/validation/cross-device-config-validation.test.ts:27:      accessToken: 'encrypted-access-token-placeholder-32bytes',
+src/test/validation/cross-device-config-validation.test.ts:28:      refreshToken: 'encrypted-refresh-token-placeholder-32bytes',
+src/test/validation/cross-device-config-validation.test.ts:108:    console.log(`QR Code config size: ${sizeBytes} bytes`)
+src/test/validation/cross-device-config-validation.test.ts:109:    console.log(`Config JSON: ${json.length} bytes`)
+src/test/validation/cross-device-config-validation.test.ts:110:    console.log(`Base64 encoded: ${base64.length} bytes`)
+src/test/validation/cross-device-config-validation.test.ts:126:        accessToken: 'encrypted-token-32bytes-placeholder-data',
+src/test/validation/cross-device-config-validation.test.ts:127:        refreshToken: 'encrypted-refresh-32bytes-placeholder-data',
+src/test/validation/cross-device-config-validation.test.ts:137:    console.log(`5-account config size: ${sizeBytes} bytes`)
+src/test/validation/cross-device-config-validation.test.ts:244:    console.log(`Encrypted URL-safe length: ${urlSafe.length} bytes`)
+src/test/validation/cross-device-config-validation.test.ts:273:    console.log(`Full encrypted config URL-safe length: ${urlSafe.length} bytes`)
+src/components/ExportConfiguration.tsx:11:const MAX_QR_DATA_SIZE = 2953;
+src/components/ExportConfiguration.tsx:74:      console.log('Config JSON size:', serialized.length, 'bytes');
+src/components/ExportConfiguration.tsx:79:      console.log('Encrypted size:', encrypted.length, 'bytes');
+src/components/ExportConfiguration.tsx:85:      console.log('Final URL size:', url.length, 'bytes');
+src/components/ExportConfiguration.tsx:94:      setQrCodeTooLarge(url.length > MAX_QR_DATA_SIZE);
+src/components/ExportConfiguration.tsx:276:                  Your configuration is {exportUrl.length} bytes, but QR codes can only handle 
+src/components/ExportConfiguration.tsx:277:                  up to {MAX_QR_DATA_SIZE} bytes reliably.
+src/components/ExportConfiguration.tsx:288:                Export URL ({exportUrl.length} bytes)
+src/lib/auth/encryption.ts:83:  // Generate random IV (12 bytes is recommended for AES-GCM)
+src/lib/auth/encryption.ts:86:  // Encode plaintext to bytes
+src/lib/auth/encryption.ts:120:  // Extract IV (first 12 bytes) and ciphertext (rest)
+src/lib/auth/encryption.ts:134:  // Decode bytes to string
+src/lib/config/transferCrypto.ts:20:  ivLength: 12, // bytes (96 bits, recommended for GCM)
+src/lib/config/transferCrypto.ts:86:  // Encode data to bytes
+src/lib/config/transferCrypto.ts:147:    // Decode bytes to string
+playwright-report/index.html:18:[Omitted long matching line]
+playwright-report/index.html:58:[Omitted long matching line]
+.flow/tasks/fn-9-nas.1-evidence.json:14:    "typical_config_bytes": 964,
+.flow/tasks/fn-9-nas.1.md:55:- Compact output for URL use (964 bytes for typical config)
+~/.claude-opr/history.jsonl:10:{"display":"/flow-next:plan \"export qr code does not work, let's draft to fix it. i have 2 accounts and 9 calendars. debug info Config JSON size: 2394 bytes index-BlMJdR__.js:22:47972\nEncrypted size: 4408 bytes\"","pastedContents":{},"timestamp":1770064233800,"project":"/home/deploy/src/wolfcal","sessionId":"15c68864-e588-4ff8-bd87-22c02a0b74d8"}
+.flow/tasks/fn-9-nas.1-summary.md:33:- Compact output for URL use (964 bytes for typical config)
+~/.claude-opr/debug/15c68864-e588-4ff8-bd87-22c02a0b74d8.txt:60:2026-02-02T20:18:17.907Z [DEBUG] Temp file written successfully, size: 2 bytes
+~/.claude-opr/debug/15c68864-e588-4ff8-bd87-22c02a0b74d8.txt:107:2026-02-02T20:18:18.078Z [DEBUG] Temp file written successfully, size: 4170 bytes
+~/.claude-opr/debug/15c68864-e588-4ff8-bd87-22c02a0b74d8.txt:252:2026-02-02T20:18:18.542Z [DEBUG] Temp file written successfully, size: 4170 bytes
+~/.claude-opr/debug/15c68864-e588-4ff8-bd87-22c02a0b74d8.txt:318:2026-02-02T20:18:29.946Z [DEBUG] Temp file written successfully, size: 4192 bytes
+~/.claude-opr/debug/15c68864-e588-4ff8-bd87-22c02a0b74d8.txt:324:2026-02-02T20:18:29.962Z [DEBUG] Temp file written successfully, size: 4210 bytes
+~/.claude-opr/debug/15c68864-e588-4ff8-bd87-22c02a0b74d8.txt:383:2026-02-02T20:30:33.804Z [DEBUG] Temp file written successfully, size: 4320 bytes
+~/.claude-opr/debug/15c68864-e588-4ff8-bd87-22c02a0b74d8.txt:428:2026-02-02T20:30:38.321Z [DEBUG] Temp file written successfully, size: 4408 bytes
+~/.claude-opr/debug/15c68864-e588-4ff8-bd87-22c02a0b74d8.txt:488:2026-02-02T20:30:44.128Z [DEBUG] Temp file written successfully, size: 4447 bytes
+~/.claude-opr/debug/15c68864-e588-4ff8-bd87-22c02a0b74d8.txt:646:2026-02-02T20:31:06.675Z [DEBUG] Temp file written successfully, size: 4468 bytes
+~/.claude-opr/debug/c0ca4c13-ed2d-40d7-8cd1-ab90e1452736.txt:40:2026-02-02T20:16:40.922Z [DEBUG] Temp file written successfully, size: 3914 bytes
+~/.claude-opr/debug/c0ca4c13-ed2d-40d7-8cd1-ab90e1452736.txt:46:2026-02-02T20:16:40.938Z [DEBUG] Temp file written successfully, size: 3934 bytes
+~/.claude-opr/debug/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.txt:60:2026-02-02T20:14:42.310Z [DEBUG] Temp file written successfully, size: 2 bytes
+~/.claude-opr/debug/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.txt:116:2026-02-02T20:14:42.523Z [DEBUG] Temp file written successfully, size: 3536 bytes
+~/.claude-opr/debug/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.txt:260:2026-02-02T20:14:42.913Z [DEBUG] Temp file written successfully, size: 3536 bytes
+~/.claude-opr/debug/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.txt:323:2026-02-02T20:15:01.806Z [DEBUG] Temp file written successfully, size: 3558 bytes
+~/.claude-opr/debug/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.txt:329:2026-02-02T20:15:01.823Z [DEBUG] Temp file written successfully, size: 3581 bytes
+~/.claude-opr/debug/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.txt:377:2026-02-02T20:15:45.666Z [DEBUG] Temp file written successfully, size: 3618 bytes
+~/.claude-opr/debug/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.txt:383:2026-02-02T20:15:45.684Z [DEBUG] Temp file written successfully, size: 3638 bytes
+~/.claude-opr/debug/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.txt:410:2026-02-02T20:15:47.489Z [DEBUG] Temp file written successfully, size: 3684 bytes
+~/.claude-opr/debug/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.txt:431:2026-02-02T20:16:09.313Z [DEBUG] Temp file written successfully, size: 3719 bytes
+~/.claude-opr/debug/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.txt:437:2026-02-02T20:16:09.327Z [DEBUG] Temp file written successfully, size: 3765 bytes
+~/.claude-opr/debug/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.txt:451:2026-02-02T20:16:09.388Z [DEBUG] Temp file written successfully, size: 3804 bytes
+~/.claude-opr/debug/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.txt:457:2026-02-02T20:16:09.418Z [DEBUG] Temp file written successfully, size: 3833 bytes
+~/.claude-opr/debug/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.txt:497:2026-02-02T20:16:32.982Z [DEBUG] Temp file written successfully, size: 109 bytes
+~/.claude-opr/debug/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.txt:505:2026-02-02T20:16:33.019Z [DEBUG] Temp file written successfully, size: 3861 bytes
+~/.claude-opr/debug/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.txt:511:2026-02-02T20:16:33.022Z [DEBUG] Temp file written successfully, size: 3895 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:5:2026-02-02T20:13:27.931Z [DEBUG] Temp file written successfully, size: 82 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:10:2026-02-02T20:13:27.937Z [DEBUG] Temp file written successfully, size: 130 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:20:2026-02-02T20:13:27.939Z [DEBUG] Temp file written successfully, size: 167 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:26:2026-02-02T20:13:27.941Z [DEBUG] Temp file written successfully, size: 202 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:32:2026-02-02T20:13:27.942Z [DEBUG] Temp file written successfully, size: 238 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:38:2026-02-02T20:13:27.943Z [DEBUG] Temp file written successfully, size: 275 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:83:2026-02-02T20:13:28.044Z [DEBUG] Temp file written successfully, size: 2 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:101:2026-02-02T20:13:28.115Z [DEBUG] Temp file written successfully, size: 318 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:115:2026-02-02T20:13:28.439Z [DEBUG] Temp file written successfully, size: 359 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:121:2026-02-02T20:13:28.467Z [DEBUG] Temp file written successfully, size: 535 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:127:2026-02-02T20:13:28.468Z [DEBUG] Temp file written successfully, size: 571 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:133:2026-02-02T20:13:28.470Z [DEBUG] Temp file written successfully, size: 599 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:139:2026-02-02T20:13:28.471Z [DEBUG] Temp file written successfully, size: 651 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:145:2026-02-02T20:13:28.472Z [DEBUG] Temp file written successfully, size: 690 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:151:2026-02-02T20:13:28.473Z [DEBUG] Temp file written successfully, size: 728 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:157:2026-02-02T20:13:28.474Z [DEBUG] Temp file written successfully, size: 773 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:163:2026-02-02T20:13:28.474Z [DEBUG] Temp file written successfully, size: 812 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:169:2026-02-02T20:13:28.475Z [DEBUG] Temp file written successfully, size: 842 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:175:2026-02-02T20:13:28.476Z [DEBUG] Temp file written successfully, size: 887 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:181:2026-02-02T20:13:28.476Z [DEBUG] Temp file written successfully, size: 917 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:187:2026-02-02T20:13:28.477Z [DEBUG] Temp file written successfully, size: 941 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:193:2026-02-02T20:13:29.369Z [DEBUG] Temp file written successfully, size: 941 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:199:2026-02-02T20:13:29.370Z [DEBUG] Temp file written successfully, size: 941 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:205:2026-02-02T20:13:30.513Z [DEBUG] Temp file written successfully, size: 1012 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:217:2026-02-02T20:13:30.525Z [DEBUG] Temp file written successfully, size: 1107 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:226:2026-02-02T20:13:31.561Z [DEBUG] Temp file written successfully, size: 1148 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:241:2026-02-02T20:13:31.593Z [DEBUG] Temp file written successfully, size: 1168 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:255:2026-02-02T20:13:31.694Z [DEBUG] Temp file written successfully, size: 1225 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:261:2026-02-02T20:13:31.695Z [DEBUG] Temp file written successfully, size: 1298 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:267:2026-02-02T20:13:31.696Z [DEBUG] Temp file written successfully, size: 1346 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:273:2026-02-02T20:13:31.697Z [DEBUG] Temp file written successfully, size: 1379 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:280:2026-02-02T20:13:31.715Z [DEBUG] Temp file written successfully, size: 1446 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:290:2026-02-02T20:13:31.731Z [DEBUG] Temp file written successfully, size: 1482 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:310:2026-02-02T20:13:31.764Z [DEBUG] Temp file written successfully, size: 1522 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:319:2026-02-02T20:13:31.771Z [DEBUG] Temp file written successfully, size: 1566 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:337:2026-02-02T20:13:31.802Z [DEBUG] Temp file written successfully, size: 1612 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:343:2026-02-02T20:13:31.803Z [DEBUG] Temp file written successfully, size: 1650 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:353:2026-02-02T20:13:31.929Z [DEBUG] Temp file written successfully, size: 2252 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:359:2026-02-02T20:13:31.932Z [DEBUG] Temp file written successfully, size: 2252 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:388:2026-02-02T20:13:33.230Z [DEBUG] Temp file written successfully, size: 2413 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:405:2026-02-02T20:13:35.531Z [DEBUG] Temp file written successfully, size: 2508 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:461:2026-02-02T20:13:46.078Z [DEBUG] Temp file written successfully, size: 2553 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:467:2026-02-02T20:13:46.095Z [DEBUG] Temp file written successfully, size: 2602 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:473:2026-02-02T20:13:46.099Z [DEBUG] Temp file written successfully, size: 2640 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:503:2026-02-02T20:13:50.028Z [DEBUG] Temp file written successfully, size: 79 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:522:2026-02-02T20:13:50.085Z [DEBUG] Temp file written successfully, size: 2665 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:528:2026-02-02T20:13:50.098Z [DEBUG] Temp file written successfully, size: 2690 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:577:2026-02-02T20:14:00.658Z [DEBUG] Temp file written successfully, size: 2714 bytes
+~/.claude-opr/debug/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.txt:583:2026-02-02T20:14:00.660Z [DEBUG] Temp file written successfully, size: 2744 bytes
+~/.claude-zai/cache/changelog.md:492:- Fixed Read tool image handling to identify format from bytes instead of file extension
+~/.claude-opr/cache/changelog.md:492:- Fixed Read tool image handling to identify format from bytes instead of file extension
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/docs/flowctl.md:654:**Embedding budget (`FLOW_CODEX_EMBED_MAX_BYTES`):** Optional limit on the total bytes of file contents embedded into the review prompt (diff excluded). Default `0` (unlimited). Set to a value like `500000` (500KB) to cap prompt size.
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/docs/ralph.md:490:| `FLOW_CODEX_EMBED_MAX_BYTES` | `500000` | Max bytes embedded in prompts |
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:2:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:7:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:8:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:10:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:12:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:54:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:55:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:56:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:57:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:61:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:63:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:64:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:68:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:69:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:70:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:71:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:72:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:73:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:77:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:78:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:79:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:80:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:81:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:82:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:83:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:84:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:85:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:86:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:87:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:88:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:89:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:90:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:91:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:92:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:93:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:94:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:95:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:96:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:97:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:106:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:107:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:108:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:109:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:110:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:117:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:118:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:119:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:120:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:121:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:122:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:123:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:124:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:125:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:126:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:130:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:134:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:135:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:140:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:141:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:142:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:146:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:147:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:148:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl:149:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8/subagents/agent-a41453d.jsonl:1:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8/subagents/agent-a41453d.jsonl:17:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8/subagents/agent-a41453d.jsonl:19:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8/subagents/agent-a41453d.jsonl:25:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8/subagents/agent-ab2aa8c.jsonl:20:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8/subagents/agent-af4d1a2.jsonl:2:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8/subagents/agent-af4d1a2.jsonl:9:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8/subagents/agent-a8b1f21.jsonl:1:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8/subagents/agent-a8b1f21.jsonl:2:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8/subagents/agent-aeaf9d3.jsonl:1:[Omitted long matching line]
+~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8/subagents/agent-aeaf9d3.jsonl:12:[Omitted long matching line]
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/docs/flowctl.md:654:**Embedding budget (`FLOW_CODEX_EMBED_MAX_BYTES`):** Optional limit on the total bytes of file contents embedded into the review prompt (diff excluded). Default `0` (unlimited). Set to a value like `500000` (500KB) to cap prompt size.
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/docs/ralph.md:490:| `FLOW_CODEX_EMBED_MAX_BYTES` | `500000` | Max bytes embedded in prompts |
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:738:        - stats_dict: {"embedded": int, "total": int, "bytes": int,
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:752:    max_bytes_str = os.environ.get("FLOW_CODEX_EMBED_MAX_BYTES", "102400")
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:754:        max_total_bytes = int(max_bytes_str)
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:756:        max_total_bytes = 102400  # Invalid value uses default
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:761:        "bytes": 0,
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:814:    remaining_budget = max_total_bytes if max_total_bytes > 0 else float("inf")
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:818:        # Skip if we've exhausted the budget (need at least some bytes for content)
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:819:        if max_total_bytes > 0 and remaining_budget <= 0:
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:847:                probe_size = min(1024, int(remaining_budget)) if max_total_bytes > 0 else 1024
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:854:                if max_total_bytes > 0:
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:856:                    bytes_to_read = max(0, int(remaining_budget) - len(probe))
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:857:                    rest = f.read(bytes_to_read)
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:864:                raw_bytes = probe + rest
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:869:        content_bytes = len(raw_bytes)
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:872:        content = raw_bytes.decode("utf-8", errors="replace")
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:885:        embedded_parts.append(f"### {safe_path} ({content_bytes} bytes{truncated_marker})\n{fence}\n{content}\n{fence}")
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:886:        stats["bytes"] += content_bytes
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:888:        remaining_budget -= content_bytes
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:891:    status_parts = [f"[Embedded {stats['embedded']} of {stats['total']} files ({stats['bytes']} bytes)]"]
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5672:    max_diff_bytes = 50000
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5680:        # Read only up to max_diff_bytes
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5681:        diff_bytes = proc.stdout.read(max_diff_bytes + 1)
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5682:        was_truncated = len(diff_bytes) > max_diff_bytes
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5684:            diff_bytes = diff_bytes[:max_diff_bytes]
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5688:        stderr_bytes = proc.stderr.read()
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5693:        if returncode != 0 and stderr_bytes:
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5695:            diff_content = f"[git diff failed: {stderr_bytes.decode('utf-8', errors='replace').strip()}]"
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5697:            diff_content = diff_bytes.decode("utf-8", errors="replace").strip()
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5713:            "bytes": 0,
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5939:            "bytes": 0,
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6276:    max_diff_bytes = 50000
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6284:        diff_bytes = proc.stdout.read(max_diff_bytes + 1)
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6285:        was_truncated = len(diff_bytes) > max_diff_bytes
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6287:            diff_bytes = diff_bytes[:max_diff_bytes]
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6290:        stderr_bytes = proc.stderr.read()
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6295:        if returncode != 0 and stderr_bytes:
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6296:            diff_content = f"[git diff failed: {stderr_bytes.decode('utf-8', errors='replace').strip()}]"
+~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6298:            diff_content = diff_bytes.decode("utf-8", errors="replace").strip()
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:738:        - stats_dict: {"embedded": int, "total": int, "bytes": int,
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:752:    max_bytes_str = os.environ.get("FLOW_CODEX_EMBED_MAX_BYTES", "102400")
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:754:        max_total_bytes = int(max_bytes_str)
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:756:        max_total_bytes = 102400  # Invalid value uses default
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:761:        "bytes": 0,
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:814:    remaining_budget = max_total_bytes if max_total_bytes > 0 else float("inf")
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:818:        # Skip if we've exhausted the budget (need at least some bytes for content)
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:819:        if max_total_bytes > 0 and remaining_budget <= 0:
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:847:                probe_size = min(1024, int(remaining_budget)) if max_total_bytes > 0 else 1024
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:854:                if max_total_bytes > 0:
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:856:                    bytes_to_read = max(0, int(remaining_budget) - len(probe))
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:857:                    rest = f.read(bytes_to_read)
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:864:                raw_bytes = probe + rest
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:869:        content_bytes = len(raw_bytes)
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:872:        content = raw_bytes.decode("utf-8", errors="replace")
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:885:        embedded_parts.append(f"### {safe_path} ({content_bytes} bytes{truncated_marker})\n{fence}\n{content}\n{fence}")
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:886:        stats["bytes"] += content_bytes
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:888:        remaining_budget -= content_bytes
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:891:    status_parts = [f"[Embedded {stats['embedded']} of {stats['total']} files ({stats['bytes']} bytes)]"]
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5672:    max_diff_bytes = 50000
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5680:        # Read only up to max_diff_bytes
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5681:        diff_bytes = proc.stdout.read(max_diff_bytes + 1)
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5682:        was_truncated = len(diff_bytes) > max_diff_bytes
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5684:            diff_bytes = diff_bytes[:max_diff_bytes]
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5688:        stderr_bytes = proc.stderr.read()
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5693:        if returncode != 0 and stderr_bytes:
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5695:            diff_content = f"[git diff failed: {stderr_bytes.decode('utf-8', errors='replace').strip()}]"
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5697:            diff_content = diff_bytes.decode("utf-8", errors="replace").strip()
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5713:            "bytes": 0,
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:5939:            "bytes": 0,
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6276:    max_diff_bytes = 50000
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6284:        diff_bytes = proc.stdout.read(max_diff_bytes + 1)
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6285:        was_truncated = len(diff_bytes) > max_diff_bytes
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6287:            diff_bytes = diff_bytes[:max_diff_bytes]
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6290:        stderr_bytes = proc.stderr.read()
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6295:        if returncode != 0 and stderr_bytes:
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6296:            diff_content = f"[git diff failed: {stderr_bytes.decode('utf-8', errors='replace').strip()}]"
+~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/scripts/flowctl.py:6298:            diff_content = diff_bytes.decode("utf-8", errors="replace").strip()
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/flow-next-tui/src/lib/log-watcher.ts:540:   * Returns true if any bytes were read
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/flow-next-tui/src/lib/log-watcher.ts:565:      // Read new bytes (not text - avoids mid-UTF-8 corruption)
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/flow-next-tui/src/lib/log-watcher.ts:568:      const bytes = await slice.arrayBuffer();
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/flow-next-tui/src/lib/log-watcher.ts:573:      const bytesRead = bytes.byteLength;
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/flow-next-tui/src/lib/log-watcher.ts:579:        ? this.textDecoder.decode(new Uint8Array(bytes), { stream: true })
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/flow-next-tui/src/lib/log-watcher.ts:580:        : new TextDecoder('utf-8').decode(new Uint8Array(bytes));
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/flow-next-tui/src/lib/log-watcher.ts:593:      return bytesRead > 0;
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/tasks/fn-2.1.md:61:- Commits: d757f023329535bb7b82047fe98469fb76224912
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/tasks/fn-2.1.json:10:      "d757f023329535bb7b82047fe98469fb76224912"
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/flow-next-tui/src/lib/log-watcher.ts:540:   * Returns true if any bytes were read
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/flow-next-tui/src/lib/log-watcher.ts:565:      // Read new bytes (not text - avoids mid-UTF-8 corruption)
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/flow-next-tui/src/lib/log-watcher.ts:568:      const bytes = await slice.arrayBuffer();
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/flow-next-tui/src/lib/log-watcher.ts:573:      const bytesRead = bytes.byteLength;
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/flow-next-tui/src/lib/log-watcher.ts:579:        ? this.textDecoder.decode(new Uint8Array(bytes), { stream: true })
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/flow-next-tui/src/lib/log-watcher.ts:580:        : new TextDecoder('utf-8').decode(new Uint8Array(bytes));
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/flow-next-tui/src/lib/log-watcher.ts:593:      return bytesRead > 0;
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/tasks/fn-2.1.md:61:- Commits: d757f023329535bb7b82047fe98469fb76224912
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/tasks/fn-2.1.json:10:      "d757f023329535bb7b82047fe98469fb76224912"
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:738:        - stats_dict: {"embedded": int, "total": int, "bytes": int,
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:752:    max_bytes_str = os.environ.get("FLOW_CODEX_EMBED_MAX_BYTES", "102400")
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:754:        max_total_bytes = int(max_bytes_str)
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:756:        max_total_bytes = 102400  # Invalid value uses default
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:761:        "bytes": 0,
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:814:    remaining_budget = max_total_bytes if max_total_bytes > 0 else float("inf")
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:818:        # Skip if we've exhausted the budget (need at least some bytes for content)
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:819:        if max_total_bytes > 0 and remaining_budget <= 0:
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:847:                probe_size = min(1024, int(remaining_budget)) if max_total_bytes > 0 else 1024
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:854:                if max_total_bytes > 0:
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:856:                    bytes_to_read = max(0, int(remaining_budget) - len(probe))
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:857:                    rest = f.read(bytes_to_read)
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:864:                raw_bytes = probe + rest
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:869:        content_bytes = len(raw_bytes)
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:872:        content = raw_bytes.decode("utf-8", errors="replace")
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:885:        embedded_parts.append(f"### {safe_path} ({content_bytes} bytes{truncated_marker})\n{fence}\n{content}\n{fence}")
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:886:        stats["bytes"] += content_bytes
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:888:        remaining_budget -= content_bytes
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:891:    status_parts = [f"[Embedded {stats['embedded']} of {stats['total']} files ({stats['bytes']} bytes)]"]
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5672:    max_diff_bytes = 50000
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5680:        # Read only up to max_diff_bytes
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5681:        diff_bytes = proc.stdout.read(max_diff_bytes + 1)
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5682:        was_truncated = len(diff_bytes) > max_diff_bytes
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5684:            diff_bytes = diff_bytes[:max_diff_bytes]
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5688:        stderr_bytes = proc.stderr.read()
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5693:        if returncode != 0 and stderr_bytes:
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5695:            diff_content = f"[git diff failed: {stderr_bytes.decode('utf-8', errors='replace').strip()}]"
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5697:            diff_content = diff_bytes.decode("utf-8", errors="replace").strip()
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5713:            "bytes": 0,
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5939:            "bytes": 0,
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6276:    max_diff_bytes = 50000
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6284:        diff_bytes = proc.stdout.read(max_diff_bytes + 1)
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6285:        was_truncated = len(diff_bytes) > max_diff_bytes
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6287:            diff_bytes = diff_bytes[:max_diff_bytes]
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6290:        stderr_bytes = proc.stderr.read()
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6295:        if returncode != 0 and stderr_bytes:
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6296:            diff_content = f"[git diff failed: {stderr_bytes.decode('utf-8', errors='replace').strip()}]"
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6298:            diff_content = diff_bytes.decode("utf-8", errors="replace").strip()
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/docs/flowctl.md:654:**Embedding budget (`FLOW_CODEX_EMBED_MAX_BYTES`):** Optional limit on the total bytes of file contents embedded into the review prompt (diff excluded). Default `0` (unlimited). Set to a value like `500000` (500KB) to cap prompt size.
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/docs/ralph.md:490:| `FLOW_CODEX_EMBED_MAX_BYTES` | `500000` | Max bytes embedded in prompts |
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:738:        - stats_dict: {"embedded": int, "total": int, "bytes": int,
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:752:    max_bytes_str = os.environ.get("FLOW_CODEX_EMBED_MAX_BYTES", "102400")
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:754:        max_total_bytes = int(max_bytes_str)
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:756:        max_total_bytes = 102400  # Invalid value uses default
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:761:        "bytes": 0,
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:814:    remaining_budget = max_total_bytes if max_total_bytes > 0 else float("inf")
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:818:        # Skip if we've exhausted the budget (need at least some bytes for content)
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:819:        if max_total_bytes > 0 and remaining_budget <= 0:
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:847:                probe_size = min(1024, int(remaining_budget)) if max_total_bytes > 0 else 1024
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:854:                if max_total_bytes > 0:
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:856:                    bytes_to_read = max(0, int(remaining_budget) - len(probe))
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:857:                    rest = f.read(bytes_to_read)
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:864:                raw_bytes = probe + rest
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:869:        content_bytes = len(raw_bytes)
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:872:        content = raw_bytes.decode("utf-8", errors="replace")
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:885:        embedded_parts.append(f"### {safe_path} ({content_bytes} bytes{truncated_marker})\n{fence}\n{content}\n{fence}")
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:886:        stats["bytes"] += content_bytes
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:888:        remaining_budget -= content_bytes
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:891:    status_parts = [f"[Embedded {stats['embedded']} of {stats['total']} files ({stats['bytes']} bytes)]"]
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5672:    max_diff_bytes = 50000
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5680:        # Read only up to max_diff_bytes
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5681:        diff_bytes = proc.stdout.read(max_diff_bytes + 1)
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5682:        was_truncated = len(diff_bytes) > max_diff_bytes
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5684:            diff_bytes = diff_bytes[:max_diff_bytes]
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5688:        stderr_bytes = proc.stderr.read()
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5693:        if returncode != 0 and stderr_bytes:
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5695:            diff_content = f"[git diff failed: {stderr_bytes.decode('utf-8', errors='replace').strip()}]"
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5697:            diff_content = diff_bytes.decode("utf-8", errors="replace").strip()
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5713:            "bytes": 0,
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:5939:            "bytes": 0,
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6276:    max_diff_bytes = 50000
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6284:        diff_bytes = proc.stdout.read(max_diff_bytes + 1)
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6285:        was_truncated = len(diff_bytes) > max_diff_bytes
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6287:            diff_bytes = diff_bytes[:max_diff_bytes]
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6290:        stderr_bytes = proc.stderr.read()
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6295:        if returncode != 0 and stderr_bytes:
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6296:            diff_content = f"[git diff failed: {stderr_bytes.decode('utf-8', errors='replace').strip()}]"
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/.flow/bin/flowctl.py:6298:            diff_content = diff_bytes.decode("utf-8", errors="replace").strip()
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/docs/flowctl.md:654:**Embedding budget (`FLOW_CODEX_EMBED_MAX_BYTES`):** Optional limit on the total bytes of file contents embedded into the review prompt (diff excluded). Default `0` (unlimited). Set to a value like `500000` (500KB) to cap prompt size.
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/docs/ralph.md:490:| `FLOW_CODEX_EMBED_MAX_BYTES` | `500000` | Max bytes embedded in prompts |
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:738:        - stats_dict: {"embedded": int, "total": int, "bytes": int,
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:752:    max_bytes_str = os.environ.get("FLOW_CODEX_EMBED_MAX_BYTES", "102400")
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:754:        max_total_bytes = int(max_bytes_str)
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:756:        max_total_bytes = 102400  # Invalid value uses default
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:761:        "bytes": 0,
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:814:    remaining_budget = max_total_bytes if max_total_bytes > 0 else float("inf")
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:818:        # Skip if we've exhausted the budget (need at least some bytes for content)
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:819:        if max_total_bytes > 0 and remaining_budget <= 0:
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:847:                probe_size = min(1024, int(remaining_budget)) if max_total_bytes > 0 else 1024
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:854:                if max_total_bytes > 0:
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:856:                    bytes_to_read = max(0, int(remaining_budget) - len(probe))
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:857:                    rest = f.read(bytes_to_read)
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:864:                raw_bytes = probe + rest
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:869:        content_bytes = len(raw_bytes)
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:872:        content = raw_bytes.decode("utf-8", errors="replace")
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:885:        embedded_parts.append(f"### {safe_path} ({content_bytes} bytes{truncated_marker})\n{fence}\n{content}\n{fence}")
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:886:        stats["bytes"] += content_bytes
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:888:        remaining_budget -= content_bytes
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:891:    status_parts = [f"[Embedded {stats['embedded']} of {stats['total']} files ({stats['bytes']} bytes)]"]
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5672:    max_diff_bytes = 50000
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5680:        # Read only up to max_diff_bytes
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5681:        diff_bytes = proc.stdout.read(max_diff_bytes + 1)
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5682:        was_truncated = len(diff_bytes) > max_diff_bytes
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5684:            diff_bytes = diff_bytes[:max_diff_bytes]
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5688:        stderr_bytes = proc.stderr.read()
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5693:        if returncode != 0 and stderr_bytes:
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5695:            diff_content = f"[git diff failed: {stderr_bytes.decode('utf-8', errors='replace').strip()}]"
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5697:            diff_content = diff_bytes.decode("utf-8", errors="replace").strip()
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5713:            "bytes": 0,
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5939:            "bytes": 0,
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6276:    max_diff_bytes = 50000
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6284:        diff_bytes = proc.stdout.read(max_diff_bytes + 1)
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6285:        was_truncated = len(diff_bytes) > max_diff_bytes
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6287:            diff_bytes = diff_bytes[:max_diff_bytes]
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6290:        stderr_bytes = proc.stderr.read()
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6295:        if returncode != 0 and stderr_bytes:
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6296:            diff_content = f"[git diff failed: {stderr_bytes.decode('utf-8', errors='replace').strip()}]"
+~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6298:            diff_content = diff_bytes.decode("utf-8", errors="replace").strip()
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:738:        - stats_dict: {"embedded": int, "total": int, "bytes": int,
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:752:    max_bytes_str = os.environ.get("FLOW_CODEX_EMBED_MAX_BYTES", "102400")
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:754:        max_total_bytes = int(max_bytes_str)
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:756:        max_total_bytes = 102400  # Invalid value uses default
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:761:        "bytes": 0,
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:814:    remaining_budget = max_total_bytes if max_total_bytes > 0 else float("inf")
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:818:        # Skip if we've exhausted the budget (need at least some bytes for content)
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:819:        if max_total_bytes > 0 and remaining_budget <= 0:
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:847:                probe_size = min(1024, int(remaining_budget)) if max_total_bytes > 0 else 1024
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:854:                if max_total_bytes > 0:
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:856:                    bytes_to_read = max(0, int(remaining_budget) - len(probe))
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:857:                    rest = f.read(bytes_to_read)
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:864:                raw_bytes = probe + rest
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:869:        content_bytes = len(raw_bytes)
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:872:        content = raw_bytes.decode("utf-8", errors="replace")
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:885:        embedded_parts.append(f"### {safe_path} ({content_bytes} bytes{truncated_marker})\n{fence}\n{content}\n{fence}")
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:886:        stats["bytes"] += content_bytes
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:888:        remaining_budget -= content_bytes
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:891:    status_parts = [f"[Embedded {stats['embedded']} of {stats['total']} files ({stats['bytes']} bytes)]"]
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5672:    max_diff_bytes = 50000
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5680:        # Read only up to max_diff_bytes
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5681:        diff_bytes = proc.stdout.read(max_diff_bytes + 1)
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5682:        was_truncated = len(diff_bytes) > max_diff_bytes
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5684:            diff_bytes = diff_bytes[:max_diff_bytes]
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5688:        stderr_bytes = proc.stderr.read()
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5693:        if returncode != 0 and stderr_bytes:
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5695:            diff_content = f"[git diff failed: {stderr_bytes.decode('utf-8', errors='replace').strip()}]"
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5697:            diff_content = diff_bytes.decode("utf-8", errors="replace").strip()
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5713:            "bytes": 0,
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:5939:            "bytes": 0,
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6276:    max_diff_bytes = 50000
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6284:        diff_bytes = proc.stdout.read(max_diff_bytes + 1)
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6285:        was_truncated = len(diff_bytes) > max_diff_bytes
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6287:            diff_bytes = diff_bytes[:max_diff_bytes]
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6290:        stderr_bytes = proc.stderr.read()
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6295:        if returncode != 0 and stderr_bytes:
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6296:            diff_content = f"[git diff failed: {stderr_bytes.decode('utf-8', errors='replace').strip()}]"
+~/.claude-zai/plugins/marketplaces/gmickel-claude-marketplace/plugins/flow-next/scripts/flowctl.py:6298:            diff_content = diff_bytes.decode("utf-8", errors="replace").strip()
+~/.claude-zai/plugins/marketplaces/claude-plugins-official/plugins/plugin-dev/skills/plugin-settings/examples/read-settings-hook.sh:59:    echo '{"hookSpecificOutput": {"permissionDecision": "deny"}, "systemMessage": "File exceeds configured max size: '"$MAX_SIZE"' bytes"}' >&2
+~/.claude-opr/plugins/marketplaces/claude-plugins-official/plugins/plugin-dev/skills/plugin-settings/examples/read-settings-hook.sh:59:    echo '{"hookSpecificOutput": {"permissionDecision": "deny"}, "systemMessage": "File exceeds configured max size: '"$MAX_SIZE"' bytes"}' >&2
+~/.claude-zai/debug/117ca1f8-da9c-4e6d-b9f3-570be0cbd434.txt:55:2026-02-02T20:07:35.990Z [DEBUG] Temp file written successfully, size: 2 bytes
+~/.claude-zai/debug/117ca1f8-da9c-4e6d-b9f3-570be0cbd434.txt:106:2026-02-02T20:07:36.159Z [DEBUG] Temp file written successfully, size: 2475 bytes
+~/.claude-zai/debug/117ca1f8-da9c-4e6d-b9f3-570be0cbd434.txt:189:2026-02-02T20:07:36.546Z [DEBUG] Temp file written successfully, size: 2475 bytes
+~/.claude-zai/debug/382e50bc-593b-48dd-ab58-96dd192e49fd.txt:53:2026-02-02T20:07:53.047Z [DEBUG] Temp file written successfully, size: 2 bytes
+~/.claude-zai/debug/382e50bc-593b-48dd-ab58-96dd192e49fd.txt:96:2026-02-02T20:07:53.203Z [DEBUG] Temp file written successfully, size: 2964 bytes
+~/.claude-zai/debug/382e50bc-593b-48dd-ab58-96dd192e49fd.txt:179:2026-02-02T20:07:53.575Z [DEBUG] Temp file written successfully, size: 2964 bytes
+~/.claude-zai/debug/382e50bc-593b-48dd-ab58-96dd192e49fd.txt:210:2026-02-02T20:07:56.304Z [DEBUG] Temp file written successfully, size: 3009 bytes
+~/.claude-zai/debug/382e50bc-593b-48dd-ab58-96dd192e49fd.txt:220:2026-02-02T20:07:56.335Z [DEBUG] Temp file written successfully, size: 3058 bytes
+~/.claude-zai/debug/382e50bc-593b-48dd-ab58-96dd192e49fd.txt:226:2026-02-02T20:07:56.338Z [DEBUG] Temp file written successfully, size: 3096 bytes
+~/.claude-zai/debug/382e50bc-593b-48dd-ab58-96dd192e49fd.txt:253:2026-02-02T20:08:00.858Z [DEBUG] Temp file written successfully, size: 3121 bytes
+~/.claude-zai/debug/382e50bc-593b-48dd-ab58-96dd192e49fd.txt:259:2026-02-02T20:08:00.861Z [DEBUG] Temp file written successfully, size: 3146 bytes
+~/.claude-zai/debug/b1ef8e35-dd88-41f6-b059-1a0c31172d81.txt:56:2026-02-02T20:12:28.938Z [DEBUG] Temp file written successfully, size: 2 bytes
+~/.claude-zai/debug/b1ef8e35-dd88-41f6-b059-1a0c31172d81.txt:96:2026-02-02T20:12:29.073Z [DEBUG] Temp file written successfully, size: 3503 bytes
+~/.claude-zai/debug/b1ef8e35-dd88-41f6-b059-1a0c31172d81.txt:178:2026-02-02T20:12:29.425Z [DEBUG] Temp file written successfully, size: 3503 bytes
+~/.claude-zai/debug/b1ef8e35-dd88-41f6-b059-1a0c31172d81.txt:228:2026-02-02T20:12:47.005Z [DEBUG] Temp file written successfully, size: 3525 bytes
+~/.claude-zai/debug/b1ef8e35-dd88-41f6-b059-1a0c31172d81.txt:234:2026-02-02T20:12:47.020Z [DEBUG] Temp file written successfully, size: 3548 bytes
+~/.claude-zai/debug/b1ef8e35-dd88-41f6-b059-1a0c31172d81.txt:254:2026-02-02T20:12:58.787Z [DEBUG] Temp file written successfully, size: 79 bytes
+~/.claude-zai/debug/b1ef8e35-dd88-41f6-b059-1a0c31172d81.txt:273:2026-02-02T20:12:58.871Z [DEBUG] Temp file written successfully, size: 3585 bytes
+~/.claude-zai/debug/b1ef8e35-dd88-41f6-b059-1a0c31172d81.txt:279:2026-02-02T20:12:58.885Z [DEBUG] Temp file written successfully, size: 3605 bytes
+~/.claude-zai/debug/4f1c09af-1b18-4df8-83f3-0efefc4542a9.txt:55:2026-02-02T20:10:50.418Z [DEBUG] Temp file written successfully, size: 2 bytes
+~/.claude-zai/debug/4f1c09af-1b18-4df8-83f3-0efefc4542a9.txt:113:2026-02-02T20:10:53.796Z [DEBUG] Temp file written successfully, size: 3476 bytes
+~/.claude-zai/debug/4f1c09af-1b18-4df8-83f3-0efefc4542a9.txt:124:2026-02-02T20:10:53.819Z [DEBUG] Temp file written successfully, size: 3476 bytes
+~/.claude-zai/debug/4f1c09af-1b18-4df8-83f3-0efefc4542a9.txt:202:2026-02-02T20:10:54.119Z [DEBUG] Temp file written successfully, size: 3476 bytes
+~/.claude-zai/debug/4f1c09af-1b18-4df8-83f3-0efefc4542a9.txt:230:2026-02-02T20:11:00.487Z [DEBUG] Temp file written successfully, size: 3500 bytes
+~/.claude-zai/debug/4f1c09af-1b18-4df8-83f3-0efefc4542a9.txt:236:2026-02-02T20:11:00.490Z [DEBUG] Temp file written successfully, size: 3530 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:5:2026-02-02T20:07:01.614Z [DEBUG] Temp file written successfully, size: 82 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:10:2026-02-02T20:07:01.619Z [DEBUG] Temp file written successfully, size: 130 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:20:2026-02-02T20:07:01.621Z [DEBUG] Temp file written successfully, size: 167 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:26:2026-02-02T20:07:01.622Z [DEBUG] Temp file written successfully, size: 202 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:32:2026-02-02T20:07:01.623Z [DEBUG] Temp file written successfully, size: 238 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:38:2026-02-02T20:07:01.624Z [DEBUG] Temp file written successfully, size: 275 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:83:2026-02-02T20:07:01.718Z [DEBUG] Temp file written successfully, size: 2 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:108:2026-02-02T20:07:01.917Z [DEBUG] Temp file written successfully, size: 318 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:114:2026-02-02T20:07:02.051Z [DEBUG] Temp file written successfully, size: 359 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:120:2026-02-02T20:07:02.123Z [DEBUG] Temp file written successfully, size: 535 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:126:2026-02-02T20:07:02.125Z [DEBUG] Temp file written successfully, size: 571 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:132:2026-02-02T20:07:02.126Z [DEBUG] Temp file written successfully, size: 599 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:138:2026-02-02T20:07:02.127Z [DEBUG] Temp file written successfully, size: 651 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:144:2026-02-02T20:07:02.128Z [DEBUG] Temp file written successfully, size: 690 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:150:2026-02-02T20:07:02.129Z [DEBUG] Temp file written successfully, size: 728 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:156:2026-02-02T20:07:02.129Z [DEBUG] Temp file written successfully, size: 773 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:162:2026-02-02T20:07:02.130Z [DEBUG] Temp file written successfully, size: 812 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:168:2026-02-02T20:07:02.131Z [DEBUG] Temp file written successfully, size: 842 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:174:2026-02-02T20:07:02.132Z [DEBUG] Temp file written successfully, size: 887 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:180:2026-02-02T20:07:02.132Z [DEBUG] Temp file written successfully, size: 917 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:186:2026-02-02T20:07:02.133Z [DEBUG] Temp file written successfully, size: 941 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:192:2026-02-02T20:07:03.171Z [DEBUG] Temp file written successfully, size: 941 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:198:2026-02-02T20:07:03.173Z [DEBUG] Temp file written successfully, size: 941 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:204:2026-02-02T20:07:04.845Z [DEBUG] Temp file written successfully, size: 1012 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:214:2026-02-02T20:07:05.735Z [DEBUG] Temp file written successfully, size: 1406 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:220:2026-02-02T20:07:05.736Z [DEBUG] Temp file written successfully, size: 217 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:235:2026-02-02T20:07:05.773Z [DEBUG] Temp file written successfully, size: 1426 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:249:2026-02-02T20:07:05.810Z [DEBUG] Temp file written successfully, size: 1521 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:257:2026-02-02T20:07:05.880Z [DEBUG] Temp file written successfully, size: 1578 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:263:2026-02-02T20:07:05.882Z [DEBUG] Temp file written successfully, size: 1651 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:269:2026-02-02T20:07:05.883Z [DEBUG] Temp file written successfully, size: 1699 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:275:2026-02-02T20:07:05.884Z [DEBUG] Temp file written successfully, size: 1732 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:285:2026-02-02T20:07:05.908Z [DEBUG] Temp file written successfully, size: 1768 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:306:2026-02-02T20:07:05.959Z [DEBUG] Temp file written successfully, size: 1808 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:315:2026-02-02T20:07:05.967Z [DEBUG] Temp file written successfully, size: 1852 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:333:2026-02-02T20:07:06.076Z [DEBUG] Temp file written successfully, size: 1919 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:342:2026-02-02T20:07:06.080Z [DEBUG] Temp file written successfully, size: 1965 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:348:2026-02-02T20:07:06.083Z [DEBUG] Temp file written successfully, size: 2003 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:357:2026-02-02T20:07:06.128Z [DEBUG] Temp file written successfully, size: 2184 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:363:2026-02-02T20:07:06.134Z [DEBUG] Temp file written successfully, size: 2184 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:377:2026-02-02T20:07:09.872Z [DEBUG] Temp file written successfully, size: 2380 bytes
+~/.claude-zai/debug/ac22b241-7a1b-4d0c-924d-7ed61e4f1bd4.txt:385:2026-02-02T20:07:09.974Z [DEBUG] Temp file written successfully, size: 2475 bytes
+~/.claude-zai/debug/0f6bf877-3841-439f-9e5d-a924f7d35815.txt:56:2026-02-02T20:11:42.730Z [DEBUG] Temp file written successfully, size: 2 bytes
+~/.claude-zai/debug/0f6bf877-3841-439f-9e5d-a924f7d35815.txt:101:2026-02-02T20:11:42.893Z [DEBUG] Temp file written successfully, size: 3506 bytes
+~/.claude-zai/debug/0f6bf877-3841-439f-9e5d-a924f7d35815.txt:183:2026-02-02T20:11:43.293Z [DEBUG] Temp file written successfully, size: 3506 bytes
+~/.claude-zai/debug/9347b575-71c6-4e52-bb78-8a7703d31b6f.txt:60:2026-02-02T20:18:33.688Z [DEBUG] Temp file written successfully, size: 2 bytes
+~/.claude-zai/debug/9347b575-71c6-4e52-bb78-8a7703d31b6f.txt:107:2026-02-02T20:18:33.870Z [DEBUG] Temp file written successfully, size: 3345 bytes
+~/.claude-zai/debug/9347b575-71c6-4e52-bb78-8a7703d31b6f.txt:236:2026-02-02T20:18:34.217Z [DEBUG] Temp file written successfully, size: 3345 bytes
+package-lock.json:1138:    "node_modules/@exodus/bytes": {
+package-lock.json:1140:      "resolved": "https://registry.npmjs.org/@exodus/bytes/-/bytes-1.10.0.tgz",
+package-lock.json:3475:        "@exodus/bytes": "^1.6.0"
+package-lock.json:3645:        "@exodus/bytes": "^1.6.0",
+.quint/knowledge/L2/qr-code-transfer.md:2:scope: WolfCal application, requires devices with cameras for scanning. Transfer limited to: OAuth credentials (clientId, clientSecret), account objects with encrypted access/refresh tokens, and calendar sync preferences. Estimated size: ~500-1500 bytes using JSON + compression.
+.quint/knowledge/L2/qr-code-transfer.md:12:{"anomaly": "No way to transfer configuration between devices", "approach": "Minimize data to essentials: OAuth credentials (clientId, clientSecret), accounts with encrypted tokens, enabled calendar IDs. Estimated ~500-1500 bytes using JSON + optional compression. Fits within 3KB QR limit.", "alternatives_rejected": ["Manual JSON export (requires file transfer)", "URL-based (limited by URL length)", "Full config export (too large for QR)"]}
+.quint/evidence/2026-02-02-internal-qr-code-transfer.md:14:- 2-account config: 788 bytes (26% of 3KB limit)
+.quint/evidence/2026-02-02-internal-qr-code-transfer.md:15:- 5-account config: 1516 bytes (50% of 3KB limit)
+.quint/evidence/2026-02-02-internal-url-hash-transfer-refined.md:16:- Encrypted full config: 874 bytes (43% of 2KB conservative limit)
+.quint/evidence/2026-02-02-audit_report-qr-code-transfer.md:19:+ Size validated: 788-1516 bytes (26-50% of 3KB limit)
+.quint/decisions/DRR-2026-02-02-use-url-hash-transfer-for-cross-device-configuration.md:24:- Size validated: 874 bytes encrypted (43% of 2KB conservative URL limit)
+.quint/decisions/DRR-2026-02-02-use-url-hash-transfer-for-cross-device-configuration.md:30:- QR Code-only: Limited to devices with cameras, size constraints
+~/.claude-opr/telemetry/1p_failed_events.15c68864-e588-4ff8-bd87-22c02a0b74d8.cab42eef-5414-4ad5-ab9f-b262fc500a46.json:47:[Omitted long matching line]
+~/.claude-opr/telemetry/1p_failed_events.15c68864-e588-4ff8-bd87-22c02a0b74d8.cab42eef-5414-4ad5-ab9f-b262fc500a46.json:48:[Omitted long matching line]
+~/.claude-opr/telemetry/1p_failed_events.15c68864-e588-4ff8-bd87-22c02a0b74d8.cab42eef-5414-4ad5-ab9f-b262fc500a46.json:96:[Omitted long matching line]
+~/.claude-opr/telemetry/1p_failed_events.15c68864-e588-4ff8-bd87-22c02a0b74d8.cab42eef-5414-4ad5-ab9f-b262fc500a46.json:176:[Omitted long matching line]
+~/.claude-opr/telemetry/1p_failed_events.15c68864-e588-4ff8-bd87-22c02a0b74d8.cab42eef-5414-4ad5-ab9f-b262fc500a46.json:233:[Omitted long matching line]
+~/.claude-opr/telemetry/1p_failed_events.15c68864-e588-4ff8-bd87-22c02a0b74d8.cab42eef-5414-4ad5-ab9f-b262fc500a46.json:261:[Omitted long matching line]
+~/.claude-opr/telemetry/1p_failed_events.15c68864-e588-4ff8-bd87-22c02a0b74d8.cab42eef-5414-4ad5-ab9f-b262fc500a46.json:286:[Omitted long matching line]
+~/.claude-opr/telemetry/1p_failed_events.15c68864-e588-4ff8-bd87-22c02a0b74d8.cab42eef-5414-4ad5-ab9f-b262fc500a46.json:511:[Omitted long matching line]
+~/.claude-opr/telemetry/1p_failed_events.15c68864-e588-4ff8-bd87-22c02a0b74d8.cab42eef-5414-4ad5-ab9f-b262fc500a46.json:820:[Omitted long matching line]
+~/.claude-opr/telemetry/1p_failed_events.94dde65d-5e25-4275-bd8e-32d3fbe3d00e.d001b098-652f-434b-96c9-9dba3a294d83.json:41:[Omitted long matching line]
+~/.claude-opr/telemetry/1p_failed_events.94dde65d-5e25-4275-bd8e-32d3fbe3d00e.d001b098-652f-434b-96c9-9dba3a294d83.json:42:[Omitted long matching line]

@@ -1,0 +1,12 @@
+{"display":"/plugin marketplace add https://github.com/gmickel/gmickel-claude-marketplace","pastedContents":{},"timestamp":1770063223804,"project":"/home/deploy/src/wolfcal","sessionId":"2e57dbf7-c256-49f1-96a4-cef2c6dd7186"}
+{"display":"/plugin install flow-next","pastedContents":{},"timestamp":1770063227812,"project":"/home/deploy/src/wolfcal","sessionId":"2e57dbf7-c256-49f1-96a4-cef2c6dd7186"}
+{"display":"/model opus-4.5","pastedContents":{},"timestamp":1770063240478,"project":"/home/deploy/src/wolfcal","sessionId":"2e57dbf7-c256-49f1-96a4-cef2c6dd7186"}
+{"display":"/model \"anthropic/claude-opus-4.5\"","pastedContents":{},"timestamp":1770063301380,"project":"/home/deploy/src/wolfcal","sessionId":"94dde65d-5e25-4275-bd8e-32d3fbe3d00e"}
+{"display":"/status ","pastedContents":{},"timestamp":1770063313679,"project":"/home/deploy/src/wolfcal","sessionId":"94dde65d-5e25-4275-bd8e-32d3fbe3d00e"}
+{"display":"test","pastedContents":{},"timestamp":1770063347401,"project":"/home/deploy/src/wolfcal","sessionId":"94dde65d-5e25-4275-bd8e-32d3fbe3d00e"}
+{"display":"/model claude-opus-4.5","pastedContents":{},"timestamp":1770063390886,"project":"/home/deploy/src/wolfcal","sessionId":"94dde65d-5e25-4275-bd8e-32d3fbe3d00e"}
+{"display":"/clear ","pastedContents":{},"timestamp":1770063400662,"project":"/home/deploy/src/wolfcal","sessionId":"94dde65d-5e25-4275-bd8e-32d3fbe3d00e"}
+{"display":"/model claude-opus-4.5","pastedContents":{},"timestamp":1770063507467,"project":"/home/deploy/src/wolfcal","sessionId":"15c68864-e588-4ff8-bd87-22c02a0b74d8"}
+{"display":"/flow-next:plan \"export qr code does not work, let's draft to fix it. i have 2 accounts and 9 calendars. debug info Config JSON size: 2394 bytes index-BlMJdR__.js:22:47972\nEncrypted size: 4408 bytes\"","pastedContents":{},"timestamp":1770064233800,"project":"/home/deploy/src/wolfcal","sessionId":"15c68864-e588-4ff8-bd87-22c02a0b74d8"}
+{"display":"b","pastedContents":{},"timestamp":1770064303376,"project":"/home/deploy/src/wolfcal","sessionId":"15c68864-e588-4ff8-bd87-22c02a0b74d8"}
+{"display":"go on, limit is not here","pastedContents":{},"timestamp":1770094389669,"project":"/home/deploy/src/wolfcal","sessionId":"15c68864-e588-4ff8-bd87-22c02a0b74d8"}

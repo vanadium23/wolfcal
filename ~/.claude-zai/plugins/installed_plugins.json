@@ -1,0 +1,37 @@
+{
+  "version": 2,
+  "plugins": {
+    "feature-dev@claude-plugins-official": [
+      {
+        "scope": "project",
+        "projectPath": "/home/deploy/src/wolfcal",
+        "installPath": "~/.claude-zai/plugins/cache/claude-plugins-official/feature-dev/27d2b86d72da",
+        "version": "27d2b86d72da",
+        "installedAt": "2026-02-02T20:07:36.128Z",
+        "lastUpdated": "2026-02-02T20:07:36.128Z",
+        "gitCommitSha": "27d2b86d72da27c64585150857cee8472ad47abb"
+      }
+    ],
+    "superpowers@claude-plugins-official": [
+      {
+        "scope": "local",
+        "projectPath": "/home/deploy/src/wolfcal",
+        "installPath": "~/.claude-zai/plugins/cache/claude-plugins-official/superpowers/4.1.1",
+        "version": "4.1.1",
+        "installedAt": "2026-02-02T20:07:37.314Z",
+        "lastUpdated": "2026-02-02T20:07:37.314Z",
+        "gitCommitSha": "06b92f36820f38175b2ed6ff3f8df45157d54731"
+      }
+    ],
+    "flow-next@gmickel-claude-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "~/.claude-zai/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7",
+        "version": "0.20.7",
+        "installedAt": "2026-02-02T20:12:58.774Z",
+        "lastUpdated": "2026-02-02T20:12:58.774Z",
+        "gitCommitSha": "d0b8696395bb4ff25b25f9e8a692f412d4c1e67c"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "claude-plugins-official": {
+    "source": {
+      "source": "github",
+      "repo": "anthropics/claude-plugins-official"
+    },
+    "installLocation": "~/.claude-opr/plugins/marketplaces/claude-plugins-official",
+    "lastUpdated": "2026-02-02T20:18:19.630Z"
+  },
+  "gmickel-claude-marketplace": {
+    "source": {
+      "source": "git",
+      "url": "https://github.com/gmickel/gmickel-claude-marketplace.git"
+    },
+    "installLocation": "~/.claude-opr/plugins/marketplaces/gmickel-claude-marketplace",
+    "lastUpdated": "2026-02-02T20:13:45.155Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "sessionId": "2e57dbf7-c256-49f1-96a4-cef2c6dd7186",
+      "fullPath": "~/.claude-opr/projects/-home-deploy-src-wolfcal/2e57dbf7-c256-49f1-96a4-cef2c6dd7186.jsonl",
+      "fileMtime": 1770063283947,
+      "firstPrompt": "No prompt",
+      "summary": "Added Marketplace and Installed Flow-Next Plugin",
+      "messageCount": 4,
+      "created": "2026-02-02T20:13:46.019Z",
+      "modified": "2026-02-02T20:14:00.631Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "94dde65d-5e25-4275-bd8e-32d3fbe3d00e",
+      "fullPath": "~/.claude-opr/projects/-home-deploy-src-wolfcal/94dde65d-5e25-4275-bd8e-32d3fbe3d00e.jsonl",
+      "fileMtime": 1770063499718,
+      "firstPrompt": "test",
+      "summary": "Claude Code Initial Setup Test",
+      "messageCount": 4,
+      "created": "2026-02-02T20:14:42.537Z",
+      "modified": "2026-02-02T20:16:32.982Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "c0ca4c13-ed2d-40d7-8cd1-ab90e1452736",
+      "fullPath": "~/.claude-opr/projects/-home-deploy-src-wolfcal/c0ca4c13-ed2d-40d7-8cd1-ab90e1452736.jsonl",
+      "fileMtime": 1770063500635,
+      "firstPrompt": "No prompt",
+      "summary": "Conversation Cleared",
+      "messageCount": 2,
+      "created": "2026-02-02T20:16:40.675Z",
+      "modified": "2026-02-02T20:16:40.894Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    }
+  ]
+}

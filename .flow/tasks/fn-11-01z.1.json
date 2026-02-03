@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-03T04:55:56.884278Z",
+  "depends_on": [],
+  "epic": "fn-11-01z",
+  "id": "fn-11-01z.1",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-11-01z.1.md",
+  "status": "todo",
+  "title": "Refactor encrypt() to binary format with compression",
+  "updated_at": "2026-02-03T04:56:55.964754Z"
+}

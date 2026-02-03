@@ -7,7 +7,7 @@
   "plan_review_status": "unknown",
   "plan_reviewed_at": null,
   "spec_path": ".flow/specs/fn-10-xzj.md",
-  "status": "open",
+  "status": "done",
   "title": "Fix Export Settings to Exclude Tokens - Require Re-auth on Import",
-  "updated_at": "2026-02-02T15:40:11.689561Z"
+  "updated_at": "2026-02-02T18:13:26.233082Z"
 }
