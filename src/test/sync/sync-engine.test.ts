@@ -33,6 +33,8 @@ vi.mock('../../lib/db', async (importOriginal) => {
     deleteTombstone: vi.fn(),
     addErrorLog: vi.fn(),
     getPendingChangesByCalendar: vi.fn().mockResolvedValue([]),
+    getPendingChangesByEvent: vi.fn().mockResolvedValue([]),
+    deletePendingChange: vi.fn().mockResolvedValue(undefined),
   }
 })
 
