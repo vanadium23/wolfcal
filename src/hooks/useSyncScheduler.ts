@@ -46,5 +46,10 @@ export function useSyncScheduler() {
     };
   }, []);
 
-  return { isSyncing };
+  const registerOnSyncComplete = (callback: (() => void) | null) => {
+    const scheduler = getScheduler();
+    scheduler.onSyncComplete(callback);
+  };
+
+  return { isSyncing, registerOnSyncComplete };
 }

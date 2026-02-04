@@ -1,0 +1,16 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-04T19:08:38.084021Z",
+  "depends_on": [
+    "fn-12-zlg.2"
+  ],
+  "epic": "fn-12-zlg",
+  "id": "fn-12-zlg.8",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-12-zlg.8.md",
+  "status": "todo",
+  "title": "Fix BUG-2: Delete propagation from Google",
+  "updated_at": "2026-02-04T19:47:26.680568Z"
+}

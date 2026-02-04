@@ -1,24 +1,26 @@
 {
-  "numStartups": 3,
+  "numStartups": 9,
   "tipsHistory": {
-    "new-user-warmup": 1,
-    "plan-mode-for-complex-tasks": 1,
+    "new-user-warmup": 7,
+    "plan-mode-for-complex-tasks": 6,
     "terminal-setup": 1,
     "memory-command": 1,
     "theme-command": 1,
     "colorterm-truecolor": 1,
     "status-line": 2,
-    "prompt-queue": 2,
+    "prompt-queue": 7,
     "enter-to-steer-in-relatime": 2,
     "todo-list": 2,
-    "ide-upsell-external-terminal": 2,
+    "ide-upsell-external-terminal": 7,
     "install-github-app": 2,
     "install-slack-app": 2,
     "double-esc-code-restore": 2,
     "continue": 2,
     "shift-tab": 2,
     "image-paste": 3,
-    "web-app": 3
+    "web-app": 3,
+    "mobile-app": 3,
+    "custom-agents": 6
   },
   "cachedGrowthBookFeatures": {
     "tengu_1p_event_batch_config": {
@@ -54,7 +56,8 @@
     "tengu_streaming_tool_execution2": false,
     "tengu_session_memory": false,
     "tengu_plank_river_frost": "user_intent",
-    "tengu_bash_haiku_prefetch": true
+    "tengu_bash_haiku_prefetch": true,
+    "tengu_permission_explainer": true
   },
   "userID": "416bad82840b077984e62a4a3343929a02ea6c5b7894e90473d1812327f1ab14",
   "firstStartTime": "2026-02-02T20:13:27.935Z",
@@ -80,7 +83,7 @@
       "mcpServers": {},
       "enabledMcpjsonServers": [],
       "disabledMcpjsonServers": [],
-      "hasTrustDialogAccepted": false,
+      "hasTrustDialogAccepted": true,
       "projectOnboardingSeenCount": 0,
       "hasClaudeMdExternalIncludesApproved": false,
       "hasClaudeMdExternalIncludesWarningShown": false,
@@ -100,37 +103,37 @@
       },
       "exampleFilesGeneratedAt": 1770063213230,
       "hasCompletedProjectOnboarding": true,
-      "lastCost": 0.171601,
-      "lastAPIDuration": 35015,
-      "lastAPIDurationWithoutRetries": 35009,
-      "lastToolDuration": 0,
-      "lastDuration": 213848,
-      "lastLinesAdded": 0,
-      "lastLinesRemoved": 0,
-      "lastTotalInputTokens": 51694,
-      "lastTotalOutputTokens": 1189,
+      "lastCost": 8.316039000000002,
+      "lastAPIDuration": 98713,
+      "lastAPIDurationWithoutRetries": 98689,
+      "lastToolDuration": 485,
+      "lastDuration": 147592,
+      "lastLinesAdded": 2,
+      "lastLinesRemoved": 2,
+      "lastTotalInputTokens": 514844,
+      "lastTotalOutputTokens": 2559,
       "lastTotalCacheCreationInputTokens": 0,
-      "lastTotalCacheReadInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 399040,
       "lastTotalWebSearchRequests": 0,
       "lastModelUsage": {
         "claude-haiku-4-5-20251001": {
-          "inputTokens": 473,
-          "outputTokens": 37,
+          "inputTokens": 12129,
+          "outputTokens": 390,
           "cacheReadInputTokens": 0,
           "cacheCreationInputTokens": 0,
           "webSearchRequests": 0,
-          "costUSD": 0.000658
+          "costUSD": 0.014079
         },
-        "claude-sonnet-4-5-20250929": {
-          "inputTokens": 51221,
-          "outputTokens": 1152,
-          "cacheReadInputTokens": 0,
+        "claude-opus-4.5": {
+          "inputTokens": 502715,
+          "outputTokens": 2169,
+          "cacheReadInputTokens": 399040,
           "cacheCreationInputTokens": 0,
           "webSearchRequests": 0,
-          "costUSD": 0.170943
+          "costUSD": 8.301960000000001
         }
       },
-      "lastSessionId": "c0ca4c13-ed2d-40d7-8cd1-ab90e1452736"
+      "lastSessionId": "49f4ae59-b22a-4246-9967-eb2ead3ca336"
     }
   },
   "officialMarketplaceAutoInstallAttempted": true,
@@ -143,6 +146,30 @@
     "flow-next-plan": {
       "usageCount": 1,
       "lastUsedAt": 1770064238320
+    },
+    "flow-next:impl-review": {
+      "usageCount": 1,
+      "lastUsedAt": 1770131461308
+    },
+    "flow-next-impl-review": {
+      "usageCount": 1,
+      "lastUsedAt": 1770131465969
+    },
+    "flow-next:epic-review": {
+      "usageCount": 1,
+      "lastUsedAt": 1770131721257
+    },
+    "flow-next-epic-review": {
+      "usageCount": 1,
+      "lastUsedAt": 1770131725947
+    },
+    "flow-next:ralph-init": {
+      "usageCount": 3,
+      "lastUsedAt": 1770235054311
+    },
+    "flow-next-ralph-init": {
+      "usageCount": 3,
+      "lastUsedAt": 1770235087515
     }
   }
 }

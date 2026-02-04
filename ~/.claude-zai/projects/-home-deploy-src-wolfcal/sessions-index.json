@@ -39,6 +39,97 @@
       "gitBranch": "master",
       "projectPath": "/home/deploy/src/wolfcal",
       "isSidechain": false
+    },
+    {
+      "sessionId": "9347b575-71c6-4e52-bb78-8a7703d31b6f",
+      "fullPath": "~/.claude-zai/projects/-home-deploy-src-wolfcal/9347b575-71c6-4e52-bb78-8a7703d31b6f.jsonl",
+      "fileMtime": 1770227233475,
+      "firstPrompt": "<command-message>flow-next:work</command-message> <command-name>/flow-next:work</command-name> <command-args>fn-11-01z --branch=current --review=none</command-args>",
+      "summary": "QR Code Export Size Limit Fix Complete",
+      "messageCount": 37,
+      "created": "2026-02-02T20:18:33.876Z",
+      "modified": "2026-02-03T15:23:13.802Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "46ca56d7-5636-44de-9a83-725d861f119b",
+      "fullPath": "~/.claude-zai/projects/-home-deploy-src-wolfcal/46ca56d7-5636-44de-9a83-725d861f119b.jsonl",
+      "fileMtime": 1770231112711,
+      "firstPrompt": "What features are missing from project?",
+      "summary": "WolfCal Missing Critical Features Analysis",
+      "messageCount": 8,
+      "created": "2026-02-04T17:47:11.226Z",
+      "modified": "2026-02-04T18:51:07.935Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "cd3e5ef8-519a-468d-982b-dc93b2f54cc7",
+      "fullPath": "~/.claude-zai/projects/-home-deploy-src-wolfcal/cd3e5ef8-519a-468d-982b-dc93b2f54cc7.jsonl",
+      "fileMtime": 1770231683385,
+      "firstPrompt": "<command-message>q1-hypothesize</command-message> <command-name>/q1-hypothesize</command-name> <command-args>\"whats critical features project is missing?\"</command-args>",
+      "summary": "WolfCal Feature Gap Analysis: 10 Hypotheses, 9 Validated",
+      "messageCount": 10,
+      "created": "2026-02-04T18:51:51.190Z",
+      "modified": "2026-02-04T18:55:10.637Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "d26c04c1-abbc-4f2e-a9ca-254dba3f5906",
+      "fullPath": "~/.claude-zai/projects/-home-deploy-src-wolfcal/d26c04c1-abbc-4f2e-a9ca-254dba3f5906.jsonl",
+      "fileMtime": 1770233448842,
+      "firstPrompt": "<command-message>flow-next:interview</command-message> <command-name>/flow-next:interview</command-name> <command-args>\"i want to create a regression suite for all bugs that is in current version, and…",
+      "summary": "WolfCal Bug Regression Suite & Fix Planning",
+      "messageCount": 65,
+      "created": "2026-02-04T19:01:21.979Z",
+      "modified": "2026-02-04T19:25:25.162Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "d2b36062-c30a-47b7-95e0-3b8fc48df965",
+      "fullPath": "~/.claude-zai/projects/-home-deploy-src-wolfcal/d2b36062-c30a-47b7-95e0-3b8fc48df965.jsonl",
+      "fileMtime": 1770233512867,
+      "firstPrompt": "<command-message>flow-next:work</command-message> <command-name>/flow-next:work</command-name> <command-args>fn-12-zlg</command-args>",
+      "summary": "Flow Next Work fn-12-zlg Skill Invocation",
+      "messageCount": 4,
+      "created": "2026-02-04T19:31:18.667Z",
+      "modified": "2026-02-04T19:31:45.964Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "0ece0940-c4ae-408a-8d86-b5b14590946b",
+      "fullPath": "~/.claude-zai/projects/-home-deploy-src-wolfcal/0ece0940-c4ae-408a-8d86-b5b14590946b.jsonl",
+      "fileMtime": 1770233731415,
+      "firstPrompt": "<command-message>flow-next:work</command-message> <command-name>/flow-next:work</command-name> <command-args>fn-12-zlg.1</command-args>",
+      "summary": "Isolated Worktree Task Execution",
+      "messageCount": 14,
+      "created": "2026-02-04T19:31:51.582Z",
+      "modified": "2026-02-04T19:33:32.016Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "57ed44ab-131e-4bbc-bde7-f5da190fd498",
+      "fullPath": "~/.claude-zai/projects/-home-deploy-src-wolfcal/57ed44ab-131e-4bbc-bde7-f5da190fd498.jsonl",
+      "fileMtime": 1770233743419,
+      "firstPrompt": "<command-message>flow-next:work</command-message> <command-name>/flow-next:work</command-name> <command-args>fn-12-zlg.2 --branch=worktree</command-args>",
+      "summary": "Flow Next Work Isolated Worktree Task Execution",
+      "messageCount": 7,
+      "created": "2026-02-04T19:34:15.539Z",
+      "modified": "2026-02-04T19:35:25.279Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
     }
   ]
 }

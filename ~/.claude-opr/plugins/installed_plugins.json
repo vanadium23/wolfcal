@@ -1,37 +1,36 @@
 {
   "version": 2,
   "plugins": {
-    "flow-next@gmickel-claude-marketplace": [
-      {
-        "scope": "local",
-        "installPath": "~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7",
-        "version": "0.20.7",
-        "installedAt": "2026-02-02T20:13:50.010Z",
-        "lastUpdated": "2026-02-02T20:14:42.478Z",
-        "gitCommitSha": "d0b8696395bb4ff25b25f9e8a692f412d4c1e67c",
-        "projectPath": "/home/deploy/src/wolfcal"
-      }
-    ],
     "feature-dev@claude-plugins-official": [
       {
         "scope": "project",
+        "projectPath": "/home/deploy/src/wolfcal",
         "installPath": "~/.claude-opr/plugins/cache/claude-plugins-official/feature-dev/27d2b86d72da",
         "version": "27d2b86d72da",
         "installedAt": "2026-02-02T20:14:42.478Z",
         "lastUpdated": "2026-02-02T20:14:42.478Z",
-        "gitCommitSha": "27d2b86d72da27c64585150857cee8472ad47abb",
-        "projectPath": "/home/deploy/src/wolfcal"
+        "gitCommitSha": "27d2b86d72da27c64585150857cee8472ad47abb"
       }
     ],
     "superpowers@claude-plugins-official": [
       {
         "scope": "local",
+        "projectPath": "/home/deploy/src/wolfcal",
         "installPath": "~/.claude-opr/plugins/cache/claude-plugins-official/superpowers/4.1.1",
         "version": "4.1.1",
         "installedAt": "2026-02-02T20:14:43.688Z",
         "lastUpdated": "2026-02-02T20:14:43.688Z",
-        "gitCommitSha": "06b92f36820f38175b2ed6ff3f8df45157d54731",
-        "projectPath": "/home/deploy/src/wolfcal"
+        "gitCommitSha": "06b92f36820f38175b2ed6ff3f8df45157d54731"
+      }
+    ],
+    "flow-next@gmickel-claude-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7",
+        "version": "0.20.7",
+        "installedAt": "2026-02-04T19:56:27.920Z",
+        "lastUpdated": "2026-02-04T19:56:27.920Z",
+        "gitCommitSha": "d0b8696395bb4ff25b25f9e8a692f412d4c1e67c"
       }
     ]
   }

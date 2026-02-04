@@ -1,0 +1,1058 @@
+2026-02-04T19:53:06.608Z [DEBUG] Watching for changes in setting files /home/deploy/src/wolfcal/~/.claude-opr, /home/deploy/src/wolfcal/.claude, /home/deploy/src/wolfcal/.claude...
+2026-02-04T19:53:06.614Z [DEBUG] [init] configureGlobalMTLS starting
+2026-02-04T19:53:06.614Z [DEBUG] [init] configureGlobalMTLS complete
+2026-02-04T19:53:06.614Z [DEBUG] [init] configureGlobalAgents starting
+2026-02-04T19:53:06.615Z [DEBUG] [init] configureGlobalAgents complete
+2026-02-04T19:53:06.623Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-02-04T19:53:06.623Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-02-04T19:53:06.623Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-02-04T19:53:06.633Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-02-04T19:53:06.651Z [DEBUG] Loading plugin flow-next from source: "./plugins/flow-next"
+2026-02-04T19:53:06.651Z [DEBUG] Using manifest version for flow-next@gmickel-claude-marketplace: 0.20.7
+2026-02-04T19:53:06.652Z [DEBUG] Plugin flow-next@gmickel-claude-marketplace version 0.20.7 already cached at ~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7
+2026-02-04T19:53:06.652Z [DEBUG] Copied local plugin flow-next to versioned cache: ~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7
+2026-02-04T19:53:06.653Z [DEBUG] Loaded hooks from standard location for plugin flow-next: ~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/hooks/hooks.json
+2026-02-04T19:53:06.658Z [DEBUG] Loading plugin feature-dev from source: "./plugins/feature-dev"
+2026-02-04T19:53:06.668Z [DEBUG] Using git SHA for feature-dev@claude-plugins-official: 27d2b86d72da
+2026-02-04T19:53:06.668Z [DEBUG] Plugin feature-dev@claude-plugins-official version 27d2b86d72da already cached at ~/.claude-opr/plugins/cache/claude-plugins-official/feature-dev/27d2b86d72da
+2026-02-04T19:53:06.668Z [DEBUG] Copied local plugin feature-dev to versioned cache: ~/.claude-opr/plugins/cache/claude-plugins-official/feature-dev/27d2b86d72da
+2026-02-04T19:53:06.670Z [DEBUG] Loading plugin superpowers from source: {"source":"url","url":"https://github.com/obra/superpowers.git"}
+2026-02-04T19:53:06.670Z [DEBUG] No version found for superpowers@claude-plugins-official, using 'unknown'
+2026-02-04T19:53:06.670Z [DEBUG] Caching plugin from source: {"source":"url","url":"https://github.com/obra/superpowers.git"} to temporary path ~/.claude-opr/plugins/cache/temp_git_1770234786670_pu4cbu
+2026-02-04T19:53:06.680Z [DEBUG] Watching for changes in skill/command directories: /home/deploy/src/wolfcal/.claude/commands...
+2026-02-04T19:53:06.682Z [DEBUG] [Claude in Chrome] Extension not found in any browser
+2026-02-04T19:53:07.457Z [DEBUG] Cloned repository from https://github.com/obra/superpowers.git to ~/.claude-opr/plugins/cache/temp_git_1770234786670_pu4cbu
+2026-02-04T19:53:07.457Z [DEBUG] Successfully cached plugin superpowers to ~/.claude-opr/plugins/cache/superpowers
+2026-02-04T19:53:07.457Z [DEBUG] Using manifest version for superpowers@claude-plugins-official: 4.1.1
+2026-02-04T19:53:07.457Z [DEBUG] Plugin superpowers@claude-plugins-official version 4.1.1 already cached at ~/.claude-opr/plugins/cache/claude-plugins-official/superpowers/4.1.1
+2026-02-04T19:53:07.464Z [DEBUG] Loaded hooks from standard location for plugin superpowers: ~/.claude-opr/plugins/cache/claude-plugins-official/superpowers/4.1.1/hooks/hooks.json
+2026-02-04T19:53:07.464Z [DEBUG] Found 3 plugins (3 enabled, 0 disabled)
+2026-02-04T19:53:07.465Z [DEBUG] [STARTUP] MCP configs loaded in 832ms
+2026-02-04T19:53:07.466Z [DEBUG] [STARTUP] Running setup()...
+2026-02-04T19:53:07.467Z [DEBUG] Stats cache does not exist, returning empty cache
+2026-02-04T19:53:07.467Z [DEBUG] Stats cache empty, processing all historical data in background
+2026-02-04T19:53:07.482Z [DEBUG] Loading skills from: managed=/etc/claude-code/.claude/skills, user=~/.claude-opr/skills, project=[]
+2026-02-04T19:53:07.505Z [DEBUG] Loaded 3 installed plugins from ~/.claude-opr/plugins/installed_plugins.json
+2026-02-04T19:53:07.519Z [ERROR] Error: Error: ENOENT: no such file or directory, scandir '/etc/claude-code/.claude/skills'
+    at Module.readdirSync (node:fs:1597:26)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:9:1766
+    at jI (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:34380)
+    at Object.readdirSync (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:9:1736)
+    at FZ1 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1523:369)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1523:4274
+    at B (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:6808)
+    at lz7 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4154:4354)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4154:6941
+    at B (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:6808)
+2026-02-04T19:53:07.520Z [ERROR] Error: Error: ENOENT: no such file or directory, scandir '~/.claude-opr/skills'
+    at Module.readdirSync (node:fs:1597:26)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:9:1766
+    at jI (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:34380)
+    at Object.readdirSync (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:9:1736)
+    at FZ1 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1523:369)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1523:4317
+    at B (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:6808)
+    at lz7 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4154:4354)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4154:6941
+    at B (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:6808)
+2026-02-04T19:53:07.520Z [DEBUG] Error log sink initialized
+2026-02-04T19:53:07.526Z [DEBUG] Writing to temp file: ~/.claude-opr/todos/4a6507b1-a9f5-415b-9826-1c69dd6f3e40-agent-4a6507b1-a9f5-415b-9826-1c69dd6f3e40.json.tmp.154841.1770234787526
+2026-02-04T19:53:07.526Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-02-04T19:53:07.526Z [DEBUG] Renaming ~/.claude-opr/todos/4a6507b1-a9f5-415b-9826-1c69dd6f3e40-agent-4a6507b1-a9f5-415b-9826-1c69dd6f3e40.json.tmp.154841.1770234787526 to ~/.claude-opr/todos/4a6507b1-a9f5-415b-9826-1c69dd6f3e40-agent-4a6507b1-a9f5-415b-9826-1c69dd6f3e40.json
+2026-02-04T19:53:07.526Z [DEBUG] File ~/.claude-opr/todos/4a6507b1-a9f5-415b-9826-1c69dd6f3e40-agent-4a6507b1-a9f5-415b-9826-1c69dd6f3e40.json written atomically
+2026-02-04T19:53:07.537Z [DEBUG] getPluginSkills: Processing 3 enabled plugins
+2026-02-04T19:53:07.537Z [DEBUG] Checking plugin flow-next: skillsPath=exists, skillsPaths=0 paths
+2026-02-04T19:53:07.537Z [DEBUG] Attempting to load skills from plugin flow-next default skillsPath: ~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/skills
+2026-02-04T19:53:07.559Z [DEBUG] Loading hooks from plugin: flow-next
+2026-02-04T19:53:07.559Z [DEBUG] Loading hooks from plugin: superpowers
+2026-02-04T19:53:07.559Z [DEBUG] Registered 5 hooks from 3 plugins
+2026-02-04T19:53:07.567Z [DEBUG] [STARTUP] setup() completed in 101ms
+2026-02-04T19:53:07.567Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-02-04T19:53:07.568Z [DEBUG] Loaded 16 skills from plugin flow-next default directory
+2026-02-04T19:53:07.568Z [DEBUG] Checking plugin feature-dev: skillsPath=none, skillsPaths=0 paths
+2026-02-04T19:53:07.568Z [DEBUG] Checking plugin superpowers: skillsPath=exists, skillsPaths=0 paths
+2026-02-04T19:53:07.568Z [DEBUG] Attempting to load skills from plugin superpowers default skillsPath: ~/.claude-opr/plugins/cache/claude-plugins-official/superpowers/4.1.1/skills
+2026-02-04T19:53:07.576Z [DEBUG] Loaded 11 commands from plugin flow-next default directory
+2026-02-04T19:53:07.585Z [DEBUG] Loaded 14 skills from plugin superpowers default directory
+2026-02-04T19:53:07.585Z [DEBUG] Total plugin skills loaded: 30
+2026-02-04T19:53:07.585Z [DEBUG] Loaded 1 commands from plugin feature-dev default directory
+2026-02-04T19:53:07.587Z [DEBUG] Loaded 3 commands from plugin superpowers default directory
+2026-02-04T19:53:07.587Z [DEBUG] Total plugin commands loaded: 15
+2026-02-04T19:53:07.598Z [DEBUG] Loaded 20 agents from plugin flow-next default directory
+2026-02-04T19:53:07.599Z [DEBUG] Loaded 3 agents from plugin feature-dev default directory
+2026-02-04T19:53:07.600Z [DEBUG] Loaded 1 agents from plugin superpowers default directory
+2026-02-04T19:53:07.600Z [DEBUG] Total plugin agents loaded: 24
+2026-02-04T19:53:07.618Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/usr/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/x64-linux/rg)
+2026-02-04T19:53:07.631Z [DEBUG] Total LSP servers loaded: 0
+2026-02-04T19:53:07.631Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-02-04T19:53:07.631Z [DEBUG] LSP manager initialized with 0 servers
+2026-02-04T19:53:07.631Z [DEBUG] LSP server manager initialized successfully
+2026-02-04T19:53:07.631Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-02-04T19:53:07.666Z [DEBUG] Loaded 12 unique skills (managed: 0, user: 0, project: 0, legacy commands: 12)
+2026-02-04T19:53:07.666Z [DEBUG] getSkills returning: 12 skill dir commands, 30 plugin skills, 0 bundled skills
+2026-02-04T19:53:07.668Z [DEBUG] [STARTUP] Commands and agents loaded in 101ms
+2026-02-04T19:53:07.668Z [DEBUG] [STARTUP] Running showSetupScreens()...
+2026-02-04T19:53:07.669Z [DEBUG] [render] initYoga starting
+2026-02-04T19:53:07.693Z [DEBUG] [render] initYoga complete
+2026-02-04T19:53:07.705Z [DEBUG] [keybindings] KeybindingSetup initialized with 45 bindings, 0 warnings
+2026-02-04T19:53:07.782Z [DEBUG] [keybindings] Skipping file watcher - user customization disabled
+2026-02-04T19:53:07.975Z [DEBUG] Stats cache saved successfully (lastComputedDate: 2026-02-03)
+2026-02-04T19:53:07.975Z [DEBUG] Stats cache updated with 4 sessions
+2026-02-04T19:53:08.098Z [DEBUG] Summarizing all 174 messages (~0 tokens)
+2026-02-04T19:53:08.100Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-04T19:53:08.103Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:08.103Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:08.104Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:09.250Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-02-04T19:53:09.250Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-02-04T19:53:09.258Z [DEBUG] Caching plugin from source: {"source":"url","url":"https://github.com/obra/superpowers.git"} to temporary path ~/.claude-opr/plugins/cache/temp_git_1770234789258_6ok1nm
+2026-02-04T19:53:09.261Z [DEBUG] Using git SHA for feature-dev@claude-plugins-official: 27d2b86d72da
+2026-02-04T19:53:10.310Z [DEBUG] Cloned repository from https://github.com/obra/superpowers.git to ~/.claude-opr/plugins/cache/temp_git_1770234789258_6ok1nm
+2026-02-04T19:53:10.311Z [DEBUG] Successfully cached plugin superpowers to ~/.claude-opr/plugins/cache/superpowers
+2026-02-04T19:53:10.311Z [DEBUG] Using manifest version for superpowers@claude-plugins-official: 4.1.1
+2026-02-04T19:53:10.791Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:53:10.867Z [DEBUG] Writing to temp file: ~/.claude-opr/.claude.json.tmp.154841.1770234790867
+2026-02-04T19:53:10.867Z [DEBUG] Preserving file permissions: 100600
+2026-02-04T19:53:10.867Z [DEBUG] Temp file written successfully, size: 5170 bytes
+2026-02-04T19:53:10.867Z [DEBUG] Applied original permissions to temp file
+2026-02-04T19:53:10.867Z [DEBUG] Renaming ~/.claude-opr/.claude.json.tmp.154841.1770234790867 to ~/.claude-opr/.claude.json
+2026-02-04T19:53:10.867Z [DEBUG] File ~/.claude-opr/.claude.json written atomically
+2026-02-04T19:53:10.868Z [DEBUG] Writing to temp file: /home/deploy/src/wolfcal/.claude/settings.local.json.tmp.154841.1770234790868
+2026-02-04T19:53:10.868Z [DEBUG] Preserving file permissions: 100664
+2026-02-04T19:53:10.870Z [DEBUG] Temp file written successfully, size: 217 bytes
+2026-02-04T19:53:10.872Z [DEBUG] Applied original permissions to temp file
+2026-02-04T19:53:10.872Z [DEBUG] Renaming /home/deploy/src/wolfcal/.claude/settings.local.json.tmp.154841.1770234790868 to /home/deploy/src/wolfcal/.claude/settings.local.json
+2026-02-04T19:53:10.874Z [DEBUG] File /home/deploy/src/wolfcal/.claude/settings.local.json written atomically
+2026-02-04T19:53:10.903Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-02-04T19:53:10.906Z [DEBUG] [STARTUP] showSetupScreens() completed in 3238ms
+2026-02-04T19:53:10.912Z [DEBUG] MCP server "quint-code": Starting connection with timeout of 30000ms
+2026-02-04T19:53:10.923Z [DEBUG] All plugins already exist, skipping migration
+2026-02-04T19:53:10.924Z [DEBUG] Initialized versioned plugins system with 3 plugins
+2026-02-04T19:53:10.926Z [DEBUG] Writing to temp file: ~/.claude-opr/.claude.json.tmp.154841.1770234790926
+2026-02-04T19:53:10.926Z [DEBUG] Preserving file permissions: 100600
+2026-02-04T19:53:10.926Z [DEBUG] Temp file written successfully, size: 5170 bytes
+2026-02-04T19:53:10.926Z [DEBUG] Applied original permissions to temp file
+2026-02-04T19:53:10.926Z [DEBUG] Renaming ~/.claude-opr/.claude.json.tmp.154841.1770234790926 to ~/.claude-opr/.claude.json
+2026-02-04T19:53:10.926Z [DEBUG] File ~/.claude-opr/.claude.json written atomically
+2026-02-04T19:53:10.932Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-02-04T19:53:10.932Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:53:10.932Z [DEBUG] Matched 1 unique hooks for query "startup" (1 before deduplication)
+2026-02-04T19:53:10.951Z [DEBUG] MCP server "quint-code": Successfully connected to undefined server in 43ms
+2026-02-04T19:53:10.951Z [DEBUG] MCP server "quint-code": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"quint-code","version":"4.0.0"}}
+2026-02-04T19:53:10.984Z [DEBUG] Git remote URL: git@github.com:vanadium23/wolfcal.git
+2026-02-04T19:53:10.984Z [DEBUG] Parsed repository: vanadium23/wolfcal from git@github.com:vanadium23/wolfcal.git
+2026-02-04T19:53:10.984Z [DEBUG] Parsed repository: vanadium23/wolfcal from URL: git@github.com:vanadium23/wolfcal.git
+2026-02-04T19:53:10.984Z [DEBUG] Path /home/deploy/src/wolfcal already tracked for repo vanadium23/wolfcal
+2026-02-04T19:53:11.034Z [DEBUG] Generated summary for session 15c68864-e588-4ff8-bd87-22c02a0b74d8: "Fix QR code export size limit"
+2026-02-04T19:53:11.045Z [DEBUG] Session index: added 1, updated 0, removed 0, summaries generated 1 (total: 4)
+2026-02-04T19:53:11.071Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:epic-review" (userFacingName="flow-next:epic-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:impl-review" (userFacingName="flow-next:impl-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:interview" (userFacingName="flow-next:interview")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:plan-review" (userFacingName="flow-next:plan-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:plan" (userFacingName="flow-next:plan")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:prime" (userFacingName="flow-next:prime")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:ralph-init" (userFacingName="flow-next:ralph-init")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:setup" (userFacingName="flow-next:setup")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:sync" (userFacingName="flow-next:sync")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:uninstall" (userFacingName="flow-next:uninstall")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:work" (userFacingName="flow-next:work")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:browser" (userFacingName="browser")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next" (userFacingName="flow-next")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-deps" (userFacingName="flow-next-deps")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-epic-review" (userFacingName="flow-next-epic-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-export-context" (userFacingName="flow-next-export-context")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-impl-review" (userFacingName="flow-next-impl-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-interview" (userFacingName="flow-next-interview")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-plan" (userFacingName="flow-next-plan")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-plan-review" (userFacingName="flow-next-plan-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-prime" (userFacingName="flow-next-prime")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-ralph-init" (userFacingName="flow-next-ralph-init")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-rp-explorer" (userFacingName="flow-next-rp-explorer")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-setup" (userFacingName="flow-next-setup")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-sync" (userFacingName="flow-next-sync")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-work" (userFacingName="flow-next-work")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-worktree-kit" (userFacingName="flow-next-worktree-kit")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:brainstorming" (userFacingName="brainstorming")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:dispatching-parallel-agents" (userFacingName="dispatching-parallel-agents")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:executing-plans" (userFacingName="executing-plans")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:finishing-a-development-branch" (userFacingName="finishing-a-development-branch")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:receiving-code-review" (userFacingName="receiving-code-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:requesting-code-review" (userFacingName="requesting-code-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:subagent-driven-development" (userFacingName="subagent-driven-development")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:systematic-debugging" (userFacingName="systematic-debugging")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:test-driven-development" (userFacingName="test-driven-development")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:using-git-worktrees" (userFacingName="using-git-worktrees")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:using-superpowers" (userFacingName="using-superpowers")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:verification-before-completion" (userFacingName="verification-before-completion")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:writing-plans" (userFacingName="writing-plans")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:writing-skills" (userFacingName="writing-skills")
+2026-02-04T19:53:11.077Z [DEBUG] Skills and commands included in Skill tool: q2-verify, q0-init, q1-hypothesize, q4-audit, q-actualize, q-query, q1-add, q3-validate, q-decay, q-reset, q5-decide, q-status, flow-next:epic-review, flow-next:impl-review, flow-next:interview, flow-next:plan-review, flow-next:plan, flow-next:prime, flow-next:ralph-init, flow-next:setup, flow-next:sync, flow-next:uninstall, flow-next:work, feature-dev:feature-dev, browser, flow-next, flow-next-deps, flow-next-epic-review, flow-next-export-context, flow-next-impl-review, flow-next-interview, flow-next-plan, flow-next-plan-review, flow-next-prime, flow-next-ralph-init, flow-next-rp-explorer, flow-next-setup, flow-next-sync, flow-next-work, flow-next-worktree-kit, brainstorming, dispatching-parallel-agents, executing-plans, finishing-a-development-branch, receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:epic-review" (userFacingName="flow-next:epic-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:impl-review" (userFacingName="flow-next:impl-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:interview" (userFacingName="flow-next:interview")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:plan-review" (userFacingName="flow-next:plan-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:plan" (userFacingName="flow-next:plan")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:prime" (userFacingName="flow-next:prime")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:ralph-init" (userFacingName="flow-next:ralph-init")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:setup" (userFacingName="flow-next:setup")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:sync" (userFacingName="flow-next:sync")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:uninstall" (userFacingName="flow-next:uninstall")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next:work" (userFacingName="flow-next:work")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:browser" (userFacingName="browser")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next" (userFacingName="flow-next")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-deps" (userFacingName="flow-next-deps")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-epic-review" (userFacingName="flow-next-epic-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-export-context" (userFacingName="flow-next-export-context")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-impl-review" (userFacingName="flow-next-impl-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-interview" (userFacingName="flow-next-interview")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-plan" (userFacingName="flow-next-plan")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-plan-review" (userFacingName="flow-next-plan-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-prime" (userFacingName="flow-next-prime")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-ralph-init" (userFacingName="flow-next-ralph-init")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-rp-explorer" (userFacingName="flow-next-rp-explorer")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-setup" (userFacingName="flow-next-setup")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-sync" (userFacingName="flow-next-sync")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-work" (userFacingName="flow-next-work")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "flow-next:flow-next-worktree-kit" (userFacingName="flow-next-worktree-kit")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:brainstorming" (userFacingName="brainstorming")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:dispatching-parallel-agents" (userFacingName="dispatching-parallel-agents")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:executing-plans" (userFacingName="executing-plans")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:finishing-a-development-branch" (userFacingName="finishing-a-development-branch")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:receiving-code-review" (userFacingName="receiving-code-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:requesting-code-review" (userFacingName="requesting-code-review")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:subagent-driven-development" (userFacingName="subagent-driven-development")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:systematic-debugging" (userFacingName="systematic-debugging")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:test-driven-development" (userFacingName="test-driven-development")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:using-git-worktrees" (userFacingName="using-git-worktrees")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:using-superpowers" (userFacingName="using-superpowers")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:verification-before-completion" (userFacingName="verification-before-completion")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:writing-plans" (userFacingName="writing-plans")
+2026-02-04T19:53:11.077Z [DEBUG] Skill prompt: showing "superpowers:writing-skills" (userFacingName="writing-skills")
+2026-02-04T19:53:11.079Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:11.079Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:11.079Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:11.105Z [DEBUG] Hooks: Checking initial response for async: {
+  "hookSpecificOutput": {
+    "hookEventName": "SessionStart",
+    "additionalContext": "<EXTREMELY_IMPORTANT>\nYou have superpowers.\n\n**Below is the full content of your 'superpowers:using-superpowers' skill - your introduction to using skills. For all other skills, use the 'Skill' tool:**\n\n---\nname: using-superpowers\ndescription: Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions\n---\n\n<EXTREMELY-IMPORTANT>\nIf you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.\n\nIF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.\n\nThis is not negotiable. This is not optional. You cannot rationalize your way out of this.\n</EXTREMELY-IMPORTANT>\n\n## How to Access Skills\n\n**In Claude Code:** Use the `Skill` tool. When you invoke a skill, its content is loaded and presented to you—follow it directly. Never use the Read tool on skill files.\n\n**In other environments:** Check your platform's documentation for how skills are loaded.\n\n# Using Skills\n\n## The Rule\n\n**Invoke relevant or requested skills BEFORE any response or action.** Even a 1% chance a skill might apply means that you should invoke the skill to check. If an invoked skill turns out to be wrong for the situation, you don't need to use it.\n\n```dot\ndigraph skill_flow {\n    \"User message received\" [shape=doublecircle];\n    \"Might any skill apply?\" [shape=diamond];\n    \"Invoke Skill tool\" [shape=box];\n    \"Announce: 'Using [skill] to [purpose]'\" [shape=box];\n    \"Has checklist?\" [shape=diamond];\n    \"Create TodoWrite todo per item\" [shape=box];\n    \"Follow skill exactly\" [shape=box];\n    \"Respond (including clarifications)\" [shape=doublecircle];\n\n    \"User message received\" -> \"Might any skill apply?\";\n    \"Might any skill apply?\" -> \"Invoke Skill tool\" [label=\"yes, even 1%\"];\n    \"Might any skill apply?\" -> \"Respond (including clarifications)\" [label=\"definitely not\"];\n    \"Invoke Skill tool\" -> \"Announce: 'Using [skill] to [purpose]'\";\n    \"Announce: 'Using [skill] to [purpose]'\" -> \"Has checklist?\";\n    \"Has checklist?\" -> \"Create TodoWrite todo per item\" [label=\"yes\"];\n    \"Has checklist?\" -> \"Follow skill exactly\" [label=\"no\"];\n    \"Create TodoWrite todo per item\" -> \"Follow skill exactly\";\n}\n```\n\n## Red Flags\n\nThese thoughts mean STOP—you're rationalizing:\n\n| Thought | Reality |\n|---------|---------|\n| \"This is just a simple question\" | Questions are tasks. Check for skills. |\n| \"I need more context first\" | Skill check comes BEFORE clarifying questions. |\n| \"Let me explore the codebase first\" | Skills tell you HOW to explore. Check first. |\n| \"I can check git/files quickly\" | Files lack conversation context. Check for skills. |\n| \"Let me gather information first\" | Skills tell you HOW to gather information. |\n| \"This doesn't need a formal skill\" | If a skill exists, use it. |\n| \"I remember this skill\" | Skills evolve. Read current version. |\n| \"This doesn't count as a task\" | Action = task. Check for skills. |\n| \"The skill is overkill\" | Simple things become complex. Use it. |\n| \"I'll just do this one thing first\" | Check BEFORE doing anything. |\n| \"This feels productive\" | Undisciplined action wastes time. Skills prevent this. |\n| \"I know what that means\" | Knowing the concept ≠ using the skill. Invoke it. |\n\n## Skill Priority\n\nWhen multiple skills could apply, use this order:\n\n1. **Process skills first** (brainstorming, debugging) - these determine HOW to approach the task\n2. **Implementation skills second** (frontend-design, mcp-builder) - these guide execution\n\n\"Let's build X\" → brainstorming first, then implementation skills.\n\"Fix this bug\" → debugging first, then domain-specific skills.\n\n## Skill Types\n\n**Rigid** (TDD, debugging): Follow exactly. Don't adapt away discipline.\n\n**Flexible** (patterns): Adapt principles to context.\n\nThe skill itself tells you which.\n\n## User Instructions\n\nInstructions say WHAT, not HOW. \"Add X\" or \"Fix Y\" doesn't mean skip workflows.\n\n\n</EXTREMELY_IMPORTANT>"
+  }
+}
+2026-02-04T19:53:11.105Z [DEBUG] Hooks: Parsed initial response: {"hookSpecificOutput":{"hookEventName":"SessionStart","additionalContext":"<EXTREMELY_IMPORTANT>\nYou have superpowers.\n\n**Below is the full content of your 'superpowers:using-superpowers' skill - your introduction to using skills. For all other skills, use the 'Skill' tool:**\n\n---\nname: using-superpowers\ndescription: Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions\n---\n\n<EXTREMELY-IMPORTANT>\nIf you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.\n\nIF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.\n\nThis is not negotiable. This is not optional. You cannot rationalize your way out of this.\n</EXTREMELY-IMPORTANT>\n\n## How to Access Skills\n\n**In Claude Code:** Use the `Skill` tool. When you invoke a skill, its content is loaded and presented to you—follow it directly. Never use the Read tool on skill files.\n\n**In other environments:** Check your platform's documentation for how skills are loaded.\n\n# Using Skills\n\n## The Rule\n\n**Invoke relevant or requested skills BEFORE any response or action.** Even a 1% chance a skill might apply means that you should invoke the skill to check. If an invoked skill turns out to be wrong for the situation, you don't need to use it.\n\n```dot\ndigraph skill_flow {\n    \"User message received\" [shape=doublecircle];\n    \"Might any skill apply?\" [shape=diamond];\n    \"Invoke Skill tool\" [shape=box];\n    \"Announce: 'Using [skill] to [purpose]'\" [shape=box];\n    \"Has checklist?\" [shape=diamond];\n    \"Create TodoWrite todo per item\" [shape=box];\n    \"Follow skill exactly\" [shape=box];\n    \"Respond (including clarifications)\" [shape=doublecircle];\n\n    \"User message received\" -> \"Might any skill apply?\";\n    \"Might any skill apply?\" -> \"Invoke Skill tool\" [label=\"yes, even 1%\"];\n    \"Might any skill apply?\" -> \"Respond (including clarifications)\" [label=\"definitely not\"];\n    \"Invoke Skill tool\" -> \"Announce: 'Using [skill] to [purpose]'\";\n    \"Announce: 'Using [skill] to [purpose]'\" -> \"Has checklist?\";\n    \"Has checklist?\" -> \"Create TodoWrite todo per item\" [label=\"yes\"];\n    \"Has checklist?\" -> \"Follow skill exactly\" [label=\"no\"];\n    \"Create TodoWrite todo per item\" -> \"Follow skill exactly\";\n}\n```\n\n## Red Flags\n\nThese thoughts mean STOP—you're rationalizing:\n\n| Thought | Reality |\n|---------|---------|\n| \"This is just a simple question\" | Questions are tasks. Check for skills. |\n| \"I need more context first\" | Skill check comes BEFORE clarifying questions. |\n| \"Let me explore the codebase first\" | Skills tell you HOW to explore. Check first. |\n| \"I can check git/files quickly\" | Files lack conversation context. Check for skills. |\n| \"Let me gather information first\" | Skills tell you HOW to gather information. |\n| \"This doesn't need a formal skill\" | If a skill exists, use it. |\n| \"I remember this skill\" | Skills evolve. Read current version. |\n| \"This doesn't count as a task\" | Action = task. Check for skills. |\n| \"The skill is overkill\" | Simple things become complex. Use it. |\n| \"I'll just do this one thing first\" | Check BEFORE doing anything. |\n| \"This feels productive\" | Undisciplined action wastes time. Skills prevent this. |\n| \"I know what that means\" | Knowing the concept ≠ using the skill. Invoke it. |\n\n## Skill Priority\n\nWhen multiple skills could apply, use this order:\n\n1. **Process skills first** (brainstorming, debugging) - these determine HOW to approach the task\n2. **Implementation skills second** (frontend-design, mcp-builder) - these guide execution\n\n\"Let's build X\" → brainstorming first, then implementation skills.\n\"Fix this bug\" → debugging first, then domain-specific skills.\n\n## Skill Types\n\n**Rigid** (TDD, debugging): Follow exactly. Don't adapt away discipline.\n\n**Flexible** (patterns): Adapt principles to context.\n\nThe skill itself tells you which.\n\n## User Instructions\n\nInstructions say WHAT, not HOW. \"Add X\" or \"Fix Y\" doesn't mean skip workflows.\n\n\n</EXTREMELY_IMPORTANT>"}}
+2026-02-04T19:53:11.105Z [DEBUG] Hooks: Initial response is not async, continuing normal processing
+2026-02-04T19:53:11.107Z [DEBUG] Successfully parsed and validated hook JSON output
+2026-02-04T19:53:11.108Z [DEBUG] [render] initYoga starting
+2026-02-04T19:53:11.108Z [DEBUG] [render] initYoga complete
+2026-02-04T19:53:11.116Z [DEBUG] [keybindings] KeybindingSetup initialized with 45 bindings, 0 warnings
+2026-02-04T19:53:11.167Z [DEBUG] [keybindings] Skipping file watcher - user customization disabled
+2026-02-04T19:53:11.167Z [DEBUG] [REPL:mount] REPL mounted, disabled=false
+2026-02-04T19:53:11.180Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2026-02-04T19:53:11.181Z [DEBUG] performStartupChecks called
+2026-02-04T19:53:11.181Z [DEBUG] Starting background plugin installations
+2026-02-04T19:53:11.181Z [DEBUG] performBackgroundPluginInstallations called
+2026-02-04T19:53:11.186Z [DEBUG] Found 3 enabled plugins
+2026-02-04T19:53:11.186Z [DEBUG] All plugins already exist, skipping migration
+2026-02-04T19:53:11.186Z [DEBUG] Found 3 installed plugins (V2 format)
+2026-02-04T19:53:11.186Z [DEBUG] Loaded plugins - Enabled: 3, Disabled: 0, Commands: 15, Agents: 24, Errors: 0
+2026-02-04T19:53:11.186Z [DEBUG] Found 0 missing plugins (not installed):
+2026-02-04T19:53:11.186Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2026-02-04T19:53:11.187Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-04T19:53:11.187Z [DEBUG] [claudeai-mcp] Gate returned: false
+2026-02-04T19:53:11.187Z [DEBUG] [claudeai-mcp] Disabled via gate
+2026-02-04T19:53:11.231Z [DEBUG] Writing to temp file: ~/.claude-opr/.claude.json.tmp.154841.1770234791231
+2026-02-04T19:53:11.233Z [DEBUG] Preserving file permissions: 100600
+2026-02-04T19:53:11.233Z [DEBUG] Temp file written successfully, size: 5170 bytes
+2026-02-04T19:53:11.233Z [DEBUG] Applied original permissions to temp file
+2026-02-04T19:53:11.233Z [DEBUG] Renaming ~/.claude-opr/.claude.json.tmp.154841.1770234791231 to ~/.claude-opr/.claude.json
+2026-02-04T19:53:11.234Z [DEBUG] File ~/.claude-opr/.claude.json written atomically
+2026-02-04T19:53:11.234Z [ERROR] Error: Error: 404 {"error":{"message":"Not Found","code":404}}
+    at P2.generate (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:918:2183)
+    at Dj.makeStatusError (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:935:2195)
+    at Dj.makeRequest (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:935:5420)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1166:5019
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1107:2222
+    at async b25 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1106:9402)
+    at async M22 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1107:2155)
+    at async ivA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2501:56)
+    at async J9A (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2501:751)
+2026-02-04T19:53:11.234Z [DEBUG] countTokensWithFallback: API returned null, trying haiku fallback (17 tools)
+2026-02-04T19:53:11.234Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:11.234Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:11.234Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:11.289Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:53:12.059Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:53:12.059Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:53:12.145Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:53:13.353Z [ERROR] Error: Error: 1P event logging: 29 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:53:13.353Z [ERROR] Error: Error: {"stack":"Error: Failed to export 29 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 29 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:53:14.611Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:14.611Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:14.611Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:16.945Z [DEBUG] FileHistory: Added snapshot for e7d0563b-b021-4815-a114-2a4c11bb07ee, tracking 0 files
+2026-02-04T19:53:16.994Z [DEBUG] Writing to temp file: ~/.claude-opr/.claude.json.tmp.154841.1770234796994
+2026-02-04T19:53:16.994Z [DEBUG] Preserving file permissions: 100600
+2026-02-04T19:53:16.994Z [DEBUG] Temp file written successfully, size: 5170 bytes
+2026-02-04T19:53:16.994Z [DEBUG] Applied original permissions to temp file
+2026-02-04T19:53:16.994Z [DEBUG] Renaming ~/.claude-opr/.claude.json.tmp.154841.1770234796994 to ~/.claude-opr/.claude.json
+2026-02-04T19:53:16.994Z [DEBUG] File ~/.claude-opr/.claude.json written atomically
+2026-02-04T19:53:17.098Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:53:17.720Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:53:17.720Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:53:17.805Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:53:18.795Z [ERROR] Error: Error: 1P event logging: 7 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:53:18.795Z [ERROR] Error: Error: {"stack":"Error: Failed to export 7 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 7 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:53:23.132Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:53:23.681Z [DEBUG] Writing to temp file: ~/.claude-opr/.claude.json.tmp.154841.1770234803681
+2026-02-04T19:53:23.681Z [DEBUG] Preserving file permissions: 100600
+2026-02-04T19:53:23.682Z [DEBUG] Temp file written successfully, size: 5264 bytes
+2026-02-04T19:53:23.682Z [DEBUG] Applied original permissions to temp file
+2026-02-04T19:53:23.682Z [DEBUG] Renaming ~/.claude-opr/.claude.json.tmp.154841.1770234803681 to ~/.claude-opr/.claude.json
+2026-02-04T19:53:23.682Z [DEBUG] File ~/.claude-opr/.claude.json written atomically
+2026-02-04T19:53:23.683Z [DEBUG] Metadata string for flow-next:ralph-init:
+2026-02-04T19:53:23.683Z [DEBUG] <command-message>flow-next:ralph-init</command-message>
+<command-name>/flow-next:ralph-init</command-name>
+2026-02-04T19:53:23.683Z [DEBUG] command-message tags in metadata: 1
+2026-02-04T19:53:23.699Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-04T19:53:23.699Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-04T19:53:23.699Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-04T19:53:23.699Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-04T19:53:23.715Z [DEBUG] processPromptSlashCommand creating 3 messages for flow-next:ralph-init
+2026-02-04T19:53:23.715Z [DEBUG] Message 1: <command-message>flow-next:ralph-init</command-message>
+<command-name>/flow-next:ralph-init</command-name>
+2026-02-04T19:53:23.715Z [DEBUG] Message 2 [META]: [{"type":"text","text":"# IMPORTANT: This command MUST invoke the skill `flow-next-ralph-init`\n\nThe ONLY purpose of this command is to call the `flow-next-ralph-init` skill. You MUST use that skill
+2026-02-04T19:53:23.715Z [DEBUG] Message 3: [ATTACHMENT]
+2026-02-04T19:53:23.741Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-04T19:53:23.741Z [DEBUG] Found 0 hook matchers in settings
+2026-02-04T19:53:23.741Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-04T19:53:23.743Z [DEBUG] FileHistory: Making snapshot for message afc52fa6-72e3-4ef9-8946-aaf6f47f44c5
+2026-02-04T19:53:23.743Z [DEBUG] FileHistory: Added snapshot for afc52fa6-72e3-4ef9-8946-aaf6f47f44c5, tracking 0 files
+2026-02-04T19:53:23.773Z [DEBUG] Total plugin output styles loaded: 0
+2026-02-04T19:53:23.797Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-04T19:53:23.814Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:23.814Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:23.814Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:23.825Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:53:23.825Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:53:23.926Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:53:26.580Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:53:27.970Z [DEBUG] executePreToolHooks called for tool: Skill
+2026-02-04T19:53:27.982Z [DEBUG] Getting matching hook commands for PreToolUse with query: Skill
+2026-02-04T19:53:27.982Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:53:27.982Z [DEBUG] Matched 0 unique hooks for query "Skill" (0 before deduplication)
+2026-02-04T19:53:28.004Z [DEBUG] Permission suggestions for Skill: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Skill",
+        "ruleContent": "flow-next-ralph-init"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  },
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Skill",
+        "ruleContent": "flow-next-ralph-init:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-02-04T19:53:28.068Z [DEBUG] High write ratio: blit=465, write=585 (55.7% writes), screen=28x93
+2026-02-04T19:53:28.072Z [DEBUG] executePermissionRequestHooks called for tool: Skill
+2026-02-04T19:53:28.095Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Skill
+2026-02-04T19:53:28.095Z [DEBUG] Found 0 hook matchers in settings
+2026-02-04T19:53:28.095Z [DEBUG] Matched 0 unique hooks for query "Skill" (0 before deduplication)
+2026-02-04T19:53:28.129Z [DEBUG] High write ratio: blit=558, write=600 (51.8% writes), screen=28x93
+2026-02-04T19:53:29.536Z [ERROR] Error: Error: 1P event logging: 16 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:53:29.536Z [ERROR] Error: Error: {"stack":"Error: Failed to export 16 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 16 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:53:31.177Z [DEBUG] Writing to temp file: ~/.claude-opr/.claude.json.tmp.154841.1770234811177
+2026-02-04T19:53:31.177Z [DEBUG] Preserving file permissions: 100600
+2026-02-04T19:53:31.177Z [DEBUG] Temp file written successfully, size: 5358 bytes
+2026-02-04T19:53:31.177Z [DEBUG] Applied original permissions to temp file
+2026-02-04T19:53:31.177Z [DEBUG] Renaming ~/.claude-opr/.claude.json.tmp.154841.1770234811177 to ~/.claude-opr/.claude.json
+2026-02-04T19:53:31.177Z [DEBUG] File ~/.claude-opr/.claude.json written atomically
+2026-02-04T19:53:31.178Z [DEBUG] Metadata string for flow-next-ralph-init:
+2026-02-04T19:53:31.179Z [DEBUG] <command-message>flow-next-ralph-init</command-message>
+<command-name>/flow-next-ralph-init</command-name>
+2026-02-04T19:53:31.179Z [DEBUG] command-message tags in metadata: 1
+2026-02-04T19:53:31.192Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-04T19:53:31.192Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-04T19:53:31.192Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-04T19:53:31.192Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-04T19:53:31.209Z [DEBUG] processPromptSlashCommand creating 3 messages for flow-next-ralph-init
+2026-02-04T19:53:31.209Z [DEBUG] Message 1: <command-message>flow-next-ralph-init</command-message>
+<command-name>/flow-next-ralph-init</command-name>
+2026-02-04T19:53:31.209Z [DEBUG] Message 2 [META]: [{"type":"text","text":"Base directory for this skill: ~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/skills/flow-next-ralph-init\n\n# Ralph init\n\nScaffold or update repo-lo
+2026-02-04T19:53:31.209Z [DEBUG] Message 3: [ATTACHMENT]
+2026-02-04T19:53:31.210Z [DEBUG] SkillTool returning 2 newMessages for skill flow-next-ralph-init
+2026-02-04T19:53:31.210Z [DEBUG] newMessage 1: [{"type":"text","text":"Base directory for this skill: ~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/skills/flow-next-ralph-...
+2026-02-04T19:53:31.229Z [DEBUG] Getting matching hook commands for PostToolUse with query: Skill
+2026-02-04T19:53:31.229Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:53:31.230Z [DEBUG] Matched 0 unique hooks for query "Skill" (0 before deduplication)
+2026-02-04T19:53:31.244Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-04T19:53:31.244Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-04T19:53:31.244Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-04T19:53:31.244Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-04T19:53:31.273Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-04T19:53:31.291Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:31.291Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:31.291Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:31.301Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:53:31.953Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:53:31.953Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:53:32.056Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:53:34.003Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:53:35.195Z [DEBUG] High write ratio: blit=558, write=563 (50.2% writes), screen=27x93
+2026-02-04T19:53:35.196Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-04T19:53:35.206Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-04T19:53:35.206Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:53:35.207Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-04T19:53:35.221Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-04T19:53:35.243Z [DEBUG] tree-sitter: WASM files not found
+2026-02-04T19:53:35.258Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-04T19:53:35.259Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:35.259Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:35.259Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:36.200Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:53:36.312Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "git rev-parse:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-02-04T19:53:36.334Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-02-04T19:53:36.335Z [DEBUG] Writing to temp file: ~/.claude-opr/.claude.json.tmp.154841.1770234816335
+2026-02-04T19:53:36.335Z [DEBUG] Preserving file permissions: 100600
+2026-02-04T19:53:36.335Z [DEBUG] Temp file written successfully, size: 5398 bytes
+2026-02-04T19:53:36.335Z [DEBUG] Applied original permissions to temp file
+2026-02-04T19:53:36.335Z [DEBUG] Renaming ~/.claude-opr/.claude.json.tmp.154841.1770234816335 to ~/.claude-opr/.claude.json
+2026-02-04T19:53:36.335Z [DEBUG] File ~/.claude-opr/.claude.json written atomically
+2026-02-04T19:53:36.347Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-02-04T19:53:36.347Z [DEBUG] Found 0 hook matchers in settings
+2026-02-04T19:53:36.347Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-04T19:53:36.720Z [ERROR] Error: Error: 1P event logging: 32 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:53:36.720Z [ERROR] Error: Error: {"stack":"Error: Failed to export 32 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 32 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:53:38.915Z [DEBUG] Creating shell snapshot for bash (/bin/bash)
+2026-02-04T19:53:38.915Z [DEBUG] Looking for shell config file: /home/deploy/.bashrc
+2026-02-04T19:53:38.915Z [DEBUG] Snapshots directory: ~/.claude-opr/shell-snapshots
+2026-02-04T19:53:38.916Z [DEBUG] Creating snapshot at: ~/.claude-opr/shell-snapshots/snapshot-bash-1770234818915-2s1e6e.sh
+2026-02-04T19:53:38.916Z [DEBUG] Shell binary exists: true
+2026-02-04T19:53:38.916Z [DEBUG] Execution timeout: 10000ms
+2026-02-04T19:53:38.956Z [DEBUG] Shell snapshot file not found after creation: ~/.claude-opr/shell-snapshots/snapshot-bash-1770234818915-2s1e6e.sh
+2026-02-04T19:53:38.956Z [DEBUG] Checking if parent directory still exists: ~/.claude-opr/shell-snapshots
+2026-02-04T19:53:38.956Z [DEBUG] Parent directory exists: true
+2026-02-04T19:53:38.956Z [DEBUG] Directory contains 0 files
+2026-02-04T19:53:38.958Z [DEBUG] No session environment scripts found
+2026-02-04T19:53:38.976Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-04T19:53:38.977Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:38.977Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:38.977Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:38.991Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:53:38.998Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-04T19:53:38.998Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:53:38.999Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-04T19:53:39.020Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-04T19:53:39.022Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-04T19:53:39.022Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-04T19:53:39.022Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-04T19:53:39.022Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-04T19:53:39.049Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-04T19:53:39.064Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:39.064Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:39.064Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:39.639Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:53:39.645Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:53:39.645Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:53:39.736Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:53:42.394Z [ERROR] Error: Error: 1P event logging: 33 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:53:42.394Z [ERROR] Error: Error: {"stack":"Error: Failed to export 33 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 33 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:53:42.561Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:53:43.323Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-04T19:53:43.337Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-04T19:53:43.337Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:53:43.337Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-04T19:53:43.358Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-04T19:53:43.394Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-04T19:53:43.395Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-04T19:53:43.395Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-04T19:53:43.395Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-04T19:53:43.395Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:43.395Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:43.395Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:43.395Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:43.396Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:43.396Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:43.396Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:43.396Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:43.396Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:43.397Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:43.397Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:43.397Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:44.711Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:53:45.091Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:53:46.508Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:53:48.707Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:53:48.787Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "test:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-02-04T19:53:48.807Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-02-04T19:53:48.815Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-02-04T19:53:48.815Z [DEBUG] Found 0 hook matchers in settings
+2026-02-04T19:53:48.815Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-04T19:53:48.823Z [ERROR] Error: Error: 1P event logging: 35 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:53:48.823Z [ERROR] Error: Error: {"stack":"Error: Failed to export 35 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 35 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:53:50.729Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-04T19:53:50.730Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:50.730Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:50.730Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:50.771Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-04T19:53:50.771Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:53:50.771Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-04T19:53:50.786Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-04T19:53:50.788Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-04T19:53:50.788Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-04T19:53:50.788Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-04T19:53:50.788Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-04T19:53:50.818Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-04T19:53:50.829Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:53:50.839Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:50.839Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:50.839Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:51.562Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:53:51.562Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:53:51.649Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:53:51.655Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:53:53.874Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:53:54.576Z [ERROR] Error: Error: 1P event logging: 33 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:53:54.577Z [ERROR] Error: Error: {"stack":"Error: Failed to export 33 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 33 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:53:55.590Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-04T19:53:55.606Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-04T19:53:55.606Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:53:55.606Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-04T19:53:55.623Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-04T19:53:55.675Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-02-04T19:53:55.682Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-02-04T19:53:55.682Z [DEBUG] Found 0 hook matchers in settings
+2026-02-04T19:53:55.682Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-04T19:53:59.311Z [DEBUG] Full reset (shrink->below): prevHeight=48, nextHeight=40, viewport=41
+2026-02-04T19:53:59.424Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-04T19:53:59.424Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:59.424Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:59.425Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:53:59.455Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-04T19:53:59.455Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:53:59.455Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-04T19:53:59.467Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-04T19:53:59.469Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-04T19:53:59.469Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-04T19:53:59.469Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-04T19:53:59.469Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-04T19:53:59.509Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-04T19:53:59.517Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:53:59.524Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:53:59.524Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:53:59.525Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:54:00.164Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:54:00.164Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:54:00.255Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:54:00.525Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:54:01.545Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:54:01.598Z [ERROR] Error: Error: 1P event logging: 38 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:54:01.598Z [ERROR] Error: Error: {"stack":"Error: Failed to export 38 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 38 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:54:04.712Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-04T19:54:04.736Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-04T19:54:04.736Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:54:04.736Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-04T19:54:04.753Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-04T19:54:04.799Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addDirectories",
+    "directories": [
+      "/home/deploy/src/wolfcal/scripts/ralph"
+    ],
+    "destination": "session"
+  },
+  {
+    "type": "setMode",
+    "mode": "acceptEdits",
+    "destination": "session"
+  }
+]
+2026-02-04T19:54:04.831Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-02-04T19:54:04.840Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-02-04T19:54:04.840Z [DEBUG] Found 0 hook matchers in settings
+2026-02-04T19:54:04.840Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-04T19:54:04.875Z [DEBUG] High write ratio: blit=1581, write=1751 (52.6% writes), screen=67x93
+2026-02-04T19:54:07.410Z [ERROR] Error: Error: 1P event logging: 11 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:54:07.410Z [ERROR] Error: Error: {"stack":"Error: Failed to export 11 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 11 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:54:10.252Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: Bash
+2026-02-04T19:54:10.252Z [DEBUG] Found 0 hook matchers in settings
+2026-02-04T19:54:10.252Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-04T19:54:10.266Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-04T19:54:10.266Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-04T19:54:10.266Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-04T19:54:10.266Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-04T19:54:10.308Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-04T19:54:10.322Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:54:10.322Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:54:10.322Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:54:10.332Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:54:10.969Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:54:10.969Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:54:11.072Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:54:12.702Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:54:13.753Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-04T19:54:13.766Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-04T19:54:13.766Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:54:13.766Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-04T19:54:13.792Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-04T19:54:13.842Z [DEBUG] Permission suggestions for Bash: []
+2026-02-04T19:54:13.869Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-02-04T19:54:13.883Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-02-04T19:54:13.883Z [DEBUG] Found 0 hook matchers in settings
+2026-02-04T19:54:13.883Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-04T19:54:16.094Z [ERROR] Error: Error: 1P event logging: 25 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:54:16.094Z [ERROR] Error: Error: {"stack":"Error: Failed to export 25 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 25 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:54:17.528Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: Bash
+2026-02-04T19:54:17.528Z [DEBUG] Found 0 hook matchers in settings
+2026-02-04T19:54:17.528Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-04T19:54:17.540Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-04T19:54:17.540Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-04T19:54:17.540Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-04T19:54:17.540Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-04T19:54:17.578Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-04T19:54:17.581Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:54:17.593Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:54:17.593Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:54:17.593Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:54:18.318Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:54:18.319Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:54:18.407Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:54:20.060Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:54:20.729Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-04T19:54:20.737Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-04T19:54:20.737Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:54:20.737Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-04T19:54:20.756Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-04T19:54:20.793Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Read",
+        "ruleContent": "//home/deploy/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/**"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "session"
+  }
+]
+2026-02-04T19:54:20.818Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-02-04T19:54:20.831Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-02-04T19:54:20.831Z [DEBUG] Found 0 hook matchers in settings
+2026-02-04T19:54:20.831Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-04T19:54:23.195Z [ERROR] Error: Error: 1P event logging: 25 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:54:23.195Z [ERROR] Error: Error: {"stack":"Error: Failed to export 25 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 25 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:54:23.635Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-04T19:54:23.635Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:54:23.635Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:54:23.635Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:54:23.668Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-04T19:54:23.668Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:54:23.668Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-04T19:54:23.680Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-04T19:54:23.683Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-04T19:54:23.683Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-04T19:54:23.683Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-04T19:54:23.683Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-04T19:54:23.721Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-04T19:54:23.743Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:54:23.743Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:54:23.743Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:54:23.759Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:54:24.410Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:54:24.410Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:54:24.498Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:54:25.287Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:54:26.181Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:54:27.627Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-04T19:54:27.640Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-04T19:54:27.640Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:54:27.640Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-04T19:54:27.658Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-04T19:54:27.705Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Read",
+        "ruleContent": "//home/deploy/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.17.0/skills/**"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "session"
+  }
+]
+2026-02-04T19:54:27.735Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-02-04T19:54:27.742Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-02-04T19:54:27.742Z [DEBUG] Found 0 hook matchers in settings
+2026-02-04T19:54:27.742Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-04T19:54:29.322Z [ERROR] Error: Error: 1P event logging: 36 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:54:29.322Z [ERROR] Error: Error: {"stack":"Error: Failed to export 36 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 36 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:54:30.464Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-04T19:54:30.465Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:54:30.465Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:54:30.465Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:54:30.500Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-02-04T19:54:30.500Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:54:30.500Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-04T19:54:30.513Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-04T19:54:30.515Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-04T19:54:30.515Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-04T19:54:30.515Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-04T19:54:30.515Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-04T19:54:30.553Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-04T19:54:30.575Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:54:30.575Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:54:30.575Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:54:30.584Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:54:31.261Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:54:31.261Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:54:31.348Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:54:32.337Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:54:33.064Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:54:33.885Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-02-04T19:54:33.900Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-02-04T19:54:33.900Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:54:33.900Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-02-04T19:54:33.915Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-02-04T19:54:33.954Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Read",
+        "ruleContent": "//home/deploy/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.17.0/skills/flow-next-ralph-init/**"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "session"
+  }
+]
+2026-02-04T19:54:33.990Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-02-04T19:54:33.999Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-02-04T19:54:33.999Z [DEBUG] Found 0 hook matchers in settings
+2026-02-04T19:54:33.999Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-02-04T19:54:36.114Z [ERROR] Error: Error: 1P event logging: 36 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:54:36.114Z [ERROR] Error: Error: {"stack":"Error: Failed to export 36 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 36 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:54:37.917Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:54:38.497Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:54:38.497Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:54:38.584Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:54:43.633Z [ERROR] Error: Error: 1P event logging: 7 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:54:43.634Z [ERROR] Error: Error: {"stack":"Error: Failed to export 7 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 7 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:54:44.116Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:54:44.705Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:54:44.705Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:54:44.792Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:54:47.243Z [DEBUG] Install counts cache is stale (>24h old)
+2026-02-04T19:54:47.243Z [DEBUG] Fetching install counts from https://raw.githubusercontent.com/anthropics/claude-plugins-official/refs/heads/stats/stats/plugin-installs.json
+2026-02-04T19:54:47.448Z [DEBUG] Install counts cache saved successfully
+2026-02-04T19:54:47.453Z [DEBUG] FileHistory: Making snapshot for message 93160158-82d2-4866-a8b9-8d5a76872033
+2026-02-04T19:54:47.454Z [DEBUG] FileHistory: Added snapshot for 93160158-82d2-4866-a8b9-8d5a76872033, tracking 0 files
+2026-02-04T19:54:47.586Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:54:48.169Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:54:48.169Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:54:48.255Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:54:50.244Z [ERROR] Error: Error: 1P event logging: 5 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:54:50.244Z [ERROR] Error: Error: {"stack":"Error: Failed to export 5 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 5 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:54:52.414Z [DEBUG] Using cached install counts
+2026-02-04T19:54:57.834Z [ERROR] Error: Error: 1P event logging: 1 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:54:57.834Z [ERROR] Error: Error: {"stack":"Error: Failed to export 1 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 1 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:55:01.860Z [DEBUG] Failed to read raw marketplace.json: Error: ENOENT: no such file or directory, open '~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/.claude-plugin/marketplace.json'
+2026-02-04T19:55:04.027Z [DEBUG] Using manifest version for flow-next@gmickel-claude-marketplace: 0.20.7
+2026-02-04T19:55:04.044Z [DEBUG] FileHistory: Making snapshot for message 5376382a-4bc0-40b2-8964-6148742623e2
+2026-02-04T19:55:04.044Z [DEBUG] FileHistory: Added snapshot for 5376382a-4bc0-40b2-8964-6148742623e2, tracking 0 files
+2026-02-04T19:55:04.180Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:55:04.778Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:55:04.778Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:55:04.862Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:55:09.563Z [ERROR] Error: Error: 1P event logging: 3 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:55:09.563Z [ERROR] Error: Error: {"stack":"Error: Failed to export 3 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 3 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:55:09.994Z [DEBUG] Using cached install counts
+2026-02-04T19:55:15.466Z [DEBUG] Failed to read raw marketplace.json: Error: ENOENT: no such file or directory, open '~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/.claude-plugin/marketplace.json'
+2026-02-04T19:55:15.500Z [ERROR] Error: Error: 1P event logging: 1 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:55:15.500Z [ERROR] Error: Error: {"stack":"Error: Failed to export 1 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 1 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:55:31.809Z [DEBUG] Writing to temp file: /home/deploy/src/wolfcal/.claude/settings.local.json.tmp.154841.1770234931809
+2026-02-04T19:55:31.809Z [DEBUG] Preserving file permissions: 100664
+2026-02-04T19:55:31.810Z [DEBUG] Temp file written successfully, size: 167 bytes
+2026-02-04T19:55:31.810Z [DEBUG] Applied original permissions to temp file
+2026-02-04T19:55:31.810Z [DEBUG] Renaming /home/deploy/src/wolfcal/.claude/settings.local.json.tmp.154841.1770234931809 to /home/deploy/src/wolfcal/.claude/settings.local.json
+2026-02-04T19:55:31.811Z [DEBUG] File /home/deploy/src/wolfcal/.claude/settings.local.json written atomically
+2026-02-04T19:55:31.818Z [DEBUG] Saved 2 installed plugins to ~/.claude-opr/plugins/installed_plugins.json
+2026-02-04T19:55:31.818Z [DEBUG] Removed installation for flow-next@gmickel-claude-marketplace at scope local
+2026-02-04T19:55:31.821Z [DEBUG] Loading plugin flow-next from source: "./plugins/flow-next"
+2026-02-04T19:55:31.821Z [DEBUG] Using manifest version for flow-next@gmickel-claude-marketplace: 0.20.7
+2026-02-04T19:55:31.821Z [DEBUG] Plugin flow-next@gmickel-claude-marketplace version 0.20.7 already cached at ~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7
+2026-02-04T19:55:31.821Z [DEBUG] Copied local plugin flow-next to versioned cache: ~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7
+2026-02-04T19:55:31.822Z [DEBUG] Loaded hooks from standard location for plugin flow-next: ~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/hooks/hooks.json
+2026-02-04T19:55:31.829Z [DEBUG] Loading plugin feature-dev from source: "./plugins/feature-dev"
+2026-02-04T19:55:31.839Z [DEBUG] FileHistory: Making snapshot for message 84ca51aa-efa2-4de8-878a-c963a6e3a20c
+2026-02-04T19:55:31.839Z [DEBUG] FileHistory: Added snapshot for 84ca51aa-efa2-4de8-878a-c963a6e3a20c, tracking 0 files
+2026-02-04T19:55:31.855Z [DEBUG] Using git SHA for feature-dev@claude-plugins-official: 27d2b86d72da
+2026-02-04T19:55:31.855Z [DEBUG] Plugin feature-dev@claude-plugins-official version 27d2b86d72da already cached at ~/.claude-opr/plugins/cache/claude-plugins-official/feature-dev/27d2b86d72da
+2026-02-04T19:55:31.855Z [DEBUG] Copied local plugin feature-dev to versioned cache: ~/.claude-opr/plugins/cache/claude-plugins-official/feature-dev/27d2b86d72da
+2026-02-04T19:55:31.857Z [DEBUG] Loading plugin superpowers from source: {"source":"url","url":"https://github.com/obra/superpowers.git"}
+2026-02-04T19:55:31.857Z [DEBUG] No version found for superpowers@claude-plugins-official, using 'unknown'
+2026-02-04T19:55:31.857Z [DEBUG] Caching plugin from source: {"source":"url","url":"https://github.com/obra/superpowers.git"} to temporary path ~/.claude-opr/plugins/cache/temp_git_1770234931857_gk3grg
+2026-02-04T19:55:32.031Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:55:32.690Z [DEBUG] Cloned repository from https://github.com/obra/superpowers.git to ~/.claude-opr/plugins/cache/temp_git_1770234931857_gk3grg
+2026-02-04T19:55:32.690Z [DEBUG] Successfully cached plugin superpowers to ~/.claude-opr/plugins/cache/superpowers
+2026-02-04T19:55:32.690Z [DEBUG] Using manifest version for superpowers@claude-plugins-official: 4.1.1
+2026-02-04T19:55:32.690Z [DEBUG] Plugin superpowers@claude-plugins-official version 4.1.1 already cached at ~/.claude-opr/plugins/cache/claude-plugins-official/superpowers/4.1.1
+2026-02-04T19:55:32.695Z [DEBUG] Loaded hooks from standard location for plugin superpowers: ~/.claude-opr/plugins/cache/claude-plugins-official/superpowers/4.1.1/hooks/hooks.json
+2026-02-04T19:55:32.695Z [DEBUG] Found 3 plugins (3 enabled, 0 disabled)
+2026-02-04T19:55:32.711Z [DEBUG] Loaded 20 agents from plugin flow-next default directory
+2026-02-04T19:55:32.713Z [DEBUG] Loaded 3 agents from plugin feature-dev default directory
+2026-02-04T19:55:32.714Z [DEBUG] Loaded 1 agents from plugin superpowers default directory
+2026-02-04T19:55:32.714Z [DEBUG] Total plugin agents loaded: 24
+2026-02-04T19:55:32.714Z [DEBUG] Loaded 11 commands from plugin flow-next default directory
+2026-02-04T19:55:32.715Z [DEBUG] Loaded 1 commands from plugin feature-dev default directory
+2026-02-04T19:55:32.715Z [DEBUG] Loaded 3 commands from plugin superpowers default directory
+2026-02-04T19:55:32.715Z [DEBUG] Total plugin commands loaded: 15
+2026-02-04T19:55:32.727Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:55:32.727Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:55:32.823Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:55:36.001Z [DEBUG] Getting matching hook commands for SessionEnd with query: prompt_input_exit
+2026-02-04T19:55:36.001Z [DEBUG] Found 0 hook matchers in settings
+2026-02-04T19:55:36.001Z [DEBUG] Matched 0 unique hooks for query "prompt_input_exit" (0 before deduplication)
+2026-02-04T19:55:36.004Z [DEBUG] LSP server manager shut down successfully
+2026-02-04T19:55:36.006Z [DEBUG] Metrics opt-out check failed: No API key available
+2026-02-04T19:55:36.006Z [DEBUG] Metrics check failed, defaulting to disabled
+2026-02-04T19:55:36.006Z [DEBUG] Metrics export disabled by organization setting
+2026-02-04T19:55:36.006Z [DEBUG] BigQuery metrics exporter flush complete
+2026-02-04T19:55:36.006Z [DEBUG] BigQuery metrics exporter flush complete
+2026-02-04T19:55:36.006Z [DEBUG] BigQuery metrics exporter shutdown complete
+2026-02-04T19:55:36.549Z [ERROR] Error: Error: 1P event logging: 3 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:55:36.549Z [ERROR] Error: Error: {"stack":"Error: Failed to export 3 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 3 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245

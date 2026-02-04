@@ -11,10 +11,17 @@ type View = 'calendar' | 'settings'
 
 function App() {
   const [currentView, setCurrentView] = useState<View>('calendar')
-  const { isSyncing } = useSyncScheduler()
+  const { isSyncing, registerOnSyncComplete } = useSyncScheduler()
   const [manualSyncing, setManualSyncing] = useState(false)
   const [refreshTrigger, setRefreshTrigger] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  // Register callback for auto-sync completion
+  useEffect(() => {
+    registerOnSyncComplete(() => {
+      setRefreshTrigger(prev => prev + 1)
+    })
+  }, [registerOnSyncComplete])
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const [showImportModal, setShowImportModal] = useState(false)
   const [encryptedConfigData, setEncryptedConfigData] = useState('')

@@ -258,8 +258,8 @@ export default function ExportConfiguration({ className = '' }: ExportConfigurat
               <div className="qr-code-container">
                 <QRCodeSVG
                   value={exportUrl}
-                  size={200}
-                  level="L"
+                  size={300}
+                  level="M"
                   bgColor="#ffffff"
                   fgColor="#000000"
                   includeMargin={true}

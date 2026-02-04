@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-04T19:08:16.841281Z",
+  "depends_on": [],
+  "epic": "fn-12-zlg",
+  "id": "fn-12-zlg.1",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-12-zlg.1.md",
+  "status": "todo",
+  "title": "Write regression tests for BUG-1: Event sync to destination",
+  "updated_at": "2026-02-04T19:12:24.603320Z"
+}

@@ -1,0 +1,317 @@
+# fn-12-zlg.5 Write regression tests for BUG-5: UI update after sync
+
+## Description
+
+BUG-5: The UI shows stale data after sync operations complete. Users must manually reload the page or navigate away and back to see updated events.
+
+This task involves writing comprehensive regression tests that:
+1. Reproduce the bug - UI doesn't refresh after sync completes
+2. Verify the correct behavior - UI should automatically refresh after sync
+3. Test the refreshTrigger mechanism between App and Calendar components
+4. Test that SyncStatusBar updates after sync operations
+
+The tests will initially FAIL until the bug is fixed in task fn-12-zlg.11.
+
+## Files to Investigate
+
+- `src/App.tsx:16,90` - `refreshTrigger` state and `setRefreshTrigger` calls
+- `src/App.tsx:88-91` - `onSyncComplete` callback
+- `src/components/Calendar.tsx:22,73-81` - `refreshTrigger` prop and useEffect
+- `src/hooks/useEvents.ts:153-158` - `refresh` function
+- `src/components/SyncStatusBar.tsx:23-68` - Polling intervals for pending count and sync time
+- `src/lib/sync/scheduler.ts` - SyncScheduler class that should trigger UI updates
+
+## Bug Analysis
+
+### Current Behavior (Buggy)
+After sync completes:
+1. SyncScheduler runs sync but doesn't notify App component
+2. `refreshTrigger` in App.tsx is NOT incremented
+3. Calendar component doesn't re-render with new data
+4. SyncStatusBar polling may show updated data but Calendar doesn't refresh
+5. User must manually reload page to see changes
+
+### Expected Behavior (After Fix)
+After sync completes:
+1. SyncScheduler should trigger `onSyncComplete` callback
+2. App component should call `setRefreshTrigger(prev => prev + 1)`
+3. Calendar component's useEffect should detect `refreshTrigger` change
+4. Calendar should call `refresh()` to load new events from IndexedDB
+5. UI updates automatically without manual page reload
+
+## Root Cause Possibilities
+
+1. **SyncScheduler doesn't accept onSyncComplete callback**
+   - `SyncScheduler.performSync()` runs sync but has no way to notify completion
+
+2. **App.tsx doesn't pass callback to SyncScheduler**
+   - `useSyncScheduler` hook may not expose completion callback
+
+3. **Missing useEffect dependency**
+   - Calendar component's useEffect may not trigger on `refreshTrigger` change
+
+4. **useEvents refresh not working**
+   - The `refresh` function may not properly reload events from IndexedDB
+
+## Test Scenarios
+
+### Test Suite: `src/test/components/bugs-ui-state.test.tsx`
+
+#### Test 1: Calendar Refreshes After Manual Sync Completes
+**Setup**:
+- Calendar is displayed with events
+- User clicks "Refresh" button in RefreshButton
+- Sync completes successfully
+
+**Action**: Complete manual sync
+
+**Expected**:
+- `setRefreshTrigger` is called with incremented value
+- Calendar's `useEffect` detects `refreshTrigger` change
+- `refresh()` function is called with current date range
+- Events are reloaded from IndexedDB
+- New/updated events appear in FullCalendar
+
+#### Test 2: Calendar Refreshes After Auto Sync Completes
+**Setup**:
+- Auto-sync is enabled
+- Scheduler triggers periodic sync
+- Sync completes successfully
+
+**Action**: Auto-sync completes
+
+**Expected**:
+- `onSyncComplete` callback is invoked
+- `setRefreshTrigger` is called
+- Calendar refreshes automatically
+- User sees updated events without manual action
+
+#### Test 3: SyncStatusBar Updates After Sync
+**Setup**:
+- SyncStatusBar is displayed
+- Last sync time is stale
+- Sync completes
+
+**Action**: Sync completes
+
+**Expected**:
+- `lastSyncTime` state updates within 10 seconds (polling interval)
+- Status text shows "Last synced just now"
+- Pending count decrements if queue was processed
+
+#### Test 4: Event Changes Are Visible After Sync
+**Setup**:
+- Event exists in IndexedDB with `summary: "Old Title"`
+- Sync updates event to `summary: "New Title"`
+- UI shows "Old Title" before sync
+
+**Action**: Sync completes
+
+**Expected**:
+- Calendar re-renders
+- Event displays "New Title"
+- No page reload required
+
+#### Test 5: New Events Appear After Sync
+**Setup**:
+- Calendar shows 3 events
+- Sync adds 2 new events to IndexedDB
+
+**Action**: Sync completes
+
+**Expected**:
+- Calendar re-renders
+- 5 events are now displayed
+- New events are visible in current view
+
+#### Test 6: Deleted Events Disappear After Sync
+**Setup**:
+- Calendar shows 5 events
+- Sync removes 2 events from IndexedDB (cancelled events)
+
+**Action**: Sync completes
+
+**Expected**:
+- Calendar re-renders
+- 3 events remain displayed
+- Deleted events are no longer visible
+
+#### Test 7: PendingSync Flag Clears After Sync
+**Setup**:
+- Event shows gray color (pendingSync: true)
+- Sync completes and event is synced to Google
+
+**Action**: Sync completes
+
+**Expected**:
+- Event's `pendingSync` flag is false
+- Gray color is removed
+- Event displays with normal account color
+
+## Test Implementation Notes
+
+### Test Structure
+
+```typescript
+describe('BUG-5: UI update after sync', () => {
+  describe('Manual sync completion', () => {
+    it('should trigger refresh when manual sync completes')
+    it('should reload events from IndexedDB after refreshTrigger changes')
+    it('should update FullCalendar display with new data')
+  })
+
+  describe('Auto sync completion', () => {
+    it('should trigger refresh when auto sync completes')
+    it('should notify App component via onSyncComplete callback')
+  })
+
+  describe('Event visibility after sync', () => {
+    it('should show updated event titles after sync')
+    it('should show new events after sync')
+    it('should remove deleted events after sync')
+    it('should clear pendingSync styling after successful sync')
+  })
+
+  describe('SyncStatusBar updates', () => {
+    it('should update lastSyncTime within polling interval')
+    it('should update pending count after queue processing')
+  })
+})
+```
+
+### Mock Implementation
+
+```typescript
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
+
+// Mock useEvents hook
+vi.mock('../hooks/useEvents', () => ({
+  useEvents: vi.fn(() => ({
+    events: mockEvents,
+    calendarColors: new Map(),
+    loading: false,
+    error: null,
+    refresh: vi.fn().mockResolvedValue(undefined),
+  })),
+}));
+
+// Mock useSyncScheduler hook
+vi.mock('../hooks/useSyncScheduler', () => ({
+  useSyncScheduler: vi.fn(() => ({
+    isSyncing: false,
+    sync: vi.fn().mockResolvedValue(undefined),
+    scheduleSync: vi.fn(),
+  })),
+}));
+
+test('Calendar refreshes after sync completes', async () => {
+  const mockRefresh = vi.fn().mockResolvedValue(undefined);
+  vi.mocked(useEvents).mockReturnValue({
+    events: [],
+    calendarColors: new Map(),
+    loading: false,
+    error: null,
+    refresh: mockRefresh,
+  });
+
+  render(<Calendar refreshTrigger={0} />);
+
+  // Simulate sync completion
+  render(<Calendar refreshTrigger={1} />);
+
+  await waitFor(() => {
+    expect(mockRefresh).toHaveBeenCalledWith(
+      expect.objectContaining({
+        start: expect.any(Date),
+        end: expect.any(Date),
+      })
+    );
+  });
+});
+```
+
+### Testing RefreshTrigger Flow
+
+```typescript
+test('App component increments refreshTrigger on sync complete', async () => {
+  const setRefreshTrigger = vi.fn();
+  vi.mocked(useState).mockImplementation((initial) => [
+    initial,
+    setRefreshTrigger,
+  ]);
+
+  render(<App />);
+
+  // Trigger sync completion
+  const syncCompleteButton = screen.getByText('Sync Complete');
+  await userEvent.click(syncCompleteButton);
+
+  expect(setRefreshTrigger).toHaveBeenCalled();
+  const calls = setRefreshTrigger.mock.calls;
+  expect(calls[0][0]).toEqual(expect.any(Function)); // prev => prev + 1
+});
+```
+
+### Testing SyncStatusBar Polling
+
+```typescript
+test('SyncStatusBar updates lastSyncTime after sync', async () => {
+  vi.useFakeTimers();
+
+  const { rerender } = render(<SyncStatusBar isSyncing={true} />);
+
+  // Sync completes
+  rerender(<SyncStatusBar isSyncing={false} />);
+
+  // Fast-forward past polling interval
+  vi.advanceTimersByTime(10000);
+
+  await waitFor(() => {
+    expect(screen.getByText(/Last synced just now/)).toBeInTheDocument();
+  });
+
+  vi.useRealTimers();
+});
+```
+
+## Quick commands
+
+```bash
+# Create test file
+touch src/test/components/bugs-ui-state.test.tsx
+
+# Run the test suite (will fail initially)
+npm test -- src/test/components/bugs-ui-state.test.tsx
+
+# Run with coverage
+npm test -- src/test/components/bugs-ui-state.test.tsx --coverage
+```
+
+## Acceptance
+
+- [ ] Test file `src/test/components/bugs-ui-state.test.tsx` created
+- [ ] All 7 test scenarios implemented
+- [ ] Tests FAIL when run (reproducing the bug)
+- [ ] Tests verify refreshTrigger mechanism works
+- [ ] Tests verify Calendar refreshes after sync
+- [ ] Tests verify SyncStatusBar updates
+- [ ] Code follows existing test patterns
+
+## Done summary
+
+Write regression tests for BUG-5 (UI update after sync) covering:
+- Calendar refreshes after manual sync completes
+- Calendar refreshes after auto sync completes
+- Event changes are visible without page reload
+- New events appear, deleted events disappear
+- PendingSync flag clears after successful sync
+- SyncStatusBar updates within polling intervals
+- refreshTrigger properly triggers useEffect in Calendar
+
+## Evidence
+
+- Commits:
+- Tests: `src/test/components/bugs-ui-state.test.tsx`
+- PRs:

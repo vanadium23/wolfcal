@@ -1,16 +1,29 @@
 {
-  "numStartups": 7,
+  "numStartups": 15,
   "tipsHistory": {
-    "new-user-warmup": 3,
-    "plan-mode-for-complex-tasks": 3,
-    "terminal-setup": 3,
+    "new-user-warmup": 8,
+    "plan-mode-for-complex-tasks": 13,
+    "terminal-setup": 13,
     "memory-command": 3,
     "theme-command": 4,
     "colorterm-truecolor": 4,
     "status-line": 6,
-    "prompt-queue": 6,
+    "prompt-queue": 12,
     "enter-to-steer-in-relatime": 6,
-    "todo-list": 6
+    "todo-list": 6,
+    "ide-upsell-external-terminal": 14,
+    "install-github-app": 7,
+    "install-slack-app": 7,
+    "double-esc-code-restore": 7,
+    "continue": 7,
+    "shift-tab": 7,
+    "image-paste": 7,
+    "custom-agents": 7,
+    "web-app": 7,
+    "mobile-app": 8,
+    "permissions": 12,
+    "rename-conversation": 12,
+    "custom-commands": 12
   },
   "cachedGrowthBookFeatures": {
     "tengu_1p_event_batch_config": {
@@ -45,7 +58,8 @@
     "enhanced_telemetry_beta": false,
     "tengu_streaming_tool_execution2": false,
     "tengu_session_memory": false,
-    "tengu_bash_haiku_prefetch": true
+    "tengu_bash_haiku_prefetch": true,
+    "tengu_plank_river_frost": "user_intent"
   },
   "userID": "68ed0adae18bd7fd3113e005360842a682d86fbeec1e08993b0602f9d23a9b2f",
   "firstStartTime": "2026-02-02T20:07:01.617Z",
@@ -83,20 +97,37 @@
         "sync/engine.ts"
       ],
       "exampleFilesGeneratedAt": 1770062829872,
-      "lastCost": 0,
-      "lastAPIDuration": 0,
-      "lastAPIDurationWithoutRetries": 0,
-      "lastToolDuration": 0,
-      "lastDuration": 362902,
-      "lastLinesAdded": 0,
-      "lastLinesRemoved": 0,
-      "lastTotalInputTokens": 0,
-      "lastTotalOutputTokens": 0,
+      "lastCost": 1.2926867999999998,
+      "lastAPIDuration": 276969,
+      "lastAPIDurationWithoutRetries": 276861,
+      "lastToolDuration": 193353,
+      "lastDuration": 1837251,
+      "lastLinesAdded": 470,
+      "lastLinesRemoved": 8,
+      "lastTotalInputTokens": 101377,
+      "lastTotalOutputTokens": 14471,
       "lastTotalCacheCreationInputTokens": 0,
-      "lastTotalCacheReadInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 2571636,
       "lastTotalWebSearchRequests": 0,
-      "lastModelUsage": {},
-      "lastSessionId": "b1ef8e35-dd88-41f6-b059-1a0c31172d81",
+      "lastModelUsage": {
+        "glm-4.5-air": {
+          "inputTokens": 19902,
+          "outputTokens": 1619,
+          "cacheReadInputTokens": 42612,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 0,
+          "costUSD": 0.09677459999999999
+        },
+        "glm-4.7": {
+          "inputTokens": 81475,
+          "outputTokens": 12852,
+          "cacheReadInputTokens": 2529024,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 0,
+          "costUSD": 1.1959122
+        }
+      },
+      "lastSessionId": "0ece0940-c4ae-408a-8d86-b5b14590946b",
       "hasCompletedProjectOnboarding": true
     }
   },
@@ -111,12 +142,40 @@
   "bypassPermissionsModeAccepted": true,
   "skillUsage": {
     "flow-next:work": {
-      "usageCount": 1,
-      "lastUsedAt": 1770094900521
+      "usageCount": 5,
+      "lastUsedAt": 1770233744882
     },
     "flow-next:flow-next-work": {
+      "usageCount": 5,
+      "lastUsedAt": 1770233747892
+    },
+    "q1-hypothesize": {
+      "usageCount": 2,
+      "lastUsedAt": 1770231115230
+    },
+    "q2-verify": {
       "usageCount": 1,
-      "lastUsedAt": 1770094905350
+      "lastUsedAt": 1770231237723
+    },
+    "flow-next:interview": {
+      "usageCount": 2,
+      "lastUsedAt": 1770231876067
+    },
+    "flow-next:plan": {
+      "usageCount": 10,
+      "lastUsedAt": 1770234188252
+    },
+    "flow-next:ralph-init": {
+      "usageCount": 2,
+      "lastUsedAt": 1770232947781
+    },
+    "flow-next:flow-next-worktree-kit": {
+      "usageCount": 1,
+      "lastUsedAt": 1770233575945
+    },
+    "flow-next:flow-next-plan": {
+      "usageCount": 1,
+      "lastUsedAt": 1770234191992
     }
   }
 }

@@ -48,6 +48,11 @@ function getSyncSettings(): SyncSettings {
 }
 
 /**
+ * Sync callback type
+ */
+type SyncCallback = () => void | Promise<void>;
+
+/**
  * SyncScheduler class
  *
  * Manages automatic periodic syncing with configurable intervals.
@@ -56,6 +61,7 @@ export class SyncScheduler {
   private intervalId: number | null = null;
   private isSyncing = false;
   private isOnline: boolean = navigator.onLine;
+  private onSyncCompleteCallback: SyncCallback | null = null;
 
   /**
    * Perform a full sync: process queue + sync all accounts
@@ -99,6 +105,15 @@ export class SyncScheduler {
       console.error('Scheduled sync error:', error);
     } finally {
       this.isSyncing = false;
+    }
+
+    // Trigger callback after sync completes (success or error)
+    if (this.onSyncCompleteCallback) {
+      try {
+        await this.onSyncCompleteCallback();
+      } catch (error) {
+        console.error('Error in sync complete callback:', error);
+      }
     }
   }
 
@@ -183,5 +198,12 @@ export class SyncScheduler {
       isSyncing: this.isSyncing,
       isOnline: this.isOnline,
     };
+  }
+
+  /**
+   * Register a callback to be invoked after each sync completes
+   */
+  onSyncComplete(callback: SyncCallback | null): void {
+    this.onSyncCompleteCallback = callback;
   }
 }

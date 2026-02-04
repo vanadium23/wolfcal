@@ -23,6 +23,8 @@ import {
   getAllTombstones,
   deleteTombstone,
   addErrorLog,
+  getPendingChangesByEvent,
+  deletePendingChange,
 } from '../db';
 import type { CalendarEvent, SyncMetadata, ErrorLog } from '../db/types';
 import type { SyncResult, SyncWindow, AccountSyncResult } from './types';
@@ -237,6 +239,19 @@ export class SyncEngine {
 
             // Check if event is cancelled (deleted)
             if (googleEvent.status === 'cancelled') {
+              // Clean up pending changes for this event
+              const pendingChanges = await getPendingChangesByEvent(googleEvent.id);
+              for (const pendingChange of pendingChanges) {
+                await deletePendingChange(pendingChange.id);
+              }
+
+              // Clean up tombstone if exists
+              const tombstone = await getTombstone(googleEvent.id);
+              if (tombstone) {
+                await deleteTombstone(googleEvent.id);
+              }
+
+              // Delete the event
               await deleteEvent(googleEvent.id);
               result.eventsDeleted++;
               continue;
@@ -342,8 +357,23 @@ export class SyncEngine {
           for (const googleEvent of response.items) {
             syncedEventIds.add(googleEvent.id);
 
-            // Skip cancelled events
+            // Skip cancelled events after cleanup
             if (googleEvent.status === 'cancelled') {
+              // Clean up pending changes for this event
+              const pendingChanges = await getPendingChangesByEvent(googleEvent.id);
+              for (const pendingChange of pendingChanges) {
+                await deletePendingChange(pendingChange.id);
+              }
+
+              // Clean up tombstone if exists
+              const tombstone = await getTombstone(googleEvent.id);
+              if (tombstone) {
+                await deleteTombstone(googleEvent.id);
+              }
+
+              // Delete the event
+              await deleteEvent(googleEvent.id);
+              result.eventsDeleted++;
               continue;
             }
 

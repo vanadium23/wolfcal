@@ -39,6 +39,84 @@
       "gitBranch": "master",
       "projectPath": "/home/deploy/src/wolfcal",
       "isSidechain": false
+    },
+    {
+      "sessionId": "15c68864-e588-4ff8-bd87-22c02a0b74d8",
+      "fullPath": "~/.claude-opr/projects/-home-deploy-src-wolfcal/15c68864-e588-4ff8-bd87-22c02a0b74d8.jsonl",
+      "fileMtime": 1770234791033,
+      "firstPrompt": "<command-message>flow-next:plan</command-message> <command-name>/flow-next:plan</command-name> <command-args>\"export qr code does not work, let's draft to fix it. i have 2 accounts and 9 calendars. de…",
+      "summary": "Fix QR code export size limit",
+      "messageCount": 36,
+      "created": "2026-02-02T20:18:18.084Z",
+      "modified": "2026-02-03T15:23:17.956Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "4a6507b1-a9f5-415b-9826-1c69dd6f3e40",
+      "fullPath": "~/.claude-opr/projects/-home-deploy-src-wolfcal/4a6507b1-a9f5-415b-9826-1c69dd6f3e40.jsonl",
+      "fileMtime": 1770234943060,
+      "firstPrompt": "[Request interrupted by user for tool use]",
+      "summary": "Ralph Harness Setup with Flow-Next Plugin",
+      "messageCount": 14,
+      "created": "2026-02-04T19:53:10.933Z",
+      "modified": "2026-02-04T19:55:31.838Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "7a2ebe62-5180-4806-b1ef-6be3d9a4c255",
+      "fullPath": "~/.claude-opr/projects/-home-deploy-src-wolfcal/7a2ebe62-5180-4806-b1ef-6be3d9a4c255.jsonl",
+      "fileMtime": 1770234980888,
+      "firstPrompt": "No prompt",
+      "summary": "Plugin Management: Installing and Removing Flow-Next",
+      "messageCount": 6,
+      "created": "2026-02-04T19:55:40.972Z",
+      "modified": "2026-02-04T19:56:14.208Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "fd018d71-236a-4f47-8b15-361450486f4e",
+      "fullPath": "~/.claude-opr/projects/-home-deploy-src-wolfcal/fd018d71-236a-4f47-8b15-361450486f4e.jsonl",
+      "fileMtime": 1770234996584,
+      "firstPrompt": "No prompt",
+      "summary": "Flow-next plugin installation successful",
+      "messageCount": 2,
+      "created": "2026-02-04T19:56:19.562Z",
+      "modified": "2026-02-04T19:56:27.950Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "5da5ecae-6b2f-4170-b172-cc2d7ca0fc26",
+      "fullPath": "~/.claude-opr/projects/-home-deploy-src-wolfcal/5da5ecae-6b2f-4170-b172-cc2d7ca0fc26.jsonl",
+      "fileMtime": 1770235051237,
+      "firstPrompt": "No prompt",
+      "summary": "Ralph Harness Init Setup and Configuration",
+      "messageCount": 5,
+      "created": "2026-02-04T19:56:35.572Z",
+      "modified": "2026-02-04T19:57:03.870Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "49f4ae59-b22a-4246-9967-eb2ead3ca336",
+      "fullPath": "~/.claude-opr/projects/-home-deploy-src-wolfcal/49f4ae59-b22a-4246-9967-eb2ead3ca336.jsonl",
+      "fileMtime": 1770235280230,
+      "firstPrompt": "No prompt",
+      "summary": "Ralph autonomous harness initialization with Codex backend",
+      "messageCount": 12,
+      "created": "2026-02-04T19:57:28.912Z",
+      "modified": "2026-02-04T19:59:40.557Z",
+      "gitBranch": "master",
+      "projectPath": "/home/deploy/src/wolfcal",
+      "isSidechain": false
     }
   ]
 }

@@ -1,0 +1,14 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-04T19:08:22.588398Z",
+  "depends_on": [],
+  "epic": "fn-12-zlg",
+  "id": "fn-12-zlg.6",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-12-zlg.6.md",
+  "status": "todo",
+  "title": "Write regression tests for BUG-6: Calendar list display",
+  "updated_at": "2026-02-04T19:20:09.385841Z"
+}

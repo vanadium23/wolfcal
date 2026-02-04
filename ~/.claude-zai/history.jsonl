@@ -5,3 +5,29 @@
 {"display":"/plugin marketplace add https://github.com/gmickel/gmickel-claude-marketplace","pastedContents":{},"timestamp":1770063164684,"project":"/home/deploy/src/wolfcal","sessionId":"b1ef8e35-dd88-41f6-b059-1a0c31172d81"}
 {"display":"/plugin install flow-next","pastedContents":{},"timestamp":1770063170912,"project":"/home/deploy/src/wolfcal","sessionId":"b1ef8e35-dd88-41f6-b059-1a0c31172d81"}
 {"display":"/flow-next:work fn-11-01z --branch=current --review=none","pastedContents":{},"timestamp":1770094900518,"project":"/home/deploy/src/wolfcal","sessionId":"9347b575-71c6-4e52-bb78-8a7703d31b6f"}
+{"display":"git push","pastedContents":{},"timestamp":1770097284981,"project":"/home/deploy/src/wolfcal","sessionId":"9347b575-71c6-4e52-bb78-8a7703d31b6f"}
+{"display":"check which task is completed in fn-11 and mark with flowctl","pastedContents":{},"timestamp":1770131590211,"project":"/home/deploy/src/wolfcal","sessionId":"9347b575-71c6-4e52-bb78-8a7703d31b6f"}
+{"display":"close the epic fn-11-01z","pastedContents":{},"timestamp":1770132175086,"project":"/home/deploy/src/wolfcal","sessionId":"9347b575-71c6-4e52-bb78-8a7703d31b6f"}
+{"display":"What features are missing from project?","pastedContents":{},"timestamp":1770227263074,"project":"/home/deploy/src/wolfcal","sessionId":"46ca56d7-5636-44de-9a83-725d861f119b"}
+{"display":"how to scroll converaation?","pastedContents":{},"timestamp":1770230990921,"project":"/home/deploy/src/wolfcal","sessionId":"46ca56d7-5636-44de-9a83-725d861f119b"}
+{"display":"/q1-hypothesize \"whats critical features project is missing?\"","pastedContents":{},"timestamp":1770231045644,"project":"/home/deploy/src/wolfcal","sessionId":"46ca56d7-5636-44de-9a83-725d861f119b"}
+{"display":"/q1-hypothesize \"whats critical features project is missing?\"","pastedContents":{},"timestamp":1770231115227,"project":"/home/deploy/src/wolfcal","sessionId":"cd3e5ef8-519a-468d-982b-dc93b2f54cc7"}
+{"display":"/q2-verify ","pastedContents":{},"timestamp":1770231237722,"project":"/home/deploy/src/wolfcal","sessionId":"cd3e5ef8-519a-468d-982b-dc93b2f54cc7"}
+{"display":"/flow-next:interview \"i want to create a regression suite for all bugs that is in current version, and then fix it. remember first - plan regression first, then make an detailed epic. One of bugs is when event is added it does not sync to destination. Second if event is created in calender, then deleted from google, it stays as unsync in UI. Accepting or dexline event does not do anything. Shared URL IN QR CODE DOES NOT READ BY CAMERA (low resolution)\"","pastedContents":{},"timestamp":1770231872769,"project":"/home/deploy/src/wolfcal","sessionId":"d26c04c1-abbc-4f2e-a9ca-254dba3f5906"}
+{"display":"/flow-next:plan fn-12-zlg","pastedContents":{},"timestamp":1770232217724,"project":"/home/deploy/src/wolfcal","sessionId":"d26c04c1-abbc-4f2e-a9ca-254dba3f5906"}
+{"display":"/flow-next:plan fn-12-zlg.1","pastedContents":{},"timestamp":1770232287176,"project":"/home/deploy/src/wolfcal","sessionId":"d26c04c1-abbc-4f2e-a9ca-254dba3f5906"}
+{"display":"/flow-next:plan fn-12-zlg.2","pastedContents":{},"timestamp":1770232361771,"project":"/home/deploy/src/wolfcal","sessionId":"d26c04c1-abbc-4f2e-a9ca-254dba3f5906"}
+{"display":"/flow-next:plan fn-12-zlg.3","pastedContents":{},"timestamp":1770232455962,"project":"/home/deploy/src/wolfcal","sessionId":"d26c04c1-abbc-4f2e-a9ca-254dba3f5906"}
+{"display":"/flow-next:plan fn-12-zlg.4","pastedContents":{},"timestamp":1770232536632,"project":"/home/deploy/src/wolfcal","sessionId":"d26c04c1-abbc-4f2e-a9ca-254dba3f5906"}
+{"display":"/flow-next:plan fn-12-zlg.5","pastedContents":{},"timestamp":1770232641575,"project":"/home/deploy/src/wolfcal","sessionId":"d26c04c1-abbc-4f2e-a9ca-254dba3f5906"}
+{"display":"/flow-next:plan fn-12-zlg.6","pastedContents":{},"timestamp":1770232758577,"project":"/home/deploy/src/wolfcal","sessionId":"d26c04c1-abbc-4f2e-a9ca-254dba3f5906"}
+{"display":"/flow-next:ralph-init ","pastedContents":{},"timestamp":1770232927758,"project":"/home/deploy/src/wolfcal","sessionId":"d26c04c1-abbc-4f2e-a9ca-254dba3f5906"}
+{"display":"change run.sh to ralph.sh, change command inside ralph.sh from claude to claude-zai","pastedContents":{},"timestamp":1770233080706,"project":"/home/deploy/src/wolfcal","sessionId":"d26c04c1-abbc-4f2e-a9ca-254dba3f5906"}
+{"display":"/flow-next:work fn-12-zlg","pastedContents":{},"timestamp":1770233491831,"project":"/home/deploy/src/wolfcal","sessionId":"d2b36062-c30a-47b7-95e0-3b8fc48df965"}
+{"display":"/flow-next:work fn-12-zlg","pastedContents":{},"timestamp":1770233499662,"project":"/home/deploy/src/wolfcal","sessionId":"d2b36062-c30a-47b7-95e0-3b8fc48df965"}
+{"display":"/exit ","pastedContents":{},"timestamp":1770233505963,"project":"/home/deploy/src/wolfcal","sessionId":"d2b36062-c30a-47b7-95e0-3b8fc48df965"}
+{"display":"/flow-next:work fn-12-zlg.1","pastedContents":{},"timestamp":1770233527316,"project":"/home/deploy/src/wolfcal","sessionId":"0ece0940-c4ae-408a-8d86-b5b14590946b"}
+{"display":"c","pastedContents":{},"timestamp":1770233573762,"project":"/home/deploy/src/wolfcal","sessionId":"0ece0940-c4ae-408a-8d86-b5b14590946b"}
+{"display":"/flow-next:work fn-12-zlg.2 --branch=worktree","pastedContents":{},"timestamp":1770233675206,"project":"/home/deploy/src/wolfcal","sessionId":"57ed44ab-131e-4bbc-bde7-f5da190fd498"}
+{"display":"/flow-next:work fn-12-zlg.2 --branch=worktree","pastedContents":{},"timestamp":1770233744879,"project":"/home/deploy/src/wolfcal","sessionId":"60e8691f-5450-4419-a465-2099d488fa40"}
+{"display":"/flow-next:plan fn-12-zlg.8","pastedContents":{},"timestamp":1770234188211,"project":"/home/deploy/src/wolfcal","sessionId":"60e8691f-5450-4419-a465-2099d488fa40"}

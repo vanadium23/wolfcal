@@ -1,0 +1,48 @@
+#!/bin/bash
+# Ralph Autonomous Agent Runner for WolfCal
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+CONFIG="$SCRIPT_DIR/config.json"
+STATE_DIR="$SCRIPT_DIR/state"
+
+echo "🤖 Ralph: WolfCal Autonomous Agent"
+echo "======================================"
+echo "Project: $PROJECT_ROOT"
+echo "Config: $CONFIG"
+echo "State: $STATE_DIR"
+echo ""
+
+# Check for available tasks
+echo "📋 Checking for available tasks..."
+AVAILABLE_TASKS=$("$PROJECT_ROOT/.flow/bin/flowctl" ready --epic fn-12-zlg 2>/dev/null | grep "fn-12-zlg\." || echo "")
+
+if [ -z "$AVAILABLE_TASKS" ]; then
+  echo "✅ No tasks ready to process."
+  exit 0
+fi
+
+echo "Found ready tasks:"
+echo "$AVAILABLE_TASKS"
+echo ""
+
+# Process first available task
+TASK_ID=$(echo "$AVAILABLE_TASKS" | head -n 1 | grep -o 'fn-12-zlg\.[0-9]*' || echo "")
+
+if [ -z "$TASK_ID" ]; then
+  echo "❌ Could not parse task ID"
+  exit 1
+fi
+
+echo "🚀 Starting task: $TASK_ID"
+
+# Claim the task
+"$PROJECT_ROOT/.flow/bin/flowctl" start "$TASK_ID"
+
+echo ""
+echo "✅ Task $TASK_ID started. Use claude-zai to implement the task."
+echo ""
+echo "To mark complete:"
+echo "  $ .flow/bin/flowctl done $TASK_ID --summary-file summary.md --evidence-json evidence.json"

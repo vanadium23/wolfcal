@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "lastComputedDate": "2026-02-03",
+  "dailyActivity": [
+    {
+      "date": "2026-02-02",
+      "messageCount": 606,
+      "sessionCount": 4,
+      "toolCallCount": 53
+    }
+  ],
+  "dailyModelTokens": [],
+  "modelUsage": {
+    "anthropic/claude-opus-4.5": {
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0,
+      "contextWindow": 0,
+      "maxOutputTokens": 0
+    },
+    "anthropic/claude-sonnet-4.5": {
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0,
+      "contextWindow": 0,
+      "maxOutputTokens": 0
+    }
+  },
+  "totalSessions": 4,
+  "totalMessages": 606,
+  "longestSession": {
+    "sessionId": "15c68864-e588-4ff8-bd87-22c02a0b74d8",
+    "duration": 68699892,
+    "messageCount": 581,
+    "timestamp": "2026-02-02T20:18:18.084Z"
+  },
+  "firstSessionDate": "2026-02-02T20:13:46.019Z",
+  "hourCounts": {
+    "20": 4
+  }
+}

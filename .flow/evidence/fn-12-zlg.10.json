@@ -1,0 +1,4 @@
+{
+  "tests": ["src/test/components/bugs-qr-code.test.tsx:10 tests passing"],
+  "testResults": "10/10 tests passing"
+}

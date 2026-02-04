@@ -1,0 +1,49 @@
+# Ralph Autonomous Harness
+
+This directory contains the Ralph autonomous agent harness for WolfCal.
+
+## What is Ralph?
+
+Ralph is an autonomous agent that can work on tasks independently. This harness provides:
+- Task processing loop
+- State management
+- Error handling and recovery
+- Progress reporting
+
+## Structure
+
+```
+scripts/ralph/
+├── README.md           # This file
+├── ralph.sh            # Main Ralph execution script
+├── config.json         # Ralph configuration
+└── state/              # Run state directory
+    ├── current.json    # Current task state
+    └── history.json    # Task history
+```
+
+## Usage
+
+```bash
+# Start Ralph
+./scripts/ralph/run.sh
+
+# Check status
+.flow/bin/flowctl ralph status
+
+# Pause Ralph
+.flow/bin/flowctl ralph pause
+
+# Resume Ralph
+.flow/bin/flowctl ralph resume
+
+# Stop Ralph
+.flow/bin/flowctl ralph stop
+```
+
+## Configuration
+
+Edit `config.json` to customize Ralph behavior:
+- `maxConcurrentTasks`: Maximum tasks to process simultaneously
+- `pollInterval`: Seconds between task checks
+- `autoStart`: Automatically start on available tasks

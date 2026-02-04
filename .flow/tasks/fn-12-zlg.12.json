@@ -1,0 +1,16 @@
+{
+  "assignee": null,
+  "claim_note": "",
+  "claimed_at": null,
+  "created_at": "2026-02-04T19:09:01.664365Z",
+  "depends_on": [
+    "fn-12-zlg.6"
+  ],
+  "epic": "fn-12-zlg",
+  "id": "fn-12-zlg.12",
+  "priority": null,
+  "spec_path": ".flow/tasks/fn-12-zlg.12.md",
+  "status": "todo",
+  "title": "Fix BUG-6: Calendar list display",
+  "updated_at": "2026-02-04T19:09:14.789034Z"
+}

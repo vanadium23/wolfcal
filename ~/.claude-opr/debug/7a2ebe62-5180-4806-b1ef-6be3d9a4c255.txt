@@ -1,0 +1,412 @@
+2026-02-04T19:55:39.784Z [DEBUG] Watching for changes in setting files /home/deploy/src/wolfcal/~/.claude-opr, /home/deploy/src/wolfcal/.claude, /home/deploy/src/wolfcal/.claude...
+2026-02-04T19:55:39.793Z [DEBUG] [init] configureGlobalMTLS starting
+2026-02-04T19:55:39.793Z [DEBUG] [init] configureGlobalMTLS complete
+2026-02-04T19:55:39.793Z [DEBUG] [init] configureGlobalAgents starting
+2026-02-04T19:55:39.793Z [DEBUG] [init] configureGlobalAgents complete
+2026-02-04T19:55:39.800Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-02-04T19:55:39.800Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-02-04T19:55:39.800Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-02-04T19:55:39.804Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-02-04T19:55:39.823Z [DEBUG] Loading plugin flow-next from source: "./plugins/flow-next"
+2026-02-04T19:55:39.823Z [DEBUG] Using manifest version for flow-next@gmickel-claude-marketplace: 0.20.7
+2026-02-04T19:55:39.824Z [DEBUG] Plugin flow-next@gmickel-claude-marketplace version 0.20.7 already cached at ~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7
+2026-02-04T19:55:39.824Z [DEBUG] Copied local plugin flow-next to versioned cache: ~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7
+2026-02-04T19:55:39.825Z [DEBUG] Loaded hooks from standard location for plugin flow-next: ~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/hooks/hooks.json
+2026-02-04T19:55:39.831Z [DEBUG] Loading plugin feature-dev from source: "./plugins/feature-dev"
+2026-02-04T19:55:39.848Z [DEBUG] Using git SHA for feature-dev@claude-plugins-official: 27d2b86d72da
+2026-02-04T19:55:39.848Z [DEBUG] Plugin feature-dev@claude-plugins-official version 27d2b86d72da already cached at ~/.claude-opr/plugins/cache/claude-plugins-official/feature-dev/27d2b86d72da
+2026-02-04T19:55:39.848Z [DEBUG] Copied local plugin feature-dev to versioned cache: ~/.claude-opr/plugins/cache/claude-plugins-official/feature-dev/27d2b86d72da
+2026-02-04T19:55:39.850Z [DEBUG] Loading plugin superpowers from source: {"source":"url","url":"https://github.com/obra/superpowers.git"}
+2026-02-04T19:55:39.850Z [DEBUG] No version found for superpowers@claude-plugins-official, using 'unknown'
+2026-02-04T19:55:39.850Z [DEBUG] Caching plugin from source: {"source":"url","url":"https://github.com/obra/superpowers.git"} to temporary path ~/.claude-opr/plugins/cache/temp_git_1770234939850_lpb23v
+2026-02-04T19:55:39.861Z [DEBUG] Watching for changes in skill/command directories: /home/deploy/src/wolfcal/.claude/commands...
+2026-02-04T19:55:39.863Z [DEBUG] [Claude in Chrome] Extension not found in any browser
+2026-02-04T19:55:40.629Z [DEBUG] Cloned repository from https://github.com/obra/superpowers.git to ~/.claude-opr/plugins/cache/temp_git_1770234939850_lpb23v
+2026-02-04T19:55:40.629Z [DEBUG] Successfully cached plugin superpowers to ~/.claude-opr/plugins/cache/superpowers
+2026-02-04T19:55:40.629Z [DEBUG] Using manifest version for superpowers@claude-plugins-official: 4.1.1
+2026-02-04T19:55:40.629Z [DEBUG] Plugin superpowers@claude-plugins-official version 4.1.1 already cached at ~/.claude-opr/plugins/cache/claude-plugins-official/superpowers/4.1.1
+2026-02-04T19:55:40.635Z [DEBUG] Loaded hooks from standard location for plugin superpowers: ~/.claude-opr/plugins/cache/claude-plugins-official/superpowers/4.1.1/hooks/hooks.json
+2026-02-04T19:55:40.635Z [DEBUG] Found 3 plugins (3 enabled, 0 disabled)
+2026-02-04T19:55:40.636Z [DEBUG] [STARTUP] MCP configs loaded in 832ms
+2026-02-04T19:55:40.637Z [DEBUG] [STARTUP] Running setup()...
+2026-02-04T19:55:40.638Z [DEBUG] Stats cache is up to date
+2026-02-04T19:55:40.654Z [DEBUG] Loading skills from: managed=/etc/claude-code/.claude/skills, user=~/.claude-opr/skills, project=[]
+2026-02-04T19:55:40.678Z [DEBUG] Loaded 2 installed plugins from ~/.claude-opr/plugins/installed_plugins.json
+2026-02-04T19:55:40.697Z [ERROR] Error: Error: ENOENT: no such file or directory, scandir '/etc/claude-code/.claude/skills'
+    at Module.readdirSync (node:fs:1597:26)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:9:1766
+    at jI (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:34380)
+    at Object.readdirSync (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:9:1736)
+    at FZ1 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1523:369)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1523:4274
+    at B (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:6808)
+    at lz7 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4154:4354)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4154:6941
+    at B (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:6808)
+2026-02-04T19:55:40.697Z [ERROR] Error: Error: ENOENT: no such file or directory, scandir '~/.claude-opr/skills'
+    at Module.readdirSync (node:fs:1597:26)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:9:1766
+    at jI (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:34380)
+    at Object.readdirSync (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:9:1736)
+    at FZ1 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1523:369)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1523:4317
+    at B (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:6808)
+    at lz7 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4154:4354)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4154:6941
+    at B (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:6808)
+2026-02-04T19:55:40.697Z [DEBUG] Error log sink initialized
+2026-02-04T19:55:40.703Z [DEBUG] Writing to temp file: ~/.claude-opr/todos/7a2ebe62-5180-4806-b1ef-6be3d9a4c255-agent-7a2ebe62-5180-4806-b1ef-6be3d9a4c255.json.tmp.155948.1770234940703
+2026-02-04T19:55:40.703Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-02-04T19:55:40.703Z [DEBUG] Renaming ~/.claude-opr/todos/7a2ebe62-5180-4806-b1ef-6be3d9a4c255-agent-7a2ebe62-5180-4806-b1ef-6be3d9a4c255.json.tmp.155948.1770234940703 to ~/.claude-opr/todos/7a2ebe62-5180-4806-b1ef-6be3d9a4c255-agent-7a2ebe62-5180-4806-b1ef-6be3d9a4c255.json
+2026-02-04T19:55:40.703Z [DEBUG] File ~/.claude-opr/todos/7a2ebe62-5180-4806-b1ef-6be3d9a4c255-agent-7a2ebe62-5180-4806-b1ef-6be3d9a4c255.json written atomically
+2026-02-04T19:55:40.714Z [DEBUG] getPluginSkills: Processing 3 enabled plugins
+2026-02-04T19:55:40.714Z [DEBUG] Checking plugin flow-next: skillsPath=exists, skillsPaths=0 paths
+2026-02-04T19:55:40.714Z [DEBUG] Attempting to load skills from plugin flow-next default skillsPath: ~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/0.20.7/skills
+2026-02-04T19:55:40.732Z [DEBUG] Loading hooks from plugin: flow-next
+2026-02-04T19:55:40.732Z [DEBUG] Loading hooks from plugin: superpowers
+2026-02-04T19:55:40.732Z [DEBUG] Registered 5 hooks from 3 plugins
+2026-02-04T19:55:40.741Z [DEBUG] [STARTUP] setup() completed in 104ms
+2026-02-04T19:55:40.741Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-02-04T19:55:40.743Z [DEBUG] Loaded 16 skills from plugin flow-next default directory
+2026-02-04T19:55:40.743Z [DEBUG] Checking plugin feature-dev: skillsPath=none, skillsPaths=0 paths
+2026-02-04T19:55:40.743Z [DEBUG] Checking plugin superpowers: skillsPath=exists, skillsPaths=0 paths
+2026-02-04T19:55:40.743Z [DEBUG] Attempting to load skills from plugin superpowers default skillsPath: ~/.claude-opr/plugins/cache/claude-plugins-official/superpowers/4.1.1/skills
+2026-02-04T19:55:40.746Z [DEBUG] Loaded 11 commands from plugin flow-next default directory
+2026-02-04T19:55:40.757Z [DEBUG] Loaded 14 skills from plugin superpowers default directory
+2026-02-04T19:55:40.757Z [DEBUG] Total plugin skills loaded: 30
+2026-02-04T19:55:40.757Z [DEBUG] Loaded 1 commands from plugin feature-dev default directory
+2026-02-04T19:55:40.759Z [DEBUG] Loaded 3 commands from plugin superpowers default directory
+2026-02-04T19:55:40.759Z [DEBUG] Total plugin commands loaded: 15
+2026-02-04T19:55:40.772Z [DEBUG] Loaded 20 agents from plugin flow-next default directory
+2026-02-04T19:55:40.773Z [DEBUG] Loaded 3 agents from plugin feature-dev default directory
+2026-02-04T19:55:40.775Z [DEBUG] Loaded 1 agents from plugin superpowers default directory
+2026-02-04T19:55:40.775Z [DEBUG] Total plugin agents loaded: 24
+2026-02-04T19:55:40.806Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/usr/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/x64-linux/rg)
+2026-02-04T19:55:40.815Z [DEBUG] Total LSP servers loaded: 0
+2026-02-04T19:55:40.815Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-02-04T19:55:40.815Z [DEBUG] LSP manager initialized with 0 servers
+2026-02-04T19:55:40.815Z [DEBUG] LSP server manager initialized successfully
+2026-02-04T19:55:40.815Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-02-04T19:55:40.823Z [DEBUG] Summarizing all 44 messages (~0 tokens)
+2026-02-04T19:55:40.825Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-04T19:55:40.827Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:55:40.827Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:55:40.828Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:55:40.847Z [DEBUG] Loaded 12 unique skills (managed: 0, user: 0, project: 0, legacy commands: 12)
+2026-02-04T19:55:40.847Z [DEBUG] getSkills returning: 12 skill dir commands, 30 plugin skills, 0 bundled skills
+2026-02-04T19:55:40.848Z [DEBUG] [STARTUP] Commands and agents loaded in 107ms
+2026-02-04T19:55:40.848Z [DEBUG] [STARTUP] Running showSetupScreens()...
+2026-02-04T19:55:40.849Z [DEBUG] [render] initYoga starting
+2026-02-04T19:55:40.861Z [DEBUG] [render] initYoga complete
+2026-02-04T19:55:40.868Z [DEBUG] [keybindings] KeybindingSetup initialized with 45 bindings, 0 warnings
+2026-02-04T19:55:40.887Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-02-04T19:55:40.889Z [DEBUG] [STARTUP] showSetupScreens() completed in 41ms
+2026-02-04T19:55:40.895Z [DEBUG] MCP server "quint-code": Starting connection with timeout of 30000ms
+2026-02-04T19:55:40.904Z [DEBUG] Syncing installed_plugins.json with enabledPlugins from all settings.json files
+2026-02-04T19:55:40.938Z [DEBUG] Git remote URL: git@github.com:vanadium23/wolfcal.git
+2026-02-04T19:55:40.938Z [DEBUG] Parsed repository: vanadium23/wolfcal from git@github.com:vanadium23/wolfcal.git
+2026-02-04T19:55:40.938Z [DEBUG] Parsed repository: vanadium23/wolfcal from URL: git@github.com:vanadium23/wolfcal.git
+2026-02-04T19:55:40.938Z [DEBUG] Path /home/deploy/src/wolfcal already tracked for repo vanadium23/wolfcal
+2026-02-04T19:55:40.942Z [DEBUG] [keybindings] Skipping file watcher - user customization disabled
+2026-02-04T19:55:40.954Z [DEBUG] MCP server "quint-code": Successfully connected to undefined server in 63ms
+2026-02-04T19:55:40.954Z [DEBUG] MCP server "quint-code": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"quint-code","version":"4.0.0"}}
+2026-02-04T19:55:40.956Z [DEBUG] Added flow-next@gmickel-claude-marketplace with scope user
+2026-02-04T19:55:40.959Z [DEBUG] Saved 3 installed plugins to ~/.claude-opr/plugins/installed_plugins.json
+2026-02-04T19:55:40.959Z [DEBUG] Sync completed: 1 added, 0 updated in installed_plugins.json
+2026-02-04T19:55:40.959Z [DEBUG] Initialized versioned plugins system with 3 plugins
+2026-02-04T19:55:40.965Z [DEBUG] Writing to temp file: ~/.claude-opr/.claude.json.tmp.155948.1770234940965
+2026-02-04T19:55:40.965Z [DEBUG] Preserving file permissions: 100600
+2026-02-04T19:55:40.965Z [DEBUG] Temp file written successfully, size: 5080 bytes
+2026-02-04T19:55:40.965Z [DEBUG] Applied original permissions to temp file
+2026-02-04T19:55:40.965Z [DEBUG] Renaming ~/.claude-opr/.claude.json.tmp.155948.1770234940965 to ~/.claude-opr/.claude.json
+2026-02-04T19:55:40.965Z [DEBUG] File ~/.claude-opr/.claude.json written atomically
+2026-02-04T19:55:40.972Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-02-04T19:55:40.972Z [DEBUG] Found 1 hook matchers in settings
+2026-02-04T19:55:40.972Z [DEBUG] Matched 1 unique hooks for query "startup" (1 before deduplication)
+2026-02-04T19:55:40.994Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:epic-review" (userFacingName="flow-next:epic-review")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:impl-review" (userFacingName="flow-next:impl-review")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:interview" (userFacingName="flow-next:interview")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:plan-review" (userFacingName="flow-next:plan-review")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:plan" (userFacingName="flow-next:plan")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:prime" (userFacingName="flow-next:prime")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:ralph-init" (userFacingName="flow-next:ralph-init")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:setup" (userFacingName="flow-next:setup")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:sync" (userFacingName="flow-next:sync")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:uninstall" (userFacingName="flow-next:uninstall")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:work" (userFacingName="flow-next:work")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:browser" (userFacingName="browser")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next" (userFacingName="flow-next")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-deps" (userFacingName="flow-next-deps")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-epic-review" (userFacingName="flow-next-epic-review")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-export-context" (userFacingName="flow-next-export-context")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-impl-review" (userFacingName="flow-next-impl-review")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-interview" (userFacingName="flow-next-interview")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-plan" (userFacingName="flow-next-plan")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-plan-review" (userFacingName="flow-next-plan-review")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-prime" (userFacingName="flow-next-prime")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-ralph-init" (userFacingName="flow-next-ralph-init")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-rp-explorer" (userFacingName="flow-next-rp-explorer")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-setup" (userFacingName="flow-next-setup")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-sync" (userFacingName="flow-next-sync")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-work" (userFacingName="flow-next-work")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-worktree-kit" (userFacingName="flow-next-worktree-kit")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "superpowers:brainstorming" (userFacingName="brainstorming")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "superpowers:dispatching-parallel-agents" (userFacingName="dispatching-parallel-agents")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "superpowers:executing-plans" (userFacingName="executing-plans")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "superpowers:finishing-a-development-branch" (userFacingName="finishing-a-development-branch")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "superpowers:receiving-code-review" (userFacingName="receiving-code-review")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "superpowers:requesting-code-review" (userFacingName="requesting-code-review")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "superpowers:subagent-driven-development" (userFacingName="subagent-driven-development")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "superpowers:systematic-debugging" (userFacingName="systematic-debugging")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "superpowers:test-driven-development" (userFacingName="test-driven-development")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "superpowers:using-git-worktrees" (userFacingName="using-git-worktrees")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "superpowers:using-superpowers" (userFacingName="using-superpowers")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "superpowers:verification-before-completion" (userFacingName="verification-before-completion")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "superpowers:writing-plans" (userFacingName="writing-plans")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "superpowers:writing-skills" (userFacingName="writing-skills")
+2026-02-04T19:55:41.008Z [DEBUG] Skills and commands included in Skill tool: q-status, q5-decide, q2-verify, q0-init, q1-hypothesize, q4-audit, q-actualize, q-query, q1-add, q3-validate, q-decay, q-reset, flow-next:epic-review, flow-next:impl-review, flow-next:interview, flow-next:plan-review, flow-next:plan, flow-next:prime, flow-next:ralph-init, flow-next:setup, flow-next:sync, flow-next:uninstall, flow-next:work, feature-dev:feature-dev, browser, flow-next, flow-next-deps, flow-next-epic-review, flow-next-export-context, flow-next-impl-review, flow-next-interview, flow-next-plan, flow-next-plan-review, flow-next-prime, flow-next-ralph-init, flow-next-rp-explorer, flow-next-setup, flow-next-sync, flow-next-work, flow-next-worktree-kit, brainstorming, dispatching-parallel-agents, executing-plans, finishing-a-development-branch, receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:epic-review" (userFacingName="flow-next:epic-review")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:impl-review" (userFacingName="flow-next:impl-review")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:interview" (userFacingName="flow-next:interview")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:plan-review" (userFacingName="flow-next:plan-review")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:plan" (userFacingName="flow-next:plan")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:prime" (userFacingName="flow-next:prime")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:ralph-init" (userFacingName="flow-next:ralph-init")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:setup" (userFacingName="flow-next:setup")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:sync" (userFacingName="flow-next:sync")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:uninstall" (userFacingName="flow-next:uninstall")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next:work" (userFacingName="flow-next:work")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:browser" (userFacingName="browser")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next" (userFacingName="flow-next")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-deps" (userFacingName="flow-next-deps")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-epic-review" (userFacingName="flow-next-epic-review")
+2026-02-04T19:55:41.008Z [DEBUG] Skill prompt: showing "flow-next:flow-next-export-context" (userFacingName="flow-next-export-context")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "flow-next:flow-next-impl-review" (userFacingName="flow-next-impl-review")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "flow-next:flow-next-interview" (userFacingName="flow-next-interview")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "flow-next:flow-next-plan" (userFacingName="flow-next-plan")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "flow-next:flow-next-plan-review" (userFacingName="flow-next-plan-review")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "flow-next:flow-next-prime" (userFacingName="flow-next-prime")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "flow-next:flow-next-ralph-init" (userFacingName="flow-next-ralph-init")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "flow-next:flow-next-rp-explorer" (userFacingName="flow-next-rp-explorer")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "flow-next:flow-next-setup" (userFacingName="flow-next-setup")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "flow-next:flow-next-sync" (userFacingName="flow-next-sync")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "flow-next:flow-next-work" (userFacingName="flow-next-work")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "flow-next:flow-next-worktree-kit" (userFacingName="flow-next-worktree-kit")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "superpowers:brainstorming" (userFacingName="brainstorming")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "superpowers:dispatching-parallel-agents" (userFacingName="dispatching-parallel-agents")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "superpowers:executing-plans" (userFacingName="executing-plans")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "superpowers:finishing-a-development-branch" (userFacingName="finishing-a-development-branch")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "superpowers:receiving-code-review" (userFacingName="receiving-code-review")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "superpowers:requesting-code-review" (userFacingName="requesting-code-review")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "superpowers:subagent-driven-development" (userFacingName="subagent-driven-development")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "superpowers:systematic-debugging" (userFacingName="systematic-debugging")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "superpowers:test-driven-development" (userFacingName="test-driven-development")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "superpowers:using-git-worktrees" (userFacingName="using-git-worktrees")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "superpowers:using-superpowers" (userFacingName="using-superpowers")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "superpowers:verification-before-completion" (userFacingName="verification-before-completion")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "superpowers:writing-plans" (userFacingName="writing-plans")
+2026-02-04T19:55:41.009Z [DEBUG] Skill prompt: showing "superpowers:writing-skills" (userFacingName="writing-skills")
+2026-02-04T19:55:41.011Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:55:41.011Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:55:41.011Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:55:41.131Z [DEBUG] Hooks: Checking initial response for async: {
+  "hookSpecificOutput": {
+    "hookEventName": "SessionStart",
+    "additionalContext": "<EXTREMELY_IMPORTANT>\nYou have superpowers.\n\n**Below is the full content of your 'superpowers:using-superpowers' skill - your introduction to using skills. For all other skills, use the 'Skill' tool:**\n\n---\nname: using-superpowers\ndescription: Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions\n---\n\n<EXTREMELY-IMPORTANT>\nIf you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.\n\nIF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.\n\nThis is not negotiable. This is not optional. You cannot rationalize your way out of this.\n</EXTREMELY-IMPORTANT>\n\n## How to Access Skills\n\n**In Claude Code:** Use the `Skill` tool. When you invoke a skill, its content is loaded and presented to you—follow it directly. Never use the Read tool on skill files.\n\n**In other environments:** Check your platform's documentation for how skills are loaded.\n\n# Using Skills\n\n## The Rule\n\n**Invoke relevant or requested skills BEFORE any response or action.** Even a 1% chance a skill might apply means that you should invoke the skill to check. If an invoked skill turns out to be wrong for the situation, you don't need to use it.\n\n```dot\ndigraph skill_flow {\n    \"User message received\" [shape=doublecircle];\n    \"Might any skill apply?\" [shape=diamond];\n    \"Invoke Skill tool\" [shape=box];\n    \"Announce: 'Using [skill] to [purpose]'\" [shape=box];\n    \"Has checklist?\" [shape=diamond];\n    \"Create TodoWrite todo per item\" [shape=box];\n    \"Follow skill exactly\" [shape=box];\n    \"Respond (including clarifications)\" [shape=doublecircle];\n\n    \"User message received\" -> \"Might any skill apply?\";\n    \"Might any skill apply?\" -> \"Invoke Skill tool\" [label=\"yes, even 1%\"];\n    \"Might any skill apply?\" -> \"Respond (including clarifications)\" [label=\"definitely not\"];\n    \"Invoke Skill tool\" -> \"Announce: 'Using [skill] to [purpose]'\";\n    \"Announce: 'Using [skill] to [purpose]'\" -> \"Has checklist?\";\n    \"Has checklist?\" -> \"Create TodoWrite todo per item\" [label=\"yes\"];\n    \"Has checklist?\" -> \"Follow skill exactly\" [label=\"no\"];\n    \"Create TodoWrite todo per item\" -> \"Follow skill exactly\";\n}\n```\n\n## Red Flags\n\nThese thoughts mean STOP—you're rationalizing:\n\n| Thought | Reality |\n|---------|---------|\n| \"This is just a simple question\" | Questions are tasks. Check for skills. |\n| \"I need more context first\" | Skill check comes BEFORE clarifying questions. |\n| \"Let me explore the codebase first\" | Skills tell you HOW to explore. Check first. |\n| \"I can check git/files quickly\" | Files lack conversation context. Check for skills. |\n| \"Let me gather information first\" | Skills tell you HOW to gather information. |\n| \"This doesn't need a formal skill\" | If a skill exists, use it. |\n| \"I remember this skill\" | Skills evolve. Read current version. |\n| \"This doesn't count as a task\" | Action = task. Check for skills. |\n| \"The skill is overkill\" | Simple things become complex. Use it. |\n| \"I'll just do this one thing first\" | Check BEFORE doing anything. |\n| \"This feels productive\" | Undisciplined action wastes time. Skills prevent this. |\n| \"I know what that means\" | Knowing the concept ≠ using the skill. Invoke it. |\n\n## Skill Priority\n\nWhen multiple skills could apply, use this order:\n\n1. **Process skills first** (brainstorming, debugging) - these determine HOW to approach the task\n2. **Implementation skills second** (frontend-design, mcp-builder) - these guide execution\n\n\"Let's build X\" → brainstorming first, then implementation skills.\n\"Fix this bug\" → debugging first, then domain-specific skills.\n\n## Skill Types\n\n**Rigid** (TDD, debugging): Follow exactly. Don't adapt away discipline.\n\n**Flexible** (patterns): Adapt principles to context.\n\nThe skill itself tells you which.\n\n## User Instructions\n\nInstructions say WHAT, not HOW. \"Add X\" or \"Fix Y\" doesn't mean skip workflows.\n\n\n</EXTREMELY_IMPORTANT>"
+  }
+}
+2026-02-04T19:55:41.131Z [DEBUG] Hooks: Parsed initial response: {"hookSpecificOutput":{"hookEventName":"SessionStart","additionalContext":"<EXTREMELY_IMPORTANT>\nYou have superpowers.\n\n**Below is the full content of your 'superpowers:using-superpowers' skill - your introduction to using skills. For all other skills, use the 'Skill' tool:**\n\n---\nname: using-superpowers\ndescription: Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions\n---\n\n<EXTREMELY-IMPORTANT>\nIf you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.\n\nIF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.\n\nThis is not negotiable. This is not optional. You cannot rationalize your way out of this.\n</EXTREMELY-IMPORTANT>\n\n## How to Access Skills\n\n**In Claude Code:** Use the `Skill` tool. When you invoke a skill, its content is loaded and presented to you—follow it directly. Never use the Read tool on skill files.\n\n**In other environments:** Check your platform's documentation for how skills are loaded.\n\n# Using Skills\n\n## The Rule\n\n**Invoke relevant or requested skills BEFORE any response or action.** Even a 1% chance a skill might apply means that you should invoke the skill to check. If an invoked skill turns out to be wrong for the situation, you don't need to use it.\n\n```dot\ndigraph skill_flow {\n    \"User message received\" [shape=doublecircle];\n    \"Might any skill apply?\" [shape=diamond];\n    \"Invoke Skill tool\" [shape=box];\n    \"Announce: 'Using [skill] to [purpose]'\" [shape=box];\n    \"Has checklist?\" [shape=diamond];\n    \"Create TodoWrite todo per item\" [shape=box];\n    \"Follow skill exactly\" [shape=box];\n    \"Respond (including clarifications)\" [shape=doublecircle];\n\n    \"User message received\" -> \"Might any skill apply?\";\n    \"Might any skill apply?\" -> \"Invoke Skill tool\" [label=\"yes, even 1%\"];\n    \"Might any skill apply?\" -> \"Respond (including clarifications)\" [label=\"definitely not\"];\n    \"Invoke Skill tool\" -> \"Announce: 'Using [skill] to [purpose]'\";\n    \"Announce: 'Using [skill] to [purpose]'\" -> \"Has checklist?\";\n    \"Has checklist?\" -> \"Create TodoWrite todo per item\" [label=\"yes\"];\n    \"Has checklist?\" -> \"Follow skill exactly\" [label=\"no\"];\n    \"Create TodoWrite todo per item\" -> \"Follow skill exactly\";\n}\n```\n\n## Red Flags\n\nThese thoughts mean STOP—you're rationalizing:\n\n| Thought | Reality |\n|---------|---------|\n| \"This is just a simple question\" | Questions are tasks. Check for skills. |\n| \"I need more context first\" | Skill check comes BEFORE clarifying questions. |\n| \"Let me explore the codebase first\" | Skills tell you HOW to explore. Check first. |\n| \"I can check git/files quickly\" | Files lack conversation context. Check for skills. |\n| \"Let me gather information first\" | Skills tell you HOW to gather information. |\n| \"This doesn't need a formal skill\" | If a skill exists, use it. |\n| \"I remember this skill\" | Skills evolve. Read current version. |\n| \"This doesn't count as a task\" | Action = task. Check for skills. |\n| \"The skill is overkill\" | Simple things become complex. Use it. |\n| \"I'll just do this one thing first\" | Check BEFORE doing anything. |\n| \"This feels productive\" | Undisciplined action wastes time. Skills prevent this. |\n| \"I know what that means\" | Knowing the concept ≠ using the skill. Invoke it. |\n\n## Skill Priority\n\nWhen multiple skills could apply, use this order:\n\n1. **Process skills first** (brainstorming, debugging) - these determine HOW to approach the task\n2. **Implementation skills second** (frontend-design, mcp-builder) - these guide execution\n\n\"Let's build X\" → brainstorming first, then implementation skills.\n\"Fix this bug\" → debugging first, then domain-specific skills.\n\n## Skill Types\n\n**Rigid** (TDD, debugging): Follow exactly. Don't adapt away discipline.\n\n**Flexible** (patterns): Adapt principles to context.\n\nThe skill itself tells you which.\n\n## User Instructions\n\nInstructions say WHAT, not HOW. \"Add X\" or \"Fix Y\" doesn't mean skip workflows.\n\n\n</EXTREMELY_IMPORTANT>"}}
+2026-02-04T19:55:41.131Z [DEBUG] Hooks: Initial response is not async, continuing normal processing
+2026-02-04T19:55:41.133Z [DEBUG] Successfully parsed and validated hook JSON output
+2026-02-04T19:55:41.134Z [DEBUG] [render] initYoga starting
+2026-02-04T19:55:41.134Z [DEBUG] [render] initYoga complete
+2026-02-04T19:55:41.142Z [DEBUG] [keybindings] KeybindingSetup initialized with 45 bindings, 0 warnings
+2026-02-04T19:55:41.206Z [DEBUG] [keybindings] Skipping file watcher - user customization disabled
+2026-02-04T19:55:41.206Z [DEBUG] [REPL:mount] REPL mounted, disabled=false
+2026-02-04T19:55:41.212Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2026-02-04T19:55:41.213Z [DEBUG] performStartupChecks called
+2026-02-04T19:55:41.213Z [DEBUG] Starting background plugin installations
+2026-02-04T19:55:41.213Z [DEBUG] performBackgroundPluginInstallations called
+2026-02-04T19:55:41.217Z [DEBUG] Found 3 enabled plugins
+2026-02-04T19:55:41.218Z [DEBUG] All plugins already exist, skipping migration
+2026-02-04T19:55:41.218Z [DEBUG] Found 3 installed plugins (V2 format)
+2026-02-04T19:55:41.218Z [DEBUG] Loaded plugins - Enabled: 3, Disabled: 0, Commands: 15, Agents: 24, Errors: 0
+2026-02-04T19:55:41.218Z [DEBUG] Found 0 missing plugins (not installed):
+2026-02-04T19:55:41.218Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2026-02-04T19:55:41.219Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-04T19:55:41.219Z [DEBUG] [claudeai-mcp] Gate returned: false
+2026-02-04T19:55:41.219Z [DEBUG] [claudeai-mcp] Disabled via gate
+2026-02-04T19:55:41.273Z [DEBUG] Writing to temp file: ~/.claude-opr/.claude.json.tmp.155948.1770234941273
+2026-02-04T19:55:41.273Z [DEBUG] Preserving file permissions: 100600
+2026-02-04T19:55:41.273Z [DEBUG] Temp file written successfully, size: 5080 bytes
+2026-02-04T19:55:41.273Z [DEBUG] Applied original permissions to temp file
+2026-02-04T19:55:41.273Z [DEBUG] Renaming ~/.claude-opr/.claude.json.tmp.155948.1770234941273 to ~/.claude-opr/.claude.json
+2026-02-04T19:55:41.273Z [DEBUG] File ~/.claude-opr/.claude.json written atomically
+2026-02-04T19:55:41.286Z [ERROR] Error: Error: 404 {"error":{"message":"Not Found","code":404}}
+    at P2.generate (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:918:2183)
+    at Dj.makeStatusError (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:935:2195)
+    at Dj.makeRequest (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:935:5420)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1166:5019
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1107:2222
+    at async b25 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1106:9402)
+    at async M22 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1107:2155)
+    at async ivA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2501:56)
+    at async J9A (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2501:751)
+2026-02-04T19:55:41.286Z [DEBUG] countTokensWithFallback: API returned null, trying haiku fallback (17 tools)
+2026-02-04T19:55:41.286Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-04T19:55:41.286Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-04T19:55:41.286Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-04T19:55:41.341Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:55:41.997Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:55:41.997Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:55:42.082Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:55:42.486Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-02-04T19:55:42.486Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-02-04T19:55:42.494Z [DEBUG] Caching plugin from source: {"source":"url","url":"https://github.com/obra/superpowers.git"} to temporary path ~/.claude-opr/plugins/cache/temp_git_1770234942494_8oit95
+2026-02-04T19:55:42.500Z [DEBUG] Using git SHA for feature-dev@claude-plugins-official: 27d2b86d72da
+2026-02-04T19:55:42.834Z [DEBUG] Stream started - received first chunk
+2026-02-04T19:55:43.064Z [DEBUG] Generated summary for session 4a6507b1-a9f5-415b-9826-1c69dd6f3e40: "Ralph Harness Setup with Flow-Next Plugin"
+2026-02-04T19:55:43.068Z [DEBUG] Session index: added 1, updated 0, removed 0, summaries generated 1 (total: 5)
+2026-02-04T19:55:43.224Z [DEBUG] Cloned repository from https://github.com/obra/superpowers.git to ~/.claude-opr/plugins/cache/temp_git_1770234942494_8oit95
+2026-02-04T19:55:43.225Z [DEBUG] Successfully cached plugin superpowers to ~/.claude-opr/plugins/cache/superpowers
+2026-02-04T19:55:43.225Z [DEBUG] Using manifest version for superpowers@claude-plugins-official: 4.1.1
+2026-02-04T19:55:46.639Z [ERROR] Error: Error: 1P event logging: 29 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:55:46.640Z [ERROR] Error: Error: {"stack":"Error: Failed to export 29 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 29 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:55:48.547Z [DEBUG] Using cached install counts
+2026-02-04T19:55:48.555Z [DEBUG] FileHistory: Added snapshot for 2e2adf4a-9f74-49c8-a580-ec569112b1cf, tracking 0 files
+2026-02-04T19:55:48.704Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:55:49.295Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:55:49.295Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:55:49.381Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:55:53.704Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:55:54.079Z [ERROR] Error: Error: 1P event logging: 4 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:55:54.079Z [ERROR] Error: Error: {"stack":"Error: Failed to export 4 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 4 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:55:54.303Z [DEBUG] Using cached install counts
+2026-02-04T19:55:54.318Z [DEBUG] High write ratio: blit=372, write=1179 (76.0% writes), screen=37x93
+2026-02-04T19:55:54.377Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:55:54.377Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:55:54.465Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:55:58.662Z [DEBUG] Failed to read raw marketplace.json: Error: ENOENT: no such file or directory, open '~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/.claude-plugin/marketplace.json'
+2026-02-04T19:55:59.681Z [DEBUG] High write ratio: blit=1205, write=1211 (50.1% writes), screen=47x93
+2026-02-04T19:55:59.923Z [DEBUG] High write ratio: blit=1205, write=1211 (50.1% writes), screen=47x93
+2026-02-04T19:55:59.935Z [ERROR] Error: Error: 1P event logging: 2 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:55:59.935Z [ERROR] Error: Error: {"stack":"Error: Failed to export 2 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 2 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:56:01.776Z [DEBUG] Using manifest version for flow-next@gmickel-claude-marketplace: 0.20.7
+2026-02-04T19:56:01.786Z [DEBUG] High write ratio: blit=465, write=1480 (76.1% writes), screen=49x93
+2026-02-04T19:56:01.790Z [DEBUG] FileHistory: Making snapshot for message 0f1e4a94-c601-4c99-9b60-973c5d4ce25d
+2026-02-04T19:56:01.790Z [DEBUG] FileHistory: Added snapshot for 0f1e4a94-c601-4c99-9b60-973c5d4ce25d, tracking 0 files
+2026-02-04T19:56:01.865Z [DEBUG] Full reset (shrink->below): prevHeight=49, nextHeight=18, viewport=41
+2026-02-04T19:56:01.920Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:56:02.565Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:56:02.565Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:56:02.651Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:56:04.732Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:56:05.328Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:56:05.328Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:56:05.416Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:56:07.218Z [ERROR] Error: Error: 1P event logging: 4 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:56:07.219Z [ERROR] Error: Error: {"stack":"Error: Failed to export 4 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 4 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:56:09.377Z [DEBUG] Using cached install counts
+2026-02-04T19:56:09.435Z [DEBUG] High write ratio: blit=651, write=1195 (64.7% writes), screen=40x93
+2026-02-04T19:56:12.684Z [DEBUG] Failed to read raw marketplace.json: Error: ENOENT: no such file or directory, open '~/.claude-opr/plugins/cache/gmickel-claude-marketplace/flow-next/.claude-plugin/marketplace.json'
+2026-02-04T19:56:14.192Z [DEBUG] Writing to temp file: /home/deploy/src/wolfcal/~/.claude-opr/settings.json.tmp.155948.1770234974192
+2026-02-04T19:56:14.192Z [DEBUG] Preserving file permissions: 100664
+2026-02-04T19:56:14.192Z [DEBUG] Temp file written successfully, size: 57 bytes
+2026-02-04T19:56:14.192Z [DEBUG] Applied original permissions to temp file
+2026-02-04T19:56:14.192Z [DEBUG] Renaming /home/deploy/src/wolfcal/~/.claude-opr/settings.json.tmp.155948.1770234974192 to /home/deploy/src/wolfcal/~/.claude-opr/settings.json
+2026-02-04T19:56:14.192Z [DEBUG] File /home/deploy/src/wolfcal/~/.claude-opr/settings.json written atomically
+2026-02-04T19:56:14.195Z [DEBUG] Saved 2 installed plugins to ~/.claude-opr/plugins/installed_plugins.json
+2026-02-04T19:56:14.195Z [DEBUG] Removed installation for flow-next@gmickel-claude-marketplace at scope user
+2026-02-04T19:56:14.198Z [DEBUG] Loading plugin feature-dev from source: "./plugins/feature-dev"
+2026-02-04T19:56:14.207Z [DEBUG] High write ratio: blit=1298, write=1376 (51.5% writes), screen=52x93
+2026-02-04T19:56:14.208Z [DEBUG] FileHistory: Making snapshot for message e471cbda-8a73-47a8-b59d-5ab979f1e3b7
+2026-02-04T19:56:14.208Z [DEBUG] FileHistory: Added snapshot for e471cbda-8a73-47a8-b59d-5ab979f1e3b7, tracking 0 files
+2026-02-04T19:56:14.212Z [DEBUG] Using git SHA for feature-dev@claude-plugins-official: 27d2b86d72da
+2026-02-04T19:56:14.212Z [DEBUG] Plugin feature-dev@claude-plugins-official version 27d2b86d72da already cached at ~/.claude-opr/plugins/cache/claude-plugins-official/feature-dev/27d2b86d72da
+2026-02-04T19:56:14.212Z [DEBUG] Copied local plugin feature-dev to versioned cache: ~/.claude-opr/plugins/cache/claude-plugins-official/feature-dev/27d2b86d72da
+2026-02-04T19:56:14.214Z [DEBUG] Loading plugin superpowers from source: {"source":"url","url":"https://github.com/obra/superpowers.git"}
+2026-02-04T19:56:14.214Z [DEBUG] No version found for superpowers@claude-plugins-official, using 'unknown'
+2026-02-04T19:56:14.214Z [DEBUG] Caching plugin from source: {"source":"url","url":"https://github.com/obra/superpowers.git"} to temporary path ~/.claude-opr/plugins/cache/temp_git_1770234974214_2g15y9
+2026-02-04T19:56:14.271Z [DEBUG] Full reset (shrink->below): prevHeight=52, nextHeight=21, viewport=41
+2026-02-04T19:56:14.332Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-02-04T19:56:14.940Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-02-04T19:56:14.940Z [DEBUG] AutoUpdater: Using global update method
+2026-02-04T19:56:15.037Z [ERROR] RF1: RF1: Insufficient permissions for global npm install.
+    at zO0 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3261:1139)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fFA (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3271:43)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:5202:13495
+2026-02-04T19:56:15.072Z [ERROR] Error: Error: 1P event logging: 3 events failed to export
+    at F10.queueFailedEvents (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:2038)
+    at async F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1195)
+2026-02-04T19:56:15.074Z [ERROR] Error: Error: {"stack":"Error: Failed to export 3 events\n    at F10.doExport (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:670:1297)","message":"Failed to export 3 events","name":"Error"}
+    at Hz0.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:2307:34862)
+    at _e1.error (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:8377)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39402
+    at nu3 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:664:39948)
+    at file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:665:20245
+2026-02-04T19:56:15.104Z [DEBUG] Cloned repository from https://github.com/obra/superpowers.git to ~/.claude-opr/plugins/cache/temp_git_1770234974214_2g15y9
+2026-02-04T19:56:15.104Z [DEBUG] Successfully cached plugin superpowers to ~/.claude-opr/plugins/cache/superpowers
+2026-02-04T19:56:15.104Z [DEBUG] Using manifest version for superpowers@claude-plugins-official: 4.1.1
+2026-02-04T19:56:15.104Z [DEBUG] Plugin superpowers@claude-plugins-official version 4.1.1 already cached at ~/.claude-opr/plugins/cache/claude-plugins-official/superpowers/4.1.1
+2026-02-04T19:56:15.109Z [DEBUG] Loaded hooks from standard location for plugin superpowers: ~/.claude-opr/plugins/cache/claude-plugins-official/superpowers/4.1.1/hooks/hooks.json
+2026-02-04T19:56:15.109Z [DEBUG] Found 2 plugins (2 enabled, 0 disabled)
+2026-02-04T19:56:15.111Z [DEBUG] Loaded 3 agents from plugin feature-dev default directory
+2026-02-04T19:56:15.112Z [DEBUG] Loaded 1 agents from plugin superpowers default directory
+2026-02-04T19:56:15.112Z [DEBUG] Total plugin agents loaded: 4
+2026-02-04T19:56:15.112Z [DEBUG] Loaded 1 commands from plugin feature-dev default directory
+2026-02-04T19:56:15.112Z [DEBUG] Loaded 3 commands from plugin superpowers default directory
+2026-02-04T19:56:15.112Z [DEBUG] Total plugin commands loaded: 4
+2026-02-04T19:56:16.003Z [DEBUG] Getting matching hook commands for SessionEnd with query: prompt_input_exit
+2026-02-04T19:56:16.003Z [DEBUG] Found 0 hook matchers in settings
+2026-02-04T19:56:16.003Z [DEBUG] Matched 0 unique hooks for query "prompt_input_exit" (0 before deduplication)

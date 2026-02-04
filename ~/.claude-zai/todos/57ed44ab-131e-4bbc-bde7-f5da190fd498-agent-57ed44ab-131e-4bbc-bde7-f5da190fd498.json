@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Parse options and validate inputs",
+    "status": "completed",
+    "activeForm": "Parsing options and validating inputs"
+  },
+  {
+    "content": "Set up isolated worktree for fn-12-zlg.2",
+    "status": "completed",
+    "activeForm": "Setting up isolated worktree for fn-12-zlg.2"
+  },
+  {
+    "content": "Execute task fn-12-zlg.2",
+    "status": "in_progress",
+    "activeForm": "Executing task fn-12-zlg.2"
+  },
+  {
+    "content": "Run completion review if required",
+    "status": "pending",
+    "activeForm": "Running completion review if required"
+  }
+]

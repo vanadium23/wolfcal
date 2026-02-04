@@ -1,0 +1,15 @@
+{
+  "type": "bug_fix",
+  "bug_id": "BUG-1",
+  "title": "Event sync to destination",
+  "files_modified": [
+    "src/components/EventModal.tsx"
+  ],
+  "files_added": [
+    "src/test/sync/bugs-sync.test.ts"
+  ],
+  "tests_added": 11,
+  "tests_passing": 11,
+  "root_cause": "EventModal did not call processQueue() after adding to pending_changes queue",
+  "fix_description": "Added processQueue() call after addPendingChange() in saveEventOptimistic() and saveEventOffline() functions"
+}

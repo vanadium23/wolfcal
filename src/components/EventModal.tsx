@@ -9,6 +9,7 @@ import {
   getAllAccounts,
   getEvent,
 } from '../lib/db';
+import { processQueue } from '../lib/sync/processor';
 import type { CalendarEvent, Calendar, Account, PendingChange } from '../lib/db/types';
 import type { EventFormData } from '../lib/events/validation';
 import type { GoogleEvent } from '../lib/api/types';
@@ -180,8 +181,11 @@ export default function EventModal({
 
     await addPendingChange(pendingChange);
 
-    // API call will happen in background via queue processor
-    // Queue processor will delete temp event and insert real event on success
+    // Process queue immediately if online to sync the event
+    if (navigator.onLine) {
+      // Don't await - let it happen in background
+      processQueue().catch((err) => console.error('Queue processing failed:', err));
+    }
   };
 
   const saveEventOnline = async (formData: EventFormData) => {
@@ -332,6 +336,12 @@ export default function EventModal({
     };
 
     await addPendingChange(pendingChange);
+
+    // Process queue immediately if online
+    if (navigator.onLine) {
+      // Don't await - let it happen in background
+      processQueue().catch((err) => console.error('Queue processing failed:', err));
+    }
   };
 
   if (!isOpen) return null;

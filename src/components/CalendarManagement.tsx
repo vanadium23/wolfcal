@@ -54,12 +54,17 @@ export default function CalendarManagement() {
               pageToken = response.nextPageToken
             } while (pageToken)
 
+            // Deduplicate calendars by ID (BUG-6 fix)
+            const uniqueCalendars = Array.from(
+              new Map(fetchedCalendars.map((cal) => [cal.id, cal])).values()
+            )
+
             // Get existing calendars to preserve visibility state
             const existingCalendars = await getCalendarsByAccount(account.id)
             const existingCalendarMap = new Map(existingCalendars.map((c) => [c.id, c]))
 
             // Update or add calendars
-            for (const calendar of fetchedCalendars) {
+            for (const calendar of uniqueCalendars) {
               const existing = existingCalendarMap.get(calendar.id)
 
               if (existing) {
@@ -151,12 +156,17 @@ export default function CalendarManagement() {
             pageToken = response.nextPageToken
           } while (pageToken)
 
+          // Deduplicate calendars by ID (BUG-6 fix)
+          const uniqueCalendars = Array.from(
+            new Map(allCalendars.map((cal) => [cal.id, cal])).values()
+          )
+
           // Get existing calendars to preserve visibility state
           const existingCalendars = account.calendars
           const existingCalendarMap = new Map(existingCalendars.map((c) => [c.id, c]))
 
           // Update or add calendars
-          for (const calendar of allCalendars) {
+          for (const calendar of uniqueCalendars) {
             const existing = existingCalendarMap.get(calendar.id)
 
             if (existing) {
@@ -186,7 +196,7 @@ export default function CalendarManagement() {
             }
           }
 
-          totalRefreshed += allCalendars.length
+          totalRefreshed += uniqueCalendars.length
         } catch (error) {
           console.error(`Failed to refresh calendars for account ${account.id}:`, error)
           const errorMessage = error instanceof Error ? error.message : 'Unknown error'
@@ -226,7 +236,12 @@ export default function CalendarManagement() {
         pageToken = response.nextPageToken
       } while (pageToken)
 
-      if (allCalendars.length === 0) {
+      // Deduplicate calendars by ID (BUG-6 fix)
+      const uniqueCalendars = Array.from(
+        new Map(allCalendars.map((cal) => [cal.id, cal])).values()
+      )
+
+      if (uniqueCalendars.length === 0) {
         alert('No calendars found for this account.')
         return
       }
@@ -237,7 +252,7 @@ export default function CalendarManagement() {
       const existingCalendarMap = new Map(existingCalendars.map((c) => [c.id, c]))
 
       // Update or add calendars
-      for (const calendar of allCalendars) {
+      for (const calendar of uniqueCalendars) {
         const existing = existingCalendarMap.get(calendar.id)
 
         if (existing) {
@@ -269,7 +284,7 @@ export default function CalendarManagement() {
 
       // Reload calendars
       await loadAccountsAndCalendars()
-      alert(`Refreshed ${allCalendars.length} calendars`)
+      alert(`Refreshed ${uniqueCalendars.length} calendars`)
     } catch (error) {
       console.error('Failed to refresh calendars:', error)
       const errorMessage = error instanceof Error ? error.message : 'Unknown error'

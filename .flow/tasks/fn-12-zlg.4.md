@@ -1,0 +1,313 @@
+# fn-12-zlg.4 Write regression tests for BUG-4: QR code resolution
+
+## Description
+
+BUG-4: QR codes generated for configuration export are too small (200x200 pixels) and use low error correction level ("L"), making them difficult or impossible for mobile cameras to scan reliably.
+
+This task involves writing comprehensive regression tests that:
+1. Reproduce the bug - QR code is 200x200 pixels with error correction "L"
+2. Verify the correct behavior - QR code should be at least 300x300 pixels with error correction "M" or "H"
+3. Test QR code rendering with various configuration sizes
+4. Test QR code visibility controls based on data size
+
+The tests will initially FAIL until the bug is fixed in task fn-12-zlg.10.
+
+## Files to Investigate
+
+- `src/components/ExportConfiguration.tsx:259-266` - QRCodeSVG component props
+- `src/components/ExportConfiguration.tsx:11` - MAX_QR_DATA_SIZE constant
+- `src/lib/config/serializer.ts` - Configuration serialization
+
+## Bug Analysis
+
+### Current QR Code Settings (Buggy)
+```typescript
+<QRCodeSVG
+  value={exportUrl}
+  size={200}           // ❌ Too small for mobile cameras
+  level="L"            // ❌ Lowest error correction (7%)
+  bgColor="#ffffff"
+  fgColor="#000000"
+  includeMargin={true}
+/>
+```
+
+### Why This Is Problematic
+- **200x200 pixels**: Too small for reliable scanning, especially on high-DPI screens or when projected
+- **Error correction "L"**: Only 7% error recovery - any smudge, glare, or low light causes scan failure
+- **Mobile camera limitation**: Most phone cameras need larger QR codes with better error correction
+
+### Expected QR Code Settings (After Fix)
+```typescript
+<QRCodeSVG
+  value={exportUrl}
+  size={300}           // ✅ Minimum recommended size
+  level="M"            // ✅ Medium error correction (15%)
+  bgColor="#ffffff"
+  fgColor="#000000"
+  includeMargin={true}
+/>
+```
+
+## Test Scenarios
+
+### Test Suite: `src/test/components/bugs-qr-code.test.tsx`
+
+#### Test 1: QR Code Size is at Least 300x300
+**Setup**:
+- Configuration that fits within MAX_QR_DATA_SIZE
+- Export modal is open with QR code displayed
+
+**Action**: Render ExportConfiguration and inspect QR code
+
+**Expected**:
+- QRCodeSVG `size` prop is >= 300
+- QR code renders with minimum 300x300 pixel dimensions
+
+#### Test 2: QR Code Error Correction is "M" or Higher
+**Setup**:
+- Configuration that fits within MAX_QR_DATA_SIZE
+- Export modal is open with QR code displayed
+
+**Action**: Render ExportConfiguration and inspect QR code
+
+**Expected**:
+- QRCodeSVG `level` prop is "M" (15%) or "H" (25%) or "Q" (30%)
+- NOT "L" (7%)
+
+#### Test 3: QR Code Not Shown When Data Too Large
+**Setup**:
+- Configuration that exceeds MAX_QR_DATA_SIZE
+- Export modal is open
+
+**Action**: Render ExportConfiguration
+
+**Expected**:
+- QRCodeSVG component is NOT rendered
+- Warning message is displayed about configuration being too large
+- Copy URL input is still shown
+
+#### Test 4: QR Code Shows for Small Configuration
+**Setup**:
+- Small configuration (1 account, 2 calendars)
+- Export modal is open
+
+**Action**: Render ExportConfiguration
+
+**Expected**:
+- QRCodeSVG component IS rendered
+- No warning message about size
+- QR code is scannable
+
+#### Test 5: QR Code Shows for Medium Configuration
+**Setup**:
+- Medium configuration (3 accounts, 10 calendars)
+- Export modal is open
+- Configuration is under MAX_QR_DATA_SIZE
+
+**Action**: Render ExportConfiguration
+
+**Expected**:
+- QRCodeSVG component IS rendered
+- QR code size is at least 300x300
+- Error correction is "M" or higher
+
+#### Test 6: QR Code at Max Data Size Boundary
+**Setup**:
+- Configuration exactly at MAX_QR_DATA_SIZE (2953 bytes)
+- Export modal is open
+
+**Action**: Render ExportConfiguration
+
+**Expected**:
+- QRCodeSVG component IS rendered (boundary case)
+- No warning message
+- QR code is scannable
+
+#### Test 7: QR Code Margin is Included
+**Setup**:
+- Export modal is open with QR code displayed
+
+**Action**: Render ExportConfiguration and inspect QR code
+
+**Expected**:
+- QRCodeSVG `includeMargin` prop is `true`
+- QR code has quiet zone around it for better scanning
+
+## Test Implementation Notes
+
+### Test Structure
+
+```typescript
+describe('BUG-4: QR code resolution', () => {
+  describe('QR code dimensions', () => {
+    it('should render QR code with minimum 300x300 pixel size')
+    it('should maintain aspect ratio for QR code')
+  })
+
+  describe('QR code error correction', () => {
+    it('should use error correction level M or higher')
+    it('should not use error correction level L')
+  })
+
+  describe('QR code visibility based on data size', () => {
+    it('should show QR code for small configurations')
+    it('should show QR code for medium configurations')
+    it('should hide QR code when data exceeds MAX_QR_DATA_SIZE')
+    it('should handle boundary case at exactly MAX_QR_DATA_SIZE')
+  })
+
+  describe('QR code rendering quality', () => {
+    it('should include margin for better scanning')
+    it('should use high contrast colors (black on white)')
+  })
+})
+```
+
+### Mock Configuration Data
+
+```typescript
+import type { ConfigBundle } from '../../lib/config/serializer';
+
+const mockSmallConfig: ConfigBundle = {
+  version: 1,
+  accounts: [
+    {
+      email: 'user@example.com',
+      accountId: 'account-1',
+      createdAt: Date.now(),
+      needsReauth: false,
+    },
+  ],
+  calendars: [
+    {
+      id: 'cal-1',
+      accountId: 'account-1',
+      summary: 'Primary Calendar',
+      primary: true,
+    },
+  ],
+};
+
+const mockLargeConfig: ConfigBundle = {
+  // ... many accounts and calendars
+  // Will exceed MAX_QR_DATA_SIZE
+};
+```
+
+### Component Rendering
+
+```typescript
+import { render, screen } from '@testing-library/react';
+import ExportConfiguration from '../../components/ExportConfiguration';
+
+test('QR code has minimum size of 300', () => {
+  render(<ExportConfiguration />);
+
+  // Trigger export flow
+  const exportButton = screen.getByText('Export Configuration');
+  await userEvent.click(exportButton);
+
+  // Fill passphrase and submit
+  // ... (fill form and submit)
+
+  // Wait for QR code to render
+  const qrCode = screen.getByRole('img'); // QRCodeSVG renders as img
+  expect(qrCode).toHaveAttribute('width', expect.stringMatching(/3\d\d/));
+  expect(qrCode).toHaveAttribute('height', expect.stringMatching(/3\d\d/));
+});
+```
+
+### QR Code Props Testing
+
+Since QRCodeSVG is a third-party component, we can test the props passed to it:
+
+```typescript
+import { QRCodeSVG } from 'qrcode.react';
+
+vi.mock('qrcode.react', () => ({
+  QRCodeSVG: vi.fn(({ size, level, includeMargin }) => ({
+    'data-testid': 'qr-code',
+    size,
+    level,
+    includeMargin,
+  })),
+}));
+
+test('QR code receives correct props', () => {
+  render(<ExportConfiguration />);
+  // ... trigger export
+
+  expect(QRCodeSVG).toHaveBeenCalledWith(
+    expect.objectContaining({
+      size: expect.any(Number),
+      level: expect.stringMatching(/^[MQH]$/), // Not 'L'
+      includeMargin: true,
+    }),
+    expect.anything()
+  );
+
+  const calls = vi.mocked(QRCodeSVG).mock.calls;
+  const size = calls[calls.length - 1][0].size;
+  expect(size).toBeGreaterThanOrEqual(300);
+});
+```
+
+## Quick commands
+
+```bash
+# Create test file
+touch src/test/components/bugs-qr-code.test.tsx
+
+# Run the test suite (will fail initially)
+npm test -- src/test/components/bugs-qr-code.test.tsx
+
+# Run with coverage
+npm test -- src/test/components/bugs-qr-code.test.tsx --coverage
+```
+
+## Acceptance
+- [ ] Test file `src/test/components/bugs-qr-code.test.tsx` created
+- [ ] All 7 test scenarios implemented
+- [ ] Tests FAIL when run (reproducing the bug - current size is 200, level is "L")
+- [ ] Tests verify QR code size >= 300
+- [ ] Tests verify error correction level is "M" or higher
+- [ ] Tests verify QR code visibility based on data size
+- [ ] Code follows existing test patterns
+## Done summary
+# fn-12-zlg.4: Write regression tests for BUG-4: QR code resolution
+
+## Summary
+
+Created comprehensive regression test suite for BUG-4 (QR code resolution issue) in `src/test/components/bugs-qr-code.test.tsx`. The tests correctly FAIL, reproducing the bug where QR codes are rendered at 200x200 pixels with error correction level "L" instead of the required 300x300 minimum with error correction level "M" or higher.
+
+## Test Results
+
+**4 failed tests** (correctly reproducing the bug):
+1. `should render QR code with minimum 300x300 pixel size` - size is 200, fails >= 300 check
+2. `should use error correction level M or higher` - level is "L", not M/Q/H  
+3. `should not use error correction level L` - level IS "L"
+4. `should show QR code for medium configurations` - size is 200, fails >= 300 check
+
+**6 passed tests** (verifying other behaviors):
+- QR code aspect ratio maintained
+- QR code shows for small configurations
+- QR code hidden when data exceeds MAX_QR_DATA_SIZE
+- Boundary case at exactly MAX_QR_DATA_SIZE handled correctly
+- Margin included for better scanning
+- High contrast colors (black on white) used
+
+## Implementation Details
+
+- Used `vi.hoisted()` to properly mock modules before component import
+- Mocked `QRCodeSVG` to capture props for validation
+- Mocked `exportConfig`, `serializeBundle`, and `encrypt` functions
+- Created test fixtures for small, medium, and large configurations
+- Tested all 7 scenarios specified in the task description
+
+## Files Changed
+- `src/test/components/bugs-qr-code.test.tsx` (created)
+## Evidence
+- Commits:
+- Tests:
+- PRs:

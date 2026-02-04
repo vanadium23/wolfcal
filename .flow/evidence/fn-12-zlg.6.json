@@ -1,0 +1,9 @@
+{
+  "type": "regression_tests",
+  "id": "fn-12-zlg.6",
+  "timestamp": "2025-02-04T20:33:12Z",
+  "tests": "src/test/components/bugs-calendar-list.test.tsx",
+  "test_count": 23,
+  "tests_passing": 23,
+  "coverage": ["CalendarManagement.tsx:39-120", "CalendarManagement.tsx:135-207", "CalendarManagement.tsx:209-280", "CalendarManagement.tsx:410-449"]
+}

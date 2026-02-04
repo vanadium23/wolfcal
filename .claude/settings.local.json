@@ -1,10 +1,9 @@
 {
-  "enabledPlugins": {
-    "superpowers@claude-plugins-official": true,
-    "flow-next@gmickel-claude-marketplace": true
-  },
+  "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "quint-code"
   ],
-  "enableAllProjectMcpServers": true
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true
+  }
 }

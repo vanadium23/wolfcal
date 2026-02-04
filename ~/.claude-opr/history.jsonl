@@ -10,3 +10,20 @@
 {"display":"/flow-next:plan \"export qr code does not work, let's draft to fix it. i have 2 accounts and 9 calendars. debug info Config JSON size: 2394 bytes index-BlMJdR__.js:22:47972\nEncrypted size: 4408 bytes\"","pastedContents":{},"timestamp":1770064233800,"project":"/home/deploy/src/wolfcal","sessionId":"15c68864-e588-4ff8-bd87-22c02a0b74d8"}
 {"display":"b","pastedContents":{},"timestamp":1770064303376,"project":"/home/deploy/src/wolfcal","sessionId":"15c68864-e588-4ff8-bd87-22c02a0b74d8"}
 {"display":"go on, limit is not here","pastedContents":{},"timestamp":1770094389669,"project":"/home/deploy/src/wolfcal","sessionId":"15c68864-e588-4ff8-bd87-22c02a0b74d8"}
+{"display":"/flow-next:impl-review --review=codex fn-11-01z","pastedContents":{},"timestamp":1770131461274,"project":"/home/deploy/src/wolfcal","sessionId":"15c68864-e588-4ff8-bd87-22c02a0b74d8"}
+{"display":"re check current status for tasks","pastedContents":{},"timestamp":1770131647296,"project":"/home/deploy/src/wolfcal","sessionId":"15c68864-e588-4ff8-bd87-22c02a0b74d8"}
+{"display":"/flow-next:epic-review fn-11-01z --review=none","pastedContents":{},"timestamp":1770131721257,"project":"/home/deploy/src/wolfcal","sessionId":"15c68864-e588-4ff8-bd87-22c02a0b74d8"}
+{"display":"why qr code is not scanned by mobile?","pastedContents":{},"timestamp":1770132177604,"project":"/home/deploy/src/wolfcal","sessionId":"15c68864-e588-4ff8-bd87-22c02a0b74d8"}
+{"display":"/model claude-opus-4.5","pastedContents":{},"timestamp":1770234794596,"project":"/home/deploy/src/wolfcal","sessionId":"4a6507b1-a9f5-415b-9826-1c69dd6f3e40"}
+{"display":"/flow-next:ralph-init ","pastedContents":{},"timestamp":1770234803679,"project":"/home/deploy/src/wolfcal","sessionId":"4a6507b1-a9f5-415b-9826-1c69dd6f3e40"}
+{"display":"/plugin install flow-next","pastedContents":{},"timestamp":1770234887217,"project":"/home/deploy/src/wolfcal","sessionId":"4a6507b1-a9f5-415b-9826-1c69dd6f3e40"}
+{"display":"/plugin ","pastedContents":{},"timestamp":1770234892401,"project":"/home/deploy/src/wolfcal","sessionId":"4a6507b1-a9f5-415b-9826-1c69dd6f3e40"}
+{"display":"/plugin ","pastedContents":{},"timestamp":1770234909978,"project":"/home/deploy/src/wolfcal","sessionId":"4a6507b1-a9f5-415b-9826-1c69dd6f3e40"}
+{"display":"/plugin install flow-next","pastedContents":{},"timestamp":1770234948526,"project":"/home/deploy/src/wolfcal","sessionId":"7a2ebe62-5180-4806-b1ef-6be3d9a4c255"}
+{"display":"/plugin ","pastedContents":{},"timestamp":1770234954290,"project":"/home/deploy/src/wolfcal","sessionId":"7a2ebe62-5180-4806-b1ef-6be3d9a4c255"}
+{"display":"/plugin delete flow-next","pastedContents":{},"timestamp":1770234969369,"project":"/home/deploy/src/wolfcal","sessionId":"7a2ebe62-5180-4806-b1ef-6be3d9a4c255"}
+{"display":"/plugin install flow-next","pastedContents":{},"timestamp":1770234982700,"project":"/home/deploy/src/wolfcal","sessionId":"fd018d71-236a-4f47-8b15-361450486f4e"}
+{"display":"/model claude-opus-4.5","pastedContents":{},"timestamp":1770234998007,"project":"/home/deploy/src/wolfcal","sessionId":"5da5ecae-6b2f-4170-b172-cc2d7ca0fc26"}
+{"display":"/flow-next:ralph-init ","pastedContents":{},"timestamp":1770235001313,"project":"/home/deploy/src/wolfcal","sessionId":"5da5ecae-6b2f-4170-b172-cc2d7ca0fc26"}
+{"display":"/model claude-opus-4.5","pastedContents":{},"timestamp":1770235050617,"project":"/home/deploy/src/wolfcal","sessionId":"49f4ae59-b22a-4246-9967-eb2ead3ca336"}
+{"display":"/flow-next:ralph-init ","pastedContents":{},"timestamp":1770235054310,"project":"/home/deploy/src/wolfcal","sessionId":"49f4ae59-b22a-4246-9967-eb2ead3ca336"}
