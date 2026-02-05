@@ -136,10 +136,59 @@ export const handlers = [
     })
   }),
 
-  // Mock event update (PATCH)
+  // Mock single event fetch (GET) - used by respondToInvitation
+  http.get(`${googleCalendarBase}/calendars/:calendarId/events/:eventId`, ({ params }) => {
+    const { eventId } = params
+    // Return event with attendees including current user (self: true)
+    return HttpResponse.json({
+      id: eventId,
+      summary: 'Meeting Invitation',
+      start: { dateTime: '2026-02-01T10:00:00Z' },
+      end: { dateTime: '2026-02-01T11:00:00Z' },
+      status: 'confirmed',
+      attendees: [
+        {
+          email: 'user@example.com',
+          self: true,
+          responseStatus: 'needsAction',
+          organizer: false,
+        },
+        {
+          email: 'organizer@example.com',
+          self: false,
+          responseStatus: 'accepted',
+          organizer: true,
+        },
+      ],
+      created: '2026-02-01T00:00:00Z',
+      updated: new Date().toISOString(),
+    })
+  }),
+
+  // Mock event update (PATCH) - used for respondToInvitation and general updates
   http.patch(`${googleCalendarBase}/calendars/:calendarId/events/:eventId`, async ({ request, params }) => {
     const { eventId } = params
     const body = await request.json() as Record<string, unknown>
+
+    // If attendees are being updated (invitation response)
+    if ('attendees' in body && body.attendees) {
+      return HttpResponse.json({
+        id: eventId,
+        summary: 'Meeting Invitation',
+        start: { dateTime: '2026-02-01T10:00:00Z' },
+        end: { dateTime: '2026-02-01T11:00:00Z' },
+        status: 'confirmed',
+        attendees: body.attendees as Array<{
+          email: string
+          self?: boolean
+          responseStatus: string
+          organizer?: boolean
+        }>,
+        updated: new Date().toISOString(),
+      })
+    }
+
+    // General event update
     return HttpResponse.json({
       id: eventId,
       ...body,
@@ -151,29 +200,6 @@ export const handlers = [
   http.delete(`${googleCalendarBase}/calendars/:calendarId/events/:eventId`, ({ params: _params }) => {
     // Return 204 No Content on successful deletion
     return new HttpResponse(null, { status: 204 })
-  }),
-
-  // Mock invitation response (PATCH attendees)
-  http.patch(`${googleCalendarBase}/calendars/:calendarId/events/:eventId`, async ({ request, params }) => {
-    const { eventId } = params
-    const body = await request.json() as Record<string, unknown>
-
-    // Return updated event with modified attendee status
-    return HttpResponse.json({
-      id: eventId,
-      summary: 'Meeting with Response',
-      start: { dateTime: '2026-02-01T10:00:00Z' },
-      end: { dateTime: '2026-02-01T11:00:00Z' },
-      status: 'confirmed',
-      attendees: (body.attendees as Array<{ email: string }>) || [
-        {
-          email: 'user@example.com',
-          self: true,
-          responseStatus: 'accepted',
-        },
-      ],
-      updated: new Date().toISOString(),
-    })
   }),
 
   // Mock user info endpoint

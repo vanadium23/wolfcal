@@ -366,7 +366,7 @@ export class CalendarClient {
 
   /**
    * Responds to an event invitation by updating the current user's attendee status
-   * @param accountId - Account ID
+   * @param accountId - Account ID (email address)
    * @param calendarId - Calendar ID
    * @param eventId - Event ID
    * @param response - Response status ('accepted', 'declined', 'tentative', 'needsAction')
@@ -388,9 +388,27 @@ export class CalendarClient {
 
       // Find and update the current user's response status
       // The attendee marked with self: true is the current user
+      // BUG FIX: Also try to match by email if self: true is not set
+      let updated = false;
       if (event.attendees) {
-        event.attendees = event.attendees.map((attendee) =>
-          attendee.self ? { ...attendee, responseStatus: response } : attendee
+        event.attendees = event.attendees.map((attendee) => {
+          // Check if this is the current user by self flag or email match
+          const isCurrentUser = attendee.self || attendee.email === accountId;
+
+          if (isCurrentUser && attendee.responseStatus !== response) {
+            updated = true;
+            return { ...attendee, responseStatus: response };
+          }
+          return attendee;
+        });
+      }
+
+      // If no attendee was found or updated, this might be an error condition
+      // But we'll still send the PATCH request to let Google handle it
+      if (!updated && !event.attendees?.some((a) => a.self || a.email === accountId)) {
+        console.warn(
+          `respondToInvitation: No attendee found for account ${accountId} in event ${eventId}. ` +
+            'This may indicate the user is not on the attendee list.'
         );
       }
 

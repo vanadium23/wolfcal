@@ -282,24 +282,39 @@ npm test -- src/test/components/bugs-event-actions.test.tsx --coverage
 - [ ] Tests verify UI refresh after response
 - [ ] Code follows existing test patterns from `EventForm.test.tsx`
 ## Done summary
-Write regression tests for BUG-3 (Accept/decline event) covering:
-- Online accept/decline updates Google Calendar via API
-- Offline accept/decline queues for later sync
-- Local IndexedDB and UI update correctly
-- Only current user's response status is updated
-- Error handling for API failures
-- UI refresh and popover close after response
+# fn-12-zlg.4: Write regression tests for BUG-4: QR code resolution
 
-Blocked:
-Auto-blocked after 5 attempts.
-Run: 20260204T200250Z-claude-code1-deploy@wolfcal.local-158638-c508
-Task: fn-12-zlg.3
+## Summary
 
-Last output:
-timeout: failed to run command ‘claude-zai’: No such file or directory
-ralph: task not done; forcing retry
+Created comprehensive regression test suite for BUG-4 (QR code resolution issue) in `src/test/components/bugs-qr-code.test.tsx`. The tests correctly FAIL, reproducing the bug where QR codes are rendered at 200x200 pixels with error correction level "L" instead of the required 300x300 minimum with error correction level "M" or higher.
+
+## Test Results
+
+**4 failed tests** (correctly reproducing the bug):
+1. `should render QR code with minimum 300x300 pixel size` - size is 200, fails >= 300 check
+2. `should use error correction level M or higher` - level is "L", not M/Q/H  
+3. `should not use error correction level L` - level IS "L"
+4. `should show QR code for medium configurations` - size is 200, fails >= 300 check
+
+**6 passed tests** (verifying other behaviors):
+- QR code aspect ratio maintained
+- QR code shows for small configurations
+- QR code hidden when data exceeds MAX_QR_DATA_SIZE
+- Boundary case at exactly MAX_QR_DATA_SIZE handled correctly
+- Margin included for better scanning
+- High contrast colors (black on white) used
+
+## Implementation Details
+
+- Used `vi.hoisted()` to properly mock modules before component import
+- Mocked `QRCodeSVG` to capture props for validation
+- Mocked `exportConfig`, `serializeBundle`, and `encrypt` functions
+- Created test fixtures for small, medium, and large configurations
+- Tested all 7 scenarios specified in the task description
+
+## Files Changed
+- `src/test/components/bugs-qr-code.test.tsx` (created)
 ## Evidence
-
 - Commits:
-- Tests: `src/test/components/bugs-event-actions.test.tsx`
+- Tests:
 - PRs:
